@@ -164,6 +164,7 @@ const MODAL_ANIMATION_MS = 720;
 let activeFilter = { group: "all", value: "all" };
 let lastModalTrigger = null;
 let isModalClosing = false;
+let moonBlendLevel = 0;
 
 const experiences = {
   "xingyue-camp": {
@@ -536,7 +537,8 @@ function initAmbientParticles() {
         particle.y,
         particle.glow
       );
-      glowGradient.addColorStop(0, `rgba(245, 245, 255, ${particle.alpha * 0.68})`);
+      const blendBoost = 1 + moonBlendLevel * 0.55;
+      glowGradient.addColorStop(0, `rgba(245, 245, 255, ${Math.min(particle.alpha * 0.68 * blendBoost, 0.95)})`);
       glowGradient.addColorStop(1, "rgba(245, 245, 255, 0)");
       ctx.fillStyle = glowGradient;
       ctx.beginPath();
@@ -544,7 +546,7 @@ function initAmbientParticles() {
       ctx.fill();
 
       ctx.beginPath();
-      ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(particle.alpha + 0.2, 0.98)})`;
+      ctx.fillStyle = `rgba(255, 255, 255, ${Math.min((particle.alpha + 0.2) * blendBoost, 0.98)})`;
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
       ctx.fill();
     }
@@ -589,9 +591,14 @@ function initMoonScrollBoost() {
   const START_SCALE = 1.95;
   const END_SCALE = 1;
   const MERGE_SCROLL_RANGE = 760;
+  const CONTACT_START = 0.54;
+  const CONTACT_END = 0.82;
+  const DISSOLVE_START = 0.88;
+  const DISSOLVE_END = 1.34;
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+  const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
 
   const getMoonTarget = (moon) => {
     const isLeft = moon.classList.contains("ambient-moon-left");
@@ -609,26 +616,47 @@ function initMoonScrollBoost() {
     moonAngle += moonVelocity;
     moonVelocity += (BASE_VELOCITY - moonVelocity) * 0.06;
     floatPhase += 0.018;
-    const scrollProgress = clamp((window.scrollY || 0) / MERGE_SCROLL_RANGE, 0, 1);
+    const rawScrollProgress = (window.scrollY || 0) / MERGE_SCROLL_RANGE;
+    const scrollProgress = clamp(rawScrollProgress, 0, 1);
     const mergeProgress = easeOutCubic(scrollProgress);
-    const scale = START_SCALE - (START_SCALE - END_SCALE) * easeOutCubic(scrollProgress);
+    const contactRaw = clamp((scrollProgress - CONTACT_START) / (CONTACT_END - CONTACT_START), 0, 1);
+    const contactProgress = easeInOutSine(contactRaw);
+    const dissolveRaw = clamp((rawScrollProgress - DISSOLVE_START) / (DISSOLVE_END - DISSOLVE_START), 0, 1);
+    const dissolveProgress = easeInOutSine(dissolveRaw);
+    const centerGap = 12 * (1 - contactProgress);
+    const baseScale = START_SCALE - (START_SCALE - END_SCALE) * mergeProgress;
+    moonBlendLevel = dissolveProgress;
 
     ambientMoons.forEach((moon, index) => {
       const target = getMoonTarget(moon);
-      const currentX = target.startX + (50 - target.startX) * mergeProgress;
+      const side = index === 0 ? -1 : 1;
+      const centerTargetX = 50 + side * centerGap;
+      const currentX = target.startX + (centerTargetX - target.startX) * mergeProgress;
       const currentY = target.startY + (28 - target.startY) * mergeProgress;
-      const directionPhase = index === 0 ? 0 : Math.PI;
-      const floatY = Math.sin(floatPhase + directionPhase) * (5.8 * (1 - mergeProgress * 0.75));
+      const phaseOffset = index === 0 ? 0 : Math.PI * (1 - contactProgress);
+      const floatY = Math.sin(floatPhase + phaseOffset) * (5.6 * (1 - mergeProgress));
+      const shrinkFactor = Math.max(0, 1 - dissolveProgress);
+      const finalScale = baseScale * shrinkFactor;
+      const moonOpacity = (0.95 - mergeProgress * 0.05) * Math.pow(1 - dissolveProgress, 1.35);
+      const rotateOffset = 0;
 
       moon.style.left = `${currentX.toFixed(2)}vw`;
       moon.style.top = `${currentY.toFixed(2)}vh`;
       moon.style.right = "auto";
       moon.style.bottom = "auto";
+      moon.style.filter = `blur(${(dissolveProgress * 1.6).toFixed(2)}px)`;
+      moon.style.mixBlendMode = dissolveProgress > 0.08 ? "screen" : "normal";
       moon.style.transform =
         `translate3d(-50%, ${floatY.toFixed(2)}px, 0) ` +
-        `scale(${scale.toFixed(3)}) rotate(${(moonAngle + index * 12).toFixed(2)}deg)`;
-      moon.style.opacity = `${(0.94 - mergeProgress * 0.12).toFixed(3)}`;
+        `scale(${finalScale.toFixed(3)}) ` +
+        `rotate(${(moonAngle + rotateOffset).toFixed(2)}deg)`;
+      moon.style.opacity = `${Math.max(0, Math.min(1, moonOpacity)).toFixed(3)}`;
     });
+
+    if (bgParticlesCanvas) {
+      const particleOpacity = 0.6 + dissolveProgress * 0.34;
+      bgParticlesCanvas.style.opacity = particleOpacity.toFixed(3);
+    }
 
     requestAnimationFrame(tick);
   };
