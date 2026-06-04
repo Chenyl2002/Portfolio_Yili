@@ -2,13 +2,13 @@ const projects = [
   {
     id: "broken-home",
     title: "破碎之家",
-    subtitle: "叙事解谜向关卡设计 · 氛围驱动 Demo",
-    type: "团队项目",
+    subtitle: "微缩世界家庭场景 · 第三人称线性冒险解谜",
+    type: "个人项目",
     engine: "UE5",
     platform: "PC",
-    cycle: "2 个月",
-    role: "关卡策划 / 白盒搭建 / 叙事协作",
-    tags: ["叙事解谜", "空间引导", "情绪节奏"],
+    cycle: "2025.09 - 2025.11",
+    role: "独立完成关卡设计与蓝图设计",
+    tags: ["情绪镜身", "线性解谜", "微缩叙事"],
     thumbnail:
       "./Image/WeChat711f392c1afddf18da8e1b8865a8de2c.jpg",
     thumbnailPosition: "50% 46%",
@@ -17,28 +17,28 @@ const projects = [
     embedUrl:
       "https://player.bilibili.com/player.html?bvid=BV1k41cBXEfU&page=1&autoplay=1",
     summary:
-      "围绕废弃宅邸构建“探索-线索拼接-真相揭示”流程，重点验证关卡叙事信息层层解锁与玩家情绪递进。",
+      "场景主题为“微缩世界 & 家庭场景”。玩家扮演处于家庭冲突中的孩子，使用“情绪镜身”（复刻过去 3 秒动作的分身）推进关卡，在物理解谜与心理转折中完成“接纳过去、寻找救赎”的叙事目标。",
     design: [
-      "以封闭空间与光照对比强化未知感，建立探索动机。",
-      "通过线索道具与场景痕迹引导玩家推理事件真相。",
-      "在中后段加入高压追逐段，拉升情绪峰值。"
+      "核心机制：情绪镜身。通过与过去 3 秒的自己协作，实现原本需要多人配合的机关解谜。",
+      "挑战单元：规划类挑战、时间差挑战、协力型挑战；符号化元素为橙色按钮、压力板、绳子等。",
+      "关卡节奏：LV1（3min）教学入门、LV2（5min）机制进阶、LV3（10min）综合运用与最终 Boss 净化。"
     ],
     contribution: [
-      "完成关卡主线流程与关键事件触发逻辑设计。",
-      "使用 UE5 白盒与 Lumen 完成空间氛围搭建。",
-      "与文案和美术协同，统一叙事表达与视觉语言。"
+      "采用“情绪主题 -> 核心机制 -> 挑战单元 -> 空间流程”的自上而下设计流程，完成完整关卡框架。",
+      "围绕床铺、衣柜、抽屉、桌椅等微缩家庭空间设计可操作谜题与玩家动线，并通过颜色/材质区分强化引导。",
+      "独立完成关卡设计与蓝图实现，包含风扇、延时洞口、伸缩平台、小火车、断桥与 Boss 终点等关键环节。"
     ]
   },
   {
     id: "break-ice",
-    title: "破冰起航",
-    subtitle: "腾讯游戏星跃实战营 · 仙侠动作关卡 Demo",
+    title: "破冰启航",
+    subtitle: "工业港口 & 飞艇 · 第三人称线性冒险解谜",
     type: "个人项目",
     engine: "UE5",
     platform: "PC",
-    cycle: "2 个月",
-    role: "关卡策划 / 玩法落地",
-    tags: ["箱庭动作关卡", "能力解锁", "Boss战"],
+    cycle: "2026.03.21 - 2026.03.31",
+    role: "独立完成关卡设计与蓝图设计",
+    tags: ["冰冻机制", "工业机关", "飞艇关卡"],
     thumbnail:
       "./Image/WeChata387371355de2ef25039aafe61d4bdfd.jpg",
     thumbnailPosition: "50% 52%",
@@ -47,28 +47,28 @@ const projects = [
     embedUrl:
       "https://player.bilibili.com/player.html?bvid=BV1oTXzBvEyA&page=1&autoplay=1",
     summary:
-      "以“解谜-战斗-能力解锁-高潮挑战”为主循环，完成可玩 Demo 落地，验证动作关卡节奏与反馈设计。",
+      "场景主题为“工业港口 & 飞艇”。玩家以“冰冻技能”干预机关运动、创造路径并控制节奏，在寒潮废墟中重启老式工业飞艇，前往曙光主城。",
     design: [
-      "设计多段式遭遇战，保证学习曲线和挑战递进。",
-      "将御剑飞行作为高潮机制，提高阶段反馈。",
-      "通过机关与战斗耦合提升关卡变化度。"
+      "核心机制：按住鼠标中键使用冰冻技能，冻结并改变物体/机关运动；核心乐趣是时机判断与机关组合运用。",
+      "机制教学递进：LV1（3min）基础操作与冻结入门、LV2（5min）冻结顺序与规划解谜、LV3（10min）冻结时机与综合 Boss 校验。",
+      "主题符号化：橙色可交互/可冰冻机关，冰冻后转蓝色；关键验证物包括吊机、吊桥、矿车、传输带、风扇、电梯。"
     ],
     contribution: [
-      "推进策划案迭代并定义关键体验目标。",
-      "完成 UE5 白盒搭建和基础蓝图交互配置。",
-      "与战斗/文案策划协作，完成机制叙事闭环。"
+      "完成港口入口、飞艇港口、飞艇本体三段流程设计，覆盖吊机/吊桥/矿车/电梯/高炉/装货区等工业空间。",
+      "将“冻结机关运动、冻结顺序规划、时机冻结”拆解为可教学挑战，并通过战斗与奖励节点形成节奏张弛。",
+      "独立完成关卡设计与蓝图实现，含可视符号引导、关键机关参数设计与关卡流畅度迭代。"
     ]
   },
   {
     id: "ancient-temple",
     title: "山中古刹",
-    subtitle: "古刹探索关卡 · 场景叙事与机关解谜",
+    subtitle: "祠堂古刹箱庭 · 御剑解谜与战斗校验",
     type: "团队项目",
     engine: "UE5",
     platform: "PC",
-    cycle: "6 周",
-    role: "关卡策划 / 场景流程设计",
-    tags: ["古建场景", "机关谜题", "环境叙事"],
+    cycle: "8 周",
+    role: "关卡策划 / 关卡流程与机制设计",
+    tags: ["符箓解谜", "阵法切换", "塔楼限时挑战"],
     thumbnail:
       "./Image/WeChat647d538c08a2e3ff20212847a48ba14a.jpg",
     thumbnailPosition: "50% 47%",
@@ -77,16 +77,16 @@ const projects = [
     embedUrl:
       "https://player.bilibili.com/player.html?bvid=BV1Bg5a6dEHL&page=1&autoplay=1",
     summary:
-      "围绕“层层深入古刹遗迹”构建线性探索体验，通过机关解谜与空间回环提升沉浸感。",
+      "以“山中古刹”15分钟箱庭关卡为核心，围绕符箓破除、阵法切换与御剑能力解锁构建玩法流程。玩家从前殿逐步深入偏殿、地下宫殿、大殿与塔楼，最终在庭院完成小头目战，形成‘解谜—战斗—能力成长—高潮校验’的线性体验。",
     design: [
-      "设定前殿-藏经阁-地宫三段式结构，形成明确推进目标。",
-      "结合环境叙事碎片强化世界观信息传达。",
-      "通过回环路径控制玩家节奏与资源消耗。"
+      "空间流程采用“前殿一楼—偏殿1—地下宫殿—通道—偏殿2—大殿一楼—塔楼1-4—大殿负一楼—古刹庭院—前殿”闭环路径，强调探索推进与目标回收。",
+      "核心解谜围绕符箓展开：从前殿单符箓教学，到偏殿双符箓破阵，再到地下宫殿蓝红阵法联动，逐步提升机制理解与思考强度。",
+      "大殿阶段通过灵石解锁御剑能力，并以屋顶/塔楼限时安插阵盘挑战完成机制综合校验；庭院小头目战作为最终战斗高潮。"
     ],
     contribution: [
-      "负责关卡节奏图和节点事件编排。",
-      "完成关键场景白盒与交互触发设计。",
-      "协助镜头演出与氛围参数调试。"
+      "拆解并编排“战斗—解谜—探索”节奏序列，按前殿教学、地下宫殿锻炼机制、塔楼限时挑战验证能力、庭院小头目战完成节点设计。",
+      "输出符箓与阵法机制规则，明确可破坏符箓、封印门/结界、阵盘破坏等关键蓝图交互逻辑。",
+      "完成古刹关卡区域的关卡流程设计与引导设计，包括白盒关卡搭建和设计，过场动画和剧情文本、敌人的放置等。"
     ]
   },
   {
@@ -137,6 +137,7 @@ const modalSummary = document.getElementById("modalSummary");
 const modalDesign = document.getElementById("modalDesign");
 const modalContrib = document.getElementById("modalContrib");
 const navToggle = document.querySelector(".nav-toggle");
+const siteHeader = document.querySelector(".site-header");
 const navLinks = document.querySelector(".nav-links");
 const backToTop = document.getElementById("backToTop");
 const contactForm = document.getElementById("contactForm");
@@ -156,6 +157,7 @@ const docModalBackdrop = document.getElementById("docModalBackdrop");
 const closeDocModal = document.getElementById("closeDocModal");
 const docModalTitle = document.getElementById("docModalTitle");
 const docModalFrame = document.getElementById("docModalFrame");
+const bgParticlesCanvas = document.getElementById("bgParticles");
 const MODAL_ANIMATION_MS = 720;
 
 let activeFilter = { group: "all", value: "all" };
@@ -431,7 +433,7 @@ function openDocModal(title, url) {
   docModalFrame.src = url || "";
   docModal.classList.remove("hidden");
   docModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow = window.innerWidth > 760 ? "hidden" : "";
   document.body.classList.add("modal-open");
 }
 
@@ -459,6 +461,68 @@ function initRevealAnimations() {
     { threshold: 0.16 }
   );
   revealItems.forEach((item) => observer.observe(item));
+}
+
+function initAmbientParticles() {
+  if (!bgParticlesCanvas) return;
+  const ctx = bgParticlesCanvas.getContext("2d");
+  if (!ctx) return;
+
+  const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const particles = [];
+  const PARTICLE_COUNT = motionReduced ? 24 : 56;
+  let rafId = 0;
+
+  const resize = () => {
+    bgParticlesCanvas.width = window.innerWidth;
+    bgParticlesCanvas.height = window.innerHeight;
+  };
+
+  const resetParticle = (particle, randomY = true) => {
+    particle.x = Math.random() * bgParticlesCanvas.width;
+    particle.y = randomY
+      ? Math.random() * bgParticlesCanvas.height
+      : bgParticlesCanvas.height + Math.random() * 60;
+    particle.size = Math.random() * 1.8 + 0.6;
+    particle.alpha = Math.random() * 0.36 + 0.08;
+    particle.speed = Math.random() * 0.24 + 0.08;
+    particle.drift = (Math.random() - 0.5) * 0.16;
+  };
+
+  const initParticles = () => {
+    particles.length = 0;
+    for (let i = 0; i < PARTICLE_COUNT; i += 1) {
+      const particle = {};
+      resetParticle(particle, true);
+      particles.push(particle);
+    }
+  };
+
+  const draw = () => {
+    ctx.clearRect(0, 0, bgParticlesCanvas.width, bgParticlesCanvas.height);
+    for (const particle of particles) {
+      particle.y -= particle.speed;
+      particle.x += particle.drift;
+
+      if (particle.y < -12 || particle.x < -20 || particle.x > bgParticlesCanvas.width + 20) {
+        resetParticle(particle, false);
+      }
+
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(240, 240, 240, ${particle.alpha})`;
+      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    rafId = window.requestAnimationFrame(draw);
+  };
+
+  resize();
+  initParticles();
+  draw();
+  window.addEventListener("resize", () => {
+    resize();
+    initParticles();
+  });
 }
 
 filterButtons.forEach((button) => {
@@ -505,6 +569,10 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 });
 
 window.addEventListener("scroll", () => {
+  if (siteHeader) {
+    siteHeader.classList.toggle("scrolled", window.scrollY > 24);
+  }
+
   if (window.scrollY > 500) {
     backToTop.classList.add("show");
   } else {
@@ -533,3 +601,4 @@ if (contactForm) {
 
 renderProjects();
 initRevealAnimations();
+initAmbientParticles();

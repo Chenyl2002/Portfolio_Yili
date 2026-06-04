@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <div class="ambient-bg" aria-hidden="true">
+      <span class="ambient-orb ambient-orb-1"></span>
+      <span class="ambient-orb ambient-orb-2"></span>
+      <span class="ambient-orb ambient-orb-3"></span>
+      <canvas id="bgParticles" class="bg-particles"></canvas>
+    </div>
+
     <header class="site-header">
       <nav class="nav container">
         <a href="#home" class="brand">STUDIO YILI®</a>
@@ -34,12 +41,12 @@
     <main>
       <section id="home" class="hero container">
         <div class="hero-content">
-          <p class="eyebrow">GAME LEVEL & NARRATIVE PLANNING</p>
-          <h1>陈宜理 · 游戏策划作品集</h1>
-          <p class="hero-text">
+          <p class="eyebrow hero-fade hero-fade-1">GAME LEVEL & NARRATIVE PLANNING</p>
+          <h1 class="hero-fade hero-fade-2">陈宜理 · 游戏策划作品集</h1>
+          <p class="hero-text hero-fade hero-fade-3">
             环境艺术设计本科 + 景观建筑硕士背景，聚焦关卡节奏、玩法循环与叙事演出落地。擅长将空间设计理解转化为可玩关卡体验。
           </p>
-          <div class="hero-advantages">
+          <div class="hero-advantages hero-fade hero-fade-4">
             <article>
               <h3>跨学科设计基础</h3>
               <p>环境艺术本科、景观建筑硕士（QS35），具备扎实空间叙事与美术表达能力。</p>
@@ -57,17 +64,20 @@
               <p>15 年+ 游戏经历，10000+ 小时跨类型体验，能从玩家视角拆解机制与节奏问题。</p>
             </article>
           </div>
-          <div class="hero-actions">
+          <div class="hero-actions hero-fade hero-fade-5">
             <a class="btn btn-primary" href="#projects">VIEW PROJECTS</a>
             <a class="btn btn-secondary" href="#resume">VIEW RESUME</a>
           </div>
-          <div class="hero-metrics mono">
+          <div class="hero-metrics mono hero-fade hero-fade-6">
             <span>10000+ H GAMEPLAY</span>
             <span>15 SPACE NODES</span>
             <span>12 COMBAT NODES</span>
             <span>2 TENCENT CAMPS</span>
           </div>
         </div>
+        <a href="#projects" class="scroll-indicator" aria-label="滚动到项目区域">
+          <span></span>
+        </a>
       </section>
 
       <section id="projects" class="section container">
@@ -301,21 +311,60 @@
                 <p class="item-meta">
                   总游戏时长 10000+ 小时,跨越十余年游戏经历,熟悉端游、手游与主机平台,涵盖 MOBA、开放世界、动作 RPG、潜入沉浸模拟、FPS、沙盒、自走棋、RTS 等多种类型,总氪金 2w+。
                 </p>
-                <ul class="plain-list game-exp-list">
-                  <li>开放世界/RPG：原神（700h+,58级,47角色26金,须弥前探索度90%）、崩坏:星穹铁道200h+（均衡 66 级，20金，剧情到翁法罗斯结束）、鸣潮200h+、赛博朋克 2077（全主线通关）、战神 4（全主线通关）、鬼谷八荒（全主线通关）</li>
-                  <li>MMO：地下城与勇士200h+、燕云十六声100h+、洛克王国世界200h+、魔法哈奇400h+</li>
-                  <li>潜入 / 沉浸模拟：耻辱 2（全主线通关）</li>
-                  <li>卡牌/养成：三国杀100h+、赛尔号、摩尔庄园、奥奇传说、奥拉星、洛克王国、西普大陆加起来约600h+</li>
-                  <li>FPS / 射击：求生之路2、穿越火线100h+、CSonline 200h+，和平精英100h+，泰坦陨落2</li>
-                  <li>沙盒：我的世界1000h+、泰拉瑞亚100h+、森林</li>
-                  <li>自走棋：金铲铲之战500h+（最高段位钻石）</li>
-                  <li>RTS / 策略：魔兽争霸3冰封王座200h、率土之滨100h+</li>
-                  <li>音乐游戏：节奏大师、QQ炫舞</li>
-                  <li>肉鸽Roguelike：吸血鬼幸存者、以撒的结合</li>
-                  <li>MOBA：王者荣耀（1500h+,十年老玩家，总场次超过7000，最高段位国际服荣耀王者130星）、英雄联盟、自由之战、全民超神</li>
-                  <li>竞速 / 休闲：QQ 飞车（700h+，10年开始接触）、球球大作战、贪吃蛇大作战、愤怒的小鸟、小鳄鱼爱洗澡</li>
-                  <li>略玩：艾尔登法环，生化危机2，怪物猎人起源、双人成行、孢子、qq华夏、楚留香、侠盗猎车手GTA系列、元气骑士、胡闹厨房</li>
-                </ul>
+                <div class="game-exp-groups">
+                  <article class="game-exp-group">
+                    <h4>开放世界 / RPG</h4>
+                    <p class="item-meta">原神（700h+,58级,47角色26金,须弥前探索度90%）、崩坏:星穹铁道200h+（均衡 66 级，20金，剧情到翁法罗斯结束）、鸣潮200h+、赛博朋克 2077（全主线通关）、战神 4（全主线通关）、鬼谷八荒（全主线通关）</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>MMO</h4>
+                    <p class="item-meta">地下城与勇士200h+、燕云十六声100h+、洛克王国世界200h+、魔法哈奇400h+</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>潜入 / 沉浸模拟</h4>
+                    <p class="item-meta">耻辱 2（全主线通关）</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>卡牌 / 养成</h4>
+                    <p class="item-meta">三国杀100h+、赛尔号、摩尔庄园、奥奇传说、奥拉星、洛克王国、西普大陆加起来约600h+</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>FPS / 射击</h4>
+                    <p class="item-meta">求生之路2、穿越火线100h+、CSonline 200h+，和平精英100h+，泰坦陨落2</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>沙盒</h4>
+                    <p class="item-meta">我的世界1000h+、泰拉瑞亚100h+、森林</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>自走棋</h4>
+                    <p class="item-meta">金铲铲之战500h+（最高段位钻石）</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>RTS / 策略</h4>
+                    <p class="item-meta">魔兽争霸3冰封王座200h、率土之滨100h+</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>音乐游戏</h4>
+                    <p class="item-meta">节奏大师、QQ炫舞</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>肉鸽 Roguelike</h4>
+                    <p class="item-meta">吸血鬼幸存者、以撒的结合</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>MOBA</h4>
+                    <p class="item-meta">王者荣耀（1500h+,十年老玩家，总场次超过7000，最高段位国际服荣耀王者130星）、英雄联盟、自由之战、全民超神</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>竞速 / 休闲</h4>
+                    <p class="item-meta">QQ 飞车（700h+，10年开始接触）、球球大作战、贪吃蛇大作战、愤怒的小鸟、小鳄鱼爱洗澡</p>
+                  </article>
+                  <article class="game-exp-group">
+                    <h4>略玩</h4>
+                    <p class="item-meta">艾尔登法环，生化危机2，怪物猎人起源、双人成行、孢子、qq华夏、楚留香、侠盗猎车手GTA系列、元气骑士、胡闹厨房</p>
+                  </article>
+                </div>
               </article>
             </div>
           </div>
@@ -329,26 +378,22 @@
         </div>
         <div class="about-grid">
           <article class="card">
-            <h3>职业理念</h3>
+            <h3>个人优势 · 跨学科基础</h3>
             <p>
-              我相信优秀关卡不只是“路径和怪物摆放”，而是把情绪曲线、机制学习、空间引导与叙事表达整合成一段完整体验。
-              我的核心目标是让玩家在每一段流程中都能感受到“有成长、有反馈、有记忆点”。
+              环境艺术设计本科，景观建筑硕士（ QS 第35、建筑 QS 第 5），具备扎实的空间设计与美术功底。研究生阶段聚焦工业遗产与游戏景观课题；熟练使用 Rhino、SketchUp、AutoCAD、Photoshop、Illustrator、InDesign、Lumion 完成方案、建模、渲染与排版全流程。
             </p>
           </article>
           <article class="card">
-            <h3>个人优势</h3>
+            <h3>个人优势 · 关卡落地能力</h3>
             <p>
-              设计学科背景让我更擅长空间节奏与视觉表达。丰富游戏经历帮助我快速识别玩家动机与体验断点，并转化为可执行的策划方案。
+              熟练使用 UE5 引擎进行白盒关卡搭建与关卡演出。熟悉地形系统建模与笔刷雕刻、材质系统基础参数调用、Lumen 实时光照与场景氛围调试；能够使用 Sequencer 完成过场动画与镜头演出，使用蓝图实现玩家交互等基础 Gameplay 逻辑，独立完成从地形塑造、白盒搭建到镜头演出的完整关卡白盒流程。参与腾讯游戏星跃实战营与开局一课训练营（游戏策划方向），系统学习游戏关卡设计及跨工种协作流程。
             </p>
           </article>
           <article class="card">
-            <h3>获奖摘要</h3>
-            <ul class="plain-list">
-              <li>全国三维数字化创新设计大赛 · 国家三等奖</li>
-              <li>中国人居环境设计学年奖 · 两届优秀奖</li>
-              <li>园冶杯大学生国际竞赛 · 最佳人气奖</li>
-              <li>华灿奖 · 省级二等奖</li>
-            </ul>
+            <h3>个人优势 · 统筹与玩家洞察</h3>
+            <p>
+              具备良好的项目统筹与团队协作能力。多次担任学生项目第一负责人，设计成果获全国三维数字化创新设计大赛国家三等奖、人居环境设计学年奖（两届）、园冶杯大学生国际竞赛最佳人气奖、华灿奖省级二等奖等多项国家级与省级奖项。资深游戏玩家，15年以上游戏经验，深度涉猎 MOBA、开放世界、RPG、沙盒、自走棋等类型，累计时长上万小时，总氪金超 2w 元。
+            </p>
           </article>
         </div>
       </section>
@@ -445,9 +490,9 @@
       </article>
     </div>
 
-    <div id="docModal" class="project-modal hidden" aria-hidden="true">
+    <div id="docModal" class="project-modal doc-modal hidden" aria-hidden="true">
       <div id="docModalBackdrop" class="project-modal-backdrop"></div>
-      <article class="project-modal-panel experience-modal-panel" aria-live="polite">
+      <article class="project-modal-panel experience-modal-panel doc-modal-panel" aria-live="polite">
         <button id="closeDocModal" class="modal-close" aria-label="关闭文档预览">×</button>
         <div class="project-modal-content experience-modal-content">
           <section class="project-modal-info">

@@ -19,14 +19,93 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Inter", "Noto Sans SC", sans-serif;
-  background: var(--bg);
+  background: radial-gradient(circle at 50% -20%, #111 0%, #060606 44%, #020202 100%);
   color: var(--text);
   scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+}
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 18% 15%, rgba(255, 255, 255, 0.08), transparent 36%),
+    radial-gradient(circle at 82% 10%, rgba(255, 255, 255, 0.06), transparent 34%),
+    radial-gradient(circle at 52% 78%, rgba(255, 255, 255, 0.03), transparent 44%);
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(58px);
+  opacity: 0.22;
+  animation: ambientFloat 13s ease-in-out infinite;
+}
+
+.ambient-orb-1 {
+  width: min(42vw, 520px);
+  height: min(42vw, 520px);
+  top: -10vh;
+  left: -8vw;
+  background: radial-gradient(circle at 40% 40%, rgba(244, 244, 244, 0.24), rgba(244, 244, 244, 0));
+}
+
+.ambient-orb-2 {
+  width: min(36vw, 460px);
+  height: min(36vw, 460px);
+  top: 54vh;
+  right: -10vw;
+  background: radial-gradient(circle at 55% 50%, rgba(208, 208, 208, 0.22), rgba(208, 208, 208, 0));
+  animation-duration: 15s;
+  animation-delay: -3s;
+}
+
+.ambient-orb-3 {
+  width: min(30vw, 380px);
+  height: min(30vw, 380px);
+  top: 26vh;
+  left: 42vw;
+  background: radial-gradient(circle at 50% 48%, rgba(228, 228, 228, 0.16), rgba(228, 228, 228, 0));
+  animation-duration: 18s;
+  animation-delay: -6s;
+}
+
+.bg-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.38;
+}
+
+@keyframes ambientFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.04);
+  }
 }
 
 main,
 .site-header {
   transition: filter 0.72s ease, opacity 0.72s ease;
+}
+
+main,
+.site-header,
+#backToTop,
+#scrollProgress,
+.project-modal {
+  position: relative;
+  z-index: 1;
 }
 
 body.modal-open main,
@@ -51,6 +130,13 @@ a {
   backdrop-filter: blur(10px);
   background: rgba(2, 2, 2, 0.85);
   border-bottom: 1px solid var(--border);
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(8, 8, 8, 0.74);
+  border-bottom-color: #343434;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
 }
 
 .nav {
@@ -75,10 +161,29 @@ a {
   font-size: 0.78rem;
   color: var(--muted);
   letter-spacing: 0.08em;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
   color: var(--text);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.34rem;
+  width: 100%;
+  height: 1px;
+  background: #d1d1d1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
 }
 
 .nav-toggle {
@@ -99,6 +204,7 @@ a {
   justify-content: center;
   padding-top: 0.8rem;
   padding-bottom: 2.4rem;
+  position: relative;
 }
 
 .hero-content {
@@ -168,6 +274,26 @@ h1 {
   justify-content: center;
 }
 
+.hero-fade {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: heroFadeIn 0.64s ease forwards;
+}
+
+.hero-fade-1 { animation-delay: 0.06s; }
+.hero-fade-2 { animation-delay: 0.14s; }
+.hero-fade-3 { animation-delay: 0.22s; }
+.hero-fade-4 { animation-delay: 0.3s; }
+.hero-fade-5 { animation-delay: 0.38s; }
+.hero-fade-6 { animation-delay: 0.46s; }
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -188,6 +314,7 @@ h1 {
 
 .btn-primary:hover {
   background: #d9d9d9;
+  transform: translateY(-1px);
 }
 
 .btn-secondary,
@@ -200,6 +327,7 @@ h1 {
 .btn-tertiary:hover {
   border-color: #fff;
   color: #fff;
+  transform: translateY(-1px);
 }
 
 .hero-metrics {
@@ -218,6 +346,35 @@ h1 {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
   color: var(--muted);
+}
+
+.scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 0.66rem;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 38px;
+  border: 1px solid #383838;
+  border-radius: 999px;
+  display: inline-flex;
+  justify-content: center;
+  padding-top: 8px;
+  opacity: 0.8;
+}
+
+.scroll-indicator span {
+  width: 3px;
+  height: 8px;
+  border-radius: 999px;
+  background: #d9d9d9;
+  animation: scrollPulse 1.3s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0% { opacity: 0; transform: translateY(0); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(10px); }
 }
 
 .hero-gallery {
@@ -288,6 +445,24 @@ h1 {
   background: var(--bg-alt);
 }
 
+#resume.section-alt {
+  background: transparent;
+}
+
+#resume .resume-shell .card,
+#resume .resume-panel,
+#resume .resume-profile,
+#resume .game-exp-group {
+  background: rgba(10, 10, 10, 0.62);
+  border-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+#resume .resume-shell .card:hover,
+#resume .resume-panel:hover {
+  background: rgba(12, 12, 12, 0.72);
+}
+
 .section-head h2 {
   margin: 0.25rem 0 0.8rem;
   font-size: clamp(1.55rem, 2.8vw, 2.3rem);
@@ -297,6 +472,10 @@ h1 {
   margin: 0;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.section-head {
+  max-width: 860px;
 }
 
 .filter-row {
@@ -799,6 +978,32 @@ h1 {
   margin-top: 0.75rem;
 }
 
+.game-exp-groups {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.game-exp-group {
+  border: 1px solid #242424;
+  border-radius: 12px;
+  padding: 0.65rem 0.72rem;
+  background: rgba(14, 14, 14, 0.9);
+}
+
+.game-exp-group h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #f0f0f0;
+}
+
+.game-exp-group .item-meta {
+  margin-top: 0.48rem;
+  font-size: 0.88rem;
+  line-height: 1.58;
+}
+
 .resume-panel h3 {
   margin: 0;
   font-size: 1.28rem;
@@ -886,6 +1091,16 @@ h1 {
 
 .experience-modal-panel {
   width: min(920px, 92vw);
+}
+
+.doc-modal {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.doc-modal-panel {
+  overflow: hidden;
 }
 
 .experience-modal-content {
@@ -1054,6 +1269,7 @@ progress::-webkit-progress-value {
 
   .project-grid,
   .docs-grid,
+  .game-exp-groups,
   .hero-advantages,
   .about-grid,
   .detail-columns {
@@ -1066,6 +1282,54 @@ progress::-webkit-progress-value {
 
   .project-modal-media {
     min-height: 220px;
+  }
+
+  .doc-modal {
+    display: block;
+    place-items: initial;
+    padding: 0.6rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .doc-modal-panel {
+    width: 100%;
+    max-height: none;
+    min-height: calc(100dvh - 1.2rem);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .doc-modal .modal-close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    left: auto;
+    z-index: 3;
+  }
+
+  .doc-modal .project-modal-content {
+    padding-top: 2.6rem;
+    gap: 0.8rem;
+  }
+
+  .doc-modal .project-modal-info {
+    max-height: none;
+    overflow: visible;
+    padding: 0 0.2rem;
+  }
+
+  .doc-modal .doc-preview-wrap {
+    min-height: 70dvh;
+    border-radius: 14px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .doc-modal .doc-preview-frame {
+    min-height: 70dvh;
+    height: 70dvh;
   }
 
   .hero-panel {
