@@ -158,6 +158,7 @@ const closeDocModal = document.getElementById("closeDocModal");
 const docModalTitle = document.getElementById("docModalTitle");
 const docModalFrame = document.getElementById("docModalFrame");
 const bgParticlesCanvas = document.getElementById("bgParticles");
+const ambientMoons = Array.from(document.querySelectorAll(".ambient-moon"));
 const MODAL_ANIMATION_MS = 720;
 
 let activeFilter = { group: "all", value: "all" };
@@ -470,8 +471,16 @@ function initAmbientParticles() {
 
   const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const particles = [];
-  const PARTICLE_COUNT = motionReduced ? 24 : 56;
+  const PARTICLE_COUNT = motionReduced ? 56 : 180;
+  const IMPULSE_Y_FACTOR = 0.34;
+  const IMPULSE_X_FACTOR = 0.14;
+  const IMPULSE_GAIN = 0.045;
+  const IMPULSE_MAX = 2.2;
   let rafId = 0;
+  let scrollImpulse = 0;
+  let layerOffsetY = 0;
+  let layerVelocityY = 0;
+  let lastScrollY = window.scrollY || 0;
 
   const resize = () => {
     bgParticlesCanvas.width = window.innerWidth;
@@ -483,10 +492,11 @@ function initAmbientParticles() {
     particle.y = randomY
       ? Math.random() * bgParticlesCanvas.height
       : bgParticlesCanvas.height + Math.random() * 60;
-    particle.size = Math.random() * 1.8 + 0.6;
-    particle.alpha = Math.random() * 0.36 + 0.08;
-    particle.speed = Math.random() * 0.24 + 0.08;
-    particle.drift = (Math.random() - 0.5) * 0.16;
+    particle.size = Math.random() * 1.9 + 0.45;
+    particle.alpha = Math.random() * 0.5 + 0.14;
+    particle.glow = particle.size * (Math.random() * 2.2 + 2.1);
+    particle.speed = Math.random() * 0.14 + 0.04;
+    particle.drift = (Math.random() - 0.5) * 0.24;
   };
 
   const initParticles = () => {
@@ -499,22 +509,64 @@ function initAmbientParticles() {
   };
 
   const draw = () => {
+    layerOffsetY += layerVelocityY;
+    layerVelocityY *= 0.8;
+    layerOffsetY *= 0.9;
+    if (Math.abs(layerVelocityY) < 0.005) layerVelocityY = 0;
+    if (Math.abs(layerOffsetY) < 0.01) layerOffsetY = 0;
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, bgParticlesCanvas.width, bgParticlesCanvas.height);
+    ctx.setTransform(1, 0, 0, 1, 0, layerOffsetY);
     for (const particle of particles) {
-      particle.y -= particle.speed;
-      particle.x += particle.drift;
+      const impulseY = scrollImpulse * IMPULSE_Y_FACTOR;
+      const impulseX = scrollImpulse * IMPULSE_X_FACTOR;
+      particle.y -= particle.speed + impulseY;
+      particle.x += particle.drift + impulseX;
 
       if (particle.y < -12 || particle.x < -20 || particle.x > bgParticlesCanvas.width + 20) {
         resetParticle(particle, false);
       }
 
+      const glowGradient = ctx.createRadialGradient(
+        particle.x,
+        particle.y,
+        0,
+        particle.x,
+        particle.y,
+        particle.glow
+      );
+      glowGradient.addColorStop(0, `rgba(245, 245, 255, ${particle.alpha * 0.68})`);
+      glowGradient.addColorStop(1, "rgba(245, 245, 255, 0)");
+      ctx.fillStyle = glowGradient;
       ctx.beginPath();
-      ctx.fillStyle = `rgba(240, 240, 240, ${particle.alpha})`;
+      ctx.arc(particle.x, particle.y, particle.glow, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(particle.alpha + 0.2, 0.98)})`;
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
       ctx.fill();
     }
+    scrollImpulse *= 0.94;
+    if (Math.abs(scrollImpulse) < 0.01) scrollImpulse = 0;
     rafId = window.requestAnimationFrame(draw);
   };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const nextY = window.scrollY || 0;
+      const delta = nextY - lastScrollY;
+      lastScrollY = nextY;
+      const normalized = Math.max(-80, Math.min(80, delta));
+      scrollImpulse += normalized * IMPULSE_GAIN;
+      scrollImpulse = Math.max(-IMPULSE_MAX, Math.min(IMPULSE_MAX, scrollImpulse));
+      layerVelocityY += normalized * 0.032;
+      layerVelocityY = Math.max(-2.4, Math.min(2.4, layerVelocityY));
+    },
+    { passive: true }
+  );
 
   resize();
   initParticles();
@@ -523,6 +575,80 @@ function initAmbientParticles() {
     resize();
     initParticles();
   });
+}
+
+function initMoonScrollBoost() {
+  if (!ambientMoons.length) return;
+  let timeoutId = null;
+  let lastY = window.scrollY || 0;
+  let moonAngle = 0;
+  let moonVelocity = 0.14;
+  const BASE_VELOCITY = 0.14;
+  const MAX_VELOCITY = 2.4;
+  let floatPhase = 0;
+  const START_SCALE = 1.95;
+  const END_SCALE = 1;
+  const MERGE_SCROLL_RANGE = 760;
+
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+  const getMoonTarget = (moon) => {
+    const isLeft = moon.classList.contains("ambient-moon-left");
+    if (window.innerWidth <= 760) {
+      return isLeft
+        ? { startX: -16, startY: -11 }
+        : { startX: 116, startY: 92 };
+    }
+    return isLeft
+      ? { startX: -7, startY: -18 }
+      : { startX: 108, startY: 112 };
+  };
+
+  const tick = () => {
+    moonAngle += moonVelocity;
+    moonVelocity += (BASE_VELOCITY - moonVelocity) * 0.06;
+    floatPhase += 0.018;
+    const scrollProgress = clamp((window.scrollY || 0) / MERGE_SCROLL_RANGE, 0, 1);
+    const mergeProgress = easeOutCubic(scrollProgress);
+    const scale = START_SCALE - (START_SCALE - END_SCALE) * easeOutCubic(scrollProgress);
+
+    ambientMoons.forEach((moon, index) => {
+      const target = getMoonTarget(moon);
+      const currentX = target.startX + (50 - target.startX) * mergeProgress;
+      const currentY = target.startY + (28 - target.startY) * mergeProgress;
+      const directionPhase = index === 0 ? 0 : Math.PI;
+      const floatY = Math.sin(floatPhase + directionPhase) * (5.8 * (1 - mergeProgress * 0.75));
+
+      moon.style.left = `${currentX.toFixed(2)}vw`;
+      moon.style.top = `${currentY.toFixed(2)}vh`;
+      moon.style.right = "auto";
+      moon.style.bottom = "auto";
+      moon.style.transform =
+        `translate3d(-50%, ${floatY.toFixed(2)}px, 0) ` +
+        `scale(${scale.toFixed(3)}) rotate(${(moonAngle + index * 12).toFixed(2)}deg)`;
+      moon.style.opacity = `${(0.94 - mergeProgress * 0.12).toFixed(3)}`;
+    });
+
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const y = window.scrollY || 0;
+      const delta = y - lastY;
+      lastY = y;
+      const boost = Math.min(2.3, Math.abs(delta) * 0.085);
+      moonVelocity = Math.max(BASE_VELOCITY, Math.min(MAX_VELOCITY, BASE_VELOCITY + boost));
+      if (timeoutId) window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(() => {
+        moonVelocity = BASE_VELOCITY;
+      }, 130);
+    },
+    { passive: true }
+  );
 }
 
 filterButtons.forEach((button) => {
@@ -602,3 +728,4 @@ if (contactForm) {
 renderProjects();
 initRevealAnimations();
 initAmbientParticles();
+initMoonScrollBoost();

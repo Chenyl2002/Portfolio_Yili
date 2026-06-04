@@ -34,6 +34,7 @@ body {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  perspective: 1200px;
   background:
     radial-gradient(circle at 18% 15%, rgba(255, 255, 255, 0.08), transparent 36%),
     radial-gradient(circle at 82% 10%, rgba(255, 255, 255, 0.06), transparent 34%),
@@ -46,6 +47,112 @@ body {
   filter: blur(58px);
   opacity: 0.22;
   animation: ambientFloat 13s ease-in-out infinite;
+}
+
+.ambient-moon {
+  --moon-spin-duration: 16s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  width: clamp(220px, 24vw, 380px);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 32% 26%, rgba(246, 246, 246, 0.98) 0%, rgba(228, 228, 228, 0.95) 42%, rgba(198, 198, 198, 0.94) 70%, rgba(163, 163, 163, 0.9) 100%);
+  box-shadow:
+    0 0 48px rgba(255, 255, 255, 0.25),
+    0 0 128px rgba(255, 255, 255, 0.16),
+    inset -24px -14px 26px rgba(86, 86, 86, 0.36),
+    inset 16px 10px 18px rgba(255, 255, 255, 0.22);
+  opacity: 0.94;
+  will-change: transform;
+}
+
+.ambient-moon-left {
+  top: -18vh;
+  left: -7vw;
+}
+
+.ambient-moon-right {
+  top: auto;
+  bottom: -22vh;
+  left: auto;
+  right: -8vw;
+}
+
+.ambient-moon::before,
+.ambient-moon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.ambient-moon::before {
+  background:
+    radial-gradient(110% 90% at 20% 24%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 58%),
+    radial-gradient(120% 95% at 78% 64%, rgba(110, 110, 110, 0.2), rgba(110, 110, 110, 0) 64%),
+    linear-gradient(98deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.02) 42%, rgba(0, 0, 0, 0) 62%);
+  opacity: 0.62;
+  background-size: 100% 100%;
+  animation: moonTextureSeamless var(--moon-spin-duration) linear infinite;
+}
+
+.ambient-moon::after {
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 24% 34%, rgba(255, 255, 255, 0.46) 0%, rgba(255, 255, 255, 0.11) 40%, rgba(255, 255, 255, 0) 58%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.06) 58%, rgba(0, 0, 0, 0.14) 100%);
+  mix-blend-mode: normal;
+  opacity: 0.96;
+  animation: moonTerminatorSeamless var(--moon-spin-duration) linear infinite;
+}
+
+@media (max-width: 760px) {
+  .ambient-moon {
+    width: clamp(168px, 48vw, 270px);
+  }
+
+  .ambient-moon-left {
+    top: -11vh;
+    left: -16vw;
+  }
+
+  .ambient-moon-right {
+    bottom: -14vh;
+    right: -18vw;
+  }
+}
+
+@keyframes moonFloat {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-7px);
+  }
+}
+
+@keyframes moonTextureSeamless {
+  0% {
+    background-position: -12% 50%, 4% 50%, 18% 50%, 30% 50%, 44% 50%, 0% 50%;
+  }
+  100% {
+    background-position: 88% 50%, 104% 50%, 118% 50%, 130% 50%, 144% 50%, 100% 50%;
+  }
+}
+
+@keyframes moonTerminatorSeamless {
+  0% {
+    background-position: 0% 50%, -16% 50%;
+  }
+  100% {
+    background-position: 0% 50%, 84% 50%;
+  }
 }
 
 .ambient-orb-1 {
@@ -81,7 +188,8 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.38;
+  opacity: 0.6;
+  filter: saturate(118%) contrast(108%);
 }
 
 @keyframes ambientFloat {
