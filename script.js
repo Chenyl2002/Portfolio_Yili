@@ -430,12 +430,28 @@ function closeExperienceModalNow() {
   document.body.classList.remove("modal-open");
 }
 
+function shouldOpenDocInNewTab() {
+  const isSmallScreen = window.matchMedia("(max-width: 760px)").matches;
+  const ua = navigator.userAgent || "";
+  const isMobileUA = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+  return isSmallScreen || isMobileUA;
+}
+
 function openDocModal(title, url) {
+  if (!url) return;
+
+  // Mobile browsers often break in-iframe PDF scrolling (stuck on first page).
+  // Open PDFs with the system viewer on mobile for reliable multi-page navigation.
+  if (shouldOpenDocInNewTab()) {
+    window.open(url, "_blank", "noopener,noreferrer");
+    return;
+  }
+
   docModalTitle.textContent = title || "设计文档";
-  docModalFrame.src = url || "";
+  docModalFrame.src = url;
   docModal.classList.remove("hidden");
   docModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = window.innerWidth > 760 ? "hidden" : "";
+  document.body.style.overflow = "hidden";
   document.body.classList.add("modal-open");
 }
 
