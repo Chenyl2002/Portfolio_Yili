@@ -99,8 +99,7 @@ const projects = [
     cycle: "1 年",
     role: "第一负责人 / 策划统筹 / 方案设计",
     tags: ["MDA 框架", "Game Simulation", "包容性城市空间"],
-    thumbnail:
-      "./Image/WeChatea6415f433e42edff40767152968d6bb.jpg",
+    thumbnail: "./Image/HighresScreenshot00000.png",
     thumbnailPosition: "50% 52%",
     video:
       "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
@@ -157,14 +156,12 @@ const docModalBackdrop = document.getElementById("docModalBackdrop");
 const closeDocModal = document.getElementById("closeDocModal");
 const docModalTitle = document.getElementById("docModalTitle");
 const docModalFrame = document.getElementById("docModalFrame");
-const bgParticlesCanvas = document.getElementById("bgParticles");
-const ambientMoons = Array.from(document.querySelectorAll(".ambient-moon"));
+const sketchLayer = document.getElementById("sketchLayer");
 const MODAL_ANIMATION_MS = 720;
 
 let activeFilter = { group: "all", value: "all" };
 let lastModalTrigger = null;
 let isModalClosing = false;
-let moonBlendLevel = 0;
 
 const experiences = {
   "xingyue-camp": {
@@ -276,6 +273,7 @@ function renderProjects() {
   list.forEach((project) => {
     const card = document.createElement("article");
     card.className = "project-card";
+    card.style.setProperty("--tilt", `${(-1.2 + Math.random() * 2.4).toFixed(2)}deg`);
     card.innerHTML = `
       <div class="project-media">
         <img
@@ -284,9 +282,6 @@ function renderProjects() {
           loading="lazy"
           style="object-position: ${project.thumbnailPosition || "50% 50%"};"
         />
-        <video muted loop playsinline preload="none" poster="${project.thumbnail}">
-          <source src="${project.video}" type="video/mp4" />
-        </video>
       </div>
       <div class="project-overlay">
         <h3>${project.title}</h3>
@@ -294,19 +289,6 @@ function renderProjects() {
         <div class="tags">${project.tags.map((tag) => `<span>${tag}</span>`).join("")}</div>
       </div>
     `;
-
-    const video = card.querySelector("video");
-    card.addEventListener("mouseenter", () => {
-      if (video) {
-        video.play().catch(() => {});
-      }
-    });
-    card.addEventListener("mouseleave", () => {
-      if (video) {
-        video.pause();
-        video.currentTime = 0;
-      }
-    });
 
     card.addEventListener("click", () => renderDetail(project, card));
     projectGrid.appendChild(card);
@@ -481,219 +463,141 @@ function initRevealAnimations() {
   revealItems.forEach((item) => observer.observe(item));
 }
 
-function initAmbientParticles() {
-  if (!bgParticlesCanvas) return;
-  const ctx = bgParticlesCanvas.getContext("2d");
-  if (!ctx) return;
+function initSketchBackground() {
+  if (!sketchLayer) return;
 
-  const motionReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const particles = [];
-  const PARTICLE_COUNT = motionReduced ? 56 : 180;
-  const IMPULSE_Y_FACTOR = 0.34;
-  const IMPULSE_X_FACTOR = 0.14;
-  const IMPULSE_GAIN = 0.045;
-  const IMPULSE_MAX = 2.2;
-  let rafId = 0;
-  let scrollImpulse = 0;
-  let layerOffsetY = 0;
-  let layerVelocityY = 0;
-  let lastScrollY = window.scrollY || 0;
+  const sketchSources = [
+    "./Sketch/f45b34b797a1a5afbb0d42a83d6c6713.jpg",
+    "./Sketch/5f66ed38451e53ddab917b8631bb8e7f.jpg",
+    "./Sketch/da2d3d5c26a240e02ad04f10c90b697f.jpg",
+    "./Sketch/276abe27c3501cdb395cb351fe7c4c0e.jpg",
+    "./Sketch/72671c6506dffbd6463ffd589ac4199.jpg",
+    "./Sketch/5b6f87353e5643fe0b6a2fb3ebfe4c0e.jpg",
+    "./Sketch/c32b6c1ebabebb5553c8c1e530c0d07d.jpg",
+    "./Sketch/fe62d5812ed00c051e6b0c6395712a5b.jpg",
+    "./Sketch/2170c72131bf9855f7465ee85fc166aa.jpg",
+    "./Sketch/90609e6adb8872ba59c7e3d6abf9ce28.jpg",
+    "./Sketch/264fc2a02503e9a1d88bf5a71415092f.jpg"
+  ];
 
-  const resize = () => {
-    bgParticlesCanvas.width = window.innerWidth;
-    bgParticlesCanvas.height = window.innerHeight;
-  };
+  const isMobile = window.innerWidth < 760;
+  const layerConfigs = isMobile
+    ? [
+        {
+          count: 7,
+          minW: 150,
+          maxW: 250,
+          opacityMin: 0.09,
+          opacityMax: 0.16,
+          rotateRange: 30,
+          gap: 16,
+          safetyScale: 1.18,
+          ratioMin: 0.72,
+          ratioMax: 1.08,
+          depth: "front"
+        },
+        {
+          count: 5,
+          minW: 90,
+          maxW: 160,
+          opacityMin: 0.05,
+          opacityMax: 0.11,
+          rotateRange: 40,
+          gap: 10,
+          safetyScale: 1.12,
+          ratioMin: 0.68,
+          ratioMax: 1.15,
+          depth: "back"
+        }
+      ]
+    : [
+        {
+          count: 10,
+          minW: 210,
+          maxW: 430,
+          opacityMin: 0.09,
+          opacityMax: 0.17,
+          rotateRange: 32,
+          gap: 18,
+          safetyScale: 1.2,
+          ratioMin: 0.72,
+          ratioMax: 1.08,
+          depth: "front"
+        },
+        {
+          count: 8,
+          minW: 120,
+          maxW: 250,
+          opacityMin: 0.05,
+          opacityMax: 0.11,
+          rotateRange: 44,
+          gap: 11,
+          safetyScale: 1.14,
+          ratioMin: 0.66,
+          ratioMax: 1.16,
+          depth: "back"
+        }
+      ];
 
-  const resetParticle = (particle, randomY = true) => {
-    particle.x = Math.random() * bgParticlesCanvas.width;
-    particle.y = randomY
-      ? Math.random() * bgParticlesCanvas.height
-      : bgParticlesCanvas.height + Math.random() * 60;
-    particle.size = Math.random() * 1.9 + 0.45;
-    particle.alpha = Math.random() * 0.5 + 0.14;
-    particle.glow = particle.size * (Math.random() * 2.2 + 2.1);
-    particle.speed = Math.random() * 0.14 + 0.04;
-    particle.drift = (Math.random() - 0.5) * 0.24;
-  };
+  sketchLayer.innerHTML = "";
 
-  const initParticles = () => {
-    particles.length = 0;
-    for (let i = 0; i < PARTICLE_COUNT; i += 1) {
-      const particle = {};
-      resetParticle(particle, true);
-      particles.push(particle);
-    }
-  };
+  const placedBoxes = [];
+  const intersects = (a, b, gap = 14) =>
+    !(a.left + a.width + gap < b.left ||
+      b.left + b.width + gap < a.left ||
+      a.top + a.height + gap < b.top ||
+      b.top + b.height + gap < a.top);
 
-  const draw = () => {
-    layerOffsetY += layerVelocityY;
-    layerVelocityY *= 0.8;
-    layerOffsetY *= 0.9;
-    if (Math.abs(layerVelocityY) < 0.005) layerVelocityY = 0;
-    if (Math.abs(layerOffsetY) < 0.01) layerOffsetY = 0;
+  const layerWidth = window.innerWidth;
+  const layerHeight = window.innerHeight;
 
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.clearRect(0, 0, bgParticlesCanvas.width, bgParticlesCanvas.height);
-    ctx.setTransform(1, 0, 0, 1, 0, layerOffsetY);
-    for (const particle of particles) {
-      const impulseY = scrollImpulse * IMPULSE_Y_FACTOR;
-      const impulseX = scrollImpulse * IMPULSE_X_FACTOR;
-      particle.y -= particle.speed + impulseY;
-      particle.x += particle.drift + impulseX;
+  layerConfigs.forEach((config) => {
+    for (let n = 0; n < config.count; n += 1) {
+      const src = sketchSources[Math.floor(Math.random() * sketchSources.length)];
+      const img = document.createElement("img");
+      img.className = `sketch-item depth-${config.depth}`;
+      img.src = src;
+      img.alt = "";
+      img.loading = "lazy";
 
-      if (particle.y < -12 || particle.x < -20 || particle.x > bgParticlesCanvas.width + 20) {
-        resetParticle(particle, false);
+      const width = config.minW + Math.random() * (config.maxW - config.minW);
+      const rotate = -config.rotateRange + Math.random() * (config.rotateRange * 2);
+      const opacity = config.opacityMin + Math.random() * (config.opacityMax - config.opacityMin);
+      const ratio = config.ratioMin + Math.random() * (config.ratioMax - config.ratioMin);
+      const height = width * ratio;
+      const boxWidth = width * config.safetyScale;
+      const boxHeight = height * config.safetyScale;
+
+      let placed = false;
+      for (let i = 0; i < 110; i += 1) {
+        const left = -16 + Math.random() * 116;
+        const top = -12 + Math.random() * 112;
+        const candidate = {
+          left: (left / 100) * layerWidth,
+          top: (top / 100) * layerHeight,
+          width: boxWidth,
+          height: boxHeight
+        };
+        const overlap = placedBoxes.some((existing) => intersects(candidate, existing, config.gap));
+        if (!overlap) {
+          placed = true;
+          placedBoxes.push(candidate);
+          img.style.left = `${left.toFixed(2)}%`;
+          img.style.top = `${top.toFixed(2)}%`;
+          break;
+        }
       }
 
-      const glowGradient = ctx.createRadialGradient(
-        particle.x,
-        particle.y,
-        0,
-        particle.x,
-        particle.y,
-        particle.glow
-      );
-      const blendBoost = 1 + moonBlendLevel * 0.55;
-      glowGradient.addColorStop(0, `rgba(245, 245, 255, ${Math.min(particle.alpha * 0.68 * blendBoost, 0.95)})`);
-      glowGradient.addColorStop(1, "rgba(245, 245, 255, 0)");
-      ctx.fillStyle = glowGradient;
-      ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.glow, 0, Math.PI * 2);
-      ctx.fill();
+      if (!placed) continue;
 
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(255, 255, 255, ${Math.min((particle.alpha + 0.2) * blendBoost, 0.98)})`;
-      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-      ctx.fill();
+      img.style.width = `${width.toFixed(0)}px`;
+      img.style.opacity = opacity.toFixed(2);
+      img.style.transform = `rotate(${rotate.toFixed(1)}deg)`;
+      sketchLayer.appendChild(img);
     }
-    scrollImpulse *= 0.94;
-    if (Math.abs(scrollImpulse) < 0.01) scrollImpulse = 0;
-    rafId = window.requestAnimationFrame(draw);
-  };
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const nextY = window.scrollY || 0;
-      const delta = nextY - lastScrollY;
-      lastScrollY = nextY;
-      const normalized = Math.max(-80, Math.min(80, delta));
-      scrollImpulse += normalized * IMPULSE_GAIN;
-      scrollImpulse = Math.max(-IMPULSE_MAX, Math.min(IMPULSE_MAX, scrollImpulse));
-      layerVelocityY += normalized * 0.032;
-      layerVelocityY = Math.max(-2.4, Math.min(2.4, layerVelocityY));
-    },
-    { passive: true }
-  );
-
-  resize();
-  initParticles();
-  draw();
-  window.addEventListener("resize", () => {
-    resize();
-    initParticles();
   });
 }
 
-function initMoonScrollBoost() {
-  if (!ambientMoons.length) return;
-  let timeoutId = null;
-  let lastY = window.scrollY || 0;
-  let moonAngle = 0;
-  let moonVelocity = 0.14;
-  const BASE_VELOCITY = 0.14;
-  const MAX_VELOCITY = 2.4;
-  let floatPhase = 0;
-  const START_SCALE = 1.95;
-  const END_SCALE = 1;
-  const MERGE_SCROLL_RANGE = 760;
-  const CONTACT_START = 0.54;
-  const CONTACT_END = 0.82;
-  const DISSOLVE_START = 0.88;
-  const DISSOLVE_END = 1.34;
-
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
-  const easeInOutSine = (t) => -(Math.cos(Math.PI * t) - 1) / 2;
-
-  const getMoonTarget = (moon) => {
-    const isLeft = moon.classList.contains("ambient-moon-left");
-    if (window.innerWidth <= 760) {
-      return isLeft
-        ? { startX: -16, startY: -11 }
-        : { startX: 116, startY: 92 };
-    }
-    return isLeft
-      ? { startX: -7, startY: -18 }
-      : { startX: 108, startY: 112 };
-  };
-
-  const tick = () => {
-    moonAngle += moonVelocity;
-    moonVelocity += (BASE_VELOCITY - moonVelocity) * 0.06;
-    floatPhase += 0.018;
-    const rawScrollProgress = (window.scrollY || 0) / MERGE_SCROLL_RANGE;
-    const scrollProgress = clamp(rawScrollProgress, 0, 1);
-    const mergeProgress = easeOutCubic(scrollProgress);
-    const contactRaw = clamp((scrollProgress - CONTACT_START) / (CONTACT_END - CONTACT_START), 0, 1);
-    const contactProgress = easeInOutSine(contactRaw);
-    const dissolveRaw = clamp((rawScrollProgress - DISSOLVE_START) / (DISSOLVE_END - DISSOLVE_START), 0, 1);
-    const dissolveProgress = easeInOutSine(dissolveRaw);
-    const centerGap = 12 * (1 - contactProgress);
-    const baseScale = START_SCALE - (START_SCALE - END_SCALE) * mergeProgress;
-    moonBlendLevel = dissolveProgress;
-
-    ambientMoons.forEach((moon, index) => {
-      const target = getMoonTarget(moon);
-      const side = index === 0 ? -1 : 1;
-      const centerTargetX = 50 + side * centerGap;
-      const currentX = target.startX + (centerTargetX - target.startX) * mergeProgress;
-      const currentY = target.startY + (28 - target.startY) * mergeProgress;
-      const phaseOffset = index === 0 ? 0 : Math.PI * (1 - contactProgress);
-      const floatY = Math.sin(floatPhase + phaseOffset) * (5.6 * (1 - mergeProgress));
-      const shrinkFactor = Math.max(0, 1 - dissolveProgress);
-      const finalScale = baseScale * shrinkFactor;
-      const moonOpacity = (0.95 - mergeProgress * 0.05) * Math.pow(1 - dissolveProgress, 1.35);
-      const rotateOffset = 0;
-
-      moon.style.left = `${currentX.toFixed(2)}vw`;
-      moon.style.top = `${currentY.toFixed(2)}vh`;
-      moon.style.right = "auto";
-      moon.style.bottom = "auto";
-      moon.style.filter = `blur(${(dissolveProgress * 1.6).toFixed(2)}px)`;
-      moon.style.mixBlendMode = dissolveProgress > 0.08 ? "screen" : "normal";
-      moon.style.transform =
-        `translate3d(-50%, ${floatY.toFixed(2)}px, 0) ` +
-        `scale(${finalScale.toFixed(3)}) ` +
-        `rotate(${(moonAngle + rotateOffset).toFixed(2)}deg)`;
-      moon.style.opacity = `${Math.max(0, Math.min(1, moonOpacity)).toFixed(3)}`;
-    });
-
-    if (bgParticlesCanvas) {
-      const particleOpacity = 0.6 + dissolveProgress * 0.34;
-      bgParticlesCanvas.style.opacity = particleOpacity.toFixed(3);
-    }
-
-    requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      const y = window.scrollY || 0;
-      const delta = y - lastY;
-      lastY = y;
-      const boost = Math.min(2.3, Math.abs(delta) * 0.085);
-      moonVelocity = Math.max(BASE_VELOCITY, Math.min(MAX_VELOCITY, BASE_VELOCITY + boost));
-      if (timeoutId) window.clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(() => {
-        moonVelocity = BASE_VELOCITY;
-      }, 130);
-    },
-    { passive: true }
-  );
-}
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -771,5 +675,4 @@ if (contactForm) {
 
 renderProjects();
 initRevealAnimations();
-initAmbientParticles();
-initMoonScrollBoost();
+initSketchBackground();
