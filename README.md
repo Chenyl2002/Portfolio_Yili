@@ -1,2 +1,3 @@
-# Portfolio_Yili
-用于部署网页
+# Portfolio-02
+
+陈宜理个人作品集 2.0 版，用于部署网页。
