@@ -1,0 +1,4946 @@
+/* Reference UI theme: dark system panels, violet-blue accents, compact modular layout. */
+:root {
+  --ref-bg: #05060b;
+  --ref-panel: rgba(8, 12, 22, 0.82);
+  --ref-panel-strong: rgba(10, 15, 28, 0.94);
+  --ref-line: rgba(116, 97, 255, 0.28);
+  --ref-line-strong: rgba(115, 95, 255, 0.6);
+  --ref-text: #f3f6ff;
+  --ref-muted: rgba(228, 232, 255, 0.68);
+  --ref-purple: #7a4dff;
+  --ref-blue: #5fb0ff;
+  --ref-cyan: #74e7ff;
+  --ref-gold: #d7c9a3;
+  --ref-orange: #ff7d46;
+}
+
+/* Layout repair: keep the reference mood, restore stable document flow. */
+@media (min-width: 981px) {
+  body {
+    padding-top: 58px !important;
+  }
+
+  main {
+    display: block !important;
+  }
+
+  #home.hero,
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section,
+  html body.projects-mode #projects.section {
+    position: relative !important;
+    top: auto !important;
+    width: min(1480px, calc(100% - 86px)) !important;
+    max-width: none !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    padding: 74px 0 96px !important;
+    overflow: visible !important;
+  }
+
+  #home.hero {
+    min-height: calc(100vh - 58px) !important;
+    display: grid !important;
+    grid-template-columns: minmax(360px, 0.86fr) minmax(420px, 1.1fr) 260px !important;
+    grid-template-rows: minmax(520px, auto) auto !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+  }
+
+  #home .hero-content,
+  #home .mission-panel,
+  #home .hero-showcase,
+  #home .character-stage,
+  #home .hero-advantages {
+    position: relative !important;
+    inset: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+
+  #home .hero-content {
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 2 !important;
+    z-index: 12 !important;
+    width: 100% !important;
+    min-height: 520px !important;
+    padding: clamp(1.5rem, 2.4vw, 2.5rem) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    border: 1px solid rgba(116, 97, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(180deg, rgba(8, 12, 22, 0.52), rgba(4, 7, 14, 0.18)),
+      radial-gradient(circle at 12% 18%, rgba(122, 77, 255, 0.16), transparent 34%) !important;
+  }
+
+  #home .hero-os-title {
+    font-size: clamp(4.3rem, 7.2vw, 8.4rem) !important;
+    line-height: 0.78 !important;
+  }
+
+  #home .hero-actions {
+    margin-top: 2rem !important;
+  }
+
+  #home .character-stage {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 / 2 !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 520px !important;
+    display: grid !important;
+    place-items: end center !important;
+    pointer-events: none !important;
+  }
+
+  #home .character-portrait {
+    max-width: min(620px, 100%) !important;
+    max-height: 620px !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  #home .mission-panel {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 2 !important;
+    align-self: center !important;
+    z-index: 20 !important;
+    width: 100% !important;
+    min-height: 360px !important;
+    padding: 1rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.48) !important;
+  }
+
+  #home .mission-panel::before {
+    display: block !important;
+    content: "04 AI 悬浮组件 / AI WIDGET";
+  }
+
+  #home .mission-panel .eyebrow {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+  }
+
+  #home .mission-panel h2 {
+    width: 136px !important;
+    height: 136px !important;
+    margin: 1.2rem auto !important;
+  }
+
+  #home .mission-panel ul {
+    display: grid !important;
+  }
+
+  #home .hero-showcase {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 / 3 !important;
+    z-index: 5 !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    width: 100% !important;
+    min-height: 190px !important;
+    padding: 2.7rem 1rem 1rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.22) !important;
+    border-radius: 8px !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  #home .showcase-card,
+  #home .showcase-card:nth-child(1),
+  #home .showcase-card:nth-child(2),
+  #home .showcase-card:nth-child(3),
+  #home .showcase-card:nth-child(4) {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 148px !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  #projects.section,
+  html body.projects-mode #projects.section {
+    min-height: auto !important;
+    padding-top: 88px !important;
+  }
+
+  #projects .phone-scene-label {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    padding: 1.2rem 1.25rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.42) !important;
+    display: grid !important;
+  }
+
+  #projects .phone-scene-label h2 {
+    text-align: left !important;
+    font-size: clamp(3.2rem, 6vw, 6.2rem) !important;
+    line-height: 0.9 !important;
+  }
+
+  #projects .phone-scene-label .eyebrow,
+  #projects .phone-scene-label::before,
+  #projects .phone-scene-label::after {
+    text-align: left !important;
+  }
+
+  #projects .phone-device,
+  #projects .phone-hardware,
+  #projects .phone-screen,
+  html body.projects-mode #projects .phone-screen {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: visible !important;
+  }
+
+  #projects .phone-screen,
+  html body.projects-mode #projects .phone-screen {
+    margin-top: 16px !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(180deg, rgba(8, 12, 22, 0.72), rgba(5, 8, 16, 0.92)),
+      url("./assets/ui/ref-slices/05-mid-cards.png") center / cover no-repeat !important;
+    overflow: hidden !important;
+  }
+
+  #projects .filter-row {
+    display: flex !important;
+    margin: 1rem !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid,
+  html body.projects-mode #projects .project-grid,
+  html body.projects-mode #projects .phone-screen .project-grid {
+    position: relative !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 1rem !important;
+    overflow: visible !important;
+    perspective: none !important;
+  }
+
+  #projects .project-grid::before {
+    display: none !important;
+  }
+
+  #projects .project-card,
+  #projects .project-card:nth-child(1),
+  #projects .project-card:nth-child(2),
+  #projects .project-card:nth-child(3),
+  #projects .project-card:nth-child(4),
+  #projects .project-card.is-reel-active,
+  html body.projects-mode #projects .project-card,
+  html body.projects-mode #projects .project-card.is-reel-active {
+    position: relative !important;
+    inset: auto !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: clamp(360px, 34vw, 460px) !important;
+    min-height: clamp(360px, 34vw, 460px) !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    z-index: auto !important;
+    pointer-events: auto !important;
+    border: 1px solid rgba(116, 97, 255, 0.22) !important;
+    background: rgba(8, 10, 18, 0.66) !important;
+  }
+
+  #projects .project-card.is-reel-active {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+      0 24px 70px rgba(0, 0, 0, 0.38) !important;
+  }
+
+  #projects .reel-controls {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+    margin: 0.5rem 0 0 !important;
+    pointer-events: auto !important;
+  }
+
+  #projects .reel-arrow,
+  #projects #reelPrev,
+  #projects #reelNext {
+    position: relative !important;
+    inset: auto !important;
+    width: 44px !important;
+    height: 44px !important;
+    top: auto !important;
+  }
+
+  #projects .reel-hint {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0.7rem 0 1rem !important;
+    text-align: center !important;
+  }
+
+  #projects .docs-section {
+    display: block !important;
+    margin: 1rem !important;
+  }
+
+  #resume .section-head,
+  #about .section-head {
+    width: 100% !important;
+    margin: 0 0 1rem !important;
+    padding: 1.2rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.42) !important;
+  }
+
+  #resume .section-head h2,
+  #about .section-head h2 {
+    font-size: clamp(3.2rem, 6vw, 6.2rem) !important;
+  }
+
+  #resume .resume-shell {
+    display: grid !important;
+    grid-template-columns: 360px minmax(0, 1fr) !important;
+    gap: 18px !important;
+    padding: 1rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.2) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.38) !important;
+  }
+
+  #resume .resume-profile {
+    position: sticky !important;
+    top: 78px !important;
+    padding: 1.1rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.2) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.45) !important;
+  }
+
+  #resume .resume-panel-grid {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    min-height: 0 !important;
+  }
+
+  #resume .resume-panel,
+  #resume .resume-panel:nth-child(1),
+  #resume .resume-panel:nth-child(2),
+  #resume .resume-panel:nth-child(3) {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    min-height: 230px !important;
+    transform: none !important;
+  }
+
+  #resume .game-exp-panel {
+    grid-column: 1 / -1 !important;
+  }
+
+  #about .about-grid {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  #about .about-grid .card,
+  #about .about-grid .card:nth-child(1),
+  #about .about-grid .card:nth-child(2),
+  #about .about-grid .card:nth-child(3) {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    min-height: 260px !important;
+    transform: none !important;
+  }
+}
+
+/* Final fixed-layer alignment. Keep this at EOF so overlays share one grid. */
+@media (min-width: 981px) {
+  :root {
+    --stage-safe-x: clamp(48px, 4.8vw, 72px);
+    --stage-safe-bottom: 18px;
+  }
+
+  .os-hud {
+    display: none !important;
+  }
+
+  .side-rail {
+    position: fixed !important;
+    left: calc(var(--stage-safe-x) - 34px) !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    width: auto !important;
+    transform: translateY(-50%) !important;
+    z-index: 60 !important;
+    pointer-events: none !important;
+  }
+
+  .system-status-bar {
+    position: fixed !important;
+    left: var(--stage-safe-x) !important;
+    right: var(--stage-safe-x) !important;
+    bottom: var(--stage-safe-bottom) !important;
+    width: auto !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.72rem !important;
+    padding: 0 !important;
+    border-top: 1px solid rgba(228, 232, 255, 0.28) !important;
+    background: transparent !important;
+    z-index: 90 !important;
+    overflow: visible !important;
+  }
+
+  .system-status-bar span {
+    min-height: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    padding: 0.36rem 0.8rem !important;
+    font-size: 0.74rem !important;
+    line-height: 1 !important;
+  }
+
+  .ai-console {
+    position: fixed !important;
+    left: auto !important;
+    top: auto !important;
+    right: calc(var(--stage-safe-x) + 18px) !important;
+    bottom: calc(var(--stage-safe-bottom) + 74px) !important;
+    z-index: 95 !important;
+    display: grid !important;
+    justify-items: center !important;
+    gap: 0.72rem !important;
+    width: 156px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .ai-orb {
+    width: 112px !important;
+    height: 112px !important;
+    margin: 0 !important;
+    border-radius: 999px !important;
+  }
+
+  .ai-console small {
+    position: relative !important;
+    min-width: 152px !important;
+    max-width: 152px !important;
+    margin: 0 !important;
+    padding: 0.35rem 0.65rem !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  #home.hero,
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section,
+  html body.projects-mode #projects.section {
+    width: calc(100% - (var(--stage-safe-x) * 2)) !important;
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 981px) {
+  .ai-console {
+    right: var(--stage-safe-x) !important;
+    bottom: calc(var(--stage-safe-bottom) + 58px) !important;
+    width: 124px !important;
+  }
+
+  .ai-orb {
+    width: 88px !important;
+    height: 88px !important;
+  }
+
+  .ai-console small {
+    min-width: 124px !important;
+    max-width: 124px !important;
+    font-size: 0.66rem !important;
+  }
+
+  .system-status-bar {
+    right: calc(var(--stage-safe-x) + 140px) !important;
+  }
+}
+
+/* Desktop alignment lock: keep every floating UI element on the same safe grid. */
+@media (min-width: 981px) {
+  body > .os-hud {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  body > .system-status-bar {
+    position: fixed !important;
+    left: clamp(54px, 5vw, 76px) !important;
+    right: clamp(54px, 5vw, 76px) !important;
+    bottom: 16px !important;
+    width: auto !important;
+    height: 38px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    overflow: hidden !important;
+    z-index: 120 !important;
+    transform: none !important;
+  }
+
+  body > .system-status-bar span {
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 12px !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    transform: none !important;
+  }
+
+  body > .ai-console {
+    position: fixed !important;
+    left: auto !important;
+    right: clamp(56px, 5.2vw, 82px) !important;
+    top: auto !important;
+    bottom: 72px !important;
+    width: 132px !important;
+    min-width: 132px !important;
+    max-width: 132px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    gap: 10px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    z-index: 130 !important;
+  }
+
+  body > .ai-console .ai-orb {
+    width: 92px !important;
+    height: 92px !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  body > .ai-console small {
+    width: 132px !important;
+    min-width: 132px !important;
+    max-width: 132px !important;
+    margin: 0 !important;
+    padding: 6px 10px !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    transform: none !important;
+  }
+
+  body > .side-rail {
+    position: fixed !important;
+    left: 18px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    transform: translateY(-50%) rotate(180deg) !important;
+    z-index: 80 !important;
+  }
+}
+
+/* Desktop visual cleanup: video dock, no sketch sheets, readable projects/resume. */
+@media (min-width: 981px) {
+  :root {
+    --desktop-safe-x: clamp(54px, 5vw, 78px);
+    --panel-dark: rgba(7, 10, 18, 0.82);
+    --panel-deep: rgba(5, 8, 16, 0.94);
+    --panel-line: rgba(112, 96, 255, 0.34);
+    --panel-line-bright: rgba(116, 231, 255, 0.38);
+  }
+
+  #sketchLayer,
+  .sketch-layer,
+  .sketch-item,
+  .fantasy-stage,
+  .hero-cyber-panels,
+  #home .hero-showcase,
+  #home .showcase-card {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .scroll-scene-video,
+  html body .scroll-scene-video {
+    position: fixed !important;
+    inset: auto calc(var(--desktop-safe-x) + 126px) 76px auto !important;
+    width: min(26vw, 420px) !important;
+    height: clamp(104px, 10vw, 150px) !important;
+    min-width: 320px !important;
+    max-width: 420px !important;
+    object-fit: cover !important;
+    border: 1px solid rgba(244, 238, 255, 0.26) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.34) !important;
+    filter: saturate(1.08) contrast(1.04) brightness(0.82) !important;
+    opacity: 0.52 !important;
+    transform: none !important;
+    z-index: 42 !important;
+    pointer-events: none !important;
+  }
+
+  .scroll-scene-grade,
+  html body .scroll-scene-grade {
+    position: fixed !important;
+    inset: auto calc(var(--desktop-safe-x) + 126px) 76px auto !important;
+    width: min(26vw, 420px) !important;
+    height: clamp(104px, 10vw, 150px) !important;
+    min-width: 320px !important;
+    max-width: 420px !important;
+    border: 1px solid rgba(116, 97, 255, 0.18) !important;
+    background:
+      linear-gradient(90deg, rgba(5, 7, 12, 0.48), transparent 45%, rgba(122, 77, 255, 0.22)),
+      linear-gradient(180deg, transparent, rgba(5, 7, 12, 0.22)) !important;
+    opacity: 0.82 !important;
+    z-index: 43 !important;
+    pointer-events: none !important;
+  }
+
+  #home.hero,
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section,
+  html body.projects-mode #projects.section {
+    width: calc(100% - (var(--desktop-safe-x) * 2)) !important;
+    max-width: 1840px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #home.hero {
+    grid-template-columns: minmax(420px, 0.78fr) minmax(520px, 1fr) !important;
+    grid-template-rows: minmax(640px, auto) !important;
+    gap: clamp(24px, 4vw, 70px) !important;
+    min-height: calc(100vh - 66px) !important;
+  }
+
+  #home .hero-content {
+    grid-column: 1 / 2 !important;
+    max-width: 650px !important;
+    min-height: 0 !important;
+    align-self: center !important;
+    background: rgba(7, 10, 18, 0.18) !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #home .mission-panel {
+    grid-column: 2 / 3 !important;
+    width: min(360px, 42%) !important;
+    min-height: 220px !important;
+    justify-self: end !important;
+    align-self: center !important;
+    background: rgba(7, 10, 18, 0.26) !important;
+    border-color: rgba(116, 97, 255, 0.16) !important;
+  }
+
+  #home .mission-panel::before {
+    display: none !important;
+  }
+
+  #home .mission-panel h2 {
+    width: auto !important;
+    height: auto !important;
+    margin: 0.8rem 0 !important;
+  }
+
+  #home .hero-metrics,
+  #home .hero-advantages {
+    display: none !important;
+  }
+
+  #projects.section,
+  html body.projects-mode #projects.section {
+    min-height: calc(100vh - 66px) !important;
+    padding-top: 92px !important;
+    padding-bottom: 120px !important;
+  }
+
+  #projects .phone-scene-label {
+    margin: 0 0 14px !important;
+    padding: 28px 42px !important;
+    background: rgba(7, 10, 18, 0.58) !important;
+    border: 1px solid var(--panel-line) !important;
+    border-radius: 8px !important;
+  }
+
+  #projects .phone-scene-label h2 {
+    font-size: clamp(3.2rem, 4.8vw, 5.8rem) !important;
+    line-height: 0.92 !important;
+    color: #fffdf8 !important;
+    text-shadow: 4px 0 0 rgba(122, 77, 255, 0.72) !important;
+  }
+
+  #projects .phone-screen,
+  html body.projects-mode #projects .phone-screen {
+    margin-top: 0 !important;
+    padding: 0 0 28px !important;
+    background: rgba(5, 8, 16, 0.54) !important;
+    border: 1px solid rgba(116, 231, 255, 0.2) !important;
+    border-radius: 8px !important;
+    overflow: visible !important;
+  }
+
+  #projects .filter-row {
+    margin: 14px !important;
+    padding: 10px 12px !important;
+    min-height: 58px !important;
+    background: rgba(8, 11, 20, 0.66) !important;
+    border: 1px solid rgba(116, 231, 255, 0.2) !important;
+    border-radius: 8px !important;
+    gap: 12px !important;
+  }
+
+  #projects .reel-controls,
+  #projects .reel-hint {
+    display: none !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid,
+  html body.projects-mode #projects .project-grid,
+  html body.projects-mode #projects .phone-screen .project-grid {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 18px 20px 10px !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  #projects .project-card,
+  #projects .project-card:nth-child(1),
+  #projects .project-card:nth-child(2),
+  #projects .project-card:nth-child(3),
+  #projects .project-card:nth-child(4),
+  #projects .project-card.is-reel-active,
+  html body.projects-mode #projects .project-card,
+  html body.projects-mode #projects .project-card.is-reel-active {
+    position: relative !important;
+    inset: auto !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: clamp(300px, 24vw, 390px) !important;
+    min-height: clamp(300px, 24vw, 390px) !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(116, 231, 255, 0.28) !important;
+    background: rgba(7, 10, 18, 0.72) !important;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  #projects .project-media,
+  #projects .project-card .project-media {
+    height: 100% !important;
+    opacity: 1 !important;
+  }
+
+  #projects .project-media img,
+  #projects .project-card .project-media img {
+    opacity: 1 !important;
+    filter: saturate(1.08) contrast(1.06) brightness(1.04) !important;
+  }
+
+  #projects .project-overlay {
+    inset: auto 0 0 0 !important;
+    height: auto !important;
+    min-height: 42% !important;
+    padding: 18px !important;
+    justify-content: flex-end !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(5, 8, 16, 0.28) 24%, rgba(5, 8, 16, 0.92) 100%) !important;
+  }
+
+  #projects .project-overlay h3,
+  #projects .project-overlay p,
+  #projects .project-specs,
+  #projects .tags {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    color: rgba(245, 247, 255, 0.92) !important;
+  }
+
+  #projects .docs-section {
+    margin: 18px 20px 0 !important;
+    background: rgba(7, 10, 18, 0.72) !important;
+    border: 1px solid rgba(116, 231, 255, 0.18) !important;
+  }
+
+  #resume.section {
+    min-height: calc(100vh - 66px) !important;
+    padding-top: 92px !important;
+    padding-bottom: 120px !important;
+    background: transparent !important;
+    color: #f5f7ff !important;
+  }
+
+  #resume .container {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  #resume .section-head {
+    width: 100% !important;
+    margin: 0 0 18px !important;
+    padding: 28px 42px !important;
+    border: 1px solid var(--panel-line) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.58) !important;
+  }
+
+  #resume .section-head h2 {
+    font-size: clamp(3.2rem, 4.8vw, 5.8rem) !important;
+    line-height: 0.92 !important;
+    color: #fffdf8 !important;
+    text-shadow: 4px 0 0 rgba(122, 77, 255, 0.72) !important;
+  }
+
+  #resume .section-head p {
+    max-width: 980px !important;
+    color: rgba(245, 247, 255, 0.72) !important;
+  }
+
+  #resume .resume-shell {
+    display: grid !important;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.8fr) !important;
+    gap: 18px !important;
+    padding: 20px !important;
+    border: 1px solid rgba(116, 231, 255, 0.2) !important;
+    border-radius: 8px !important;
+    background: rgba(5, 8, 16, 0.54) !important;
+  }
+
+  #resume .resume-profile,
+  #resume .resume-panel,
+  #resume .game-exp-group,
+  #resume .resume-shell .card {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    transform: none !important;
+    border: 1px solid rgba(116, 231, 255, 0.22) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.76) !important;
+    color: #f5f7ff !important;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  #resume .resume-profile {
+    top: auto !important;
+    padding: 24px !important;
+    align-self: start !important;
+    position: sticky !important;
+    top: 88px !important;
+  }
+
+  #resume .resume-avatar {
+    width: 190px !important;
+    height: 190px !important;
+    border-radius: 8px !important;
+    transform: none !important;
+    filter: grayscale(0.15) contrast(1.02) !important;
+  }
+
+  #resume .resume-panel-grid {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    min-height: 0 !important;
+  }
+
+  #resume .resume-panel {
+    padding: 24px !important;
+  }
+
+  #resume .game-exp-panel {
+    grid-column: 1 / -1 !important;
+  }
+
+  #resume .game-exp-groups {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  #resume .project-exp-item,
+  #resume .plain-list li,
+  #resume .game-exp-group {
+    background: rgba(11, 15, 28, 0.74) !important;
+    border-color: rgba(116, 97, 255, 0.22) !important;
+  }
+
+  #resume .resume-panel h3,
+  #resume .resume-profile h3,
+  #resume .game-exp-group h4,
+  #resume .item-title {
+    color: #fffdf8 !important;
+  }
+
+  #resume .item-meta,
+  #resume .plain-list,
+  #resume .resume-intro,
+  #resume .resume-contact-list p,
+  #resume .resume-role {
+    color: rgba(245, 247, 255, 0.72) !important;
+  }
+}
+
+/* Hero video + project/about polish EOF: latest desktop request. */
+@media (min-width: 981px) {
+  body.hero-video-visible .scroll-scene-video,
+  body.hero-video-visible .scroll-scene-grade,
+  html body.hero-video-visible .scroll-scene-video,
+  html body.hero-video-visible .scroll-scene-grade {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .scroll-scene-video,
+  html body .scroll-scene-video {
+    position: fixed !important;
+    inset: 66px 0 0 0 !important;
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: none !important;
+    height: calc(100vh - 66px) !important;
+    min-height: calc(100vh - 66px) !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: saturate(1.05) contrast(1.03) brightness(0.78) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: none !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.32s ease, visibility 0.32s ease !important;
+  }
+
+  body.hero-video-visible .scroll-scene-video,
+  html body.hero-video-visible .scroll-scene-video {
+    opacity: 1 !important;
+  }
+
+  .scroll-scene-grade,
+  html body .scroll-scene-grade {
+    position: fixed !important;
+    inset: 66px 0 0 0 !important;
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: none !important;
+    height: calc(100vh - 66px) !important;
+    min-height: calc(100vh - 66px) !important;
+    border: 0 !important;
+    background:
+      linear-gradient(90deg, rgba(4, 5, 10, 0.52), rgba(4, 5, 10, 0.14) 42%, rgba(4, 5, 10, 0.42)),
+      linear-gradient(180deg, rgba(4, 5, 10, 0.1), rgba(4, 5, 10, 0.3) 76%, rgba(4, 5, 10, 0.68)) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+    transition: opacity 0.32s ease, visibility 0.32s ease !important;
+  }
+
+  body.hero-video-visible .scroll-scene-grade,
+  html body.hero-video-visible .scroll-scene-grade {
+    opacity: 1 !important;
+  }
+
+  body:not(.hero-video-visible) .scroll-scene-video,
+  body:not(.hero-video-visible) .scroll-scene-grade,
+  html body.projects-mode .scroll-scene-video,
+  html body.projects-mode .scroll-scene-grade {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  body:not(.hero-video-visible) > .ai-console,
+  body:not(.hero-video-visible) > .system-status-bar {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  #home.hero {
+    position: relative !important;
+    z-index: 2 !important;
+    min-height: calc(100vh - 66px) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: transparent !important;
+    overflow: hidden !important;
+  }
+
+  #home .hero-content,
+  #home .mission-panel,
+  #home .character-stage {
+    position: relative !important;
+    z-index: 4 !important;
+  }
+
+  #home .hero-content {
+    background: linear-gradient(90deg, rgba(4, 6, 12, 0.64), rgba(4, 6, 12, 0.18)) !important;
+    border-color: rgba(116, 231, 255, 0.1) !important;
+  }
+
+  #home .mission-panel {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #10131b !important;
+    border-color: rgba(255, 255, 255, 0.42) !important;
+  }
+
+  #home .mission-panel .eyebrow,
+  #home .mission-panel h2,
+  #home .mission-panel li {
+    color: #10131b !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid,
+  html body.projects-mode #projects .project-grid,
+  html body.projects-mode #projects .phone-screen .project-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    justify-items: stretch !important;
+    gap: clamp(18px, 1.65vw, 30px) !important;
+    padding: 22px 20px 24px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #projects .project-card,
+  #projects .project-card:nth-child(1),
+  #projects .project-card:nth-child(2),
+  #projects .project-card:nth-child(3),
+  #projects .project-card:nth-child(4),
+  #projects .project-card.is-reel-active,
+  html body.projects-mode #projects .project-card,
+  html body.projects-mode #projects .project-card.is-reel-active {
+    align-self: stretch !important;
+    justify-self: stretch !important;
+    width: 100% !important;
+    height: clamp(390px, 34vw, 560px) !important;
+    min-height: clamp(390px, 34vw, 560px) !important;
+    max-height: 560px !important;
+    margin: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  #projects .project-media,
+  #projects .project-card .project-media {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+
+  #projects .project-overlay {
+    min-height: 43% !important;
+    padding: clamp(18px, 1.4vw, 26px) !important;
+  }
+
+  #projects .reel-hint {
+    display: none !important;
+  }
+
+  #about .about-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(18px, 1.8vw, 32px) !important;
+    width: 100% !important;
+    position: relative !important;
+    inset: auto !important;
+  }
+
+  #about .about-grid .card,
+  #about .about-grid .card:nth-child(1),
+  #about .about-grid .card:nth-child(2),
+  #about .about-grid .card:nth-child(3) {
+    background: rgba(7, 10, 18, 0.86) !important;
+    border-color: rgba(246, 247, 255, 0.54) !important;
+    box-shadow:
+      0 0 0 1px rgba(116, 231, 255, 0.08) inset,
+      0 24px 70px rgba(0, 0, 0, 0.34) !important;
+  }
+
+  #about .about-grid .card h3 {
+    color: #fffdf8 !important;
+    opacity: 1 !important;
+    font-weight: 800 !important;
+  }
+
+  #about .about-grid .card p {
+    color: rgba(250, 252, 255, 0.9) !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    line-height: 1.85 !important;
+    text-shadow: 0 1px 14px rgba(0, 0, 0, 0.42) !important;
+  }
+}
+
+/* Fixed overlay alignment: shared safe area for HUD, AI widget, and bottom status. */
+@media (min-width: 981px) {
+  :root {
+    --stage-safe-x: clamp(48px, 4.8vw, 72px);
+    --stage-safe-bottom: 18px;
+  }
+
+  .os-hud {
+    display: none !important;
+  }
+
+  .side-rail {
+    position: fixed !important;
+    left: calc(var(--stage-safe-x) - 34px) !important;
+    top: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    max-width: none !important;
+    z-index: 60 !important;
+    pointer-events: none !important;
+  }
+
+  .system-status-bar {
+    position: fixed !important;
+    left: var(--stage-safe-x) !important;
+    right: var(--stage-safe-x) !important;
+    bottom: var(--stage-safe-bottom) !important;
+    width: auto !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.72rem !important;
+    padding: 0 !important;
+    padding-top: 0 !important;
+    border-top: 1px solid rgba(228, 232, 255, 0.28) !important;
+    background: transparent !important;
+    z-index: 90 !important;
+    overflow: visible !important;
+  }
+
+  .system-status-bar span {
+    min-height: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    padding: 0.36rem 0.8rem !important;
+    font-size: 0.74rem !important;
+    line-height: 1 !important;
+  }
+
+  .ai-console {
+    position: fixed !important;
+    left: auto !important;
+    top: auto !important;
+    right: calc(var(--stage-safe-x) + 18px) !important;
+    bottom: calc(var(--stage-safe-bottom) + 74px) !important;
+    z-index: 95 !important;
+    display: grid !important;
+    justify-items: center !important;
+    gap: 0.72rem !important;
+    width: 156px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .ai-orb {
+    width: 112px !important;
+    height: 112px !important;
+    margin: 0 !important;
+    border-radius: 999px !important;
+  }
+
+  .ai-console small {
+    position: relative !important;
+    min-width: 152px !important;
+    max-width: 152px !important;
+    margin: 0 !important;
+    padding: 0.35rem 0.65rem !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  #home.hero,
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section,
+  html body.projects-mode #projects.section {
+    width: calc(100% - (var(--stage-safe-x) * 2)) !important;
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 981px) {
+  .ai-console {
+    right: var(--stage-safe-x) !important;
+    bottom: calc(var(--stage-safe-bottom) + 58px) !important;
+    width: 124px !important;
+  }
+
+  .ai-orb {
+    width: 88px !important;
+    height: 88px !important;
+  }
+
+  .ai-console small {
+    min-width: 124px !important;
+    max-width: 124px !important;
+    font-size: 0.66rem !important;
+  }
+
+  .system-status-bar {
+    right: calc(var(--stage-safe-x) + 140px) !important;
+  }
+}
+
+html, body {
+  background:
+    radial-gradient(circle at 50% 8%, rgba(105, 74, 255, 0.15), transparent 30%),
+    radial-gradient(circle at 18% 24%, rgba(92, 176, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, #04050a 0%, #05060b 45%, #030409 100%) !important;
+  color: var(--ref-text) !important;
+}
+
+body::before {
+  opacity: 0.3 !important;
+  background-image:
+    linear-gradient(rgba(96, 107, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 107, 255, 0.08) 1px, transparent 1px) !important;
+  background-size: 60px 60px !important;
+}
+
+body::after {
+  opacity: 0.12 !important;
+  mix-blend-mode: screen !important;
+}
+
+.site-header {
+  background: rgba(4, 6, 12, 0.9) !important;
+  border-bottom: 1px solid rgba(108, 92, 255, 0.22) !important;
+  backdrop-filter: blur(16px) saturate(1.1);
+}
+
+.nav {
+  min-height: 66px;
+}
+
+.brand,
+.nav-links a,
+.eyebrow,
+.phone-scene-label .eyebrow,
+.section-head .eyebrow {
+  color: var(--ref-cyan) !important;
+  text-shadow: 0 0 14px rgba(114, 228, 255, 0.28);
+}
+
+.nav-links a {
+  letter-spacing: 0.08em;
+}
+
+.nav-links a.is-active,
+.chip.active,
+.btn-primary,
+.reel-arrow:hover {
+  color: #fff !important;
+  background: linear-gradient(135deg, var(--ref-purple), #4d33d0) !important;
+  border-color: transparent !important;
+}
+
+.scroll-progress span {
+  background: linear-gradient(90deg, var(--ref-purple), var(--ref-blue), var(--ref-cyan)) !important;
+}
+
+.os-hud,
+.mission-panel,
+.hero-content,
+.phone-screen,
+.docs-section,
+.card,
+.project-modal-panel,
+.doc-card,
+.resume-shell,
+.contact-grid,
+.section-head,
+.badge-inner,
+.hero-showcase,
+.showcase-card {
+  border: 1px solid var(--ref-line) !important;
+  background: linear-gradient(180deg, rgba(10, 14, 26, 0.76), rgba(7, 10, 18, 0.9)) !important;
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02) !important;
+}
+
+.hero {
+  min-height: 100vh !important;
+  padding-top: 88px !important;
+}
+
+.hero-content {
+  padding: 1.3rem 1.2rem 1.2rem !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(20px) saturate(1.05);
+}
+
+.hero-content h1,
+.hero-os-title {
+  color: #fff !important;
+  text-shadow: 0 0 22px rgba(105, 74, 255, 0.45), 0 0 34px rgba(95, 176, 255, 0.18);
+}
+
+.hero-os-title {
+  -webkit-text-stroke: 0 !important;
+}
+
+.hero-text,
+.section-head p,
+.item-meta,
+.resume-intro,
+.detail-summary,
+.doc-meta,
+.project-overlay p,
+.contact-grid p {
+  color: var(--ref-muted) !important;
+}
+
+.hero-actions .btn,
+.chip,
+.reel-arrow,
+.modal-close,
+.btn-secondary,
+.btn-tertiary {
+  border-radius: 999px !important;
+  border: 1px solid rgba(117, 104, 255, 0.42) !important;
+  background: rgba(11, 16, 30, 0.82) !important;
+  color: var(--ref-text) !important;
+}
+
+.hero-actions .btn-primary {
+  background: linear-gradient(135deg, var(--ref-purple), #7d5cff) !important;
+  box-shadow: 0 10px 30px rgba(95, 76, 255, 0.28);
+}
+
+.hero-actions .btn:hover,
+.chip:hover,
+.reel-arrow:hover,
+.btn-secondary:hover,
+.btn-tertiary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(116, 231, 255, 0.58) !important;
+}
+
+.hero-metrics span,
+.tags span,
+.project-specs span,
+.detail-meta span,
+.skill-tags span,
+.filter-row .chip {
+  background: rgba(14, 18, 32, 0.92) !important;
+  border: 1px solid rgba(116, 97, 255, 0.24) !important;
+  color: rgba(237, 242, 255, 0.9) !important;
+}
+
+.hero-showcase,
+.mission-panel {
+  backdrop-filter: blur(16px) saturate(1.15) !important;
+}
+
+.hero-showcase {
+  border-radius: 12px !important;
+}
+
+.hero-showcase .showcase-card {
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.character-stage {
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.32));
+}
+
+.character-portrait {
+  filter: drop-shadow(0 0 30px rgba(96, 107, 255, 0.22)) !important;
+}
+
+.scroll-scene-video {
+  filter: saturate(1.05) contrast(1.06) brightness(0.75) !important;
+  opacity: 0.88 !important;
+}
+
+.scroll-scene-grade {
+  background:
+    radial-gradient(circle at 52% 48%, transparent 0 18%, rgba(3, 5, 10, 0.1) 34%, rgba(3, 5, 10, 0.72) 100%),
+    linear-gradient(90deg, rgba(5, 8, 16, 0.65), rgba(5, 8, 16, 0.12) 40%, rgba(5, 8, 16, 0.58)) !important;
+  opacity: calc(0.7 - var(--scene-progress, 0) * 0.12) !important;
+}
+
+.phone-scene-label {
+  margin-bottom: 0.75rem !important;
+}
+
+.phone-scene-label h2 {
+  color: #fff !important;
+}
+
+.filter-row {
+  border-radius: 12px !important;
+  background: rgba(6, 9, 16, 0.72) !important;
+}
+
+.project-grid {
+  gap: 1rem !important;
+}
+
+.project-card,
+.project-card.is-reel-active {
+  border-radius: 14px !important;
+  border: 1px solid rgba(102, 95, 255, 0.2) !important;
+  background: rgba(8, 10, 18, 0.76) !important;
+}
+
+.project-card .project-media img {
+  filter: saturate(1.1) contrast(1.06) brightness(1.06) !important;
+}
+
+.project-card .project-media::after {
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(5, 8, 16, 0.08) 48%, rgba(5, 8, 16, 0.5) 100%) !important;
+}
+
+.project-overlay {
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(5, 8, 16, 0.2) 25%, rgba(5, 8, 16, 0.9) 100%) !important;
+}
+
+.project-overlay h3 {
+  color: #fff !important;
+}
+
+.project-number {
+  color: var(--ref-purple) !important;
+}
+
+.docs-section,
+.resume-shell,
+.contact-grid {
+  border-radius: 14px !important;
+}
+
+.doc-card:hover,
+.project-card:hover,
+.card:hover {
+  border-color: rgba(116, 231, 255, 0.48) !important;
+  box-shadow:
+    0 0 0 1px rgba(116, 231, 255, 0.12) inset,
+    0 24px 65px rgba(0, 0, 0, 0.38),
+    0 0 30px rgba(120, 90, 255, 0.12) !important;
+}
+
+.resume-avatar,
+.doc-thumb-frame {
+  border-color: rgba(116, 97, 255, 0.3) !important;
+}
+
+.about-timeline li,
+.contact-list a {
+  border-color: rgba(116, 97, 255, 0.2) !important;
+}
+
+.contact-list a:hover {
+  background: linear-gradient(135deg, rgba(122, 77, 255, 0.92), rgba(95, 176, 255, 0.84)) !important;
+  color: #fff !important;
+}
+
+.site-footer,
+.section::after {
+  color: rgba(220, 226, 255, 0.42) !important;
+}
+
+@media (min-width: 981px) {
+  .hero,
+  #projects.section,
+  #resume .container,
+  #about .container,
+  #contact .container {
+    width: min(1600px, calc(100% - 32px)) !important;
+  }
+
+  #projects.section {
+    padding-top: 1rem !important;
+  }
+
+  .resume-shell {
+    display: grid !important;
+    grid-template-columns: 360px minmax(0, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .contact-grid {
+    display: grid !important;
+    grid-template-columns: 1.3fr 0.7fr !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .hero,
+  #projects.section,
+  #resume .container,
+  #about .container,
+  #contact .container {
+    width: calc(100% - 20px) !important;
+  }
+
+  .hero-content,
+  .mission-panel,
+  .phone-screen,
+  .resume-shell,
+  .contact-grid {
+    border-radius: 12px !important;
+  }
+
+  .hero-showcase {
+    display: none !important;
+  }
+}
+
+/* Dashboard rebuild inspired by the supplied UI reference. */
+body {
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  z-index: 2;
+}
+
+.site-header {
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  z-index: 80 !important;
+}
+
+.nav.container {
+  width: min(1540px, calc(100% - 56px)) !important;
+  max-width: none !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  gap: 1.6rem !important;
+  align-items: center !important;
+}
+
+.brand {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  min-width: 190px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(183, 160, 255, 0.86);
+  border-radius: 999px;
+  color: #fff;
+  font-family: "Patrick Hand", "Noto Sans SC", sans-serif;
+  font-size: 1rem;
+  box-shadow: 0 0 22px rgba(122, 77, 255, 0.3);
+}
+
+.brand-name {
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.brand-version {
+  color: rgba(243, 246, 255, 0.72);
+  font-family: "Patrick Hand", monospace;
+  letter-spacing: 0.08em;
+}
+
+.nav-links {
+  justify-content: center !important;
+}
+
+.nav-links a {
+  min-width: 78px;
+  padding: 0.58rem 0.78rem !important;
+  border-radius: 9px !important;
+  text-align: center;
+  color: rgba(245, 247, 255, 0.76) !important;
+}
+
+.nav-links a.is-active {
+  box-shadow: 0 0 28px rgba(122, 77, 255, 0.42);
+}
+
+.nav-system {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.9rem;
+  color: rgba(245, 247, 255, 0.76);
+  font-family: "Patrick Hand", "Noto Sans SC", monospace;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.sound-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--ref-purple);
+  box-shadow: 0 0 14px rgba(122, 77, 255, 0.9);
+}
+
+.language-switch {
+  padding-left: 1rem;
+  border-left: 1px solid rgba(116, 97, 255, 0.32);
+}
+
+.nav-talk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 1rem;
+  border: 1px solid rgba(235, 226, 202, 0.76);
+  border-radius: 999px;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.side-rail {
+  left: 0.95rem !important;
+  right: auto !important;
+  z-index: 18 !important;
+  color: rgba(245, 247, 255, 0.48) !important;
+  letter-spacing: 0.34em !important;
+}
+
+.system-status-bar {
+  left: 2.8rem !important;
+  right: 2.8rem !important;
+  bottom: 1rem !important;
+  width: auto !important;
+  justify-content: flex-start !important;
+  gap: 0.8rem !important;
+  background: transparent !important;
+  border: 0 !important;
+  z-index: 35 !important;
+}
+
+.system-status-bar span,
+.hud-status span {
+  border: 1px solid rgba(116, 97, 255, 0.24) !important;
+  border-radius: 999px !important;
+  background: rgba(6, 9, 18, 0.82) !important;
+  color: rgba(244, 247, 255, 0.78) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.system-status-bar span::before,
+.hud-status span::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 0.5rem;
+  border-radius: 999px;
+  background: var(--ref-purple);
+  box-shadow: 0 0 14px rgba(122, 77, 255, 0.8);
+}
+
+.system-status-bar span:nth-child(2)::before,
+.hud-status span:nth-child(2)::before {
+  background: #65d64d;
+  box-shadow: 0 0 14px rgba(101, 214, 77, 0.78);
+}
+
+.system-status-bar span:nth-child(4)::before,
+.hud-status span:nth-child(4)::before {
+  background: var(--ref-orange);
+  box-shadow: 0 0 14px rgba(255, 125, 70, 0.78);
+}
+
+@media (min-width: 981px) {
+  body {
+    padding-top: 64px;
+  }
+
+  #home.hero {
+    width: min(1540px, calc(100% - 56px)) !important;
+    max-width: none !important;
+    min-height: calc(100vh - 64px) !important;
+    height: auto !important;
+    display: grid !important;
+    grid-template-columns: 300px minmax(0, 1.6fr) 300px !important;
+    grid-template-rows: 1fr auto !important;
+    gap: 14px !important;
+    margin: 0 auto !important;
+    padding: 16px 0 80px !important;
+    overflow: visible !important;
+  }
+
+  #home.hero::before {
+    content: "BUILDING WITH AI, THINKING WITH STORIES";
+    display: block !important;
+    position: fixed;
+    left: 1.2rem;
+    top: 50%;
+    z-index: 20;
+    writing-mode: vertical-rl;
+    transform: translateY(-50%);
+    color: rgba(245, 247, 255, 0.36);
+    font-family: "Patrick Hand", monospace;
+    font-size: 0.86rem;
+    letter-spacing: 0.38em;
+    pointer-events: none;
+  }
+
+  #home.hero::after {
+    content: "08 INFO CARD";
+    display: block !important;
+    position: absolute;
+    right: 314px;
+    bottom: 18px;
+    z-index: 1;
+    color: rgba(122, 77, 255, 0.86);
+    font-family: "Patrick Hand", monospace;
+    letter-spacing: 0.08em;
+  }
+
+  #home .hero-content {
+    position: relative !important;
+    top: auto !important;
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    min-height: 420px !important;
+    margin: 0 !important;
+    padding: clamp(1.8rem, 3vw, 3rem) clamp(1.6rem, 4vw, 3rem) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    opacity: 1 !important;
+  }
+
+  #home .hero-content::before {
+    content: "03 英雄区 / HERO SECTION";
+    position: absolute;
+    left: 1.1rem;
+    top: 0.9rem;
+    color: rgba(245, 247, 255, 0.68);
+    font-family: "Patrick Hand", "Noto Sans SC", monospace;
+    letter-spacing: 0.06em;
+  }
+
+  #home .hero-content::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgba(5, 8, 16, 0.92), rgba(5, 8, 16, 0.34) 48%, rgba(5, 8, 16, 0.84)),
+      url("./assets/ui/ref-slices/02-hero-main.png") center / cover no-repeat;
+    opacity: 0.42;
+  }
+
+  #home .hero-content h1 {
+    margin-top: 1rem !important;
+    max-width: 620px;
+  }
+
+  #home .hero-cn-name {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: clamp(1.4rem, 2vw, 2.2rem);
+    font-style: italic;
+  }
+
+  #home .hero-os-title {
+    display: block;
+    font-size: clamp(4.4rem, 8.5vw, 8.5rem) !important;
+    line-height: 0.82 !important;
+    letter-spacing: -0.04em;
+  }
+
+  #home .hero-text {
+    max-width: 580px !important;
+    margin-top: 1rem !important;
+    font-size: 1rem !important;
+  }
+
+  #home .hero-metrics,
+  #home .hero-actions {
+    max-width: 650px;
+  }
+
+  #home .hero-advantages {
+    grid-column: 1 !important;
+    grid-row: 1 / span 2 !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    align-content: start !important;
+    gap: 14px !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+  }
+
+  #home .hero-advantages article {
+    min-height: 118px;
+    padding: 1.05rem !important;
+    border: 1px solid var(--ref-line) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(135deg, rgba(11, 15, 28, 0.88), rgba(5, 7, 14, 0.94)),
+      radial-gradient(circle at 78% 48%, rgba(122, 77, 255, 0.16), transparent 44%) !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.025) !important;
+  }
+
+  #home .hero-advantages article:nth-child(1)::before {
+    content: "01 状态标签 / STATUS CHIPS";
+  }
+
+  #home .hero-advantages article:nth-child(2)::before {
+    content: "02 系统中心 / SYSTEM";
+  }
+
+  #home .hero-advantages article:nth-child(3)::before {
+    content: "05 能力模块";
+  }
+
+  #home .hero-advantages article:nth-child(4)::before {
+    content: "09 输入框 / INPUTS";
+  }
+
+  #home .hero-advantages article::before,
+  #home .mission-panel::before,
+  #home .hero-showcase::before,
+  #projects .phone-scene-label::before,
+  #resume .section-head::before,
+  #about .section-head::before,
+  #contact .container::before {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: rgba(122, 77, 255, 0.95);
+    font-family: "Patrick Hand", "Noto Sans SC", monospace;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+
+  #home .mission-panel {
+    position: relative !important;
+    top: auto !important;
+    float: none !important;
+    grid-column: 3 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    min-height: 420px !important;
+    margin: 0 !important;
+    padding: 1.2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+  }
+
+  #home .mission-panel::before {
+    content: "04 AI 悬浮组件 / AI WIDGET";
+  }
+
+  #home .mission-panel .eyebrow {
+    align-self: center;
+    padding: 0.45rem 1rem;
+    border: 1px solid rgba(235, 226, 202, 0.76);
+    border-radius: 999px;
+    color: #fff !important;
+  }
+
+  #home .mission-panel h2 {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    margin: 1.2rem auto;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(116, 97, 255, 0.58);
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 42% 35%, rgba(255, 255, 255, 0.45), transparent 18%),
+      radial-gradient(circle, rgba(122, 77, 255, 0.96), rgba(49, 33, 145, 0.9) 62%, rgba(8, 10, 20, 0.72) 64%);
+    box-shadow:
+      0 0 36px rgba(122, 77, 255, 0.46),
+      0 0 0 16px rgba(122, 77, 255, 0.08),
+      0 0 0 34px rgba(122, 77, 255, 0.035);
+    color: #fff;
+    text-align: center;
+    font-size: 0;
+  }
+
+  #home .mission-panel h2::after {
+    content: "AI";
+    font-family: "Patrick Hand", monospace;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+  }
+
+  #home .mission-panel ul {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  #home .mission-panel li {
+    display: flex;
+    gap: 0.65rem;
+    align-items: center;
+    color: rgba(245, 247, 255, 0.68);
+  }
+
+  #home .mission-panel li span {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(245, 247, 255, 0.32);
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.72rem;
+  }
+
+  #home .hero-showcase {
+    position: relative !important;
+    grid-column: 2 / span 2 !important;
+    grid-row: 2 !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-height: 210px !important;
+    padding: 2.7rem 1rem 1rem !important;
+    transform: none !important;
+  }
+
+  #home .hero-showcase::before {
+    content: "07 胶卷组件 / FILM STRIP";
+    position: absolute;
+    left: 1rem;
+    top: 0.85rem;
+    margin: 0;
+  }
+
+  #home .showcase-card {
+    position: relative !important;
+    width: 100% !important;
+    height: 160px !important;
+    border-radius: 8px !important;
+  }
+
+  #home .showcase-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.1) brightness(0.72);
+  }
+
+  #home .showcase-card span {
+    position: absolute;
+    left: 0.8rem;
+    bottom: 0.7rem;
+    color: #fff;
+    font-weight: 800;
+  }
+
+  #home .character-stage {
+    display: block !important;
+    position: absolute !important;
+    left: 52% !important;
+    top: 84px !important;
+    z-index: 8 !important;
+    width: min(410px, 29vw) !important;
+    height: 470px !important;
+    pointer-events: none !important;
+  }
+
+  #home .character-portrait {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  #home .character-glow {
+    display: block !important;
+    position: absolute;
+    inset: 18% 8% 6%;
+    background: radial-gradient(circle, rgba(95, 176, 255, 0.22), transparent 68%);
+    filter: blur(22px);
+  }
+
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section {
+    width: min(1540px, calc(100% - 56px)) !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 80px 0 70px !important;
+  }
+
+  #projects .phone-scene-label,
+  #resume .section-head,
+  #about .section-head,
+  #contact .container {
+    position: relative;
+    padding: 1rem 1.1rem !important;
+    border: 1px solid var(--ref-line) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.78) !important;
+  }
+
+  #projects .phone-scene-label::before {
+    content: "06 精选作品 / FEATURED PROJECTS";
+  }
+
+  #projects .phone-scene-label {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: end !important;
+    gap: 1rem !important;
+    padding: 1.2rem 1.25rem !important;
+  }
+
+  #projects .phone-scene-label h2 {
+    margin: 0.15rem 0 0 !important;
+    max-width: 860px;
+    font-size: clamp(3.8rem, 7vw, 6.6rem) !important;
+    line-height: 0.9 !important;
+    letter-spacing: -0.03em;
+  }
+
+  #projects .phone-scene-label::after {
+    content: "View project ->";
+    align-self: center;
+    justify-self: end;
+    color: rgba(228, 232, 255, 0.78);
+    font-family: "Patrick Hand", "Noto Sans SC", monospace;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+  }
+
+  #resume .section-head::before {
+    content: "08 信息卡片 / INFO CARD";
+  }
+
+  #about .section-head::before {
+    content: "10 进度条 / PROGRESS";
+  }
+
+  #contact .container::before {
+    content: "12 联系系统 / CONTACT SET";
+  }
+
+  #projects .phone-device,
+  #projects .phone-hardware,
+  #projects .phone-screen {
+    border-radius: 8px !important;
+  }
+
+  #projects .phone-screen {
+    padding: 0 0 1rem !important;
+    background:
+      linear-gradient(180deg, rgba(8, 12, 22, 0.74), rgba(5, 8, 16, 0.94)),
+      url("./assets/ui/ref-slices/05-mid-cards.png") center / cover no-repeat !important;
+    background-blend-mode: multiply;
+    overflow: hidden !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    width: 100% !important;
+    min-height: 620px !important;
+    height: 620px !important;
+    padding: 0 86px 0 !important;
+    overflow: hidden !important;
+    transform: none !important;
+  }
+
+  #projects .project-card {
+    position: absolute !important;
+    top: 92px !important;
+    left: 50% !important;
+    width: 320px !important;
+    min-height: 430px !important;
+    height: 430px !important;
+    border-radius: 8px !important;
+    transform-origin: center center !important;
+    transition:
+      transform 0.45s ease,
+      opacity 0.35s ease,
+      filter 0.35s ease,
+      box-shadow 0.35s ease !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  #projects .project-card:nth-child(1) {
+    transform: translateX(-340px) translateY(10px) scale(0.78) rotate(-7deg) !important;
+    opacity: 0.22 !important;
+    filter: blur(1px) saturate(0.72) brightness(0.65) !important;
+  }
+
+  #projects .project-card:nth-child(2) {
+    transform: translateX(-110px) translateY(-8px) scale(0.9) rotate(-3deg) !important;
+    opacity: 0.45 !important;
+    filter: blur(0.2px) saturate(0.82) brightness(0.78) !important;
+  }
+
+  #projects .project-card:nth-child(3) {
+    transform: translateX(115px) translateY(-6px) scale(0.9) rotate(3deg) !important;
+    opacity: 0.45 !important;
+    filter: blur(0.2px) saturate(0.82) brightness(0.78) !important;
+  }
+
+  #projects .project-card:nth-child(4) {
+    transform: translateX(345px) translateY(10px) scale(0.78) rotate(7deg) !important;
+    opacity: 0.22 !important;
+    filter: blur(1px) saturate(0.72) brightness(0.65) !important;
+  }
+
+  #projects .project-card.is-reel-active {
+    transform: translateX(-50%) translateY(0) scale(1.08) rotate(0deg) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    z-index: 6 !important;
+    pointer-events: auto !important;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+      0 32px 100px rgba(0, 0, 0, 0.46),
+      0 0 30px rgba(255, 125, 70, 0.18) !important;
+  }
+
+  #projects .project-card[aria-current="false"] {
+    pointer-events: auto !important;
+  }
+
+  #projects .project-overlay {
+    justify-content: flex-start !important;
+    padding: 1rem 1rem 0.95rem !important;
+    background:
+      linear-gradient(180deg, rgba(5, 8, 16, 0.2), rgba(5, 8, 16, 0.48) 46%, rgba(5, 8, 16, 0.9) 100%) !important;
+  }
+
+  #projects .project-overlay h3 {
+    margin-top: auto !important;
+    font-size: clamp(1.6rem, 2.2vw, 2.4rem) !important;
+    line-height: 0.96 !important;
+  }
+
+  #projects .project-overlay p {
+    max-width: 85%;
+    font-size: 0.86rem !important;
+    line-height: 1.35 !important;
+  }
+
+  #projects .docs-section {
+    margin-top: -2.4rem !important;
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(180deg, rgba(9, 13, 24, 0.82), rgba(6, 9, 16, 0.94)),
+      url("./assets/ui/ref-slices/06-bottom-tools.png") bottom center / cover no-repeat !important;
+    background-blend-mode: multiply;
+  }
+
+  #projects .docs-section .docs-head::before {
+    content: "11 文档模块 / DOC BLOCK";
+    display: block;
+    margin-bottom: 0.7rem;
+    color: rgba(122, 77, 255, 0.92);
+    font-family: "Patrick Hand", "Noto Sans SC", monospace;
+    font-size: 1rem;
+  }
+
+  #projects .docs-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  #projects .doc-card {
+    min-height: 118px !important;
+    border-radius: 8px !important;
+  }
+
+  #projects .project-number {
+    font-family: "Patrick Hand", monospace;
+    font-size: clamp(4.5rem, 6vw, 7rem) !important;
+    line-height: 0.8;
+    opacity: 0.82;
+  }
+
+  #resume .container,
+  #about.container,
+  #contact .container {
+    max-width: none !important;
+  }
+
+  #resume .section-head,
+  #about .section-head,
+  #contact .container {
+    margin-bottom: 14px !important;
+  }
+
+  #resume .resume-shell {
+    margin-top: 14px !important;
+    padding: 1rem !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(180deg, rgba(8, 12, 22, 0.8), rgba(6, 9, 16, 0.96)),
+      url("./assets/ui/ref-slices/04-right-ai-widget.png") right center / 34% auto no-repeat !important;
+    background-blend-mode: multiply;
+  }
+
+  #resume .resume-profile {
+    position: sticky !important;
+    top: 92px !important;
+    align-self: start !important;
+    border-radius: 8px !important;
+    padding: 1.1rem !important;
+  }
+
+  #resume .resume-profile::before {
+    content: "08 信息卡片 / INFO CARD";
+    display: block;
+    margin-bottom: 0.8rem;
+    color: rgba(122, 77, 255, 0.95);
+    font-family: "Patrick Hand", "Noto Sans SC", monospace;
+    font-size: 1rem;
+  }
+
+  #resume .resume-avatar {
+    width: 110px !important;
+    height: 110px !important;
+    border-radius: 12px !important;
+    object-fit: cover;
+  }
+
+  #resume .resume-panel-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  #resume .plain-list {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  #resume .plain-list li {
+    padding: 0.75rem 0.8rem;
+    border: 1px solid rgba(116, 97, 255, 0.14);
+    border-radius: 8px;
+    background: rgba(9, 13, 24, 0.6);
+  }
+
+  #resume .resume-panel {
+    min-height: 260px;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+  }
+
+  #resume .resume-panel:nth-child(1)::before {
+    content: "09 项目经历 / TIMELINE";
+  }
+
+  #resume .resume-panel:nth-child(2)::before {
+    content: "10 技能模块 / SKILLS";
+  }
+
+  #resume .resume-panel:nth-child(3)::before {
+    content: "07 游戏数据库 / PLAY HISTORY";
+  }
+
+  #resume .resume-panel::before,
+  #about .about-grid .card::before,
+  #contact .contact-grid > div::before {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: rgba(122, 77, 255, 0.92);
+    font-family: "Patrick Hand", "Noto Sans SC", monospace;
+    font-size: 0.98rem;
+    letter-spacing: 0.04em;
+  }
+
+  #resume .project-exp-item,
+  #resume .game-exp-group {
+    border-radius: 8px !important;
+    background: rgba(10, 14, 25, 0.72) !important;
+    border: 1px solid rgba(116, 97, 255, 0.16) !important;
+    padding: 0.65rem !important;
+  }
+
+  #resume .game-exp-panel {
+    grid-column: 1 / -1 !important;
+  }
+
+  #resume .game-exp-groups {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  #about .about-grid,
+  #contact .contact-grid {
+    margin-top: 14px !important;
+  }
+
+  #about .about-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  #about .about-grid .card {
+    min-height: 290px;
+    border-radius: 8px !important;
+    padding: 1.1rem !important;
+    background:
+      linear-gradient(180deg, rgba(10, 14, 25, 0.88), rgba(7, 10, 18, 0.96)),
+      radial-gradient(circle at 80% 18%, rgba(122, 77, 255, 0.18), transparent 30%) !important;
+  }
+
+  #about .about-grid .card h3 {
+    font-size: 1.36rem !important;
+    line-height: 1.05 !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  #about .about-grid .card p {
+    font-size: 0.94rem !important;
+    line-height: 1.7 !important;
+  }
+
+  #about .about-grid .card:nth-child(1)::before {
+    content: "01 跨学科基础 / FOUNDATION";
+  }
+
+  #about .about-grid .card:nth-child(2)::before {
+    content: "02 引擎落地 / BUILD";
+  }
+
+  #about .about-grid .card:nth-child(3)::before {
+    content: "03 玩家洞察 / PLAYER";
+  }
+
+  #contact .contact-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+
+  #contact .contact-grid > div {
+    padding: 1.2rem !important;
+    border: 1px solid var(--ref-line) !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(180deg, rgba(9, 13, 24, 0.84), rgba(6, 9, 16, 0.96)),
+      url("./assets/ui/ref-slices/01-topbar.png") top right / 32% auto no-repeat !important;
+    background-blend-mode: screen;
+  }
+
+  #contact .contact-grid > div::before {
+    content: "12 联系方式 / CONTACT";
+  }
+
+  #contact .contact-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    margin-top: 1rem !important;
+  }
+
+  #contact .contact-list a {
+    min-height: 56px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 1180px) {
+  .nav-system {
+    display: none;
+  }
+
+  .nav.container {
+    grid-template-columns: auto 1fr auto !important;
+  }
+
+  #projects .phone-scene-label h2 {
+    font-size: clamp(3rem, 7.4vw, 5rem) !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid {
+    min-height: 560px !important;
+    height: 560px !important;
+    padding: 0 42px !important;
+  }
+
+  #projects .project-card:nth-child(1) {
+    transform: translateX(-270px) translateY(12px) scale(0.72) rotate(-7deg) !important;
+  }
+
+  #projects .project-card:nth-child(2) {
+    transform: translateX(-95px) translateY(-2px) scale(0.84) rotate(-3deg) !important;
+  }
+
+  #projects .project-card:nth-child(3) {
+    transform: translateX(98px) translateY(-2px) scale(0.84) rotate(3deg) !important;
+  }
+
+  #projects .project-card:nth-child(4) {
+    transform: translateX(280px) translateY(12px) scale(0.72) rotate(7deg) !important;
+  }
+
+  #resume .game-exp-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 980px) {
+  .brand-version,
+  .side-rail,
+  .system-status-bar {
+    display: none !important;
+  }
+
+  .nav.container {
+    width: calc(100% - 24px) !important;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  #home .hero-advantages {
+    display: grid !important;
+    gap: 0.75rem !important;
+  }
+
+  #projects .docs-grid,
+  #resume .resume-panel-grid,
+  #about .about-grid,
+  #contact .contact-list,
+  #resume .game-exp-groups {
+    grid-template-columns: 1fr !important;
+  }
+
+  #projects .phone-scene-label {
+    display: block !important;
+  }
+
+  #projects .phone-scene-label::after {
+    display: none !important;
+  }
+}
+
+/* Stage pass: closer to the full-screen reference layout. */
+@media (min-width: 981px) {
+  html {
+    scroll-padding-top: 68px;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 62% 46%, rgba(66, 142, 255, 0.13), transparent 24rem),
+      radial-gradient(circle at 42% 22%, rgba(122, 77, 255, 0.16), transparent 28rem),
+      linear-gradient(180deg, #030409 0%, #05050b 100%) !important;
+  }
+
+  .site-header {
+    height: 58px !important;
+    background: linear-gradient(180deg, rgba(5, 6, 14, 0.94), rgba(5, 6, 14, 0.72)) !important;
+  }
+
+  .nav.container {
+    min-height: 58px !important;
+    width: min(1480px, calc(100% - 86px)) !important;
+  }
+
+  .nav-links a {
+    min-width: auto;
+    padding: 0.46rem 0.72rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .side-rail {
+    display: block !important;
+    position: fixed !important;
+    left: 1.45rem !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+    z-index: 60 !important;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-family: "Patrick Hand", monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.36em !important;
+  }
+
+  .ai-console {
+    right: 5.7rem !important;
+    bottom: 7.2rem !important;
+    z-index: 70 !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .ai-orb {
+    width: 118px !important;
+    height: 118px !important;
+    background:
+      radial-gradient(circle at 38% 32%, rgba(255, 255, 255, 0.62), transparent 22%),
+      radial-gradient(circle, rgba(151, 99, 255, 0.98), rgba(63, 38, 166, 0.92) 58%, rgba(8, 10, 20, 0.8) 62%) !important;
+    box-shadow:
+      0 0 32px rgba(122, 77, 255, 0.48),
+      0 0 0 15px rgba(122, 77, 255, 0.08),
+      0 0 0 34px rgba(95, 176, 255, 0.035) !important;
+  }
+
+  .ai-console small {
+    min-width: 156px;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid rgba(235, 226, 202, 0.62);
+    border-radius: 999px;
+    background: rgba(5, 7, 14, 0.7);
+    color: #fff;
+    font-family: "Patrick Hand", monospace;
+    letter-spacing: 0.08em;
+  }
+
+  .system-status-bar {
+    position: fixed !important;
+    left: 4.2rem !important;
+    right: 4.2rem !important;
+    bottom: 1rem !important;
+    z-index: 75 !important;
+    padding-top: 0.65rem;
+    border-top: 1px solid rgba(228, 232, 255, 0.24) !important;
+  }
+
+  #home.hero,
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section {
+    width: min(1480px, calc(100% - 86px)) !important;
+    min-height: calc(100vh - 58px) !important;
+    margin: 0 auto !important;
+    padding: 58px 0 78px !important;
+  }
+
+  #home.hero {
+    display: block !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  #home .hero-content,
+  #home .mission-panel,
+  #home .hero-showcase,
+  #home .hero-advantages article,
+  #projects .phone-scene-label,
+  #projects .phone-screen,
+  #resume .section-head,
+  #resume .resume-shell,
+  #about .section-head,
+  #about .about-grid .card,
+  #contact .container,
+  #contact .contact-grid > div {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #home .hero-content {
+    position: absolute !important;
+    left: 1.6rem !important;
+    top: 14vh !important;
+    z-index: 12 !important;
+    width: min(560px, 45vw) !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    backdrop-filter: none !important;
+  }
+
+  #home .hero-content::before,
+  #home .hero-content::after {
+    content: none !important;
+  }
+
+  #home .hud-status {
+    display: none !important;
+  }
+
+  #home .eyebrow {
+    font-size: 0.86rem !important;
+    letter-spacing: 0.22em !important;
+    color: rgba(179, 153, 255, 0.9) !important;
+  }
+
+  #home .hero-cn-name {
+    display: block !important;
+    margin-bottom: 0.28rem !important;
+    font-size: clamp(2rem, 3vw, 3rem) !important;
+    color: #fff !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  #home .hero-os-title {
+    font-size: clamp(5.2rem, 10vw, 10.2rem) !important;
+    line-height: 0.76 !important;
+    letter-spacing: -0.08em !important;
+    color: #f4efe6 !important;
+    text-shadow:
+      4px 0 0 rgba(122, 77, 255, 0.82),
+      0 0 32px rgba(122, 77, 255, 0.38) !important;
+  }
+
+  #home .hero-text {
+    margin-top: 1.35rem !important;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(122, 77, 255, 0.92);
+    max-width: 520px !important;
+    color: rgba(245, 247, 255, 0.9) !important;
+    font-size: 1.08rem !important;
+  }
+
+  #home .hero-metrics {
+    margin-top: 1rem !important;
+    gap: 0.55rem !important;
+  }
+
+  #home .hero-actions {
+    margin-top: 4.8rem !important;
+  }
+
+  #home .hero-actions .btn {
+    min-width: 170px !important;
+    border-radius: 10px !important;
+    background: linear-gradient(135deg, rgba(122, 77, 255, 0.95), rgba(79, 54, 217, 0.95)) !important;
+  }
+
+  #home .character-stage {
+    left: 43% !important;
+    top: 5.5vh !important;
+    width: min(650px, 48vw) !important;
+    height: min(760px, 78vh) !important;
+    z-index: 10 !important;
+  }
+
+  #home .mission-panel {
+    position: absolute !important;
+    right: 5.1rem !important;
+    bottom: 7.9rem !important;
+    z-index: 66 !important;
+    width: 210px !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  #home .mission-panel::before,
+  #home .mission-panel ul {
+    display: none !important;
+  }
+
+  #home .mission-panel .eyebrow {
+    position: absolute;
+    left: 50%;
+    top: -42px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  #home .mission-panel h2 {
+    width: 118px !important;
+    height: 118px !important;
+    margin: 0 auto !important;
+  }
+
+  #home .hero-advantages {
+    display: none !important;
+  }
+
+  #home .hero-showcase {
+    position: absolute !important;
+    left: 40%;
+    right: 4rem;
+    top: 10vh;
+    bottom: 16vh;
+    z-index: 4 !important;
+    display: block !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    opacity: 0.58;
+    pointer-events: none;
+  }
+
+  #home .showcase-card {
+    position: absolute !important;
+    width: 250px !important;
+    height: 150px !important;
+    border: 1px solid rgba(95, 176, 255, 0.38) !important;
+    border-radius: 8px !important;
+    background: rgba(12, 16, 30, 0.28) !important;
+    overflow: hidden;
+  }
+
+  #home .showcase-card:nth-child(1) {
+    right: 7%;
+    top: 0;
+    transform: rotate(-3deg);
+  }
+
+  #home .showcase-card:nth-child(2) {
+    right: 0;
+    top: 34%;
+    transform: rotate(2deg) scale(1.12);
+    opacity: 0.75;
+  }
+
+  #home .showcase-card:nth-child(3) {
+    left: 4%;
+    bottom: 2%;
+    transform: rotate(-5deg);
+  }
+
+  #home .showcase-card:nth-child(4) {
+    right: 19%;
+    bottom: 8%;
+    transform: rotate(4deg);
+  }
+
+  #home .showcase-card img {
+    filter: saturate(0.9) brightness(0.54) blur(0.2px) !important;
+  }
+
+  #projects.section {
+    position: relative;
+    overflow: hidden !important;
+  }
+
+  #projects .phone-scene-label {
+    position: absolute !important;
+    left: 0;
+    top: 10vh;
+    z-index: 8;
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  #projects .phone-scene-label .eyebrow {
+    text-align: center;
+    color: rgba(228, 232, 255, 0.54) !important;
+  }
+
+  #projects .phone-scene-label h2 {
+    margin: 0 auto !important;
+    max-width: none !important;
+    text-align: center !important;
+    font-size: clamp(4.8rem, 8vw, 8.5rem) !important;
+    line-height: 0.86 !important;
+    color: #f4efe6 !important;
+    text-shadow: 4px 0 0 rgba(122, 77, 255, 0.72) !important;
+  }
+
+  #projects .phone-scene-label::before {
+    content: "06 · PROJECTS · 精选作品 · SELF-RUN SYSTEM" !important;
+    display: block;
+    text-align: center;
+    margin-bottom: 0.55rem;
+    color: rgba(179, 153, 255, 0.64);
+    letter-spacing: 0.32em;
+  }
+
+  #projects .phone-scene-label::after {
+    content: "01 · 自营系统 · AI账号 + 衍生品经营 · View project ->" !important;
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    color: rgba(245, 247, 255, 0.72);
+    letter-spacing: 0.18em;
+  }
+
+  #projects .phone-device,
+  #projects .phone-hardware,
+  #projects .phone-screen {
+    position: absolute !important;
+    inset: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
+  #projects .filter-row,
+  #projects .docs-section,
+  #projects .phone-screen .section-head {
+    display: none !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    perspective: 1200px !important;
+  }
+
+  #projects .project-grid::before {
+    content: "";
+    display: block !important;
+    position: absolute;
+    left: 28%;
+    right: -18%;
+    top: 33%;
+    height: 160px;
+    z-index: 4;
+    background:
+      repeating-linear-gradient(90deg, rgba(245, 247, 255, 0.72) 0 12px, transparent 12px 30px),
+      linear-gradient(180deg, rgba(6, 8, 14, 0.9), rgba(28, 30, 42, 0.94));
+    border-top: 18px solid rgba(8, 10, 15, 0.96);
+    border-bottom: 18px solid rgba(8, 10, 15, 0.96);
+    transform: rotate(8deg);
+    opacity: 0.92;
+  }
+
+  #projects .project-card {
+    top: 34vh !important;
+    width: min(320px, 24vw) !important;
+    height: min(390px, 44vh) !important;
+    min-height: min(390px, 44vh) !important;
+    z-index: 5;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  #projects .project-card.is-reel-active {
+    transform: translateX(-50%) translateY(-8px) scale(1.18) rotate(-3deg) !important;
+    box-shadow: 0 36px 90px rgba(0, 0, 0, 0.58) !important;
+  }
+
+  #projects .project-card:nth-child(1) {
+    transform: translateX(-470px) translateY(18px) scale(0.92) rotate(-7deg) !important;
+    opacity: 0.26 !important;
+  }
+
+  #projects .project-card:nth-child(2) {
+    transform: translateX(-235px) translateY(4px) scale(1) rotate(-5deg) !important;
+    opacity: 0.5 !important;
+  }
+
+  #projects .project-card:nth-child(3) {
+    transform: translateX(205px) translateY(8px) scale(0.96) rotate(5deg) !important;
+    opacity: 0.42 !important;
+  }
+
+  #projects .project-card:nth-child(4) {
+    transform: translateX(455px) translateY(24px) scale(0.9) rotate(7deg) !important;
+    opacity: 0.2 !important;
+  }
+
+  #projects .project-overlay {
+    padding: 0.9rem !important;
+  }
+
+  #projects .project-number {
+    font-size: clamp(3.6rem, 5vw, 6rem) !important;
+    color: rgba(245, 239, 230, 0.86) !important;
+  }
+
+  #projects .reel-controls {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 20;
+    display: block !important;
+    pointer-events: none;
+  }
+
+  #projects .reel-arrow {
+    position: absolute !important;
+    top: 50%;
+    width: 58px !important;
+    height: 58px !important;
+    border-radius: 10px !important;
+    pointer-events: auto;
+  }
+
+  #projects #reelPrev {
+    left: 0.8rem;
+  }
+
+  #projects #reelNext {
+    right: 0.8rem;
+  }
+
+  #projects .reel-hint {
+    display: block !important;
+    position: absolute !important;
+    left: 50%;
+    bottom: 3.4rem;
+    z-index: 18;
+    transform: translateX(-50%);
+    color: rgba(245, 247, 255, 0.68) !important;
+  }
+
+  #resume.section,
+  #about.section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #resume .section-head,
+  #about .section-head {
+    width: 45% !important;
+    padding: 0 !important;
+    border: 0 !important;
+    margin: 5vh 0 2rem !important;
+  }
+
+  #resume .section-head h2,
+  #about .section-head h2 {
+    font-size: clamp(4rem, 7.2vw, 8rem) !important;
+    line-height: 0.9 !important;
+    color: #f4efe6 !important;
+    text-shadow: 4px 0 0 rgba(122, 77, 255, 0.76) !important;
+  }
+
+  #resume .section-head p,
+  #about .section-head p {
+    font-size: 1.05rem !important;
+    color: rgba(245, 247, 255, 0.8) !important;
+  }
+
+  #resume .resume-shell {
+    display: grid !important;
+    grid-template-columns: 0.85fr 1.15fr !important;
+    gap: 4rem !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  #resume .resume-profile {
+    position: relative !important;
+    top: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #resume .resume-avatar {
+    width: 160px !important;
+    height: 160px !important;
+    border-radius: 18px !important;
+    transform: rotate(-2deg);
+  }
+
+  #resume .resume-panel-grid {
+    position: relative;
+    display: block !important;
+    min-height: 520px;
+  }
+
+  #resume .resume-panel {
+    position: absolute;
+    width: 330px;
+    min-height: 210px;
+    border: 1px solid rgba(245, 247, 255, 0.54) !important;
+    background: rgba(7, 10, 18, 0.35) !important;
+    box-shadow: none !important;
+  }
+
+  #resume .resume-panel:nth-child(1) {
+    left: 0;
+    top: 40px;
+    transform: rotate(-1deg);
+  }
+
+  #resume .resume-panel:nth-child(2) {
+    right: 20px;
+    top: 0;
+    transform: rotate(3deg);
+  }
+
+  #resume .resume-panel:nth-child(3) {
+    left: 70px;
+    bottom: 0;
+    width: min(680px, 100%);
+    transform: rotate(-2deg);
+  }
+
+  #about .about-grid {
+    position: absolute;
+    right: 0;
+    top: 17vh;
+    width: 54%;
+    height: 62vh;
+  }
+
+  #about .about-grid .card {
+    position: absolute;
+    width: 44%;
+    min-height: 220px;
+    border: 1px solid rgba(245, 247, 255, 0.52) !important;
+    background: rgba(7, 10, 18, 0.3) !important;
+  }
+
+  #about .about-grid .card:nth-child(1) {
+    left: 0;
+    top: 8%;
+    transform: rotate(-1deg);
+  }
+
+  #about .about-grid .card:nth-child(2) {
+    right: 0;
+    top: 0;
+    transform: rotate(3deg);
+  }
+
+  #about .about-grid .card:nth-child(3) {
+    left: 12%;
+    bottom: 4%;
+    transform: rotate(-3deg);
+  }
+}
+
+/* Final layout repair: this must stay after the full-screen stage pass. */
+@media (min-width: 981px) {
+  body {
+    padding-top: 58px !important;
+  }
+
+  #home.hero,
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section,
+  html body.projects-mode #projects.section {
+    position: relative !important;
+    top: auto !important;
+    width: min(1480px, calc(100% - 86px)) !important;
+    max-width: none !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    padding: 74px 0 96px !important;
+    overflow: visible !important;
+  }
+
+  #home.hero {
+    min-height: calc(100vh - 58px) !important;
+    display: grid !important;
+    grid-template-columns: minmax(340px, 0.9fr) minmax(420px, 1.12fr) 260px !important;
+    grid-template-rows: minmax(520px, auto) auto !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+  }
+
+  #home .hero-content,
+  #home .mission-panel,
+  #home .hero-showcase,
+  #home .character-stage,
+  #home .hero-advantages,
+  #projects .phone-scene-label,
+  #projects .phone-device,
+  #projects .phone-hardware,
+  #projects .phone-screen,
+  #resume .section-head,
+  #resume .resume-shell,
+  #resume .resume-profile,
+  #resume .resume-panel-grid,
+  #resume .resume-panel,
+  #about .section-head,
+  #about .about-grid,
+  #about .about-grid .card {
+    position: relative !important;
+    inset: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+
+  #home .hero-content {
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 2 !important;
+    width: 100% !important;
+    min-height: 520px !important;
+    padding: clamp(1.5rem, 2.4vw, 2.5rem) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    border: 1px solid rgba(116, 97, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background: linear-gradient(180deg, rgba(8, 12, 22, 0.5), rgba(4, 7, 14, 0.18)) !important;
+  }
+
+  #home .hero-content::before,
+  #home .hero-content::after {
+    content: none !important;
+  }
+
+  #home .hero-os-title {
+    font-size: clamp(4.2rem, 7vw, 8.2rem) !important;
+    line-height: 0.8 !important;
+  }
+
+  #home .hero-actions {
+    margin-top: 2rem !important;
+  }
+
+  #home .character-stage {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 / 2 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 520px !important;
+    display: grid !important;
+    place-items: end center !important;
+  }
+
+  #home .character-portrait {
+    max-width: min(620px, 100%) !important;
+    max-height: 620px !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  #home .mission-panel {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 2 !important;
+    align-self: center !important;
+    width: 100% !important;
+    min-height: 360px !important;
+    padding: 1rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.48) !important;
+  }
+
+  #home .mission-panel::before {
+    display: block !important;
+    content: "04 AI 悬浮组件 / AI WIDGET";
+  }
+
+  #home .mission-panel .eyebrow {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+  }
+
+  #home .mission-panel h2 {
+    width: 136px !important;
+    height: 136px !important;
+    margin: 1.2rem auto !important;
+  }
+
+  #home .mission-panel ul {
+    display: grid !important;
+  }
+
+  #home .hero-advantages {
+    display: none !important;
+  }
+
+  #home .hero-showcase {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 / 3 !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    width: 100% !important;
+    min-height: 190px !important;
+    padding: 2.7rem 1rem 1rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.22) !important;
+    border-radius: 8px !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  #home .showcase-card,
+  #home .showcase-card:nth-child(1),
+  #home .showcase-card:nth-child(2),
+  #home .showcase-card:nth-child(3),
+  #home .showcase-card:nth-child(4) {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: 148px !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  #projects .phone-scene-label {
+    width: 100% !important;
+    padding: 1.2rem 1.25rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.42) !important;
+    display: grid !important;
+  }
+
+  #projects .phone-scene-label h2 {
+    text-align: left !important;
+    font-size: clamp(3.2rem, 6vw, 6.2rem) !important;
+    line-height: 0.9 !important;
+  }
+
+  #projects .phone-scene-label .eyebrow,
+  #projects .phone-scene-label::before,
+  #projects .phone-scene-label::after {
+    text-align: left !important;
+  }
+
+  #projects .phone-screen,
+  html body.projects-mode #projects .phone-screen {
+    margin-top: 16px !important;
+    border-radius: 8px !important;
+    background:
+      linear-gradient(180deg, rgba(8, 12, 22, 0.72), rgba(5, 8, 16, 0.92)),
+      url("./assets/ui/ref-slices/05-mid-cards.png") center / cover no-repeat !important;
+    overflow: hidden !important;
+  }
+
+  #projects .filter-row,
+  #projects .docs-section,
+  #projects .phone-screen .section-head {
+    display: flex !important;
+  }
+
+  #projects .docs-section,
+  #projects .phone-screen .section-head {
+    display: block !important;
+  }
+
+  #projects .filter-row {
+    margin: 1rem !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid,
+  html body.projects-mode #projects .project-grid,
+  html body.projects-mode #projects .phone-screen .project-grid {
+    position: relative !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 1rem !important;
+    overflow: visible !important;
+    perspective: none !important;
+  }
+
+  #projects .project-grid::before {
+    display: none !important;
+  }
+
+  #projects .project-card,
+  #projects .project-card:nth-child(1),
+  #projects .project-card:nth-child(2),
+  #projects .project-card:nth-child(3),
+  #projects .project-card:nth-child(4),
+  #projects .project-card.is-reel-active,
+  html body.projects-mode #projects .project-card,
+  html body.projects-mode #projects .project-card.is-reel-active {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: clamp(360px, 34vw, 460px) !important;
+    min-height: clamp(360px, 34vw, 460px) !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    z-index: auto !important;
+    pointer-events: auto !important;
+    border: 1px solid rgba(116, 97, 255, 0.22) !important;
+    background: rgba(8, 10, 18, 0.66) !important;
+  }
+
+  #projects .reel-controls {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0.75rem !important;
+    margin: 0.5rem 0 0 !important;
+    pointer-events: auto !important;
+  }
+
+  #projects .reel-arrow,
+  #projects #reelPrev,
+  #projects #reelNext {
+    position: relative !important;
+    inset: auto !important;
+    width: 44px !important;
+    height: 44px !important;
+    top: auto !important;
+  }
+
+  #projects .reel-hint {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0.7rem 0 1rem !important;
+    text-align: center !important;
+  }
+
+  #projects .docs-section {
+    margin: 1rem !important;
+  }
+
+  #resume .section-head,
+  #about .section-head {
+    width: 100% !important;
+    margin: 0 0 1rem !important;
+    padding: 1.2rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.42) !important;
+  }
+
+  #resume .section-head h2,
+  #about .section-head h2 {
+    font-size: clamp(3.2rem, 6vw, 6.2rem) !important;
+  }
+
+  #resume .resume-shell {
+    display: grid !important;
+    grid-template-columns: 360px minmax(0, 1fr) !important;
+    gap: 18px !important;
+    padding: 1rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.2) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.38) !important;
+  }
+
+  #resume .resume-profile {
+    position: sticky !important;
+    top: 78px !important;
+    padding: 1.1rem !important;
+    border: 1px solid rgba(116, 97, 255, 0.2) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.45) !important;
+  }
+
+  #resume .resume-panel-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    min-height: 0 !important;
+  }
+
+  #resume .resume-panel,
+  #resume .resume-panel:nth-child(1),
+  #resume .resume-panel:nth-child(2),
+  #resume .resume-panel:nth-child(3) {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    min-height: 230px !important;
+    transform: none !important;
+  }
+
+  #resume .game-exp-panel {
+    grid-column: 1 / -1 !important;
+  }
+
+  #about .about-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  #about .about-grid .card,
+  #about .about-grid .card:nth-child(1),
+  #about .about-grid .card:nth-child(2),
+  #about .about-grid .card:nth-child(3) {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    min-height: 260px !important;
+    transform: none !important;
+  }
+}
+
+/* EOF overlay alignment: shared safe area for bottom status and AI. */
+@media (min-width: 981px) {
+  :root {
+    --stage-safe-x: clamp(48px, 4.8vw, 72px);
+    --stage-safe-bottom: 18px;
+  }
+
+  .os-hud {
+    display: none !important;
+  }
+
+  .side-rail {
+    position: fixed !important;
+    left: calc(var(--stage-safe-x) - 34px) !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    width: auto !important;
+    transform: translateY(-50%) !important;
+    z-index: 60 !important;
+    pointer-events: none !important;
+  }
+
+  .system-status-bar {
+    position: fixed !important;
+    left: var(--stage-safe-x) !important;
+    right: var(--stage-safe-x) !important;
+    bottom: var(--stage-safe-bottom) !important;
+    width: auto !important;
+    height: 42px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.72rem !important;
+    padding: 0 !important;
+    border-top: 1px solid rgba(228, 232, 255, 0.28) !important;
+    background: transparent !important;
+    z-index: 90 !important;
+    overflow: visible !important;
+  }
+
+  .system-status-bar span {
+    min-height: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+    padding: 0.36rem 0.8rem !important;
+    font-size: 0.74rem !important;
+    line-height: 1 !important;
+  }
+
+  .ai-console {
+    position: fixed !important;
+    left: auto !important;
+    top: auto !important;
+    right: calc(var(--stage-safe-x) + 18px) !important;
+    bottom: calc(var(--stage-safe-bottom) + 74px) !important;
+    z-index: 95 !important;
+    display: grid !important;
+    justify-items: center !important;
+    gap: 0.72rem !important;
+    width: 156px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .ai-orb {
+    width: 112px !important;
+    height: 112px !important;
+    margin: 0 !important;
+    border-radius: 999px !important;
+  }
+
+  .ai-console small {
+    position: relative !important;
+    min-width: 152px !important;
+    max-width: 152px !important;
+    margin: 0 !important;
+    padding: 0.35rem 0.65rem !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  #home.hero,
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section,
+  html body.projects-mode #projects.section {
+    width: calc(100% - (var(--stage-safe-x) * 2)) !important;
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 981px) {
+  .ai-console {
+    right: var(--stage-safe-x) !important;
+    bottom: calc(var(--stage-safe-bottom) + 58px) !important;
+    width: 124px !important;
+  }
+
+  .ai-orb {
+    width: 88px !important;
+    height: 88px !important;
+  }
+
+  .ai-console small {
+    min-width: 124px !important;
+    max-width: 124px !important;
+    font-size: 0.66rem !important;
+  }
+
+  .system-status-bar {
+    right: calc(var(--stage-safe-x) + 140px) !important;
+  }
+}
+/* Desktop alignment lock EOF: final authority for floating UI. */
+@media (min-width: 981px) {
+  body > .os-hud {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  body > .system-status-bar {
+    position: fixed !important;
+    left: clamp(54px, 5vw, 76px) !important;
+    right: clamp(54px, 5vw, 76px) !important;
+    bottom: 16px !important;
+    width: auto !important;
+    height: 38px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    overflow: hidden !important;
+    z-index: 120 !important;
+    transform: none !important;
+  }
+
+  body > .system-status-bar span {
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 12px !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+    transform: none !important;
+  }
+
+  body > .ai-console {
+    position: fixed !important;
+    left: auto !important;
+    right: clamp(56px, 5.2vw, 82px) !important;
+    top: auto !important;
+    bottom: 72px !important;
+    width: 132px !important;
+    min-width: 132px !important;
+    max-width: 132px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    gap: 10px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    z-index: 130 !important;
+  }
+
+  body > .ai-console .ai-orb {
+    width: 92px !important;
+    height: 92px !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  body > .ai-console small {
+    width: 132px !important;
+    min-width: 132px !important;
+    max-width: 132px !important;
+    margin: 0 !important;
+    padding: 6px 10px !important;
+    display: block !important;
+    overflow: hidden !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    transform: none !important;
+  }
+
+  body > .side-rail {
+    position: fixed !important;
+    left: 18px !important;
+    top: 50% !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    transform: translateY(-50%) rotate(180deg) !important;
+    z-index: 80 !important;
+  }
+}
+
+/* Final desktop cleanup EOF: this block must stay after every legacy override. */
+@media (min-width: 981px) {
+  :root {
+    --desktop-safe-x: clamp(54px, 5vw, 78px);
+    --panel-dark: rgba(7, 10, 18, 0.82);
+    --panel-deep: rgba(5, 8, 16, 0.94);
+    --panel-line: rgba(112, 96, 255, 0.34);
+    --panel-line-bright: rgba(116, 231, 255, 0.38);
+  }
+
+  #sketchLayer,
+  .sketch-layer,
+  .sketch-item,
+  .fantasy-stage,
+  .hero-cyber-panels,
+  #home .hero-showcase,
+  #home .showcase-card {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .scroll-scene-video,
+  html body .scroll-scene-video {
+    position: fixed !important;
+    inset: auto calc(var(--desktop-safe-x) + 126px) 76px auto !important;
+    width: min(26vw, 420px) !important;
+    min-width: 320px !important;
+    max-width: 420px !important;
+    height: clamp(104px, 10vw, 150px) !important;
+    object-fit: cover !important;
+    border: 1px solid rgba(244, 238, 255, 0.26) !important;
+    border-radius: 0 !important;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.34) !important;
+    filter: saturate(1.08) contrast(1.04) brightness(0.82) !important;
+    opacity: 0.52 !important;
+    transform: none !important;
+    z-index: 42 !important;
+    pointer-events: none !important;
+  }
+
+  .scroll-scene-grade,
+  html body .scroll-scene-grade {
+    position: fixed !important;
+    inset: auto calc(var(--desktop-safe-x) + 126px) 76px auto !important;
+    width: min(26vw, 420px) !important;
+    min-width: 320px !important;
+    max-width: 420px !important;
+    height: clamp(104px, 10vw, 150px) !important;
+    border: 1px solid rgba(116, 97, 255, 0.18) !important;
+    background:
+      linear-gradient(90deg, rgba(5, 7, 12, 0.48), transparent 45%, rgba(122, 77, 255, 0.22)),
+      linear-gradient(180deg, transparent, rgba(5, 7, 12, 0.22)) !important;
+    opacity: 0.82 !important;
+    z-index: 43 !important;
+    pointer-events: none !important;
+  }
+
+  #home.hero,
+  #projects.section,
+  #resume.section,
+  #about.section,
+  #contact.section,
+  html body.projects-mode #projects.section {
+    width: calc(100% - (var(--desktop-safe-x) * 2)) !important;
+    max-width: 1840px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #home.hero {
+    grid-template-columns: minmax(420px, 0.78fr) minmax(520px, 1fr) !important;
+    grid-template-rows: minmax(640px, auto) !important;
+    gap: clamp(24px, 4vw, 70px) !important;
+    min-height: calc(100vh - 66px) !important;
+  }
+
+  #home .hero-content {
+    grid-column: 1 / 2 !important;
+    max-width: 650px !important;
+    min-height: 0 !important;
+    align-self: center !important;
+    background: rgba(7, 10, 18, 0.18) !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  #home .mission-panel {
+    grid-column: 2 / 3 !important;
+    width: min(360px, 42%) !important;
+    min-height: 220px !important;
+    justify-self: end !important;
+    align-self: center !important;
+    background: rgba(7, 10, 18, 0.26) !important;
+    border-color: rgba(116, 97, 255, 0.16) !important;
+  }
+
+  #home .mission-panel::before,
+  #home .hero-metrics,
+  #home .hero-advantages {
+    display: none !important;
+  }
+
+  #home .mission-panel h2 {
+    width: auto !important;
+    height: auto !important;
+    margin: 0.8rem 0 !important;
+  }
+
+  #projects.section,
+  html body.projects-mode #projects.section {
+    min-height: calc(100vh - 66px) !important;
+    padding-top: 92px !important;
+    padding-bottom: 120px !important;
+  }
+
+  #projects .phone-scene-label {
+    margin: 0 0 14px !important;
+    padding: 28px 42px !important;
+    background: rgba(7, 10, 18, 0.58) !important;
+    border: 1px solid var(--panel-line) !important;
+    border-radius: 8px !important;
+  }
+
+  #projects .phone-scene-label h2 {
+    font-size: clamp(3.2rem, 4.8vw, 5.8rem) !important;
+    line-height: 0.92 !important;
+    color: #fffdf8 !important;
+    text-shadow: 4px 0 0 rgba(122, 77, 255, 0.72) !important;
+  }
+
+  #projects .phone-screen,
+  html body.projects-mode #projects .phone-screen {
+    margin-top: 0 !important;
+    padding: 0 0 28px !important;
+    background: rgba(5, 8, 16, 0.54) !important;
+    border: 1px solid rgba(116, 231, 255, 0.2) !important;
+    border-radius: 8px !important;
+    overflow: visible !important;
+  }
+
+  #projects .filter-row {
+    margin: 14px !important;
+    padding: 10px 12px !important;
+    min-height: 58px !important;
+    background: rgba(8, 11, 20, 0.66) !important;
+    border: 1px solid rgba(116, 231, 255, 0.2) !important;
+    border-radius: 8px !important;
+    gap: 12px !important;
+  }
+
+  #projects .reel-controls,
+  #projects .reel-hint {
+    display: none !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid,
+  html body.projects-mode #projects .project-grid,
+  html body.projects-mode #projects .phone-screen .project-grid {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 18px 20px 10px !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  #projects .project-card,
+  #projects .project-card:nth-child(1),
+  #projects .project-card:nth-child(2),
+  #projects .project-card:nth-child(3),
+  #projects .project-card:nth-child(4),
+  #projects .project-card.is-reel-active,
+  html body.projects-mode #projects .project-card,
+  html body.projects-mode #projects .project-card.is-reel-active {
+    position: relative !important;
+    inset: auto !important;
+    left: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: clamp(300px, 24vw, 390px) !important;
+    min-height: clamp(300px, 24vw, 390px) !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    z-index: 1 !important;
+    pointer-events: auto !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(116, 231, 255, 0.28) !important;
+    background: rgba(7, 10, 18, 0.72) !important;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  #projects .project-card .project-media {
+    height: 100% !important;
+    opacity: 1 !important;
+  }
+
+  #projects .project-card .project-media img {
+    opacity: 1 !important;
+    filter: saturate(1.08) contrast(1.06) brightness(1.04) !important;
+  }
+
+  #projects .project-overlay {
+    inset: auto 0 0 0 !important;
+    height: auto !important;
+    min-height: 42% !important;
+    padding: 18px !important;
+    justify-content: flex-end !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(5, 8, 16, 0.28) 24%, rgba(5, 8, 16, 0.92) 100%) !important;
+  }
+
+  #projects .project-overlay h3,
+  #projects .project-overlay p,
+  #projects .project-specs,
+  #projects .tags {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    color: rgba(245, 247, 255, 0.92) !important;
+  }
+
+  #projects .docs-section {
+    margin: 18px 20px 0 !important;
+    background: rgba(7, 10, 18, 0.72) !important;
+    border: 1px solid rgba(116, 231, 255, 0.18) !important;
+  }
+
+  #resume.section {
+    min-height: calc(100vh - 66px) !important;
+    padding-top: 92px !important;
+    padding-bottom: 120px !important;
+    background: transparent !important;
+    color: #f5f7ff !important;
+  }
+
+  #resume .container {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  #resume .section-head {
+    width: 100% !important;
+    margin: 0 0 18px !important;
+    padding: 28px 42px !important;
+    border: 1px solid var(--panel-line) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.58) !important;
+  }
+
+  #resume .section-head h2 {
+    font-size: clamp(3.2rem, 4.8vw, 5.8rem) !important;
+    line-height: 0.92 !important;
+    color: #fffdf8 !important;
+    text-shadow: 4px 0 0 rgba(122, 77, 255, 0.72) !important;
+  }
+
+  #resume .section-head p {
+    max-width: 980px !important;
+    color: rgba(245, 247, 255, 0.72) !important;
+  }
+
+  #resume .resume-shell {
+    display: grid !important;
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.8fr) !important;
+    gap: 18px !important;
+    padding: 20px !important;
+    border: 1px solid rgba(116, 231, 255, 0.2) !important;
+    border-radius: 8px !important;
+    background: rgba(5, 8, 16, 0.54) !important;
+  }
+
+  #resume .resume-profile,
+  #resume .resume-panel,
+  #resume .game-exp-group,
+  #resume .resume-shell .card {
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    transform: none !important;
+    border: 1px solid rgba(116, 231, 255, 0.22) !important;
+    border-radius: 8px !important;
+    background: rgba(7, 10, 18, 0.76) !important;
+    color: #f5f7ff !important;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  #resume .resume-profile {
+    padding: 24px !important;
+    align-self: start !important;
+    position: sticky !important;
+    top: 88px !important;
+  }
+
+  #resume .resume-avatar {
+    width: 190px !important;
+    height: 190px !important;
+    border-radius: 8px !important;
+    transform: none !important;
+    filter: grayscale(0.15) contrast(1.02) !important;
+  }
+
+  #resume .resume-panel-grid {
+    position: relative !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    min-height: 0 !important;
+  }
+
+  #resume .resume-panel {
+    padding: 24px !important;
+  }
+
+  #resume .game-exp-panel {
+    grid-column: 1 / -1 !important;
+  }
+
+  #resume .game-exp-groups {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  #resume .project-exp-item,
+  #resume .plain-list li,
+  #resume .game-exp-group {
+    background: rgba(11, 15, 28, 0.74) !important;
+    border-color: rgba(116, 97, 255, 0.22) !important;
+  }
+
+  #resume .resume-panel h3,
+  #resume .resume-profile h3,
+  #resume .game-exp-group h4,
+  #resume .item-title {
+    color: #fffdf8 !important;
+  }
+
+  #resume .item-meta,
+  #resume .plain-list,
+  #resume .resume-intro,
+  #resume .resume-contact-list p,
+  #resume .resume-role {
+    color: rgba(245, 247, 255, 0.72) !important;
+  }
+}
+/* Ultimate EOF override: hero video full-screen, aligned projects, readable about. */
+@media (min-width: 981px) {
+  .scroll-scene-video,
+  html body .scroll-scene-video {
+    position: fixed !important;
+    inset: 66px 0 0 0 !important;
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: none !important;
+    height: calc(100vh - 66px) !important;
+    min-height: calc(100vh - 66px) !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    filter: saturate(1.05) contrast(1.03) brightness(0.78) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    transform: none !important;
+  }
+
+  .scroll-scene-grade,
+  html body .scroll-scene-grade {
+    position: fixed !important;
+    inset: 66px 0 0 0 !important;
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: none !important;
+    height: calc(100vh - 66px) !important;
+    min-height: calc(100vh - 66px) !important;
+    border: 0 !important;
+    background:
+      linear-gradient(90deg, rgba(4, 5, 10, 0.52), rgba(4, 5, 10, 0.14) 42%, rgba(4, 5, 10, 0.42)),
+      linear-gradient(180deg, rgba(4, 5, 10, 0.1), rgba(4, 5, 10, 0.3) 76%, rgba(4, 5, 10, 0.68)) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+
+  body.hero-video-visible .scroll-scene-video,
+  body.hero-video-visible .scroll-scene-grade,
+  html body.hero-video-visible .scroll-scene-video,
+  html body.hero-video-visible .scroll-scene-grade {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  html body.projects-mode .scroll-scene-video,
+  html body.projects-mode .scroll-scene-grade,
+  body:not(.hero-video-visible) .scroll-scene-video,
+  body:not(.hero-video-visible) .scroll-scene-grade {
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  body:not(.hero-video-visible) > .ai-console,
+  body:not(.hero-video-visible) > .system-status-bar {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  #home.hero {
+    z-index: 2 !important;
+    min-height: calc(100vh - 66px) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    background: transparent !important;
+  }
+
+  #home .hero-content,
+  #home .mission-panel,
+  #home .character-stage {
+    position: relative !important;
+    z-index: 4 !important;
+  }
+
+  #projects .project-grid,
+  #projects .phone-screen .project-grid,
+  html body.projects-mode #projects .project-grid,
+  html body.projects-mode #projects .phone-screen .project-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    justify-items: stretch !important;
+    gap: clamp(18px, 1.65vw, 30px) !important;
+    padding: 22px 20px 24px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  #projects .project-card,
+  #projects .project-card:nth-child(1),
+  #projects .project-card:nth-child(2),
+  #projects .project-card:nth-child(3),
+  #projects .project-card:nth-child(4),
+  #projects .project-card.is-reel-active,
+  html body.projects-mode #projects .project-card,
+  html body.projects-mode #projects .project-card.is-reel-active {
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: clamp(390px, 34vw, 560px) !important;
+    min-height: clamp(390px, 34vw, 560px) !important;
+    max-height: 560px !important;
+    margin: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  #projects .project-card .project-media {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+
+  #projects .reel-hint {
+    display: none !important;
+  }
+
+  #about .about-grid {
+    position: relative !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(18px, 1.8vw, 32px) !important;
+    width: 100% !important;
+  }
+
+  #about .about-grid .card,
+  #about .about-grid .card:nth-child(1),
+  #about .about-grid .card:nth-child(2),
+  #about .about-grid .card:nth-child(3) {
+    background: rgba(7, 10, 18, 0.86) !important;
+    border-color: rgba(246, 247, 255, 0.54) !important;
+    box-shadow:
+      0 0 0 1px rgba(116, 231, 255, 0.08) inset,
+      0 24px 70px rgba(0, 0, 0, 0.34) !important;
+  }
+
+  #about .about-grid .card h3 {
+    color: #fffdf8 !important;
+    opacity: 1 !important;
+    font-weight: 800 !important;
+  }
+
+  #about .about-grid .card p {
+    color: rgba(250, 252, 255, 0.9) !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    line-height: 1.85 !important;
+    text-shadow: 0 1px 14px rgba(0, 0, 0, 0.42) !important;
+  }
+}
+/* Ultimate hero clarity EOF: brighter video, readable copy, remove project subtitle line. */
+@media (min-width: 981px) {
+  body.hero-video-visible .scroll-scene-video,
+  html body.hero-video-visible .scroll-scene-video {
+    filter: saturate(1.16) contrast(1.08) brightness(1.02) !important;
+    opacity: 1 !important;
+  }
+
+  body.hero-video-visible .scroll-scene-grade,
+  html body.hero-video-visible .scroll-scene-grade {
+    background:
+      linear-gradient(90deg, rgba(3, 5, 10, 0.3), rgba(3, 5, 10, 0.04) 46%, rgba(3, 5, 10, 0.12)),
+      linear-gradient(180deg, rgba(3, 5, 10, 0.04), rgba(3, 5, 10, 0.1) 70%, rgba(3, 5, 10, 0.24)) !important;
+    opacity: 1 !important;
+  }
+
+  #home .hero-content {
+    padding: clamp(28px, 3vw, 54px) !important;
+    background:
+      linear-gradient(90deg, rgba(3, 5, 10, 0.78), rgba(3, 5, 10, 0.46) 58%, rgba(3, 5, 10, 0.08)) !important;
+    border: 1px solid rgba(116, 231, 255, 0.16) !important;
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.24) !important;
+    backdrop-filter: none !important;
+  }
+
+  #home .eyebrow,
+  #home .hud-status span {
+    color: rgba(246, 249, 255, 0.9) !important;
+    opacity: 1 !important;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.74) !important;
+  }
+
+  #home .hero-cn-name,
+  #home .hero-os-title {
+    color: #fffdf8 !important;
+    opacity: 1 !important;
+    text-shadow:
+      4px 0 0 rgba(122, 77, 255, 0.9),
+      0 4px 24px rgba(0, 0, 0, 0.82) !important;
+    -webkit-text-stroke: 0 !important;
+  }
+
+  #home .hero-text {
+    max-width: 620px !important;
+    padding: 16px 20px !important;
+    color: rgba(255, 255, 255, 0.94) !important;
+    background: rgba(4, 6, 12, 0.52) !important;
+    border-left: 3px solid rgba(122, 77, 255, 0.95) !important;
+    border-radius: 0 8px 8px 0 !important;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+    line-height: 1.8 !important;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8) !important;
+  }
+
+  #home .hero-actions .btn {
+    color: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(5, 8, 16, 0.5) !important;
+    border-color: rgba(116, 231, 255, 0.28) !important;
+    opacity: 1 !important;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.76) !important;
+  }
+
+  #projects .phone-scene-label::after {
+    content: "" !important;
+    display: none !important;
+  }
+}
+/* Navigation and transition polish EOF: fixed top nav, solid hero copy, smoother handoff. */
+@media (min-width: 981px) {
+  html,
+  body {
+    scroll-padding-top: 66px !important;
+  }
+
+  .site-header,
+  html body .site-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 66px !important;
+    z-index: 9999 !important;
+    transform: none !important;
+    margin: 0 !important;
+    background: rgba(5, 7, 13, 0.94) !important;
+    border-bottom: 1px solid rgba(116, 231, 255, 0.22) !important;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.36) !important;
+  }
+
+  .site-header .nav {
+    min-height: 66px !important;
+    height: 66px !important;
+  }
+
+  .scroll-scene-video,
+  .scroll-scene-grade,
+  html body .scroll-scene-video,
+  html body .scroll-scene-grade {
+    transition:
+      opacity 0.72s cubic-bezier(0.22, 0.8, 0.24, 1),
+      visibility 0.72s cubic-bezier(0.22, 0.8, 0.24, 1) !important;
+  }
+
+  body.hero-video-visible .scroll-scene-video,
+  html body.hero-video-visible .scroll-scene-video {
+    filter: saturate(1.18) contrast(1.1) brightness(1.04) !important;
+  }
+
+  #home .hero-fade,
+  #home .hero-content,
+  #home .hero-content *,
+  #home .hero-actions,
+  #home .hero-actions .btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+  }
+
+  #home .hero-fade {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  #home .hero-content {
+    background:
+      linear-gradient(90deg, rgba(3, 5, 10, 0.86), rgba(3, 5, 10, 0.58) 52%, rgba(3, 5, 10, 0.16)) !important;
+  }
+
+  #home .eyebrow,
+  #home .hud-status span {
+    color: #f8fbff !important;
+    letter-spacing: 0.2em !important;
+  }
+
+  #home .hero-cn-name,
+  #home .hero-os-title {
+    color: #fffef8 !important;
+    text-shadow:
+      5px 0 0 rgba(122, 77, 255, 0.95),
+      0 5px 28px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  #home .hero-text {
+    color: #ffffff !important;
+    background: rgba(3, 5, 10, 0.68) !important;
+    font-weight: 800 !important;
+  }
+
+  #projects.section::before,
+  html body.projects-mode #projects.section::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: -140px !important;
+    width: 100vw !important;
+    height: 220px !important;
+    transform: translateX(-50%) !important;
+    background: linear-gradient(180deg, rgba(3, 5, 10, 0), rgba(3, 5, 10, 0.76) 58%, rgba(3, 5, 10, 0.96)) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+  }
+
+  #projects .phone-scene-label {
+    background:
+      linear-gradient(180deg, rgba(7, 10, 18, 0.76), rgba(7, 10, 18, 0.9)) !important;
+    backdrop-filter: blur(6px) !important;
+  }
+}
+/* Finale video and max-readable hero EOF. */
+@media (min-width: 981px) {
+  #home .hero-content {
+    background: rgba(2, 4, 9, 0.94) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    box-shadow:
+      0 0 0 1px rgba(116, 231, 255, 0.12) inset,
+      0 28px 90px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  #home .eyebrow,
+  #home .hud-status span,
+  #home .hero-cn-name,
+  #home .hero-os-title,
+  #home .hero-text,
+  #home .hero-actions .btn {
+    opacity: 1 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  #home .hero-cn-name,
+  #home .hero-os-title {
+    text-shadow:
+      5px 0 0 #6e4cff,
+      -2px 2px 0 #11131c,
+      0 6px 22px #000000 !important;
+  }
+
+  #home .hero-text {
+    background: #020409 !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-left: 5px solid #7a4dff !important;
+    text-shadow: none !important;
+  }
+
+  #home .hero-actions .btn {
+    background: #080b14 !important;
+    border-color: rgba(255, 255, 255, 0.34) !important;
+    text-shadow: none !important;
+  }
+
+  .finale-section {
+    position: relative;
+    min-height: 280vh;
+    margin: 0;
+    padding: 0;
+    background: #03050a;
+    z-index: 3;
+  }
+
+  .finale-sticky {
+    position: sticky;
+    top: 66px;
+    width: 100%;
+    height: calc(100vh - 66px);
+    overflow: hidden;
+    border-top: 1px solid rgba(116, 231, 255, 0.16);
+    border-bottom: 1px solid rgba(116, 231, 255, 0.16);
+  }
+
+  .finale-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.08) contrast(1.06) brightness(0.92);
+  }
+
+  .finale-overlay {
+    position: absolute;
+    left: clamp(54px, 5vw, 78px);
+    bottom: clamp(44px, 7vh, 90px);
+    width: min(620px, 44vw);
+    padding: 24px 28px;
+    background: rgba(3, 5, 10, 0.72);
+    border: 1px solid rgba(116, 231, 255, 0.24);
+    border-radius: 8px;
+  }
+
+  .finale-overlay h2 {
+    margin: 0.4rem 0;
+    font-size: clamp(2.6rem, 4.4vw, 5.4rem);
+    line-height: 0.92;
+    color: #fffdf8;
+    text-shadow: 4px 0 0 rgba(122, 77, 255, 0.82);
+  }
+
+  .finale-overlay p {
+    color: rgba(245, 247, 255, 0.86);
+    font-weight: 700;
+  }
+
+  .finale-contact-panel {
+    width: min(680px, calc(100vw - 44px)) !important;
+    min-height: 0 !important;
+  }
+
+  .finale-contact-content {
+    padding: clamp(28px, 4vw, 52px);
+  }
+
+  .finale-contact-content h3 {
+    margin: 0.35rem 0 1rem;
+    font-size: clamp(2.5rem, 5vw, 5.5rem);
+    line-height: 0.92;
+    color: #fffdf8;
+    text-shadow: 4px 0 0 rgba(122, 77, 255, 0.78);
+  }
+
+  .finale-contact-content p {
+    color: rgba(245, 247, 255, 0.78);
+    font-weight: 700;
+  }
+}
+/* Final visibility fix EOF: hero copy above video, no finale frame, no bottom contact section. */
+@media (min-width: 981px) {
+  #home .hero-content {
+    position: relative !important;
+    z-index: 80 !important;
+    isolation: isolate !important;
+    opacity: 1 !important;
+    background: #020409 !important;
+    border: 2px solid rgba(255, 255, 255, 0.32) !important;
+    box-shadow:
+      0 0 0 1px rgba(116, 231, 255, 0.18) inset,
+      0 30px 100px rgba(0, 0, 0, 0.58) !important;
+    mix-blend-mode: normal !important;
+  }
+
+  #home .hero-content::before,
+  #home .hero-content::after {
+    display: none !important;
+  }
+
+  #home .hero-content *,
+  #home .hero-fade,
+  #home .hero-fade *,
+  #home .hud-status,
+  #home .hud-status span,
+  #home .eyebrow,
+  #home h1,
+  #home h1 span,
+  #home .hero-cn-name,
+  #home .hero-os-title,
+  #home .hero-text,
+  #home .hero-actions,
+  #home .hero-actions .btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-image: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  #home .hero-cn-name,
+  #home .hero-os-title {
+    text-shadow:
+      5px 0 0 #6e4cff,
+      -2px 2px 0 #000000,
+      0 7px 24px #000000 !important;
+  }
+
+  #home .hero-text {
+    background: #000000 !important;
+    border: 2px solid rgba(255, 255, 255, 0.36) !important;
+    border-left: 6px solid #7a4dff !important;
+    color: #ffffff !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+  }
+
+  #home .hero-actions .btn {
+    background: #05070d !important;
+    border: 2px solid rgba(255, 255, 255, 0.42) !important;
+    font-weight: 900 !important;
+  }
+
+  .finale-overlay {
+    display: none !important;
+  }
+
+  #contact.section {
+    display: none !important;
+  }
+}
+/* Solid hero replacement EOF: bypass legacy transparent text layer entirely. */
+@media (min-width: 981px) {
+  #home > .hero-content {
+    display: none !important;
+  }
+
+  #home .hero-copy-solid {
+    position: absolute !important;
+    left: clamp(64px, 7vw, 132px) !important;
+    top: clamp(88px, 11vh, 132px) !important;
+    width: min(780px, 58vw) !important;
+    z-index: 999 !important;
+    display: block !important;
+    padding: 30px 36px 34px !important;
+    background: rgba(0, 0, 0, 0.82) !important;
+    border: 2px solid rgba(255, 255, 255, 0.34) !important;
+    border-radius: 8px !important;
+    box-shadow:
+      0 0 0 1px rgba(116, 231, 255, 0.2) inset,
+      0 30px 100px rgba(0, 0, 0, 0.62) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    isolation: isolate !important;
+    pointer-events: auto !important;
+  }
+
+  #home .hero-copy-solid,
+  #home .hero-copy-solid * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-image: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  #home .hero-solid-kicker {
+    margin: 0 0 1.1rem !important;
+    font-size: clamp(1rem, 1.45vw, 1.35rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.18em !important;
+    font-weight: 900 !important;
+    text-shadow: 0 3px 14px #000000 !important;
+  }
+
+  #home .hero-copy-solid h1 {
+    margin: 0 !important;
+    line-height: 0.82 !important;
+  }
+
+  #home .hero-solid-name {
+    display: block !important;
+    margin-bottom: 0.45rem !important;
+    font-size: clamp(2.4rem, 4vw, 4.8rem) !important;
+    line-height: 1 !important;
+    font-weight: 1000 !important;
+    text-shadow:
+      4px 0 0 #6e4cff,
+      -2px 2px 0 #000000,
+      0 6px 20px #000000 !important;
+  }
+
+  #home .hero-solid-title {
+    display: block !important;
+    font-size: clamp(5.6rem, 9vw, 11.8rem) !important;
+    line-height: 0.78 !important;
+    font-weight: 1000 !important;
+    letter-spacing: 0 !important;
+    text-shadow:
+      6px 0 0 #6e4cff,
+      -3px 3px 0 #000000,
+      0 8px 26px #000000 !important;
+  }
+
+  #home .hero-solid-text {
+    max-width: 660px !important;
+    margin: 2.2rem 0 0 !important;
+    padding: 16px 20px !important;
+    background: #000000 !important;
+    border-left: 6px solid #7a4dff !important;
+    border-radius: 0 8px 8px 0 !important;
+    font-size: clamp(1.05rem, 1.45vw, 1.42rem) !important;
+    line-height: 1.75 !important;
+    font-weight: 900 !important;
+    text-shadow: none !important;
+  }
+
+  #home .hero-solid-actions {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    margin-top: 2rem !important;
+  }
+
+  #home .hero-solid-actions a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 58px !important;
+    padding: 0 18px !important;
+    background: #05070d !important;
+    border: 2px solid rgba(255, 255, 255, 0.46) !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    font-weight: 1000 !important;
+    text-decoration: none !important;
+    text-shadow: none !important;
+  }
+}
+/* Compact fixed hero copy EOF: small, left of character, no black panel. */
+@media (min-width: 981px) {
+  #home .hero-copy-solid {
+    position: fixed !important;
+    left: clamp(84px, 8vw, 150px) !important;
+    top: clamp(98px, 14vh, 150px) !important;
+    width: min(470px, 34vw) !important;
+    z-index: 900 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    pointer-events: auto !important;
+    transition:
+      opacity 0.55s cubic-bezier(0.22, 0.8, 0.24, 1),
+      visibility 0.55s cubic-bezier(0.22, 0.8, 0.24, 1) !important;
+  }
+
+  body:not(.hero-video-visible) #home .hero-copy-solid,
+  html body.projects-mode #home .hero-copy-solid {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  body.hero-video-visible #home .hero-copy-solid {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  #home .hero-solid-kicker {
+    margin: 0 0 0.75rem !important;
+    font-size: clamp(0.72rem, 0.92vw, 0.98rem) !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.17em !important;
+    font-weight: 900 !important;
+    text-shadow:
+      0 2px 8px #000000,
+      0 0 18px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  #home .hero-solid-name {
+    margin-bottom: 0.28rem !important;
+    font-size: clamp(1.65rem, 2.4vw, 2.9rem) !important;
+    text-shadow:
+      3px 0 0 #6e4cff,
+      -1px 1px 0 #000000,
+      0 4px 14px #000000 !important;
+  }
+
+  #home .hero-solid-title {
+    font-size: clamp(3.6rem, 5.6vw, 7.2rem) !important;
+    line-height: 0.8 !important;
+    text-shadow:
+      4px 0 0 #6e4cff,
+      -2px 2px 0 #000000,
+      0 6px 18px #000000 !important;
+  }
+
+  #home .hero-solid-text {
+    max-width: 430px !important;
+    margin: 1.25rem 0 0 !important;
+    padding: 0 0 0 14px !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-left: 4px solid #7a4dff !important;
+    border-radius: 0 !important;
+    font-size: clamp(0.88rem, 1.02vw, 1.08rem) !important;
+    line-height: 1.75 !important;
+    font-weight: 900 !important;
+    text-shadow:
+      0 2px 8px #000000,
+      0 0 16px rgba(0, 0, 0, 0.95) !important;
+  }
+
+  #home .hero-solid-actions {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    margin-top: 1.2rem !important;
+  }
+
+  #home .hero-solid-actions a {
+    min-height: 42px !important;
+    padding: 0 12px !important;
+    background: rgba(3, 5, 10, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.55) !important;
+    border-radius: 7px !important;
+    font-size: 0.78rem !important;
+    font-weight: 1000 !important;
+    text-shadow: 0 2px 8px #000000 !important;
+  }
+}
+/* Hero copy scroll exit EOF: centered-left, then exits near video end. */
+@media (min-width: 981px) {
+  #home .hero-copy-solid {
+    left: clamp(92px, 9vw, 170px) !important;
+    top: 54% !important;
+    width: min(500px, 35vw) !important;
+    transform: translateY(calc(-50% + var(--hero-copy-y, 0px))) !important;
+    opacity: var(--hero-copy-opacity, 1) !important;
+    transition: none !important;
+  }
+
+  body.hero-video-visible #home .hero-copy-solid {
+    opacity: var(--hero-copy-opacity, 1) !important;
+    visibility: visible !important;
+  }
+
+  body:not(.hero-video-visible) #home .hero-copy-solid,
+  html body.projects-mode #home .hero-copy-solid {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  #home .hero-solid-kicker {
+    margin-bottom: 0.7rem !important;
+  }
+
+  #home .hero-solid-name {
+    font-size: clamp(1.7rem, 2.25vw, 2.75rem) !important;
+  }
+
+  #home .hero-solid-title {
+    font-size: clamp(3.4rem, 5.25vw, 6.8rem) !important;
+  }
+
+  #home .hero-solid-text {
+    max-width: 460px !important;
+    margin-top: 1.15rem !important;
+  }
+
+  #home .hero-solid-actions {
+    margin-top: 1.1rem !important;
+  }
+}
+/* Hero cleanup EOF: keep only the solid left copy over the video. */
+@media (min-width: 981px) {
+  #home > .hero-content,
+  #home > .mission-panel,
+  #home .hero-content,
+  #home .mission-panel {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  #home .hero-copy-solid {
+    position: fixed !important;
+    left: clamp(92px, 9vw, 168px) !important;
+    top: 56% !important;
+    width: min(500px, 35vw) !important;
+    z-index: 950 !important;
+    transform: translateY(calc(-50% + var(--hero-copy-y, 0px))) !important;
+    opacity: var(--hero-copy-opacity, 1) !important;
+    visibility: visible !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    transition: none !important;
+  }
+
+  body:not(.hero-video-visible) #home .hero-copy-solid,
+  html body.projects-mode #home .hero-copy-solid {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  body.hero-video-visible #home .hero-copy-solid {
+    opacity: var(--hero-copy-opacity, 1) !important;
+    visibility: visible !important;
+  }
+
+  #home .hero-copy-solid,
+  #home .hero-copy-solid * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  #home .hero-solid-kicker {
+    margin: 0 0 0.72rem !important;
+    font-size: clamp(0.72rem, 0.9vw, 0.98rem) !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0.17em !important;
+    font-weight: 1000 !important;
+    text-shadow: 0 2px 8px #000000, 0 0 18px #000000 !important;
+  }
+
+  #home .hero-solid-name {
+    margin: 0 0 0.25rem !important;
+    font-size: clamp(1.7rem, 2.25vw, 2.75rem) !important;
+    font-weight: 1000 !important;
+    text-shadow: 3px 0 0 #6e4cff, -1px 1px 0 #000000, 0 4px 14px #000000 !important;
+  }
+
+  #home .hero-solid-title {
+    font-size: clamp(4rem, 6.2vw, 7.7rem) !important;
+    line-height: 0.78 !important;
+    letter-spacing: 0 !important;
+    font-weight: 1000 !important;
+    text-shadow: 4px 0 0 #6e4cff, -2px 2px 0 #000000, 0 6px 18px #000000 !important;
+  }
+
+  #home .hero-solid-text {
+    max-width: 460px !important;
+    margin: 1.15rem 0 0 !important;
+    padding: 0 0 0 14px !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-left: 4px solid #7a4dff !important;
+    border-radius: 0 !important;
+    font-size: clamp(0.9rem, 1.04vw, 1.1rem) !important;
+    line-height: 1.75 !important;
+    font-weight: 1000 !important;
+    text-shadow: 0 2px 8px #000000, 0 0 16px #000000 !important;
+  }
+
+  #home .hero-solid-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    margin-top: 1.1rem !important;
+  }
+}

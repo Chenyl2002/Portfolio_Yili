@@ -1,0 +1,2778 @@
+/* Final interaction overrides: video-led hero and readable project glass.
+   Bug fixes: reel controls visible, mobile no lock, desktop reel with translateX */
+html body .scroll-scene-video {
+  opacity: 1 !important;
+  filter: saturate(1.08) contrast(1.04) brightness(0.92) !important;
+}
+
+html body .scroll-scene-grade {
+  background:
+    radial-gradient(circle at 50% 45%, transparent 0 30%, rgba(3, 6, 12, 0.08) 58%, rgba(3, 6, 12, 0.42) 100%),
+    linear-gradient(90deg, rgba(3, 6, 12, 0.48), rgba(3, 6, 12, 0.08) 42%, rgba(3, 6, 12, 0.34)),
+    linear-gradient(180deg, rgba(3, 6, 12, 0.1), rgba(3, 6, 12, 0.42)) !important;
+  opacity: calc(0.34 - var(--scene-progress, 0) * 0.12) !important;
+}
+
+html body #home .character-stage,
+html body #home .character-portrait,
+html body #home .character-glow {
+  display: none !important;
+}
+
+html body #home.hero {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 230vh !important;
+  display: block !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+html body #home.hero::before,
+html body #home.hero::after {
+  display: none !important;
+}
+
+html body #home .hero-content {
+  position: sticky !important;
+  top: 92px !important;
+  left: 0 !important;
+  width: min(430px, 36vw) !important;
+  min-height: 0 !important;
+  margin: 0 0 0 clamp(1rem, 3vw, 3rem) !important;
+  padding: 1rem 1rem 1.1rem !important;
+  border-left: 2px solid rgba(83, 232, 255, 0.66) !important;
+  border-radius: 0 8px 8px 0 !important;
+  background: linear-gradient(90deg, rgba(4, 8, 15, 0.58), rgba(4, 8, 15, 0.18)) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(8px) saturate(1.1) !important;
+  opacity: calc(0.08 + (1 - var(--scene-progress, 0) * 1.35) * 0.18) !important;
+  pointer-events: auto !important;
+}
+
+html body #home .hero-os-title,
+html body #home .hero-content h1 {
+  font-size: clamp(3.2rem, 6vw, 5.4rem) !important;
+  line-height: 0.82 !important;
+}
+
+html body #home .hero-text {
+  max-width: 360px !important;
+  font-size: 0.9rem !important;
+  line-height: 1.62 !important;
+}
+
+html body #home .hero-advantages {
+  display: none !important;
+}
+
+html body #home .hero-actions .btn {
+  min-height: 42px !important;
+  padding: 0.55rem 0.8rem !important;
+  font-size: 0.78rem !important;
+  background: rgba(4, 10, 18, 0.34) !important;
+}
+
+html body #home .mission-panel {
+  position: sticky !important;
+  top: 170px !important;
+  float: right !important;
+  width: min(270px, 22vw) !important;
+  margin: 0 clamp(1rem, 3.5vw, 3.2rem) 0 auto !important;
+  padding: 0.85rem !important;
+  background: rgba(4, 10, 18, 0.26) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(7px) !important;
+  opacity: calc(0.06 + (1 - var(--scene-progress, 0) * 1.35) * 0.12) !important;
+}
+
+html body #projects.section {
+  width: min(1180px, calc(100% - 40px)) !important;
+  min-height: auto !important;
+  margin: 0 auto !important;
+  padding: clamp(1.4rem, 3vh, 2.4rem) 0 !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+html body #projects .phone-scene-label,
+html body #projects .phone-screen .section-head,
+html body #projects .filter-row {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0 !important;
+  text-align: left !important;
+}
+
+html body #projects .phone-scene-label {
+  margin-bottom: 0.45rem !important;
+}
+
+html body #projects .phone-scene-label h2 {
+  font-size: clamp(1.65rem, 3vw, 2.7rem) !important;
+  line-height: 1.05 !important;
+}
+
+html body #projects .phone-screen .section-head {
+  display: none !important;
+}
+
+html body #projects .filter-row {
+  margin: 0 0 0.9rem !important;
+  padding: 0.42rem !important;
+  border: 1px solid rgba(142, 230, 255, 0.22) !important;
+  border-radius: 8px !important;
+  background: rgba(3, 8, 14, 0.18) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+html body #projects .phone-device,
+html body #projects .phone-hardware,
+html body #projects .phone-screen {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  transform: none !important;
+}
+
+html body #projects .phone-screen::before,
+html body #projects .phone-screen::after,
+html body #projects .project-grid::before,
+html body #projects .project-grid::after {
+  display: none !important;
+}
+
+/* Bug 11: reel controls and reel-hint should be visible on mobile/tablet.
+   On desktop (projects-mode), they remain hidden since the reel is replaced by the grid layout */
+html body #projects .reel-controls {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 0.7rem !important;
+  margin: 0.7rem 0 0.4rem !important;
+}
+
+html body #projects .reel-hint {
+  display: block !important;
+  text-align: center !important;
+  font-size: 0.72rem !important;
+  color: rgba(142, 230, 255, 0.6) !important;
+  letter-spacing: 0.12em !important;
+  margin: 0.3rem 0 0.8rem !important;
+}
+
+.reel-arrow {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  border: 1px solid rgba(142, 230, 255, 0.32) !important;
+  border-radius: 999px !important;
+  background: rgba(3, 8, 14, 0.32) !important;
+  color: rgba(142, 230, 255, 0.8) !important;
+  font-size: 1.1rem !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, border-color 0.2s ease !important;
+}
+
+.reel-arrow:hover {
+  background: rgba(142, 230, 255, 0.18) !important;
+  border-color: rgba(142, 230, 255, 0.6) !important;
+}
+
+/* Bug 2: Desktop projects-mode — project grid uses translateX reel.
+   The grid is layout-only; overflow hidden + translateX animation applied via --reel-index */
+html body #projects .project-grid,
+html body #projects .phone-screen .project-grid {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 1rem !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  perspective: none !important;
+  transform: none !important;
+}
+
+html body #projects .project-card,
+html body #projects .project-card.is-reel-active,
+html body #projects .project-grid .project-card,
+html body #projects .phone-screen .project-grid .project-card {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 420px !important;
+  min-height: 420px !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  border: 1px solid rgba(142, 230, 255, 0.24) !important;
+  border-radius: 8px !important;
+  background: rgba(3, 8, 14, 0.08) !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2) !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+html body #projects .project-card .project-media,
+html body #projects .project-grid .project-card .project-media,
+html body #projects .phone-screen .project-grid .project-card .project-media {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  height: 100% !important;
+  min-height: 420px !important;
+  opacity: 1 !important;
+}
+
+html body #projects .project-card::before,
+html body #projects .project-card::after {
+  display: none !important;
+}
+
+html body #projects .project-card .project-media img {
+  opacity: 0.95 !important;
+  filter: saturate(1.12) contrast(1.04) brightness(1.18) !important;
+  transform: scale(1.01) !important;
+}
+
+html body #projects .project-card .project-media::after {
+  background:
+    linear-gradient(180deg, transparent 0%, transparent 55%, rgba(2, 5, 10, 0.16) 100%) !important;
+  mix-blend-mode: normal !important;
+}
+
+html body #projects .project-overlay,
+html body #projects .project-grid .project-card .project-overlay {
+  position: absolute !important;
+  inset: auto 0 0 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 42% !important;
+  max-height: 190px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  padding: 1rem !important;
+  color: #fff !important;
+  opacity: 1 !important;
+  transform: none !important;
+  z-index: 5 !important;
+  background: linear-gradient(180deg, transparent, rgba(3, 8, 14, 0.68) 38%, rgba(3, 8, 14, 0.86) 100%) !important;
+}
+
+html body #projects .project-card .project-media {
+  z-index: 1 !important;
+}
+
+html body #projects .project-overlay h3 {
+  font-size: clamp(1.65rem, 2.4vw, 2.45rem) !important;
+  color: #fff !important;
+  text-shadow: 0 0 18px rgba(83, 232, 255, 0.42), 0 2px 18px rgba(0, 0, 0, 0.8) !important;
+}
+
+html body #projects .project-overlay p {
+  display: block !important;
+  font-size: 0.86rem !important;
+  line-height: 1.5 !important;
+  color: rgba(246, 251, 255, 0.88) !important;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.8) !important;
+}
+
+html body #projects::after {
+  display: none !important;
+}
+
+html body.projects-mode .scroll-scene-video,
+html body.projects-mode .scroll-scene-grade {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+html body.projects-mode #projects.section {
+  background:
+    radial-gradient(circle at 50% 110%, rgba(2, 8, 16, 0.16), transparent 42%),
+    linear-gradient(180deg, rgba(5, 10, 18, 0.92), rgba(5, 10, 18, 0.98)) !important;
+  border-radius: 8px !important;
+  padding-inline: 1rem !important;
+}
+
+html body.projects-mode #projects .project-card,
+html body.projects-mode #projects .project-card.is-reel-active,
+html body.projects-mode #projects .project-grid .project-card {
+  background: rgba(7, 16, 26, 0.58) !important;
+  backdrop-filter: none !important;
+}
+
+html body.projects-mode #projects .project-card .project-media img {
+  opacity: 1 !important;
+  filter: saturate(1.14) contrast(1.05) brightness(1.12) !important;
+}
+
+html body.projects-mode #projects .project-card .project-media::after {
+  background:
+    linear-gradient(180deg, transparent 0%, transparent 58%, rgba(2, 5, 10, 0.14) 100%) !important;
+  mix-blend-mode: normal !important;
+}
+
+html body.projects-mode #projects .project-overlay,
+html body.projects-mode #projects .project-grid .project-card .project-overlay {
+  background:
+    linear-gradient(180deg, transparent, rgba(3, 8, 14, 0.65) 38%, rgba(3, 8, 14, 0.82) 100%) !important;
+}
+
+@media (max-width: 1180px) {
+  html body #projects .project-grid,
+  html body #projects .phone-screen .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 980px) {
+  html body #home.hero {
+    min-height: 210vh !important;
+  }
+
+  html body #home .hero-content {
+    top: 74px !important;
+    width: calc(100% - 28px) !important;
+    margin: 0 14px !important;
+    padding: 0.8rem !important;
+    background: linear-gradient(180deg, rgba(4, 8, 15, 0.42), rgba(4, 8, 15, 0.14)) !important;
+  }
+
+  html body #home .mission-panel,
+  html body #home .hero-actions {
+    display: none !important;
+  }
+
+  html body #projects.section {
+    width: calc(100% - 24px) !important;
+    padding-top: 3.2rem !important;
+  }
+
+  html body #projects .project-grid,
+  html body #projects .phone-screen .project-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body #projects .project-card,
+  html body #projects .project-card.is-reel-active,
+  html body #projects .project-grid .project-card {
+    height: 430px !important;
+    min-height: 430px !important;
+  }
+
+  html body #projects .project-card .project-media,
+  html body #projects .project-grid .project-card .project-media {
+    min-height: 430px !important;
+  }
+
+  /* Bug 11: On mobile/tablet (<=980px), show reel controls and hint */
+  html body #projects .reel-controls {
+    display: flex !important;
+  }
+  html body #projects .reel-hint {
+    display: block !important;
+  }
+}
+
+@media (min-width: 981px) {
+  html body.projects-mode::before,
+  html body.projects-mode::after {
+    opacity: 0 !important;
+  }
+
+  html body.projects-mode #projects.section {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 30 !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    overflow: hidden !important;
+    background: #050a12 !important;
+    box-shadow: none !important;
+    padding-top: 96px !important;
+  }
+
+  html body.projects-mode #projects .phone-screen,
+  html body.projects-mode #projects .project-grid {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  /* Bug 2: On desktop projects-mode, hide reel controls since we use full grid */
+  html body.projects-mode .reel-controls,
+  html body.projects-mode .reel-hint {
+    display: none !important;
+  }
+
+  html body.projects-mode #projects .project-grid,
+  html body.projects-mode #projects .phone-screen .project-grid {
+    height: min(430px, calc(100vh - 270px)) !important;
+    align-items: stretch !important;
+  }
+
+  html body.projects-mode #projects .project-card,
+  html body.projects-mode #projects .project-card.is-reel-active,
+  html body.projects-mode #projects .project-grid .project-card {
+    height: min(430px, calc(100vh - 270px)) !important;
+    min-height: min(430px, calc(100vh - 270px)) !important;
+    background: rgba(5, 12, 22, 0.16) !important;
+    border-color: rgba(142, 230, 255, 0.32) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24) !important;
+    backdrop-filter: none !important;
+  }
+
+  html body.projects-mode #projects .project-card .project-media {
+    z-index: 1 !important;
+  }
+
+  html body.projects-mode #projects .project-card .project-media img {
+    opacity: 1 !important;
+    filter: saturate(1.18) contrast(1.08) brightness(1.28) !important;
+  }
+
+  html body.projects-mode #projects .project-card .project-media::after {
+    background:
+      linear-gradient(180deg, transparent 0%, transparent 62%, rgba(83, 232, 255, 0.04) 82%, rgba(2, 5, 10, 0.14) 100%) !important;
+    mix-blend-mode: normal !important;
+  }
+
+  html body.projects-mode #projects .project-overlay,
+  html body.projects-mode #projects .project-grid .project-card .project-overlay {
+    z-index: 4 !important;
+    inset: auto 0 0 0 !important;
+    height: 42% !important;
+    min-height: 0 !important;
+    max-height: 190px !important;
+    justify-content: flex-end !important;
+    background:
+      linear-gradient(180deg, transparent, rgba(3, 8, 14, 0.68) 42%, rgba(3, 8, 14, 0.84) 100%) !important;
+    border-top: 1px solid rgba(142, 230, 255, 0.12) !important;
+  }
+
+  html body.projects-mode #projects .project-number {
+    opacity: 0.88 !important;
+  }
+
+  html body.projects-mode #projects .project-overlay h3,
+  html body.projects-mode #projects .project-overlay p,
+  html body.projects-mode #projects .project-specs,
+  html body.projects-mode #projects .tags {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  /* Bug 2: In non-projects-mode on desktop, the project grid uses translateX reel behavior.
+     --reel-index CSS variable controls the horizontal shift */
+  html body:not(.projects-mode) #projects .project-grid {
+    display: flex !important;
+    overflow: hidden !important;
+    gap: 0 !important;
+    width: 100% !important;
+  }
+
+  html body:not(.projects-mode) #projects .project-grid .project-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    transition: transform 0.52s cubic-bezier(0.2, 0.78, 0.2, 1), opacity 0.4s ease !important;
+  }
+
+  html body:not(.projects-mode) #projects .project-grid .project-card {
+    transform: translateX(calc(var(--reel-index, 0) * -100%)) !important;
+  }
+
+  html body:not(.projects-mode) #projects .project-grid .project-card:not(.is-reel-active) {
+    opacity: 0.4 !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Universal no-morph guard for section transitions. */
+html {
+  scroll-behavior: auto !important;
+}
+
+html body main > section,
+html body #projects.section,
+html body #resume.section,
+html body #about.section,
+html body #contact.section,
+html body #finale.finale-section,
+html body main > section > .container,
+html body #projects .phone-scene-label,
+html body #projects .phone-device,
+html body #projects .phone-hardware,
+html body #projects .phone-screen,
+html body #projects .project-grid,
+html body #projects .project-card,
+html body #projects .project-media,
+html body #projects .project-media img,
+html body #resume .container,
+html body #resume .section-head,
+html body #resume .resume-shell,
+html body #resume .resume-profile,
+html body #resume .resume-panel-grid,
+html body #resume .resume-panel,
+html body #resume .game-exp-group,
+html body #about .container,
+html body #about .section-head,
+html body #about .about-grid,
+html body #about .about-grid .card,
+html body #contact .container,
+html body #contact .contact-grid,
+html body #contact .contact-grid > div {
+  transform: none !important;
+  scale: 1 !important;
+  perspective: none !important;
+  transform-origin: center center !important;
+  transition: none !important;
+}
+
+html body .reveal-up,
+html body .reveal-up.is-visible,
+html body #resume .resume-profile:hover,
+html body #resume .resume-panel:hover,
+html body #resume .game-exp-group:hover,
+html body #resume .resume-shell .card:hover,
+html body #about .about-grid .card:hover {
+  transform: none !important;
+  scale: 1 !important;
+  transition: none !important;
+}
+
+/* Final film reel interaction layer: keep the strip movable and cards hoverable. */
+html body #projects .film-reel-window {
+  overflow: hidden !important;
+}
+
+html body #projects .film-reel-window .project-grid,
+html body #projects .phone-screen .film-reel-window .project-grid,
+html body:not(.projects-mode) #projects .film-reel-window .project-grid,
+html body.projects-mode #projects .film-reel-window .project-grid {
+  display: flex !important;
+  grid-template-columns: none !important;
+  gap: var(--film-gap, clamp(20px, 1.6vw, 34px)) !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  overflow: visible !important;
+  transform: translate3d(var(--reel-shift, 0px), 0, 0) !important;
+  transition: transform 0.72s cubic-bezier(0.18, 0.84, 0.22, 1) !important;
+  will-change: transform !important;
+}
+
+html body #projects .film-reel-window .project-grid.is-reel-reset {
+  transition: none !important;
+}
+
+html body #projects .film-reel-window .reel-controls,
+html body.projects-mode #projects .film-reel-window .reel-controls {
+  position: absolute !important;
+  left: clamp(14px, 1.4vw, 28px) !important;
+  right: clamp(14px, 1.4vw, 28px) !important;
+  top: 50% !important;
+  z-index: 30 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin: 0 !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+
+html body #projects .film-reel-window .reel-arrow {
+  width: clamp(54px, 4.1vw, 74px) !important;
+  height: clamp(54px, 4.1vw, 74px) !important;
+  border: 2px solid rgba(142, 230, 255, 0.58) !important;
+  border-radius: 14px !important;
+  background: rgba(3, 9, 16, 0.72) !important;
+  color: rgba(175, 238, 255, 0.98) !important;
+  font-size: clamp(1.8rem, 2.4vw, 2.55rem) !important;
+  line-height: 1 !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 26px rgba(83, 232, 255, 0.18),
+    0 12px 34px rgba(0, 0, 0, 0.38) !important;
+  backdrop-filter: blur(8px) saturate(1.2) !important;
+  pointer-events: auto !important;
+}
+
+html body #projects .film-reel-window .reel-arrow:hover {
+  border-color: rgba(142, 230, 255, 0.95) !important;
+  background: rgba(24, 56, 76, 0.82) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 0 34px rgba(83, 232, 255, 0.36),
+    0 16px 42px rgba(0, 0, 0, 0.44) !important;
+}
+
+html body #projects .film-reel-window .project-card,
+html body #projects .film-reel-window .project-grid .project-card,
+html body:not(.projects-mode) #projects .film-reel-window .project-grid .project-card,
+html body.projects-mode #projects .film-reel-window .project-grid .project-card {
+  flex: 0 0 clamp(420px, 31vw, 560px) !important;
+  width: clamp(420px, 31vw, 560px) !important;
+  cursor: pointer !important;
+  opacity: 0.42 !important;
+  filter: blur(2px) saturate(0.58) brightness(0.48) contrast(0.92) !important;
+  transform: none !important;
+  transition:
+    opacity 0.24s ease,
+    filter 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease !important;
+}
+
+html body #projects .film-reel-window .project-card:hover,
+html body #projects .film-reel-window .project-card:focus-within,
+html body #projects .film-reel-window .project-card.is-reel-active {
+  opacity: 1 !important;
+  filter: blur(0) saturate(1.22) brightness(1.12) contrast(1.08) !important;
+  border-color: rgba(142, 230, 255, 0.92) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 0 36px rgba(83, 232, 255, 0.1),
+    0 0 0 1px rgba(142, 230, 255, 0.55),
+    0 0 42px rgba(83, 232, 255, 0.58),
+    0 22px 62px rgba(0, 0, 0, 0.5) !important;
+  z-index: 12 !important;
+}
+
+html body #projects .film-reel-window .project-card:not(.is-reel-active):hover {
+  opacity: 0.9 !important;
+  filter: blur(0.4px) saturate(1.02) brightness(0.9) contrast(1.02) !important;
+  border-color: rgba(142, 230, 255, 0.72) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 0 24px rgba(83, 232, 255, 0.34),
+    0 18px 50px rgba(0, 0, 0, 0.44) !important;
+  z-index: 11 !important;
+}
+
+html body #projects .film-reel-window .project-card:hover .project-media img,
+html body #projects .film-reel-window .project-card.is-reel-active .project-media img {
+  filter: saturate(1.12) contrast(1.05) brightness(1.08) !important;
+}
+
+/* Project film reel: horizontal strip with sprocket holes and reel-like scrolling. */
+html body #projects .film-reel-window {
+  --film-gap: clamp(20px, 1.6vw, 34px);
+  position: relative !important;
+  width: 100% !important;
+  margin: clamp(0.8rem, 1.4vw, 1.3rem) 0 0 !important;
+  padding: clamp(42px, 4vw, 58px) 0 !important;
+  overflow: hidden !important;
+  border-top: 1px solid rgba(142, 230, 255, 0.28) !important;
+  border-bottom: 1px solid rgba(142, 230, 255, 0.22) !important;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.92), transparent 10%, transparent 90%, rgba(1, 4, 10, 0.92)),
+    linear-gradient(180deg, rgba(2, 7, 14, 0.86), rgba(3, 6, 12, 0.96)) !important;
+  box-shadow:
+    inset 0 28px 42px rgba(0, 0, 0, 0.52),
+    inset 0 -28px 42px rgba(0, 0, 0, 0.56),
+    0 18px 60px rgba(0, 0, 0, 0.35) !important;
+}
+
+html body #projects .film-reel-window::before,
+html body #projects .film-reel-window::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 24px !important;
+  z-index: 8 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(90deg, rgba(7, 12, 22, 0.9), rgba(7, 12, 22, 0.3) 12%, rgba(7, 12, 22, 0.3) 88%, rgba(7, 12, 22, 0.9)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(150, 225, 255, 0.56) 0 14px,
+      transparent 14px 34px
+    ) !important;
+  opacity: 0.62 !important;
+  mask-image: linear-gradient(#000, #000), radial-gradient(ellipse at center, #000 58%, transparent 62%) !important;
+}
+
+html body #projects .film-reel-window::before {
+  top: 10px !important;
+}
+
+html body #projects .film-reel-window::after {
+  bottom: 10px !important;
+}
+
+html body #projects .film-reel-window .project-grid,
+html body #projects .phone-screen .film-reel-window .project-grid,
+html body:not(.projects-mode) #projects .film-reel-window .project-grid,
+html body.projects-mode #projects .film-reel-window .project-grid {
+  display: flex !important;
+  grid-template-columns: none !important;
+  align-items: stretch !important;
+  gap: var(--film-gap) !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 clamp(10px, 0.9vw, 18px) !important;
+  overflow: visible !important;
+  transform: translate3d(var(--reel-shift, 0px), 0, 0) !important;
+  transition: transform 0.72s cubic-bezier(0.18, 0.84, 0.22, 1) !important;
+  will-change: transform !important;
+}
+
+html body #projects .film-reel-window .project-card,
+html body #projects .film-reel-window .project-grid .project-card,
+html body:not(.projects-mode) #projects .film-reel-window .project-grid .project-card,
+html body.projects-mode #projects .film-reel-window .project-grid .project-card {
+  flex: 0 0 calc((min(1180px, 100vw - 40px) - (var(--film-gap) * 3)) / 4) !important;
+  width: calc((min(1180px, 100vw - 40px) - (var(--film-gap) * 3)) / 4) !important;
+  height: clamp(430px, 32vw, 560px) !important;
+  min-height: clamp(430px, 32vw, 560px) !important;
+  max-height: 560px !important;
+  border: 2px solid rgba(151, 224, 255, 0.28) !important;
+  border-radius: 6px !important;
+  background: rgba(3, 8, 14, 0.92) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.76),
+    0 18px 42px rgba(0, 0, 0, 0.34) !important;
+  opacity: 0.74 !important;
+  filter: saturate(0.86) brightness(0.78) !important;
+  transform: none !important;
+  transition:
+    opacity 0.42s ease,
+    filter 0.42s ease,
+    box-shadow 0.42s ease,
+    border-color 0.42s ease !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-active {
+  opacity: 1 !important;
+  filter: saturate(1.08) brightness(1) !important;
+  border-color: rgba(151, 224, 255, 0.58) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 0 0 1px rgba(95, 176, 255, 0.35),
+    0 22px 58px rgba(0, 0, 0, 0.42),
+    0 0 28px rgba(83, 232, 255, 0.16) !important;
+}
+
+html body #projects .film-reel-window .project-card .project-media img {
+  opacity: 1 !important;
+  filter: saturate(1.02) contrast(1.02) brightness(1) !important;
+}
+
+html body #projects .film-reel-window .project-card::before,
+html body #projects .film-reel-window .project-card::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 18px !important;
+  z-index: 6 !important;
+  display: block !important;
+  pointer-events: none !important;
+  background: linear-gradient(90deg, rgba(1, 4, 10, 0.72), transparent) !important;
+}
+
+html body #projects .film-reel-window .project-card::before {
+  left: 0 !important;
+}
+
+html body #projects .film-reel-window .project-card::after {
+  right: 0 !important;
+  transform: rotate(180deg) !important;
+}
+
+@media (max-width: 980px) {
+  html body #projects .film-reel-window .project-card,
+  html body #projects .film-reel-window .project-grid .project-card {
+    flex-basis: calc((100vw - 72px - var(--film-gap)) / 2) !important;
+    width: calc((100vw - 72px - var(--film-gap)) / 2) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body #projects .film-reel-window .project-card,
+  html body #projects .film-reel-window .project-grid .project-card {
+    flex-basis: calc(100vw - 58px) !important;
+    width: calc(100vw - 58px) !important;
+  }
+}
+
+/* Keep the opening video contained inside the hero instead of using it as a page background. */
+html body #home.hero {
+  position: relative !important;
+  min-height: calc(100vh - 66px) !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+
+html body #home.hero > .scroll-scene-video,
+html body #home.hero > .scroll-scene-grade {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  transform: none !important;
+  pointer-events: none !important;
+}
+
+html body #home.hero > .scroll-scene-video {
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 0 !important;
+}
+
+html body #home.hero > .scroll-scene-grade {
+  opacity: 0.34 !important;
+  visibility: visible !important;
+  z-index: 1 !important;
+}
+
+html body:not(.hero-video-visible) #home.hero > .scroll-scene-video,
+html body:not(.hero-video-visible) #home.hero > .scroll-scene-grade,
+html body.projects-mode #home.hero > .scroll-scene-video,
+html body.projects-mode #home.hero > .scroll-scene-grade {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+@media (min-width: 981px) {
+  html body #home .hero-copy-solid {
+    position: absolute !important;
+    z-index: 5 !important;
+  }
+}
+
+/* Stabilize section changes so entering projects does not create a tiny zoom pulse. */
+@media (min-width: 981px) {
+  html body #projects.section,
+  html body.projects-mode #projects.section,
+  html body #projects .phone-device,
+  html body #projects .phone-hardware,
+  html body #projects .phone-screen,
+  html body #projects .project-grid,
+  html body #projects .project-card,
+  html body #projects .project-media,
+  html body #projects .project-media img {
+    transform: none !important;
+    transition-property: opacity, border-color, background, box-shadow, filter !important;
+  }
+
+  html body #projects .project-card .project-media img,
+  html body.projects-mode #projects .project-card .project-media img {
+    transform: none !important;
+  }
+}
+
+html body #projects.section,
+html body.projects-mode #projects.section,
+html body #projects .phone-device,
+html body #projects .phone-hardware,
+html body #projects .phone-screen,
+html body #projects .project-grid,
+html body #projects .project-card,
+html body #projects .project-media,
+html body #projects .project-media img,
+html body.projects-mode #projects .project-media img {
+  transform: none !important;
+}
+
+html body #projects .project-media img,
+html body.projects-mode #projects .project-media img {
+  transition-property: opacity, border-color, background, box-shadow, filter !important;
+}
+
+html body #projects .project-card .project-media img,
+html body #projects .project-grid .project-card .project-media img,
+html body #projects .phone-screen .project-grid .project-card .project-media img,
+html body.projects-mode #projects .project-card .project-media img,
+html body.projects-mode #projects .project-grid .project-card .project-media img,
+html body.projects-mode #projects .phone-screen .project-grid .project-card .project-media img {
+  transform: none !important;
+  transition-property: opacity, border-color, background, box-shadow, filter !important;
+}
+
+/* Keep the projects section visually identical before and after projects-mode toggles. */
+@media (min-width: 981px) {
+  html body #projects.section,
+  html body.projects-mode #projects.section {
+    position: relative !important;
+    top: auto !important;
+    z-index: auto !important;
+    width: min(1180px, calc(100% - 40px)) !important;
+    max-width: none !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    padding: clamp(1.4rem, 3vh, 2.4rem) 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  html body #projects .phone-scene-label,
+  html body.projects-mode #projects .phone-scene-label {
+    margin: 0 0 0.45rem !important;
+    padding: 0 !important;
+    width: 100% !important;
+    background: transparent !important;
+    transform: none !important;
+  }
+
+  html body #projects .filter-row,
+  html body.projects-mode #projects .filter-row {
+    margin: 0 0 0.9rem !important;
+    padding: 0.42rem !important;
+  }
+
+  html body #projects .phone-device,
+  html body.projects-mode #projects .phone-device,
+  html body #projects .phone-hardware,
+  html body.projects-mode #projects .phone-hardware,
+  html body #projects .phone-screen,
+  html body.projects-mode #projects .phone-screen {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  html body #projects .reel-controls,
+  html body.projects-mode #projects .reel-controls {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0.7rem !important;
+    margin: 0.7rem 0 0.4rem !important;
+  }
+
+  html body #projects .reel-hint,
+  html body.projects-mode #projects .reel-hint {
+    display: block !important;
+  }
+
+  html body #projects .project-grid,
+  html body #projects .phone-screen .project-grid,
+  html body:not(.projects-mode) #projects .project-grid,
+  html body:not(.projects-mode) #projects .phone-screen .project-grid,
+  html body.projects-mode #projects .project-grid,
+  html body.projects-mode #projects .phone-screen .project-grid {
+    position: relative !important;
+    inset: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  html body #projects .project-card,
+  html body #projects .project-card.is-reel-active,
+  html body #projects .project-grid .project-card,
+  html body #projects .phone-screen .project-grid .project-card,
+  html body:not(.projects-mode) #projects .project-grid .project-card,
+  html body.projects-mode #projects .project-card,
+  html body.projects-mode #projects .project-card.is-reel-active,
+  html body.projects-mode #projects .project-grid .project-card {
+    border: 1px solid rgba(142, 230, 255, 0.24) !important;
+    border-radius: 8px !important;
+    background: rgba(3, 8, 14, 0.08) !important;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(4px) !important;
+    flex: initial !important;
+    width: 100% !important;
+    height: 420px !important;
+    min-height: 420px !important;
+    max-height: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  html body:not(.projects-mode) #projects .project-grid .project-card:not(.is-reel-active) {
+    opacity: 1 !important;
+  }
+
+  html body #projects .project-card .project-media img,
+  html body.projects-mode #projects .project-card .project-media img {
+    opacity: 0.95 !important;
+    filter: saturate(1.12) contrast(1.04) brightness(1.18) !important;
+  }
+
+  html body #projects .project-card .project-media::after,
+  html body.projects-mode #projects .project-card .project-media::after {
+    background:
+      linear-gradient(180deg, transparent 0%, transparent 55%, rgba(2, 5, 10, 0.16) 100%) !important;
+    mix-blend-mode: normal !important;
+  }
+
+  html body #projects .project-overlay,
+  html body #projects .project-grid .project-card .project-overlay,
+  html body.projects-mode #projects .project-overlay,
+  html body.projects-mode #projects .project-grid .project-card .project-overlay {
+    z-index: 5 !important;
+    inset: auto 0 0 0 !important;
+    height: auto !important;
+    min-height: 42% !important;
+    max-height: 190px !important;
+    justify-content: flex-end !important;
+    background:
+      linear-gradient(180deg, transparent, rgba(3, 8, 14, 0.68) 38%, rgba(3, 8, 14, 0.86) 100%) !important;
+    border-top: 0 !important;
+  }
+}
+
+/* Desktop no-morph guard: section changes should scroll, not resize or scale. */
+@media (min-width: 981px) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  html body main > section,
+  html body #projects.section,
+  html body #resume.section,
+  html body #about.section,
+  html body #contact.section,
+  html body #finale.finale-section,
+  html body main > section > .container,
+  html body #projects .phone-scene-label,
+  html body #projects .phone-device,
+  html body #projects .phone-hardware,
+  html body #projects .phone-screen,
+  html body #resume .container,
+  html body #resume .section-head,
+  html body #resume .resume-shell,
+  html body #resume .resume-profile,
+  html body #resume .resume-panel-grid,
+  html body #resume .resume-panel,
+  html body #resume .game-exp-group,
+  html body #about .container,
+  html body #about .section-head,
+  html body #about .about-grid,
+  html body #about .about-grid .card,
+  html body #contact .container,
+  html body #contact .contact-grid,
+  html body #contact .contact-grid > div {
+    transform: none !important;
+    scale: 1 !important;
+    perspective: none !important;
+    transform-origin: center center !important;
+    transition-property: opacity, color, background, border-color, box-shadow, filter !important;
+  }
+
+  html body .reveal-up,
+  html body .reveal-up.is-visible {
+    transform: none !important;
+    transition-property: opacity !important;
+  }
+
+  html body #resume .resume-profile:hover,
+  html body #resume .resume-panel:hover,
+  html body #resume .game-exp-group:hover,
+  html body #resume .resume-shell .card:hover,
+  html body #about .about-grid .card:hover {
+    transform: none !important;
+    scale: 1 !important;
+  }
+}
+
+/* Final-final film interaction override. Must stay last. */
+html body #projects .film-reel-window .project-grid,
+html body #projects .phone-screen .film-reel-window .project-grid,
+html body:not(.projects-mode) #projects .film-reel-window .project-grid,
+html body.projects-mode #projects .film-reel-window .project-grid {
+  display: flex !important;
+  grid-template-columns: none !important;
+  gap: var(--film-gap, clamp(20px, 1.6vw, 34px)) !important;
+  width: max-content !important;
+  min-width: 100% !important;
+  overflow: visible !important;
+  transform: translate3d(var(--reel-shift, 0px), 0, 0) !important;
+  transition: transform 0.72s cubic-bezier(0.18, 0.84, 0.22, 1) !important;
+  will-change: transform !important;
+}
+
+html body #projects .film-reel-window .project-grid.is-reel-reset,
+html body.projects-mode #projects .film-reel-window .project-grid.is-reel-reset {
+  transition: none !important;
+}
+
+html body #projects .film-reel-window .reel-controls,
+html body.projects-mode #projects .film-reel-window .reel-controls {
+  position: absolute !important;
+  left: clamp(14px, 1.4vw, 28px) !important;
+  right: clamp(14px, 1.4vw, 28px) !important;
+  top: 50% !important;
+  z-index: 30 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin: 0 !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+}
+
+html body #projects .film-reel-window .reel-arrow {
+  width: clamp(54px, 4.1vw, 74px) !important;
+  height: clamp(54px, 4.1vw, 74px) !important;
+  border: 2px solid rgba(142, 230, 255, 0.72) !important;
+  border-radius: 14px !important;
+  background: rgba(3, 9, 16, 0.72) !important;
+  color: rgba(175, 238, 255, 0.98) !important;
+  font-size: clamp(1.8rem, 2.4vw, 2.55rem) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 28px rgba(83, 232, 255, 0.22),
+    0 12px 34px rgba(0, 0, 0, 0.38) !important;
+  backdrop-filter: blur(8px) saturate(1.2) !important;
+  pointer-events: auto !important;
+}
+
+html body #projects .film-reel-window .reel-arrow:hover {
+  border-color: rgba(142, 230, 255, 1) !important;
+  background: rgba(24, 56, 76, 0.86) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 0 38px rgba(83, 232, 255, 0.42),
+    0 16px 42px rgba(0, 0, 0, 0.44) !important;
+}
+
+html body #projects .film-reel-window .project-card,
+html body #projects .film-reel-window .project-grid .project-card,
+html body:not(.projects-mode) #projects .film-reel-window .project-grid .project-card,
+html body.projects-mode #projects .film-reel-window .project-grid .project-card {
+  flex: 0 0 clamp(420px, 31vw, 560px) !important;
+  width: clamp(420px, 31vw, 560px) !important;
+  cursor: pointer !important;
+  opacity: 0.34 !important;
+  filter: blur(2.6px) saturate(0.5) brightness(0.44) contrast(0.9) !important;
+  transform: none !important;
+  z-index: 1 !important;
+  transition:
+    opacity 0.28s ease,
+    filter 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-active {
+  opacity: 1 !important;
+  filter: blur(0) saturate(1.28) brightness(1.16) contrast(1.1) !important;
+  border-color: rgba(172, 242, 255, 0.98) !important;
+  outline: 3px solid rgba(172, 242, 255, 0.58) !important;
+  outline-offset: 5px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+    inset 0 0 44px rgba(83, 232, 255, 0.16),
+    0 0 0 2px rgba(142, 230, 255, 0.58),
+    0 0 46px rgba(83, 232, 255, 0.68),
+    0 0 90px rgba(99, 92, 255, 0.32),
+    0 24px 66px rgba(0, 0, 0, 0.52) !important;
+  z-index: 12 !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-active .project-media::after {
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(2, 5, 10, 0.1) 48%, rgba(2, 5, 10, 0.56) 100%) !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-active .project-overlay {
+  color: rgba(255, 255, 255, 0.98) !important;
+  text-shadow:
+    0 0 18px rgba(142, 230, 255, 0.44),
+    0 2px 10px rgba(0, 0, 0, 0.72) !important;
+}
+
+html body #projects .film-reel-window .project-card:not(.is-reel-active):hover,
+html body #projects .film-reel-window .project-card:not(.is-reel-active):focus-within {
+  opacity: 0.68 !important;
+  filter: blur(1.35px) saturate(0.82) brightness(0.68) contrast(0.98) !important;
+  border-color: rgba(142, 230, 255, 0.82) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 0 0 1px rgba(142, 230, 255, 0.36),
+    0 0 30px rgba(83, 232, 255, 0.4),
+    0 18px 52px rgba(0, 0, 0, 0.46) !important;
+  z-index: 8 !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-active:hover,
+html body #projects .film-reel-window .project-card.is-reel-active:focus-within {
+  border-color: rgba(214, 251, 255, 1) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.34),
+    inset 0 0 52px rgba(83, 232, 255, 0.22),
+    0 0 0 2px rgba(172, 242, 255, 0.72),
+    0 0 58px rgba(83, 232, 255, 0.78),
+    0 0 110px rgba(99, 92, 255, 0.38),
+    0 26px 72px rgba(0, 0, 0, 0.54) !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-active .project-media img {
+  filter: saturate(1.16) contrast(1.06) brightness(1.1) !important;
+}
+
+/* Absolute final reel focus layer: the visually centered card must be the only clear card. */
+html body #projects .film-reel-window .project-card,
+html body #projects .film-reel-window .project-card:not(.is-reel-center),
+html body #projects .film-reel-window .project-card:not(.is-reel-active) {
+  opacity: 0.3 !important;
+  filter: blur(3px) grayscale(0.08) saturate(0.44) brightness(0.38) contrast(0.86) !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-center,
+html body #projects .film-reel-window .project-card.is-reel-active.is-reel-center {
+  opacity: 1 !important;
+  filter: none !important;
+  border-color: rgba(199, 251, 255, 1) !important;
+  outline: 4px solid rgba(142, 230, 255, 0.72) !important;
+  outline-offset: 6px !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.3),
+    inset 0 0 58px rgba(83, 232, 255, 0.22),
+    0 0 0 3px rgba(142, 230, 255, 0.58),
+    0 0 58px rgba(83, 232, 255, 0.86),
+    0 0 120px rgba(105, 91, 255, 0.48),
+    0 28px 74px rgba(0, 0, 0, 0.58) !important;
+  z-index: 40 !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-center::before {
+  background:
+    linear-gradient(90deg, rgba(142, 230, 255, 0.2), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 34%) !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-center::after {
+  background:
+    radial-gradient(circle at 50% 35%, rgba(180, 249, 255, 0.2), transparent 42%),
+    linear-gradient(270deg, rgba(142, 230, 255, 0.18), transparent 38%) !important;
+  opacity: 1 !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-center .project-media img {
+  opacity: 1 !important;
+  filter: saturate(1.22) contrast(1.08) brightness(1.2) !important;
+}
+
+html body #projects .film-reel-window .project-card.is-reel-center .project-media::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 44%, rgba(2, 5, 10, 0.42) 100%) !important;
+}
+
+/* Static film UI for documentation cards: same reel language, no scrolling. */
+html body #projects .docs-section {
+  --docs-film-gap: clamp(18px, 1.5vw, 30px);
+  position: relative !important;
+  margin: clamp(1.4rem, 2vw, 2.2rem) 0 0 !important;
+  padding: clamp(54px, 4.4vw, 72px) clamp(18px, 2vw, 32px) !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(142, 230, 255, 0.24) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.94), transparent 10%, transparent 90%, rgba(1, 4, 10, 0.94)),
+    linear-gradient(180deg, rgba(2, 7, 14, 0.88), rgba(3, 6, 12, 0.97)) !important;
+  box-shadow:
+    inset 0 30px 48px rgba(0, 0, 0, 0.52),
+    inset 0 -30px 48px rgba(0, 0, 0, 0.58),
+    0 18px 60px rgba(0, 0, 0, 0.32) !important;
+}
+
+html body #projects .docs-section::before,
+html body #projects .docs-section::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 24px !important;
+  z-index: 3 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(90deg, rgba(7, 12, 22, 0.9), rgba(7, 12, 22, 0.3) 12%, rgba(7, 12, 22, 0.3) 88%, rgba(7, 12, 22, 0.9)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(150, 225, 255, 0.54) 0 14px,
+      transparent 14px 34px
+    ) !important;
+  opacity: 0.6 !important;
+}
+
+html body #projects .docs-section::before {
+  top: 12px !important;
+}
+
+html body #projects .docs-section::after {
+  bottom: 12px !important;
+}
+
+html body #projects .docs-section .docs-head {
+  position: relative !important;
+  z-index: 4 !important;
+  margin-bottom: clamp(1.1rem, 1.8vw, 1.7rem) !important;
+}
+
+html body #projects .docs-group {
+  position: relative !important;
+  z-index: 4 !important;
+  margin: 0 0 clamp(1.3rem, 2vw, 2rem) !important;
+}
+
+html body #projects .docs-group:last-child {
+  margin-bottom: 0 !important;
+}
+
+html body #projects .docs-group h4 {
+  margin: 0 0 clamp(0.85rem, 1.2vw, 1.1rem) !important;
+  color: rgba(235, 249, 255, 0.94) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+  text-shadow:
+    0 0 18px rgba(83, 232, 255, 0.38),
+    0 2px 10px rgba(0, 0, 0, 0.86) !important;
+}
+
+html body #projects .docs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: var(--docs-film-gap) !important;
+  overflow: visible !important;
+}
+
+html body #projects .docs-grid .doc-card {
+  min-height: clamp(230px, 18vw, 330px) !important;
+  padding: clamp(10px, 0.9vw, 14px) !important;
+  border: 2px solid rgba(151, 224, 255, 0.28) !important;
+  border-radius: 7px !important;
+  background:
+    linear-gradient(180deg, rgba(4, 8, 15, 0.92), rgba(2, 5, 10, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 0 0 1px rgba(0, 0, 0, 0.76),
+    0 18px 42px rgba(0, 0, 0, 0.34) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  transition:
+    opacity 0.24s ease,
+    filter 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease !important;
+}
+
+html body #projects .docs-grid .doc-card:hover,
+html body #projects .docs-grid .doc-card:focus-visible {
+  opacity: 1 !important;
+  filter: none !important;
+  border-color: rgba(172, 242, 255, 0.96) !important;
+  outline: 3px solid rgba(142, 230, 255, 0.5) !important;
+  outline-offset: 4px !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.24),
+    inset 0 0 44px rgba(83, 232, 255, 0.13),
+    0 0 0 2px rgba(142, 230, 255, 0.46),
+    0 0 42px rgba(83, 232, 255, 0.56),
+    0 22px 62px rgba(0, 0, 0, 0.5) !important;
+}
+
+html body #projects .docs-grid .doc-thumb {
+  border-radius: 3px !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  overflow: hidden !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+html body #projects .docs-grid .doc-thumb-frame {
+  width: 100% !important;
+  height: clamp(126px, 13vw, 210px) !important;
+  object-fit: cover !important;
+  opacity: 0.92 !important;
+  filter: grayscale(0.18) saturate(0.84) brightness(1.02) contrast(0.98) !important;
+}
+
+html body #projects .docs-grid .doc-card:hover .doc-thumb-frame,
+html body #projects .docs-grid .doc-card:focus-visible .doc-thumb-frame {
+  opacity: 1 !important;
+  filter: grayscale(0) saturate(1.08) brightness(1.12) contrast(1.04) !important;
+}
+
+html body #projects .docs-grid .doc-info {
+  padding: clamp(0.9rem, 1.2vw, 1.15rem) 0.4rem 0.25rem !important;
+  text-align: center !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+html body #projects .docs-grid .doc-title {
+  color: rgba(245, 252, 255, 0.96) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em !important;
+  text-shadow:
+    0 0 18px rgba(142, 230, 255, 0.42),
+    0 2px 10px rgba(0, 0, 0, 0.86) !important;
+}
+
+html body #projects .docs-grid .doc-meta {
+  color: rgba(205, 229, 238, 0.9) !important;
+  font-weight: 650 !important;
+  text-shadow:
+    0 0 12px rgba(142, 230, 255, 0.22),
+    0 2px 8px rgba(0, 0, 0, 0.82) !important;
+}
+
+html body #projects .docs-grid .doc-card:hover .doc-title,
+html body #projects .docs-grid .doc-card:focus-visible .doc-title {
+  color: rgba(255, 255, 255, 1) !important;
+  text-shadow:
+    0 0 22px rgba(142, 230, 255, 0.66),
+    0 0 42px rgba(105, 91, 255, 0.26),
+    0 2px 10px rgba(0, 0, 0, 0.88) !important;
+}
+
+html body #projects .docs-grid .doc-card:hover .doc-meta,
+html body #projects .docs-grid .doc-card:focus-visible .doc-meta {
+  color: rgba(228, 244, 250, 0.98) !important;
+}
+
+@media (max-width: 760px) {
+  html body #projects .docs-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Static film dossier UI for the resume area. */
+html body #resume.section {
+  background:
+    linear-gradient(90deg, rgba(3, 6, 12, 0.96), rgba(5, 8, 16, 0.86) 50%, rgba(3, 6, 12, 0.96)),
+    linear-gradient(180deg, rgba(2, 5, 10, 0.96), rgba(5, 7, 15, 0.98)) !important;
+}
+
+html body #resume .section-head {
+  position: relative !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(142, 230, 255, 0.24) !important;
+  border-radius: 8px !important;
+  padding: clamp(1.4rem, 2.4vw, 2.2rem) clamp(1.4rem, 2.8vw, 2.8rem) !important;
+  text-align: center !important;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.9), transparent 82%),
+    linear-gradient(180deg, rgba(4, 8, 16, 0.94), rgba(2, 5, 10, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 18px 46px rgba(0, 0, 0, 0.34) !important;
+}
+
+html body #resume .section-head h2 {
+  color: rgba(255, 255, 255, 0.98) !important;
+  max-width: min(720px, 100%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-size: clamp(3rem, 5.2vw, 5.4rem) !important;
+  line-height: 0.95 !important;
+  text-shadow:
+    0 0 22px rgba(142, 230, 255, 0.44),
+    5px 5px 0 rgba(101, 78, 255, 0.72),
+    0 3px 14px rgba(0, 0, 0, 0.9) !important;
+}
+
+html body #resume .section-head p {
+  color: rgba(226, 240, 246, 0.92) !important;
+  max-width: min(980px, 100%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.82) !important;
+}
+
+html body #resume .resume-shell {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(280px, 0.86fr) minmax(0, 2fr) !important;
+  gap: clamp(18px, 1.8vw, 30px) !important;
+  margin-top: clamp(1.4rem, 2vw, 2.2rem) !important;
+  padding: clamp(54px, 4.4vw, 72px) clamp(18px, 2vw, 32px) !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(142, 230, 255, 0.28) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.95), transparent 12%, transparent 88%, rgba(1, 4, 10, 0.95)),
+    linear-gradient(180deg, rgba(2, 7, 14, 0.9), rgba(3, 6, 12, 0.98)) !important;
+  box-shadow:
+    inset 0 30px 50px rgba(0, 0, 0, 0.54),
+    inset 0 -30px 50px rgba(0, 0, 0, 0.6),
+    0 20px 64px rgba(0, 0, 0, 0.36) !important;
+}
+
+html body #resume .resume-shell::before,
+html body #resume .resume-shell::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 24px !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(90deg, rgba(7, 12, 22, 0.92), rgba(7, 12, 22, 0.32) 12%, rgba(7, 12, 22, 0.32) 88%, rgba(7, 12, 22, 0.92)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(150, 225, 255, 0.54) 0 14px,
+      transparent 14px 34px
+    ) !important;
+  opacity: 0.62 !important;
+}
+
+html body #resume .resume-shell::before {
+  top: 12px !important;
+}
+
+html body #resume .resume-shell::after {
+  bottom: 12px !important;
+}
+
+html body #resume .resume-profile,
+html body #resume .resume-panel,
+html body #resume .game-exp-group {
+  position: relative !important;
+  z-index: 3 !important;
+  border: 2px solid rgba(151, 224, 255, 0.3) !important;
+  border-radius: 7px !important;
+  background:
+    linear-gradient(180deg, rgba(4, 8, 15, 0.93), rgba(2, 5, 10, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 0 0 1px rgba(0, 0, 0, 0.76),
+    0 18px 44px rgba(0, 0, 0, 0.34) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+html body #resume .resume-profile:hover,
+html body #resume .resume-panel:hover,
+html body #resume .game-exp-group:hover {
+  border-color: rgba(172, 242, 255, 0.88) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    inset 0 0 44px rgba(83, 232, 255, 0.1),
+    0 0 0 2px rgba(142, 230, 255, 0.36),
+    0 0 34px rgba(83, 232, 255, 0.38),
+    0 20px 56px rgba(0, 0, 0, 0.46) !important;
+}
+
+html body #resume .resume-profile::before,
+html body #resume .resume-panel::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 12px !important;
+  left: 12px !important;
+  right: 12px !important;
+  height: 1px !important;
+  background: linear-gradient(90deg, transparent, rgba(142, 230, 255, 0.34), transparent) !important;
+  pointer-events: none !important;
+}
+
+html body #resume .resume-avatar {
+  border: 2px solid rgba(199, 251, 255, 0.5) !important;
+  filter: grayscale(0.08) contrast(1.05) brightness(1.06) !important;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.76),
+    0 0 28px rgba(83, 232, 255, 0.22) !important;
+}
+
+html body #resume .resume-panel-grid {
+  position: relative !important;
+  z-index: 3 !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(18px, 1.5vw, 28px) !important;
+}
+
+html body #resume .game-exp-panel {
+  grid-column: 1 / -1 !important;
+}
+
+html body #resume .resume-profile .eyebrow,
+html body #resume .resume-panel::before,
+html body #resume .resume-panel h3,
+html body #resume .resume-profile h3,
+html body #resume .game-exp-group h4,
+html body #resume .item-title {
+  color: rgba(255, 255, 255, 0.98) !important;
+  text-shadow:
+    0 0 18px rgba(142, 230, 255, 0.38),
+    0 2px 10px rgba(0, 0, 0, 0.88) !important;
+}
+
+html body #resume .resume-role,
+html body #resume .resume-contact-list p,
+html body #resume .resume-intro,
+html body #resume .item-meta,
+html body #resume .plain-list,
+html body #resume .plain-list li,
+html body #resume .experience-hint {
+  color: rgba(224, 238, 245, 0.9) !important;
+  font-weight: 650 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.82) !important;
+}
+
+html body #resume .project-exp-item,
+html body #resume .plain-list li,
+html body #resume .skill-tags span {
+  border-color: rgba(142, 230, 255, 0.24) !important;
+  background: rgba(9, 12, 25, 0.74) !important;
+}
+
+html body #resume .experience-open-mark,
+html body #resume .resume-actions .btn {
+  border-color: rgba(199, 251, 255, 0.54) !important;
+  color: rgba(245, 252, 255, 0.96) !important;
+  background: rgba(12, 20, 32, 0.78) !important;
+  box-shadow: 0 0 18px rgba(83, 232, 255, 0.18) !important;
+}
+
+@media (max-width: 980px) {
+  html body #resume .resume-shell {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body #resume .resume-panel-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Film-style modal readability and alignment pass. */
+html body #projectModal .project-modal-backdrop,
+html body #experienceModal .project-modal-backdrop,
+html body #docModal .project-modal-backdrop {
+  background: rgba(0, 0, 0, 0.72) !important;
+  backdrop-filter: blur(12px) brightness(0.58) !important;
+}
+
+html body #projectModal .project-modal-panel,
+html body #experienceModal .project-modal-panel,
+html body #docModal .project-modal-panel {
+  position: relative !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(142, 230, 255, 0.36) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.96), transparent 12%, transparent 88%, rgba(1, 4, 10, 0.96)),
+    linear-gradient(180deg, rgba(4, 8, 16, 0.98), rgba(2, 5, 10, 0.99)) !important;
+  box-shadow:
+    inset 0 28px 48px rgba(0, 0, 0, 0.52),
+    inset 0 -28px 48px rgba(0, 0, 0, 0.58),
+    0 0 0 1px rgba(0, 0, 0, 0.88),
+    0 0 70px rgba(83, 232, 255, 0.18),
+    0 30px 90px rgba(0, 0, 0, 0.72) !important;
+}
+
+html body #projectModal .project-modal-panel::before,
+html body #experienceModal .project-modal-panel::before,
+html body #docModal .project-modal-panel::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 16px !important;
+  right: 16px !important;
+  top: 14px !important;
+  height: 18px !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+  border-top: 1px dashed rgba(142, 230, 255, 0.24) !important;
+  border-bottom: 1px dashed rgba(142, 230, 255, 0.12) !important;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(150, 225, 255, 0.42) 0 10px,
+      transparent 10px 28px
+    ) !important;
+  opacity: 0.36 !important;
+}
+
+html body #projectModal .project-modal-content,
+html body #experienceModal .project-modal-content,
+html body #docModal .project-modal-content {
+  position: relative !important;
+  z-index: 2 !important;
+  align-items: stretch !important;
+  gap: clamp(1.2rem, 2vw, 2rem) !important;
+}
+
+html body #experienceModal .experience-modal-content {
+  display: block !important;
+}
+
+html body #experienceModal .project-modal-info {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+html body #projectModal .project-modal-info,
+html body #experienceModal .project-modal-info,
+html body #docModal .project-modal-info {
+  color: rgba(232, 244, 250, 0.94) !important;
+  text-align: left !important;
+}
+
+html body #projectModal .project-modal-info .eyebrow,
+html body #experienceModal .project-modal-info .eyebrow,
+html body #docModal .project-modal-info .eyebrow {
+  color: rgba(142, 230, 255, 0.98) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.22em !important;
+  text-shadow: 0 0 18px rgba(83, 232, 255, 0.44) !important;
+}
+
+html body #projectModal .project-modal-info h3,
+html body #experienceModal .project-modal-info h3,
+html body #docModal .project-modal-info h3 {
+  color: rgba(255, 255, 255, 0.98) !important;
+  font-weight: 950 !important;
+  line-height: 1.18 !important;
+  text-align: left !important;
+  margin: 0.65rem 0 0.75rem !important;
+  text-shadow:
+    0 0 24px rgba(142, 230, 255, 0.5),
+    4px 4px 0 rgba(101, 78, 255, 0.58),
+    0 3px 14px rgba(0, 0, 0, 0.92) !important;
+}
+
+html body #experienceModal #experienceModalPeriod,
+html body #projectModal .item-meta {
+  color: rgba(220, 235, 244, 0.92) !important;
+  font-weight: 760 !important;
+  text-align: left !important;
+}
+
+html body #projectModal .detail-summary,
+html body #experienceModal .detail-summary {
+  color: rgba(232, 244, 250, 0.94) !important;
+  font-weight: 700 !important;
+  line-height: 1.85 !important;
+  text-align: left !important;
+  max-width: 100% !important;
+  margin: 1.05rem 0 1.15rem !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.86) !important;
+}
+
+html body #projectModal .detail-meta,
+html body #experienceModal .detail-meta {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  gap: 0.55rem !important;
+  margin: 0 0 clamp(1.1rem, 1.5vw, 1.4rem) !important;
+}
+
+html body #projectModal .detail-meta span,
+html body #experienceModal .detail-meta span {
+  color: rgba(245, 252, 255, 0.96) !important;
+  font-weight: 820 !important;
+  border-color: rgba(142, 230, 255, 0.44) !important;
+  background: rgba(8, 13, 26, 0.82) !important;
+  box-shadow: inset 0 0 18px rgba(83, 232, 255, 0.06) !important;
+}
+
+html body #projectModal .detail-columns,
+html body #experienceModal .detail-columns {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+  gap: clamp(1rem, 1.8vw, 1.6rem) !important;
+  margin-top: 0 !important;
+}
+
+html body #projectModal .detail-columns section,
+html body #experienceModal .detail-columns section {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100% !important;
+  padding: clamp(1.05rem, 1.6vw, 1.5rem) !important;
+  border: 2px solid rgba(151, 224, 255, 0.32) !important;
+  border-radius: 7px !important;
+  background:
+    linear-gradient(180deg, rgba(5, 10, 18, 0.96), rgba(2, 5, 10, 0.99)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.78),
+    0 18px 46px rgba(0, 0, 0, 0.42) !important;
+}
+
+html body #projectModal .detail-columns h4,
+html body #experienceModal .detail-columns h4 {
+  color: rgba(255, 255, 255, 0.98) !important;
+  font-weight: 900 !important;
+  text-align: left !important;
+  margin: 0 0 0.85rem !important;
+  text-shadow:
+    0 0 18px rgba(142, 230, 255, 0.4),
+    0 2px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+html body #projectModal .detail-columns ul,
+html body #experienceModal .detail-columns ul {
+  margin: 0 !important;
+  padding-left: 1.25rem !important;
+  color: rgba(226, 240, 246, 0.93) !important;
+  font-weight: 680 !important;
+  line-height: 1.72 !important;
+  text-align: left !important;
+}
+
+html body #projectModal .detail-columns li,
+html body #experienceModal .detail-columns li {
+  margin: 0 0 0.72rem !important;
+  padding-left: 0.2rem !important;
+  text-align: left !important;
+}
+
+html body #projectModal .detail-columns li::marker,
+html body #experienceModal .detail-columns li::marker {
+  color: rgba(142, 230, 255, 0.92) !important;
+}
+
+html body #projectModal .modal-close,
+html body #experienceModal .modal-close,
+html body #docModal .modal-close {
+  color: rgba(245, 252, 255, 1) !important;
+  border: 2px solid rgba(142, 230, 255, 0.54) !important;
+  background: rgba(8, 13, 26, 0.86) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 24px rgba(83, 232, 255, 0.24) !important;
+}
+
+html body #projectModal .modal-close:hover,
+html body #experienceModal .modal-close:hover,
+html body #docModal .modal-close:hover {
+  border-color: rgba(172, 242, 255, 0.96) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.16),
+    0 0 34px rgba(83, 232, 255, 0.42) !important;
+}
+
+@media (max-width: 860px) {
+  html body #projectModal .detail-columns,
+  html body #experienceModal .detail-columns {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Resume heading block: match the smaller project-section secondary title block. */
+html body #resume .section-head {
+  width: min(980px, calc(100% - 72px)) !important;
+  max-width: 980px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: clamp(1.15rem, 1.8vw, 1.7rem) clamp(1.35rem, 2.4vw, 2.4rem) !important;
+  text-align: center !important;
+}
+
+html body #resume .section-head .eyebrow {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+html body #resume .section-head h2 {
+  font-size: clamp(1.65rem, 3vw, 2.7rem) !important;
+  line-height: 1.05 !important;
+  max-width: 720px !important;
+  margin: 0.45rem auto 0.7rem !important;
+  text-align: center !important;
+  text-shadow:
+    0 0 18px rgba(142, 230, 255, 0.36),
+    3px 3px 0 rgba(101, 78, 255, 0.62),
+    0 2px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+html body #resume .section-head p:not(.eyebrow) {
+  max-width: 820px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  font-size: clamp(0.98rem, 1.25vw, 1.18rem) !important;
+  line-height: 1.65 !important;
+}
+
+/* Remove requested decorative HUD labels/text from the captured areas. */
+html body > .side-rail,
+html body .side-rail,
+html body .cinematic-loader,
+html body #projects .phone-scene-label .eyebrow,
+html body #projects .reel-hint,
+html body #resume .section-head .eyebrow,
+html body #resume .resume-profile > .eyebrow,
+html body #resume .resume-panel::before {
+  display: none !important;
+}
+
+html body #projects .phone-scene-label::before,
+html body #projects .phone-scene-label::after,
+html body #resume .section-head::before,
+html body #resume .section-head::after,
+html body #resume .resume-profile::before,
+html body #resume .resume-profile::after,
+html body #about .section-head::before,
+html body #about .section-head::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* About heading block: centered and scaled to match project secondary heading. */
+html body #about .section-head {
+  width: min(980px, calc(100% - 72px)) !important;
+  max-width: 980px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: clamp(1.15rem, 1.8vw, 1.7rem) clamp(1.35rem, 2.4vw, 2.4rem) !important;
+  text-align: center !important;
+  border: 1px solid rgba(142, 230, 255, 0.24) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.9), transparent 82%),
+    linear-gradient(180deg, rgba(4, 8, 16, 0.94), rgba(2, 5, 10, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 18px 46px rgba(0, 0, 0, 0.34) !important;
+}
+
+html body #about .section-head .eyebrow {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  font-size: clamp(0.88rem, 1vw, 1rem) !important;
+}
+
+html body #about .section-head h2 {
+  font-size: clamp(1.65rem, 3vw, 2.7rem) !important;
+  line-height: 1.05 !important;
+  max-width: 720px !important;
+  margin: 0.45rem auto 0 !important;
+  text-align: center !important;
+  color: rgba(255, 255, 255, 0.98) !important;
+  text-shadow:
+    0 0 18px rgba(142, 230, 255, 0.36),
+    3px 3px 0 rgba(101, 78, 255, 0.62),
+    0 2px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Remove edge boxes from About/Resume headings and make About cards a static film reel. */
+html body #about .section-head,
+html body #resume .section-head {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body #about .about-grid {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(18px, 1.8vw, 32px) !important;
+  margin-top: clamp(1.4rem, 2vw, 2.2rem) !important;
+  padding: clamp(54px, 4.4vw, 72px) clamp(18px, 2vw, 32px) !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(142, 230, 255, 0.28) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.95), transparent 12%, transparent 88%, rgba(1, 4, 10, 0.95)),
+    linear-gradient(180deg, rgba(2, 7, 14, 0.9), rgba(3, 6, 12, 0.98)) !important;
+  box-shadow:
+    inset 0 30px 50px rgba(0, 0, 0, 0.54),
+    inset 0 -30px 50px rgba(0, 0, 0, 0.6),
+    0 20px 64px rgba(0, 0, 0, 0.36) !important;
+}
+
+html body #about .about-grid::before,
+html body #about .about-grid::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 24px !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(90deg, rgba(7, 12, 22, 0.92), rgba(7, 12, 22, 0.32) 12%, rgba(7, 12, 22, 0.32) 88%, rgba(7, 12, 22, 0.92)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(150, 225, 255, 0.54) 0 14px,
+      transparent 14px 34px
+    ) !important;
+  opacity: 0.62 !important;
+}
+
+html body #about .about-grid::before {
+  top: 12px !important;
+}
+
+html body #about .about-grid::after {
+  bottom: 12px !important;
+}
+
+html body #about .about-grid .card {
+  position: relative !important;
+  z-index: 3 !important;
+  min-height: clamp(300px, 25vw, 470px) !important;
+  padding: clamp(1.3rem, 2vw, 2rem) !important;
+  border: 2px solid rgba(151, 224, 255, 0.32) !important;
+  border-radius: 7px !important;
+  background:
+    linear-gradient(180deg, rgba(4, 8, 15, 0.93), rgba(2, 5, 10, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 0 0 1px rgba(0, 0, 0, 0.76),
+    0 18px 44px rgba(0, 0, 0, 0.34) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+html body #about .about-grid .card:hover {
+  border-color: rgba(172, 242, 255, 0.88) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    inset 0 0 44px rgba(83, 232, 255, 0.1),
+    0 0 0 2px rgba(142, 230, 255, 0.36),
+    0 0 34px rgba(83, 232, 255, 0.38),
+    0 20px 56px rgba(0, 0, 0, 0.46) !important;
+}
+
+html body #about .about-grid .card h3 {
+  color: rgba(255, 255, 255, 0.98) !important;
+  font-weight: 900 !important;
+  text-shadow:
+    0 0 18px rgba(142, 230, 255, 0.38),
+    0 2px 10px rgba(0, 0, 0, 0.88) !important;
+}
+
+html body #about .about-grid .card p {
+  color: rgba(224, 238, 245, 0.92) !important;
+  font-weight: 680 !important;
+  line-height: 1.8 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.82) !important;
+}
+
+@media (max-width: 980px) {
+  html body #about .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Remove dashed page separators and strengthen finale contact actions. */
+html body main > section + section::before,
+html body main > section::before {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  border: 0 !important;
+}
+
+html body .finale-contact-panel {
+  width: min(920px, calc(100vw - 52px)) !important;
+}
+
+html body .finale-contact-content {
+  text-align: left !important;
+  padding: clamp(34px, 4.6vw, 68px) !important;
+}
+
+html body .finale-contact-content h3 {
+  color: rgba(255, 255, 255, 1) !important;
+  text-shadow:
+    0 0 28px rgba(142, 230, 255, 0.48),
+    5px 5px 0 rgba(101, 78, 255, 0.72),
+    0 4px 18px rgba(0, 0, 0, 0.92) !important;
+}
+
+html body .finale-contact-content > p {
+  color: rgba(238, 247, 252, 0.96) !important;
+  font-size: clamp(1.08rem, 1.6vw, 1.38rem) !important;
+  line-height: 1.65 !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.88) !important;
+}
+
+html body .finale-contact-content .contact-list {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(0.8rem, 1.4vw, 1.2rem) !important;
+  margin-top: clamp(1.2rem, 2vw, 1.8rem) !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 58px !important;
+  padding: 0.85rem 1rem !important;
+  border: 2px solid rgba(142, 230, 255, 0.58) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(180deg, rgba(13, 24, 38, 0.92), rgba(5, 9, 18, 0.96)) !important;
+  color: rgba(255, 255, 255, 0.98) !important;
+  font-size: clamp(1rem, 1.35vw, 1.18rem) !important;
+  font-weight: 900 !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  text-shadow:
+    0 0 16px rgba(142, 230, 255, 0.34),
+    0 2px 10px rgba(0, 0, 0, 0.86) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 28px rgba(83, 232, 255, 0.26),
+    0 16px 42px rgba(0, 0, 0, 0.42) !important;
+}
+
+html body .finale-contact-content .contact-list a:hover,
+html body .finale-contact-content .contact-list a:focus-visible {
+  border-color: rgba(199, 251, 255, 0.96) !important;
+  background:
+    linear-gradient(180deg, rgba(24, 57, 76, 0.95), rgba(8, 16, 28, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 0 42px rgba(83, 232, 255, 0.5),
+    0 18px 48px rgba(0, 0, 0, 0.48) !important;
+}
+
+@media (max-width: 760px) {
+  html body .finale-contact-content .contact-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Final contact badge cards and tighter About spacing. */
+html body #about.section {
+  padding-top: clamp(1.4rem, 3vh, 2.4rem) !important;
+  margin-top: 0 !important;
+}
+
+html body #resume.section + #about.section {
+  margin-top: 0 !important;
+}
+
+html body #about .section-head {
+  margin-top: 0 !important;
+  margin-bottom: clamp(0.9rem, 1.5vw, 1.4rem) !important;
+}
+
+html body .finale-contact-content .contact-list {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(0.75rem, 1.2vw, 1rem) !important;
+  max-width: min(760px, 100%) !important;
+  margin-top: clamp(1.15rem, 1.8vw, 1.55rem) !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  justify-content: flex-start !important;
+  min-height: clamp(64px, 5vw, 78px) !important;
+  padding: 0.9rem clamp(1rem, 2vw, 1.45rem) !important;
+  border-radius: 10px !important;
+  border: 2px solid rgba(199, 251, 255, 0.62) !important;
+  background:
+    linear-gradient(90deg, rgba(142, 230, 255, 0.18), transparent 28%),
+    linear-gradient(180deg, rgba(13, 24, 38, 0.96), rgba(5, 9, 18, 0.98)) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  letter-spacing: 0.02em !important;
+}
+
+html body .finale-contact-content .contact-list a::before {
+  content: "CONTACT" !important;
+  flex: 0 0 118px !important;
+  margin-right: clamp(0.8rem, 1.4vw, 1.2rem) !important;
+  padding: 0.42rem 0.55rem !important;
+  border-right: 1px solid rgba(199, 251, 255, 0.34) !important;
+  color: rgba(142, 230, 255, 0.96) !important;
+  font-size: 0.78rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.18em !important;
+  text-align: left !important;
+  text-shadow: 0 0 14px rgba(83, 232, 255, 0.42) !important;
+}
+
+html body .finale-contact-content .contact-list a:nth-child(1)::before {
+  content: "EMAIL" !important;
+}
+
+html body .finale-contact-content .contact-list a:nth-child(2)::before {
+  content: "PHONE" !important;
+}
+
+html body .finale-contact-content .contact-list a:nth-child(3)::before {
+  content: "SOCIAL" !important;
+}
+
+html body .finale-contact-content .contact-list a::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 12px !important;
+  right: 14px !important;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 999px !important;
+  background: rgba(142, 230, 255, 0.92) !important;
+  box-shadow: 0 0 18px rgba(83, 232, 255, 0.72) !important;
+}
+
+@media (max-width: 640px) {
+  html body .finale-contact-content .contact-list a {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+  }
+
+  html body .finale-contact-content .contact-list a::before {
+    flex-basis: auto !important;
+    margin-right: 0 !important;
+    margin-bottom: 0.25rem !important;
+    border-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}
+
+/* Portrait badge contact cards and tighter Resume-to-About spacing. */
+html body #resume.section {
+  min-height: auto !important;
+  padding-bottom: clamp(1.6rem, 4vh, 3rem) !important;
+}
+
+html body #about.section {
+  min-height: auto !important;
+  padding-top: clamp(0.55rem, 1.6vh, 1.25rem) !important;
+}
+
+html body #resume.section + #about.section {
+  margin-top: 0 !important;
+}
+
+html body #about .section-head {
+  margin-top: 0 !important;
+}
+
+html body .finale-contact-content .contact-list {
+  grid-template-columns: repeat(3, minmax(150px, 1fr)) !important;
+  max-width: min(880px, 100%) !important;
+  gap: clamp(0.9rem, 1.5vw, 1.35rem) !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  min-height: clamp(210px, 18vw, 270px) !important;
+  aspect-ratio: 0.72 / 1 !important;
+  padding: clamp(1rem, 1.7vw, 1.35rem) !important;
+  border-radius: 12px !important;
+  background:
+    linear-gradient(180deg, rgba(142, 230, 255, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(16, 32, 48, 0.96), rgba(5, 9, 18, 0.98)) !important;
+}
+
+html body .finale-contact-content .contact-list a::before {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 0 0.75rem !important;
+  border-right: 0 !important;
+  border-bottom: 1px solid rgba(199, 251, 255, 0.34) !important;
+}
+
+html body .finale-contact-content .contact-list a::after {
+  top: auto !important;
+  right: 16px !important;
+  bottom: 16px !important;
+}
+
+@media (max-width: 760px) {
+  html body .finale-contact-content .contact-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    aspect-ratio: auto !important;
+    min-height: 150px !important;
+  }
+}
+
+/* Contact cards as portrait work badges: label, divider, then centered content. */
+html body .finale-contact-content .contact-list {
+  grid-template-columns: repeat(3, minmax(190px, 280px)) !important;
+  justify-content: start !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  justify-content: flex-start !important;
+  align-items: stretch !important;
+  min-height: clamp(300px, 24vw, 380px) !important;
+  max-width: 280px !important;
+  aspect-ratio: 0.72 / 1 !important;
+  gap: clamp(1.1rem, 2vw, 1.7rem) !important;
+  text-align: left !important;
+  line-height: 1.25 !important;
+}
+
+html body .finale-contact-content .contact-list a::before {
+  display: block !important;
+  width: 100% !important;
+  padding: 0 0 0.9rem !important;
+  margin: 0 !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  font-size: clamp(1.05rem, 1.45vw, 1.28rem) !important;
+}
+
+html body .finale-contact-content .contact-list a:nth-child(1),
+html body .finale-contact-content .contact-list a:nth-child(2),
+html body .finale-contact-content .contact-list a:nth-child(3) {
+  padding-top: clamp(1.15rem, 1.8vw, 1.45rem) !important;
+}
+
+/* Lumon-inspired portrait badge shape, adapted to the site's cyan cyber palette. */
+html body .finale-contact-content .contact-list {
+  grid-template-columns: repeat(3, minmax(220px, 300px)) !important;
+  gap: clamp(1rem, 1.7vw, 1.55rem) !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 44px !important;
+  grid-template-rows: auto 1fr auto !important;
+  min-height: clamp(360px, 30vw, 470px) !important;
+  max-width: 300px !important;
+  aspect-ratio: 0.68 / 1 !important;
+  padding: clamp(1.25rem, 2vw, 1.65rem) !important;
+  border-radius: 18px !important;
+  border: 2px solid rgba(199, 251, 255, 0.66) !important;
+  background:
+    radial-gradient(circle at 50% -8%, rgba(199, 251, 255, 0.2), transparent 26%),
+    linear-gradient(180deg, rgba(21, 45, 62, 0.94), rgba(7, 13, 24, 0.98) 58%, rgba(3, 7, 14, 0.99)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 0 38px 70px rgba(142, 230, 255, 0.08),
+    0 0 38px rgba(83, 232, 255, 0.28),
+    0 24px 62px rgba(0, 0, 0, 0.54) !important;
+  color: rgba(255, 255, 255, 0.98) !important;
+  text-align: left !important;
+  overflow: visible !important;
+}
+
+html body .finale-contact-content .contact-list a::before {
+  grid-column: 1 / 2 !important;
+  grid-row: 1 / 2 !important;
+  border: 0 !important;
+  padding: 0 0 clamp(0.8rem, 1.2vw, 1rem) !important;
+  margin: 0 0 clamp(1.2rem, 2vw, 1.8rem) !important;
+  color: rgba(142, 230, 255, 1) !important;
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem) !important;
+  letter-spacing: 0.2em !important;
+}
+
+html body .finale-contact-content .contact-list a::after {
+  content: "" !important;
+  grid-column: 2 / 3 !important;
+  grid-row: 1 / 4 !important;
+  position: static !important;
+  align-self: stretch !important;
+  justify-self: end !important;
+  width: 32px !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(199, 251, 255, 0.78) 0 4px,
+      transparent 4px 9px,
+      rgba(199, 251, 255, 0.42) 9px 13px,
+      transparent 13px 20px
+    ) !important;
+  opacity: 0.72 !important;
+  box-shadow: none !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  font-size: clamp(1.18rem, 1.55vw, 1.45rem) !important;
+  font-weight: 950 !important;
+}
+
+html body .finale-contact-content .contact-list a span {
+  display: contents !important;
+}
+
+html body .finale-contact-content .contact-list a:nth-child(1),
+html body .finale-contact-content .contact-list a:nth-child(2),
+html body .finale-contact-content .contact-list a:nth-child(3) {
+  padding-top: clamp(1.25rem, 2vw, 1.65rem) !important;
+}
+
+html body .finale-contact-content .contact-list a:nth-child(1) {
+  word-break: break-all !important;
+}
+
+html body .finale-contact-content .contact-list a:nth-child(1)::before,
+html body .finale-contact-content .contact-list a:nth-child(2)::before,
+html body .finale-contact-content .contact-list a:nth-child(3)::before {
+  text-shadow:
+    0 0 18px rgba(83, 232, 255, 0.58),
+    0 2px 8px rgba(0, 0, 0, 0.82) !important;
+}
+
+html body .finale-contact-content .contact-list a:nth-child(1)::after,
+html body .finale-contact-content .contact-list a:nth-child(2)::after,
+html body .finale-contact-content .contact-list a:nth-child(3)::after {
+  margin-left: clamp(0.8rem, 1.2vw, 1rem) !important;
+}
+
+html body .finale-contact-content .contact-list a:hover,
+html body .finale-contact-content .contact-list a:focus-visible {
+  border-color: rgba(222, 255, 255, 0.98) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22),
+    inset 0 42px 80px rgba(142, 230, 255, 0.12),
+    0 0 54px rgba(83, 232, 255, 0.52),
+    0 28px 70px rgba(0, 0, 0, 0.58) !important;
+}
+
+html body .finale-contact-content .contact-list a:hover::after,
+html body .finale-contact-content .contact-list a:focus-visible::after {
+  opacity: 0.95 !important;
+}
+
+@media (max-width: 760px) {
+  html body .finale-contact-content .contact-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    max-width: none !important;
+    aspect-ratio: auto !important;
+    min-height: 260px !important;
+  }
+}
+
+/* Final contact panel itself becomes the portrait badge; inner contacts return to normal rows. */
+html body .finale-contact-panel {
+  width: min(760px, calc(100vw - 48px)) !important;
+  min-height: min(920px, calc(100vh - 48px)) !important;
+  aspect-ratio: 0.68 / 1 !important;
+  border-radius: 26px !important;
+  overflow: visible !important;
+}
+
+html body .finale-contact-panel::before {
+  content: "" !important;
+  position: absolute !important;
+  top: -24px !important;
+  left: 50% !important;
+  width: 170px !important;
+  height: 46px !important;
+  transform: translateX(-50%) !important;
+  border-radius: 0 0 18px 18px !important;
+  border: 2px solid rgba(199, 251, 255, 0.45) !important;
+  border-top: 0 !important;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(199, 251, 255, 0.2) 0 9px, transparent 10px),
+    linear-gradient(180deg, rgba(13, 24, 38, 0.98), rgba(5, 9, 18, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 28px rgba(83, 232, 255, 0.18) !important;
+  z-index: 5 !important;
+}
+
+html body .finale-contact-panel::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 138px !important;
+  right: clamp(28px, 4vw, 48px) !important;
+  bottom: clamp(38px, 5vw, 62px) !important;
+  width: 42px !important;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(199, 251, 255, 0.62) 0 4px,
+      transparent 4px 10px,
+      rgba(199, 251, 255, 0.38) 10px 15px,
+      transparent 15px 23px
+    ) !important;
+  opacity: 0.58 !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+}
+
+html body .finale-contact-content {
+  padding: clamp(48px, 6vw, 76px) clamp(44px, 5.2vw, 72px) !important;
+  min-height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+html body .finale-contact-content .contact-list {
+  grid-template-columns: 1fr !important;
+  max-width: calc(100% - 78px) !important;
+  gap: 0.85rem !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  min-height: 62px !important;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+  gap: 0 !important;
+  padding: 0.85rem 1rem !important;
+  border-radius: 9px !important;
+}
+
+html body .finale-contact-content .contact-list a::before {
+  flex: 0 0 92px !important;
+  width: auto !important;
+  margin: 0 1rem 0 0 !important;
+  padding: 0 !important;
+  border-bottom: 0 !important;
+  border-right: 1px solid rgba(199, 251, 255, 0.34) !important;
+}
+
+html body .finale-contact-content .contact-list a::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  html body .finale-contact-panel {
+    aspect-ratio: auto !important;
+    min-height: auto !important;
+  }
+
+  html body .finale-contact-panel::after {
+    display: none !important;
+  }
+
+  html body .finale-contact-content .contact-list {
+    max-width: 100% !important;
+  }
+}
+
+/* Final polish: smaller portrait contact badge, brighter edge, clearer exit control. */
+html body .finale-contact-panel {
+  width: min(540px, calc(100vw - 48px)) !important;
+  min-height: 0 !important;
+  height: min(790px, calc(100vh - 58px)) !important;
+  aspect-ratio: auto !important;
+  border: 3px solid rgba(199, 251, 255, 0.78) !important;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.12),
+    inset 0 0 64px rgba(83, 232, 255, 0.1),
+    0 0 0 1px rgba(142, 230, 255, 0.42),
+    0 0 48px rgba(83, 232, 255, 0.48),
+    0 0 120px rgba(105, 91, 255, 0.32),
+    0 30px 90px rgba(0, 0, 0, 0.72) !important;
+}
+
+html body .finale-contact-panel::before {
+  top: -22px !important;
+  width: 138px !important;
+  height: 42px !important;
+  border-color: rgba(199, 251, 255, 0.72) !important;
+}
+
+html body .finale-contact-panel::after {
+  right: 34px !important;
+  top: 132px !important;
+  bottom: 42px !important;
+  width: 32px !important;
+  opacity: 0.72 !important;
+}
+
+html body .finale-contact-content {
+  padding: clamp(42px, 5vw, 58px) clamp(32px, 4.2vw, 46px) !important;
+}
+
+html body .finale-contact-content h3 {
+  font-size: clamp(2.8rem, 6.2vw, 4.8rem) !important;
+}
+
+html body .finale-contact-content .contact-list {
+  max-width: calc(100% - 56px) !important;
+}
+
+html body .finale-contact-panel .modal-close {
+  top: 18px !important;
+  right: 18px !important;
+  width: auto !important;
+  min-width: 88px !important;
+  height: 44px !important;
+  padding: 0 0.95rem !important;
+  border-radius: 999px !important;
+  font-size: 1rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.08em !important;
+  color: rgba(255, 255, 255, 1) !important;
+  border: 2px solid rgba(199, 251, 255, 0.74) !important;
+  background: rgba(5, 12, 24, 0.9) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 26px rgba(83, 232, 255, 0.34),
+    0 10px 26px rgba(0, 0, 0, 0.44) !important;
+}
+
+html body .finale-contact-panel .modal-close:hover,
+html body .finale-contact-panel .modal-close:focus-visible {
+  border-color: rgba(230, 255, 255, 1) !important;
+  background: rgba(17, 42, 58, 0.95) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 0 38px rgba(83, 232, 255, 0.58),
+    0 12px 30px rgba(0, 0, 0, 0.48) !important;
+}
+
+/* Compact badge: no inner cards, all text fits within the portrait ID panel. */
+html body .finale-contact-panel {
+  width: min(360px, calc(100vw - 44px)) !important;
+  height: min(600px, calc(100vh - 52px)) !important;
+  border-width: 2px !important;
+  border-radius: 22px !important;
+}
+
+html body .finale-contact-panel::before {
+  top: -18px !important;
+  width: 104px !important;
+  height: 34px !important;
+  border-radius: 0 0 14px 14px !important;
+}
+
+html body .finale-contact-panel::after {
+  top: 132px !important;
+  right: 24px !important;
+  bottom: 30px !important;
+  width: 24px !important;
+  opacity: 0.62 !important;
+}
+
+html body .finale-contact-content {
+  padding: 44px 54px 34px 34px !important;
+  overflow: hidden !important;
+}
+
+html body .finale-contact-content .eyebrow {
+  font-size: 0.74rem !important;
+  letter-spacing: 0.16em !important;
+}
+
+html body .finale-contact-content h3 {
+  font-size: clamp(2.25rem, 5.2vw, 3.15rem) !important;
+  line-height: 0.98 !important;
+  margin: 0.4rem 0 0.85rem !important;
+}
+
+html body .finale-contact-content > p {
+  font-size: 0.92rem !important;
+  line-height: 1.55 !important;
+  margin: 0 0 1.05rem !important;
+}
+
+html body .finale-contact-content .contact-list {
+  display: flex !important;
+  flex-direction: column !important;
+  max-width: 100% !important;
+  gap: 0.55rem !important;
+  margin-top: 0.85rem !important;
+}
+
+html body .finale-contact-content .contact-list a {
+  display: grid !important;
+  grid-template-columns: 68px minmax(0, 1fr) !important;
+  column-gap: 0.75rem !important;
+  align-items: baseline !important;
+  min-height: auto !important;
+  max-width: 100% !important;
+  aspect-ratio: auto !important;
+  padding: 0.48rem 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-size: 0.92rem !important;
+  line-height: 1.25 !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+html body .finale-contact-content .contact-list a::before {
+  width: auto !important;
+  flex: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  color: rgba(142, 230, 255, 0.95) !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.14em !important;
+}
+
+html body .finale-contact-content .contact-list a::after {
+  content: none !important;
+  display: none !important;
+}
+
+html body .finale-contact-panel .modal-close {
+  top: 14px !important;
+  right: 14px !important;
+  min-width: 68px !important;
+  height: 34px !important;
+  padding: 0 0.7rem !important;
+  font-size: 0.78rem !important;
+}
+
+/* Hide the extra HUD controls requested for the simplified homepage. */
+html body .nav-system,
+html body .ai-console,
+html body > .ai-console,
+html body .system-status-bar,
+html body > .system-status-bar {
+  display: none !important;
+}

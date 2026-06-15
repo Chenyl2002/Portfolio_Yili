@@ -39,14 +39,52 @@
         y.parentNode.insertBefore(t, y);
       })(window, document, "clarity", "script", "15011817478");
     </script>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=hero-copy-clean-20260615" />
+    <link rel="stylesheet" href="./reference-ui.css?v=hero-copy-clean-20260615" />
+    <link rel="stylesheet" href="./interaction-overrides.css?v=hide-extra-hud-ui-20260615" />
   </head>
   <body>
+    <div class="cinematic-loader" aria-hidden="true">
+      <span>CHEN YILI</span>
+    </div>
+    <div id="warpField" class="warp-field" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div id="scrollProgress" class="scroll-progress" aria-hidden="true">
+      <span></span>
+    </div>
+    <div class="side-rail" aria-hidden="true">BUILDING WITH AI · THINKING WITH STORIES</div>
+    <aside class="ai-console" aria-label="AI 助手状态">
+      <button class="ai-orb" type="button" aria-label="滚动进入项目系统">
+        <span>AI</span>
+      </button>
+      <small>CHEN AI · ONLINE</small>
+    </aside>
+    <div class="system-status-bar" aria-hidden="true">
+      <span>SYSTEM ONLINE</span>
+      <span>OPEN TO WORK</span>
+      <span>AI DEPUTY ACTIVE</span>
+      <span>UPDATED 2026</span>
+    </div>
+    <div class="fantasy-stage" aria-hidden="true">
+      <span class="fantasy-orb orb-1"></span>
+      <span class="fantasy-orb orb-2"></span>
+      <span class="fantasy-orb orb-3"></span>
+    </div>
     <div id="sketchLayer" class="sketch-layer" aria-hidden="true"></div>
 
     <header class="site-header">
       <nav class="nav container">
-        <a href="#home" class="brand">CHEN YILI</a>
+        <a href="#home" class="brand" aria-label="回到首页">
+          <span class="brand-mark">CY</span>
+          <span class="brand-name">陈宜理</span>
+          <span class="brand-version">v2026</span>
+        </a>
         <button class="nav-toggle" aria-label="切换导航菜单">菜单</button>
         <div class="nav-links">
           <a href="#home">HOME</a>
@@ -55,17 +93,67 @@
           <a href="#about">ABOUT</a>
           <a href="#contact">CONTACT</a>
         </div>
+        <div class="nav-system">
+          <span class="sound-dot"></span>
+          <span>SOUND ON</span>
+          <span class="language-switch">CN · EN</span>
+          <a class="nav-talk" href="#contact">TALK TO CHEN</a>
+        </div>
       </nav>
     </header>
 
     <main>
       <section id="home" class="hero container">
+        <video
+          id="scrollSceneVideo"
+          class="scroll-scene-video"
+          src="./assets/animation/video-1-r2.mp4"
+          poster="./assets/animation/video-1-r2-poster.jpg"
+          muted
+          playsinline
+          preload="auto"
+          aria-hidden="true"
+        ></video>
+        <div class="scroll-scene-grade" aria-hidden="true"></div>
+        <div class="hero-cyber-panels" aria-hidden="true">
+          <span class="cyber-panel panel-main"></span>
+          <span class="cyber-panel panel-top"></span>
+          <span class="cyber-panel panel-right"></span>
+          <span class="cyber-panel panel-bottom"></span>
+          <span class="cyber-beam beam-primary"></span>
+          <span class="cyber-beam beam-secondary"></span>
+        </div>
+        <div class="character-stage" aria-hidden="true">
+          <div class="character-glow"></div>
+          <img
+            class="character-portrait"
+            src="./assets/character/chen-yili-character.png"
+            alt=""
+            loading="eager"
+          />
+          <div class="character-phone-proxy"></div>
+          <div class="character-badge-proxy"></div>
+        </div>
         <div class="hero-content">
-          <p class="eyebrow hero-fade hero-fade-1">GAME LEVEL & NARRATIVE PLANNING</p>
-          <h1 class="hero-fade hero-fade-2">陈宜理</h1>
+          <div class="hud-status hero-fade hero-fade-1" aria-label="作品集状态">
+            <span>ARCHIVE ID: CYL-2026</span>
+            <span>STATUS: SEEKING GAME DESIGN ROLE</span>
+            <span>SYNC: 100%</span>
+          </div>
+          <p class="eyebrow hero-fade hero-fade-1">PORTFOLIO · GAME LEVEL & NARRATIVE PLANNING</p>
+          <h1 class="hero-fade hero-fade-2">
+            <span class="hero-cn-name">陈宜理</span>
+            <span class="hero-os-title">LEVEL<br />DESIGN</span>
+          </h1>
           <p class="hero-text hero-fade hero-fade-3">
             环境艺术设计本科 + 景观建筑硕士背景，聚焦关卡节奏、玩法循环与叙事演出落地。擅长将空间设计理解转化为可玩关卡体验。
           </p>
+          <div class="hero-metrics hero-fade hero-fade-4" aria-label="核心能力标签">
+            <span>UE5 WHITEBOX</span>
+            <span>NARRATIVE BEAT</span>
+            <span>LEVEL FLOW</span>
+            <span>PLAYER INSIGHT</span>
+          </div>
           <div class="hero-advantages hero-fade hero-fade-4">
             <article>
               <h3>跨学科设计基础</h3>
@@ -87,40 +175,82 @@
           <div class="hero-actions hero-fade hero-fade-5">
             <a class="btn btn-primary" href="#projects">VIEW PROJECTS</a>
             <a class="btn btn-secondary" href="#resume">VIEW RESUME</a>
+            <a class="btn btn-tertiary" href="#contact">CONTACT</a>
           </div>
         </div>
+        <div class="hero-copy-solid" aria-label="作品集首页介绍">
+          <p class="hero-solid-kicker">PORTFOLIO · GAME LEVEL & NARRATIVE PLANNING</p>
+          <h1>
+            <span class="hero-solid-name">陈宜理</span>
+            <span class="hero-solid-title">LEVEL<br />DESIGN</span>
+          </h1>
+          <p class="hero-solid-text">
+            环境艺术设计本科 + 景观建筑硕士背景，聚焦关卡节奏、玩法循环与叙事演出落地。擅长将空间设计理解转化为可玩关卡体验。
+          </p>
+          <div class="hero-solid-actions">
+            <a href="#projects">VIEW PROJECTS</a>
+            <a href="#resume">VIEW RESUME</a>
+            <a href="#contact">CONTACT</a>
+          </div>
+        </div>
+        <aside class="mission-panel hero-fade hero-fade-6" aria-label="当前任务面板">
+          <p class="eyebrow">CURRENT MISSION</p>
+          <h2>将空间叙事转译为可玩的关卡体验</h2>
+          <ul>
+            <li><span>01</span> 梳理玩家目标、路径与节奏峰值</li>
+            <li><span>02</span> 用 UE5 白盒验证玩法循环</li>
+            <li><span>03</span> 通过镜头、光照与交互落地叙事</li>
+          </ul>
+        </aside>
+        <div id="heroShowcase" class="hero-showcase" aria-hidden="true"></div>
         <a href="#projects" class="scroll-indicator" aria-label="滚动到项目区域">
           <span></span>
         </a>
       </section>
 
       <section id="projects" class="section container">
-        <div class="section-head">
-          <p class="eyebrow">Portfolio Highlights</p>
-          <h2>游戏项目展示</h2>
+        <div class="phone-scene-label">
+          <p class="eyebrow">Mission Database</p>
+          <h2>滚动穿梭 · 进入项目任务界面</h2>
         </div>
+        <div class="phone-device">
+          <div class="phone-hardware">
+            <span class="phone-camera"></span>
+            <span class="phone-speaker"></span>
+            <div class="phone-screen">
+              <div class="section-head">
+                <p class="eyebrow">Portfolio Highlights</p>
+                <h2>游戏项目展示</h2>
+              </div>
 
-        <div class="filter-row">
-          <button class="chip active" data-filter-group="all" data-filter="all">全部</button>
-          <button class="chip" data-filter-group="type" data-filter="团队项目">团队项目</button>
-          <button class="chip" data-filter-group="type" data-filter="个人项目">个人项目</button>
-          <button class="chip" data-filter-group="engine" data-filter="UE5">UE5</button>
-          <button class="chip" data-filter-group="engine" data-filter="多工具">多工具</button>
-          <button class="chip" data-filter-group="platform" data-filter="PC">PC</button>
-          <button class="chip" data-filter-group="platform" data-filter="跨场景">跨场景</button>
-        </div>
+              <div class="filter-row">
+                <button class="chip active" data-filter-group="all" data-filter="all">全部</button>
+                <button class="chip" data-filter-group="type" data-filter="团队项目">团队项目</button>
+                <button class="chip" data-filter-group="type" data-filter="个人项目">个人项目</button>
+                <button class="chip" data-filter-group="engine" data-filter="UE5">UE5</button>
+                <button class="chip" data-filter-group="engine" data-filter="多工具">多工具</button>
+                <button class="chip" data-filter-group="platform" data-filter="PC">PC</button>
+                <button class="chip" data-filter-group="platform" data-filter="跨场景">跨场景</button>
+              </div>
 
-        <div id="projectGrid" class="project-grid"></div>
+              <div class="film-reel-window" aria-label="项目胶片卷轴">
+                <div class="reel-controls" aria-label="项目卷轴控制">
+                  <button id="reelPrev" class="reel-arrow" type="button" aria-label="上一个项目">←</button>
+                  <button id="reelNext" class="reel-arrow" type="button" aria-label="下一个项目">→</button>
+                </div>
+                <div id="projectGrid" class="project-grid"></div>
+              </div>
+              <p class="reel-hint">SCROLL TO TURN THE REEL · 滚动翻片</p>
 
-        <section class="docs-section">
-          <div class="section-head docs-head">
-            <p class="eyebrow">Documentation</p>
-            <h3>设计文档</h3>
-          </div>
+              <section class="docs-section">
+                <div class="section-head docs-head">
+                  <p class="eyebrow">Documentation</p>
+                  <h3>设计文档</h3>
+                </div>
 
-          <div class="docs-group">
-            <h4>游戏部分</h4>
-            <div class="docs-grid">
+                <div class="docs-group">
+                  <h4>游戏部分</h4>
+                  <div class="docs-grid">
               <button
                 class="doc-card doc-trigger"
                 type="button"
@@ -379,6 +509,25 @@
         </div>
       </section>
 
+      <section id="finale" class="finale-section" aria-label="结尾互动视频">
+        <div class="finale-sticky">
+          <video
+            id="finaleScrollVideo"
+            class="finale-video"
+            src="./assets/animation/final_video_v2-2.mp4"
+            muted
+            playsinline
+            preload="auto"
+            aria-label="滚动控制的结尾视频"
+          ></video>
+          <div class="finale-overlay" aria-hidden="true">
+            <p class="eyebrow">Final Signal</p>
+            <h2>滚动完成最后一段影像</h2>
+            <p>视频播放到结尾后，会显示我的联系方式。</p>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section section-alt">
         <div class="container contact-grid contact-grid-single">
           <div>
@@ -486,6 +635,23 @@
       </article>
     </div>
 
-    <script src="./script.js"></script>
+    <div id="finaleContactModal" class="project-modal finale-contact-modal hidden" aria-hidden="true">
+      <div id="finaleContactBackdrop" class="project-modal-backdrop"></div>
+      <article class="project-modal-panel finale-contact-panel" aria-live="polite">
+        <button id="closeFinaleContact" class="modal-close" aria-label="关闭联系方式">退出 ×</button>
+        <div class="finale-contact-content">
+          <p class="eyebrow">CONTACT UNLOCKED</p>
+          <h3>感谢看到最后</h3>
+          <p>欢迎联系我交流关卡策划、实习/校招机会、项目合作。</p>
+          <div class="contact-list">
+            <a href="mailto:1102910102@qq.com">1102910102@qq.com</a>
+            <a href="tel:13358521997">13358521997</a>
+            <a href="https://space.bilibili.com/129912981?spm_id_from=333.40164.0.0" target="_blank" rel="noreferrer">Bilibili 主页</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <script src="./script.js?v=film-reel-center-focus-v5-20260615"></script>
   </body>
 </html>
