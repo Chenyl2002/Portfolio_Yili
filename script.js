@@ -162,6 +162,14 @@ const fantasyStage = document.querySelector(".fantasy-stage");
 const heroShowcase = document.getElementById("heroShowcase");
 const warpField = document.getElementById("warpField");
 const scrollSceneVideo = document.getElementById("scrollSceneVideo");
+const scrollSceneGrade = document.querySelector(".scroll-scene-grade");
+const heroCopySolid = document.querySelector("#home .hero-copy-solid");
+const scrollSceneVideoOriginalParent = scrollSceneVideo ? scrollSceneVideo.parentElement : null;
+const scrollSceneVideoOriginalNextSibling = scrollSceneVideo ? scrollSceneVideo.nextSibling : null;
+const scrollSceneGradeOriginalParent = scrollSceneGrade ? scrollSceneGrade.parentElement : null;
+const scrollSceneGradeOriginalNextSibling = scrollSceneGrade ? scrollSceneGrade.nextSibling : null;
+const heroCopyOriginalParent = heroCopySolid ? heroCopySolid.parentElement : null;
+const heroCopyOriginalNextSibling = heroCopySolid ? heroCopySolid.nextSibling : null;
 const scrollProgress = document.getElementById("scrollProgress");
 const reelPrev = document.getElementById("reelPrev");
 const reelNext = document.getElementById("reelNext");
@@ -192,6 +200,7 @@ let activeReelIndex = 0;
 let activeReelDisplayIndex = 0;
 let lastModalTrigger = null;
 let isModalClosing = false;
+let heroLayersLifted = false;
 let finaleVideoLifted = false;
 
 const experiences = {
@@ -772,6 +781,7 @@ function updatePageMotion() {
   }
 
   updateNarrativeScroll();
+  updateMobileHeroViewportLayer();
   updateScrollSceneTarget();
   updateFinaleScrollVideo();
   updateProjectsMode();
@@ -975,6 +985,118 @@ function prepareMobileSeekableVideo(video, onReady) {
     });
 
   return true;
+}
+
+function updateMobileHeroViewportLayer() {
+  var homeSection = document.getElementById("home");
+  if (!homeSection || !scrollSceneVideo) return;
+  var active = isMobileFinaleScene();
+  if (active) {
+    var rect = homeSection.getBoundingClientRect();
+    active = rect.top < window.innerHeight && rect.bottom > window.innerHeight * 0.35;
+  }
+  document.body.classList.toggle("mobile-hero-active", active);
+
+  if (active && !heroLayersLifted) {
+    if (scrollSceneVideo) document.body.appendChild(scrollSceneVideo);
+    if (scrollSceneGrade) document.body.appendChild(scrollSceneGrade);
+    if (heroCopySolid) document.body.appendChild(heroCopySolid);
+    heroLayersLifted = true;
+  } else if (!active && heroLayersLifted) {
+    restoreNodeToOriginalPlace(scrollSceneVideo, scrollSceneVideoOriginalParent, scrollSceneVideoOriginalNextSibling);
+    restoreNodeToOriginalPlace(scrollSceneGrade, scrollSceneGradeOriginalParent, scrollSceneGradeOriginalNextSibling);
+    restoreNodeToOriginalPlace(heroCopySolid, heroCopyOriginalParent, heroCopyOriginalNextSibling);
+    heroLayersLifted = false;
+  }
+
+  setMobileHeroLayerStyles(active);
+}
+
+function restoreNodeToOriginalPlace(node, parent, nextSibling) {
+  if (!node || !parent) return;
+  if (nextSibling && nextSibling.parentElement === parent) {
+    parent.insertBefore(node, nextSibling);
+  } else {
+    parent.appendChild(node);
+  }
+}
+
+function setMobileHeroLayerStyles(active) {
+  if (!isMobileFinaleScene()) active = false;
+  var viewportHeight = Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0);
+  var fillStyle = {
+    position: "fixed",
+    inset: "0",
+    width: "100vw",
+    height: viewportHeight ? viewportHeight + "px" : "100vh",
+    minWidth: "100vw",
+    minHeight: viewportHeight ? viewportHeight + "px" : "100vh",
+    maxWidth: "none",
+    maxHeight: "none",
+    transform: "none",
+    pointerEvents: "none"
+  };
+
+  if (scrollSceneVideo) {
+    scrollSceneVideo.classList.toggle("is-mobile-viewport-layer", active);
+    if (active) {
+      Object.assign(scrollSceneVideo.style, fillStyle, {
+        objectFit: "cover",
+        objectPosition: "58% center",
+        zIndex: "1",
+        display: "block",
+        opacity: "1",
+        background: "#02040a"
+      });
+    } else {
+      [
+        "position", "inset", "width", "height", "minWidth", "minHeight", "maxWidth",
+        "maxHeight", "transform", "pointerEvents", "objectFit", "objectPosition",
+        "zIndex", "display", "opacity", "background"
+      ].forEach(function(prop) {
+        scrollSceneVideo.style[prop] = "";
+      });
+    }
+  }
+
+  if (scrollSceneGrade) {
+    scrollSceneGrade.classList.toggle("is-mobile-viewport-layer", active);
+    if (active) {
+      Object.assign(scrollSceneGrade.style, fillStyle, {
+        zIndex: "2",
+        display: "block",
+        opacity: "1"
+      });
+    } else {
+      [
+        "position", "inset", "width", "height", "minWidth", "minHeight", "maxWidth",
+        "maxHeight", "transform", "pointerEvents", "zIndex", "display", "opacity"
+      ].forEach(function(prop) {
+        scrollSceneGrade.style[prop] = "";
+      });
+    }
+  }
+
+  if (heroCopySolid) {
+    heroCopySolid.classList.toggle("is-mobile-viewport-layer", active);
+    if (active) {
+      Object.assign(heroCopySolid.style, fillStyle, {
+        margin: "0",
+        overflow: "hidden",
+        zIndex: "4",
+        display: "grid",
+        opacity: "1"
+      });
+    } else {
+      [
+        "position", "inset", "width", "height", "minWidth", "minHeight", "maxWidth",
+        "maxHeight", "transform", "pointerEvents", "margin", "overflow",
+        "zIndex", "display", "opacity"
+      ].forEach(function(prop) {
+        heroCopySolid.style[prop] = "";
+      });
+    }
+  }
 }
 
 function getScrollSceneProgress() {
