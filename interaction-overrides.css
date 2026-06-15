@@ -2776,3 +2776,1665 @@ html body .system-status-bar,
 html body > .system-status-bar {
   display: none !important;
 }
+
+/* Mobile-only adaptation: keep the desktop composition untouched. */
+@media (max-width: 980px) {
+  html {
+    scroll-padding-top: 64px !important;
+    overflow-x: hidden !important;
+  }
+
+  html body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  html body .site-header {
+    height: 58px !important;
+    background: rgba(4, 7, 14, 0.92) !important;
+    backdrop-filter: blur(18px) !important;
+  }
+
+  html body .nav.container {
+    width: min(100% - 24px, 720px) !important;
+    min-height: 58px !important;
+    padding: 0 !important;
+    grid-template-columns: auto auto !important;
+    justify-content: space-between !important;
+  }
+
+  html body .brand {
+    gap: 0.45rem !important;
+  }
+
+  html body .brand-mark {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.8rem !important;
+  }
+
+  html body .brand-name {
+    font-size: 0.96rem !important;
+  }
+
+  html body .nav-toggle {
+    display: inline-flex !important;
+    min-height: 34px !important;
+    padding: 0.36rem 0.72rem !important;
+    border-radius: 999px !important;
+    color: rgba(245, 247, 255, 0.92) !important;
+    border: 1px solid rgba(142, 230, 255, 0.36) !important;
+    background: rgba(7, 13, 24, 0.86) !important;
+  }
+
+  html body .nav-links {
+    position: absolute !important;
+    top: 58px !important;
+    left: 12px !important;
+    right: 12px !important;
+    display: none !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.45rem !important;
+    padding: 0.8rem !important;
+    border: 1px solid rgba(142, 230, 255, 0.28) !important;
+    border-radius: 14px !important;
+    background: rgba(5, 8, 16, 0.96) !important;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.52) !important;
+  }
+
+  html body .nav-links.open {
+    display: grid !important;
+  }
+
+  html body .nav-links a {
+    min-height: 40px !important;
+    justify-content: center !important;
+    border-radius: 10px !important;
+  }
+
+  html body main > section,
+  html body #home.hero,
+  html body #projects.section,
+  html body #resume.section,
+  html body #about.section,
+  html body #contact.section,
+  html body #finale.finale-section {
+    width: min(100% - 24px, 720px) !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: visible !important;
+  }
+
+  html body #home.hero {
+    min-height: auto !important;
+    padding-top: 74px !important;
+    padding-bottom: 34px !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+    border-radius: 0 !important;
+  }
+
+  html body #home.hero > .scroll-scene-video,
+  html body #home.hero > .scroll-scene-grade {
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+
+  html body #home.hero > .scroll-scene-video {
+    object-fit: cover !important;
+    object-position: 58% center !important;
+    opacity: 0.82 !important;
+  }
+
+  html body #home.hero > .scroll-scene-grade {
+    background:
+      linear-gradient(180deg, rgba(2, 4, 10, 0.18), rgba(2, 4, 10, 0.62) 58%, rgba(2, 4, 10, 0.88)),
+      linear-gradient(90deg, rgba(2, 4, 10, 0.62), rgba(2, 4, 10, 0.18)) !important;
+    opacity: 1 !important;
+  }
+
+  html body #home .hero-content,
+  html body #home .hero-copy-solid {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: none !important;
+    opacity: 1 !important;
+    z-index: 5 !important;
+  }
+
+  html body #home > .hero-content {
+    display: none !important;
+  }
+
+  html body #home .hero-copy-solid {
+    display: block !important;
+    padding: 1.15rem !important;
+    border: 1px solid rgba(142, 230, 255, 0.28) !important;
+    border-radius: 12px !important;
+    background: linear-gradient(180deg, rgba(6, 10, 20, 0.78), rgba(4, 7, 14, 0.42)) !important;
+    box-shadow: 0 18px 52px rgba(0, 0, 0, 0.36) !important;
+  }
+
+  html body #home .hero-solid-kicker {
+    margin: 0 0 0.55rem !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.14em !important;
+    color: rgba(245, 247, 255, 0.86) !important;
+  }
+
+  html body #home .hero-copy-solid h1 {
+    margin: 0 !important;
+  }
+
+  html body #home .hero-solid-name {
+    display: block !important;
+    font-size: clamp(1.15rem, 6vw, 1.9rem) !important;
+    line-height: 1 !important;
+    color: #fff !important;
+    text-shadow: 2px 0 0 rgba(122, 77, 255, 0.9) !important;
+  }
+
+  html body #home .hero-solid-title {
+    display: block !important;
+    margin-top: 0.1rem !important;
+    font-size: clamp(3.15rem, 16vw, 5.5rem) !important;
+    line-height: 0.78 !important;
+    letter-spacing: -0.055em !important;
+    color: #fff !important;
+    text-shadow:
+      3px 0 0 rgba(122, 77, 255, 0.86),
+      0 14px 24px rgba(0, 0, 0, 0.36) !important;
+  }
+
+  html body #home .hero-solid-text {
+    margin: 1rem 0 0 !important;
+    padding-left: 0.8rem !important;
+    border-left: 3px solid rgba(122, 77, 255, 0.9) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.72 !important;
+    color: rgba(245, 247, 255, 0.94) !important;
+  }
+
+  html body #home .hero-solid-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.55rem !important;
+    margin-top: 1rem !important;
+  }
+
+  html body #home .hero-solid-actions a {
+    min-height: 42px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 10px !important;
+    font-size: 0.88rem !important;
+  }
+
+  html body #home .character-stage,
+  html body #home .mission-panel,
+  html body #home .hero-showcase,
+  html body #home .hero-advantages,
+  html body #home .scroll-indicator {
+    display: none !important;
+  }
+
+  html body #projects.section,
+  html body #resume.section,
+  html body #about.section {
+    padding-top: 34px !important;
+    padding-bottom: 38px !important;
+  }
+
+  html body #projects .phone-scene-label,
+  html body #resume .section-head,
+  html body #about .section-head {
+    width: 100% !important;
+    margin: 0 0 0.8rem !important;
+    padding: 0.95rem !important;
+    text-align: center !important;
+    border: 1px solid rgba(142, 230, 255, 0.24) !important;
+    border-radius: 12px !important;
+    background: rgba(5, 9, 18, 0.72) !important;
+    box-shadow: none !important;
+  }
+
+  html body #projects .phone-scene-label h2,
+  html body #resume .section-head h2,
+  html body #about .section-head h2 {
+    margin: 0.25rem auto 0 !important;
+    font-size: clamp(1.85rem, 9vw, 3.4rem) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.02em !important;
+    text-align: center !important;
+  }
+
+  html body #resume .section-head p,
+  html body #about .section-head p {
+    max-width: 34rem !important;
+    margin: 0.7rem auto 0 !important;
+    font-size: 0.94rem !important;
+    line-height: 1.65 !important;
+    text-align: center !important;
+  }
+
+  html body #projects .phone-device,
+  html body #projects .phone-hardware,
+  html body #projects .phone-screen {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  html body #projects .filter-row {
+    display: flex !important;
+    gap: 0.45rem !important;
+    margin: 0.75rem 0 !important;
+    padding: 0.45rem !important;
+    overflow-x: auto !important;
+    overscroll-behavior-x: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    border-radius: 12px !important;
+  }
+
+  html body #projects .filter-row .chip {
+    flex: 0 0 auto !important;
+    min-height: 34px !important;
+    padding: 0.42rem 0.7rem !important;
+    font-size: 0.78rem !important;
+    white-space: nowrap !important;
+  }
+
+  html body #projects .film-reel-window {
+    --film-gap: 14px;
+    margin: 0.7rem calc(50% - 50vw) 0 !important;
+    padding: 46px 0 44px !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body #projects .film-reel-window::before,
+  html body #projects .film-reel-window::after {
+    height: 30px !important;
+    background-size: 30px 100% !important;
+  }
+
+  html body #projects .film-reel-window .project-grid,
+  html body #projects .phone-screen .film-reel-window .project-grid,
+  html body:not(.projects-mode) #projects .film-reel-window .project-grid,
+  html body.projects-mode #projects .film-reel-window .project-grid {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: var(--film-gap) !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 max(10.5vw, calc(50vw - 165px)) !important;
+    overflow: visible !important;
+    will-change: transform !important;
+  }
+
+  html body #projects .film-reel-window .project-card,
+  html body #projects .film-reel-window .project-grid .project-card {
+    flex: 0 0 min(79vw, 330px) !important;
+    width: min(79vw, 330px) !important;
+    height: clamp(430px, 118vw, 520px) !important;
+    min-height: clamp(430px, 118vw, 520px) !important;
+    opacity: 0.38 !important;
+    filter: blur(1.8px) saturate(0.72) brightness(0.62) !important;
+    transform: scale(0.92) !important;
+    pointer-events: auto !important;
+  }
+
+  html body #projects .film-reel-window .project-card.is-reel-active,
+  html body #projects .film-reel-window .project-card:hover,
+  html body #projects .film-reel-window .project-card:focus-within {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: scale(1) !important;
+    border-color: rgba(142, 230, 255, 0.78) !important;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+      0 0 32px rgba(83, 232, 255, 0.38),
+      0 22px 52px rgba(0, 0, 0, 0.52) !important;
+  }
+
+  html body #projects .film-reel-window .reel-controls {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 30 !important;
+    display: block !important;
+    pointer-events: none !important;
+  }
+
+  html body #projects .film-reel-window .reel-arrow {
+    position: absolute !important;
+    top: 50% !important;
+    width: 42px !important;
+    height: 52px !important;
+    transform: translateY(-50%) !important;
+    border-radius: 12px !important;
+    pointer-events: auto !important;
+  }
+
+  html body #projects #reelPrev {
+    left: max(10px, env(safe-area-inset-left)) !important;
+  }
+
+  html body #projects #reelNext {
+    right: max(10px, env(safe-area-inset-right)) !important;
+  }
+
+  html body #projects .reel-hint {
+    margin: 0.55rem 0 0 !important;
+    font-size: 0.72rem !important;
+    text-align: center !important;
+  }
+
+  html body #projects .docs-section {
+    margin: 1rem 0 0 !important;
+    padding: 0.8rem !important;
+    border-radius: 12px !important;
+  }
+
+  html body #projects .docs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  html body #projects .doc-card {
+    min-height: 112px !important;
+    padding: 0.72rem !important;
+  }
+
+  html body #projects .doc-thumb {
+    min-height: 86px !important;
+  }
+
+  html body #resume .resume-shell {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.9rem !important;
+    padding: 0.8rem !important;
+    border: 1px solid rgba(142, 230, 255, 0.22) !important;
+    border-radius: 14px !important;
+    background: rgba(5, 9, 18, 0.72) !important;
+  }
+
+  html body #resume .resume-profile,
+  html body #resume .resume-panel,
+  html body #resume .game-exp-group,
+  html body #about .about-grid .card {
+    width: 100% !important;
+    min-height: auto !important;
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    padding: 1rem !important;
+    border-radius: 12px !important;
+  }
+
+  html body #resume .resume-profile {
+    position: relative !important;
+    top: auto !important;
+    display: grid !important;
+    justify-items: center !important;
+    text-align: center !important;
+  }
+
+  html body #resume .resume-avatar {
+    width: 118px !important;
+    height: 118px !important;
+    border-radius: 16px !important;
+  }
+
+  html body #resume .resume-contact-list,
+  html body #resume .resume-actions {
+    width: 100% !important;
+  }
+
+  html body #resume .resume-panel-grid,
+  html body #resume .game-exp-groups,
+  html body #about .about-grid,
+  html body #contact .contact-list {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  html body #resume .project-exp-item {
+    padding: 0.85rem !important;
+  }
+
+  html body #resume .item-title {
+    font-size: 1rem !important;
+    line-height: 1.35 !important;
+  }
+
+  html body #resume .experience-open-mark {
+    position: static !important;
+    margin-top: 0.55rem !important;
+    align-self: start !important;
+  }
+
+  html body #about .about-grid {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  html body #about .about-grid .card h3 {
+    font-size: 1.28rem !important;
+    line-height: 1.25 !important;
+  }
+
+  html body #about .about-grid .card p {
+    font-size: 0.95rem !important;
+    line-height: 1.75 !important;
+  }
+
+  html body #finale.finale-section {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 20px 0 34px !important;
+  }
+
+  html body .finale-sticky {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 420px !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+  }
+
+  html body .finale-video {
+    height: 100% !important;
+    min-height: 420px !important;
+    object-fit: cover !important;
+  }
+
+  html body .finale-overlay {
+    padding: 1rem !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    text-align: center !important;
+  }
+
+  html body .finale-overlay h2 {
+    font-size: clamp(1.75rem, 10vw, 3.2rem) !important;
+  }
+
+  html body .project-modal {
+    padding: 0.75rem !important;
+    align-items: center !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  html body .project-modal-panel {
+    width: min(100%, 720px) !important;
+    max-height: calc(100dvh - 1.5rem) !important;
+    border-radius: 16px !important;
+    overflow: auto !important;
+  }
+
+  html body .project-modal-content,
+  html body .detail-columns {
+    grid-template-columns: 1fr !important;
+  }
+
+  html body .project-modal-info {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body main > section,
+  html body #home.hero,
+  html body #projects.section,
+  html body #resume.section,
+  html body #about.section,
+  html body #contact.section,
+  html body #finale.finale-section {
+    width: min(100% - 18px, 430px) !important;
+  }
+
+  html body #home.hero {
+    padding-top: 66px !important;
+  }
+
+  html body #home .hero-copy-solid {
+    padding: 0.95rem !important;
+  }
+
+  html body #home .hero-solid-title {
+    font-size: clamp(3rem, 18vw, 4.65rem) !important;
+  }
+
+  html body #projects .phone-scene-label h2,
+  html body #resume .section-head h2,
+  html body #about .section-head h2 {
+    font-size: clamp(1.7rem, 10vw, 2.65rem) !important;
+  }
+
+  html body #projects .film-reel-window .project-grid,
+  html body #projects .phone-screen .film-reel-window .project-grid,
+  html body:not(.projects-mode) #projects .film-reel-window .project-grid,
+  html body.projects-mode #projects .film-reel-window .project-grid {
+    padding-left: max(9vw, calc(50vw - 159px)) !important;
+    padding-right: max(9vw, calc(50vw - 159px)) !important;
+  }
+
+  html body #projects .film-reel-window .project-card,
+  html body #projects .film-reel-window .project-grid .project-card {
+    flex-basis: min(82vw, 318px) !important;
+    width: min(82vw, 318px) !important;
+    height: clamp(420px, 126vw, 500px) !important;
+    min-height: clamp(420px, 126vw, 500px) !important;
+  }
+
+  html body #projects .project-overlay {
+    padding: 0.9rem 0.75rem !important;
+  }
+
+  html body #projects .project-overlay h3 {
+    font-size: clamp(1.4rem, 8vw, 2rem) !important;
+  }
+
+  html body #projects .project-overlay p {
+    font-size: 0.8rem !important;
+  }
+
+  html body #resume .plain-list li,
+  html body #resume .project-exp-item,
+  html body #resume .game-exp-group {
+    padding: 0.75rem !important;
+  }
+
+  html body .finale-contact-panel {
+    width: min(318px, calc(100vw - 26px)) !important;
+    height: min(540px, calc(100dvh - 32px)) !important;
+  }
+
+  html body .finale-contact-content {
+    padding: 40px 46px 28px 26px !important;
+  }
+
+  html body .finale-contact-content h3 {
+    font-size: clamp(1.95rem, 14vw, 2.55rem) !important;
+  }
+
+  html body .finale-contact-content > p {
+    font-size: 0.82rem !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    grid-template-columns: 54px minmax(0, 1fr) !important;
+    column-gap: 0.55rem !important;
+    font-size: 0.82rem !important;
+  }
+}
+
+/* Mobile final cleanup: remove the extra finale text panel and bottom contact card. */
+@media (max-width: 980px) {
+  html body .finale-overlay,
+  html body #contact.section {
+    display: none !important;
+  }
+
+  html body #finale.finale-section {
+    padding-bottom: 0 !important;
+  }
+}
+
+/* Mobile hero repair: make the animation a real scrollable scene, with copy below it. */
+@media (max-width: 980px) {
+  html body #home.hero {
+    display: block !important;
+    width: 100% !important;
+    min-height: 168svh !important;
+    margin: 0 auto !important;
+    padding: 58px 0 30px !important;
+    overflow: visible !important;
+    border-radius: 0 !important;
+  }
+
+  html body #home.hero > .scroll-scene-video {
+    position: sticky !important;
+    top: 58px !important;
+    display: block !important;
+    width: 100% !important;
+    height: 62svh !important;
+    min-height: 360px !important;
+    max-height: 620px !important;
+    object-fit: cover !important;
+    object-position: 58% center !important;
+    border: 0 !important;
+    border-radius: 0 0 18px 18px !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+  }
+
+  html body #home.hero > .scroll-scene-grade {
+    position: absolute !important;
+    top: 58px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: 62svh !important;
+    min-height: 360px !important;
+    max-height: 620px !important;
+    border-radius: 0 0 18px 18px !important;
+    background:
+      linear-gradient(180deg, rgba(2, 4, 10, 0.04), rgba(2, 4, 10, 0.18) 48%, rgba(2, 4, 10, 0.46)),
+      linear-gradient(90deg, rgba(2, 4, 10, 0.14), rgba(2, 4, 10, 0.02)) !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+  }
+
+  html body #home .hero-copy-solid {
+    position: relative !important;
+    z-index: 4 !important;
+    width: min(100% - 22px, 560px) !important;
+    margin: 1rem auto 0 !important;
+    padding: 0.95rem !important;
+    border: 1px solid rgba(142, 230, 255, 0.26) !important;
+    border-radius: 14px !important;
+    background: rgba(5, 9, 18, 0.84) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 18px 48px rgba(0, 0, 0, 0.34) !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  html body #home .hero-solid-kicker {
+    margin-bottom: 0.5rem !important;
+    font-size: clamp(0.58rem, 2.7vw, 0.76rem) !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  html body #home .hero-solid-name {
+    font-size: clamp(1.05rem, 5vw, 1.55rem) !important;
+  }
+
+  html body #home .hero-solid-title {
+    font-size: clamp(2.65rem, 14.2vw, 4.55rem) !important;
+    line-height: 0.82 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  html body #home .hero-solid-text {
+    margin-top: 0.85rem !important;
+    font-size: clamp(0.82rem, 3.8vw, 0.98rem) !important;
+    line-height: 1.68 !important;
+  }
+
+  html body #home .hero-solid-actions {
+    grid-template-columns: 1fr !important;
+    gap: 0.45rem !important;
+    margin-top: 0.85rem !important;
+  }
+
+  html body #home .hero-solid-actions a {
+    min-height: 38px !important;
+    font-size: 0.82rem !important;
+  }
+
+  html body #projects.section {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body #home.hero {
+    min-height: 174svh !important;
+  }
+
+  html body #home.hero > .scroll-scene-video,
+  html body #home.hero > .scroll-scene-grade {
+    height: 58svh !important;
+    min-height: 320px !important;
+  }
+
+  html body #home .hero-copy-solid {
+    width: min(100% - 18px, 430px) !important;
+  }
+}
+
+/* Mobile hero fullscreen pass: remove sketch wallpaper, place copy directly over video. */
+@media (max-width: 980px) {
+  html body .sketch-layer,
+  html body .sketch-item {
+    display: none !important;
+  }
+
+  html body {
+    background:
+      radial-gradient(circle at 50% 8%, rgba(83, 232, 255, 0.08), transparent 34svh),
+      linear-gradient(180deg, #030711 0%, #050817 54%, #02040a 100%) !important;
+  }
+
+  html body #home.hero {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    min-height: 168svh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #030711 !important;
+  }
+
+  html body #home.hero > .scroll-scene-video {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: 56% center !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+  }
+
+  html body #home.hero > .scroll-scene-grade {
+    position: absolute !important;
+    inset: 0 auto auto 0 !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    background:
+      linear-gradient(180deg, rgba(1, 3, 9, 0.16), rgba(1, 3, 9, 0.26) 44%, rgba(1, 3, 9, 0.58) 100%),
+      linear-gradient(90deg, rgba(1, 3, 9, 0.54), rgba(1, 3, 9, 0.12) 62%, rgba(1, 3, 9, 0.36)) !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
+    pointer-events: none !important;
+  }
+
+  html body #home .hero-copy-solid {
+    position: sticky !important;
+    top: clamp(76px, 9svh, 104px) !important;
+    z-index: 4 !important;
+    width: min(100% - 28px, 620px) !important;
+    margin: calc(-100svh + clamp(76px, 9svh, 104px)) auto 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    color: #fff !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  html body #home .hero-copy-solid,
+  html body #home .hero-copy-solid * {
+    text-align: left !important;
+  }
+
+  html body #home .hero-solid-kicker {
+    max-width: 17rem !important;
+    margin: 0 0 0.45rem !important;
+    color: rgba(245, 247, 255, 0.9) !important;
+    font-size: clamp(0.64rem, 3.2vw, 0.88rem) !important;
+    line-height: 1.38 !important;
+    letter-spacing: 0.14em !important;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.78) !important;
+  }
+
+  html body #home .hero-solid-name {
+    font-size: clamp(1.1rem, 5.6vw, 1.65rem) !important;
+    line-height: 1 !important;
+    color: #fff !important;
+    text-shadow:
+      2px 0 0 rgba(122, 77, 255, 0.96),
+      0 4px 18px rgba(0, 0, 0, 0.78) !important;
+  }
+
+  html body #home .hero-solid-title {
+    margin-top: 0.08rem !important;
+    font-size: clamp(3.15rem, 17.5vw, 5.75rem) !important;
+    line-height: 0.78 !important;
+    letter-spacing: -0.055em !important;
+    color: #fff !important;
+    text-shadow:
+      3px 0 0 rgba(122, 77, 255, 0.92),
+      0 8px 24px rgba(0, 0, 0, 0.82) !important;
+  }
+
+  html body #home .hero-solid-text {
+    max-width: min(100%, 35rem) !important;
+    margin: 0.92rem 0 0 !important;
+    padding-left: 0.72rem !important;
+    border-left: 3px solid rgba(122, 77, 255, 0.96) !important;
+    color: rgba(255, 255, 255, 0.94) !important;
+    font-size: clamp(0.86rem, 3.9vw, 1.05rem) !important;
+    line-height: 1.72 !important;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.86) !important;
+  }
+
+  html body #home .hero-solid-actions {
+    width: min(100%, 18rem) !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.45rem !important;
+    margin: clamp(0.9rem, 3svh, 1.35rem) auto 0 !important;
+  }
+
+  html body #home .hero-solid-actions a {
+    min-height: 36px !important;
+    padding: 0.35rem 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: rgba(255, 255, 255, 0.96) !important;
+    font-size: 0.9rem !important;
+    text-align: center !important;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.86) !important;
+  }
+
+  html body #projects.section {
+    position: relative !important;
+    z-index: 5 !important;
+    margin-top: 0 !important;
+    background: transparent !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body #home.hero {
+    min-height: 172svh !important;
+  }
+
+  html body #home .hero-copy-solid {
+    top: clamp(70px, 8svh, 92px) !important;
+    width: min(100% - 22px, 430px) !important;
+    margin-top: calc(-100svh + clamp(70px, 8svh, 92px)) !important;
+  }
+
+  html body #home .hero-solid-title {
+    font-size: clamp(2.9rem, 18vw, 4.8rem) !important;
+  }
+}
+
+/* Mobile split-copy pass: text sits on both sides of the character, not over the face. */
+@media (max-width: 980px) {
+  html body #home.hero {
+    min-height: 100svh !important;
+  }
+
+  html body #home .hero-copy-solid {
+    top: 0 !important;
+    width: 100% !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    margin: -100svh 0 0 !important;
+    padding: clamp(66px, 9svh, 88px) 16px 22px !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.9fr) minmax(72px, 0.5fr) minmax(0, 0.9fr) !important;
+    grid-template-rows: auto 1fr auto !important;
+    column-gap: 0.35rem !important;
+    align-items: start !important;
+    pointer-events: none !important;
+  }
+
+  html body #home .hero-solid-kicker {
+    grid-column: 1 / 2 !important;
+    grid-row: 1 / 2 !important;
+    max-width: 11.8rem !important;
+    margin: 0 0 0.32rem !important;
+    font-size: clamp(0.48rem, 2.2vw, 0.68rem) !important;
+    line-height: 1.42 !important;
+    letter-spacing: 0.13em !important;
+  }
+
+  html body #home .hero-copy-solid h1 {
+    grid-column: 1 / 2 !important;
+    grid-row: 2 / 3 !important;
+    align-self: start !important;
+    margin: 0 !important;
+  }
+
+  html body #home .hero-solid-name {
+    font-size: clamp(0.86rem, 4.2vw, 1.25rem) !important;
+  }
+
+  html body #home .hero-solid-title {
+    font-size: clamp(2rem, 10.2vw, 3.7rem) !important;
+    line-height: 0.82 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  html body #home .hero-solid-text {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 3 !important;
+    align-self: end !important;
+    max-width: 12.6rem !important;
+    margin: 0 0 clamp(92px, 16svh, 136px) !important;
+    padding-left: 0.52rem !important;
+    font-size: clamp(0.62rem, 2.75vw, 0.82rem) !important;
+    line-height: 1.62 !important;
+  }
+
+  html body #home .hero-solid-actions {
+    grid-column: 3 / 4 !important;
+    grid-row: 3 / 4 !important;
+    align-self: end !important;
+    justify-self: end !important;
+    width: min(100%, 10.5rem) !important;
+    margin: 0 0 0.15rem !important;
+    gap: 0.22rem !important;
+    pointer-events: auto !important;
+  }
+
+  html body #home .hero-solid-actions a {
+    min-height: 28px !important;
+    padding: 0.16rem 0 !important;
+    font-size: clamp(0.58rem, 2.65vw, 0.78rem) !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  html body #home.hero > .scroll-scene-grade {
+    background:
+      radial-gradient(circle at 52% 34%, transparent 0 23%, rgba(1, 3, 9, 0.24) 46%, rgba(1, 3, 9, 0.62) 100%),
+      linear-gradient(90deg, rgba(1, 3, 9, 0.55), rgba(1, 3, 9, 0.04) 47%, rgba(1, 3, 9, 0.48)) !important;
+  }
+
+  html body #finale.finale-section {
+    display: block !important;
+    width: 100% !important;
+    min-height: 190svh !important;
+    height: 190svh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #02040a !important;
+  }
+
+  html body .finale-sticky {
+    position: sticky !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body .finale-video {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100svh !important;
+    object-fit: cover !important;
+    opacity: 1 !important;
+  }
+
+  html body .finale-contact-modal {
+    display: grid !important;
+  }
+
+  html body .finale-contact-modal.hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body #home .hero-copy-solid {
+    padding: clamp(56px, 8svh, 76px) 12px 18px !important;
+    grid-template-columns: minmax(0, 0.86fr) minmax(54px, 0.46fr) minmax(0, 0.9fr) !important;
+  }
+
+  html body #home .hero-solid-kicker {
+    max-width: 10.6rem !important;
+    font-size: clamp(0.43rem, 2.55vw, 0.62rem) !important;
+  }
+
+  html body #home .hero-solid-title {
+    font-size: clamp(1.78rem, 10.4vw, 3.25rem) !important;
+  }
+
+  html body #home .hero-solid-text {
+    max-width: 10.8rem !important;
+    margin-bottom: clamp(78px, 14svh, 118px) !important;
+    font-size: clamp(0.56rem, 2.8vw, 0.76rem) !important;
+  }
+
+  html body #home .hero-solid-actions {
+    width: min(100%, 9.2rem) !important;
+  }
+}
+
+/* Mobile hero/finale polish: keep desktop intact while refining the phone layout. */
+@media (max-width: 980px) {
+  html body #home .hero-copy-solid h1 {
+    display: grid !important;
+    gap: clamp(0.28rem, 1.6svh, 0.62rem) !important;
+  }
+
+  html body #home .hero-solid-name {
+    display: block !important;
+    margin: 0 0 clamp(0.24rem, 1.6svh, 0.55rem) !important;
+  }
+
+  html body #home .hero-solid-title {
+    display: block !important;
+    margin-top: clamp(0.18rem, 1.3svh, 0.48rem) !important;
+  }
+
+  html body #home .hero-solid-text {
+    justify-self: end !important;
+    align-self: end !important;
+    margin: 0 0 clamp(30px, 6.8svh, 70px) !important;
+    transform: translateX(4px) !important;
+  }
+
+  html body #home .hero-solid-actions {
+    width: min(100%, 11rem) !important;
+    gap: 0.34rem !important;
+  }
+
+  html body #home .hero-solid-actions a {
+    min-height: 31px !important;
+    padding: 0.2rem 0.6rem !important;
+    border: 1px solid rgba(220, 244, 255, 0.62) !important;
+    border-radius: 999px !important;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(5, 10, 20, 0.24)),
+      rgba(5, 9, 18, 0.2) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 0 18px rgba(130, 226, 255, 0.18),
+      0 8px 22px rgba(0, 0, 0, 0.32) !important;
+    backdrop-filter: blur(5px) !important;
+  }
+
+  html body #finale.finale-section {
+    width: 100vw !important;
+    min-height: 180svh !important;
+    height: 180svh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  html body .finale-sticky {
+    position: sticky !important;
+    top: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  html body .finale-video {
+    display: block !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    background: transparent !important;
+  }
+
+  html body .finale-contact-panel {
+    width: min(270px, calc(100vw - 44px)) !important;
+    height: min(455px, calc(100dvh - 56px)) !important;
+    border-radius: 20px !important;
+  }
+
+  html body .finale-contact-content {
+    padding: 42px 38px 24px 22px !important;
+    gap: 0.62rem !important;
+  }
+
+  html body .finale-contact-content h3 {
+    max-width: 9.6rem !important;
+    font-size: clamp(1.48rem, 8.8vw, 2rem) !important;
+    line-height: 0.96 !important;
+  }
+
+  html body .finale-contact-content > p {
+    max-width: 10.5rem !important;
+    font-size: 0.68rem !important;
+    line-height: 1.55 !important;
+  }
+
+  html body .finale-contact-content .contact-list {
+    gap: 0.42rem !important;
+    margin-top: 0.16rem !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    grid-template-columns: 42px minmax(0, 1fr) !important;
+    min-height: 36px !important;
+    padding: 0.35rem 0.48rem !important;
+    column-gap: 0.42rem !important;
+    font-size: 0.62rem !important;
+    line-height: 1.2 !important;
+    border-radius: 10px !important;
+  }
+
+  html body .finale-contact-panel .modal-close {
+    top: 12px !important;
+    right: 12px !important;
+    min-width: 60px !important;
+    min-height: 32px !important;
+    padding: 0 0.62rem !important;
+    font-size: 0.7rem !important;
+  }
+
+  html body .finale-contact-panel::after {
+    right: 20px !important;
+    top: 24% !important;
+    bottom: 9% !important;
+    width: 34px !important;
+    opacity: 0.58 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body #home .hero-copy-solid {
+    padding-right: 14px !important;
+    padding-bottom: 16px !important;
+  }
+
+  html body #home .hero-solid-name {
+    margin-bottom: clamp(0.34rem, 2svh, 0.64rem) !important;
+  }
+
+  html body #home .hero-solid-title {
+    margin-top: clamp(0.22rem, 1.6svh, 0.52rem) !important;
+  }
+
+  html body #home .hero-solid-text {
+    max-width: 10.9rem !important;
+    margin-bottom: clamp(26px, 6.2svh, 58px) !important;
+    transform: translateX(6px) !important;
+  }
+
+  html body #home .hero-solid-actions {
+    width: min(100%, 9.8rem) !important;
+    margin-right: -2px !important;
+  }
+
+  html body #home .hero-solid-actions a {
+    min-height: 30px !important;
+    font-size: clamp(0.57rem, 2.65vw, 0.74rem) !important;
+  }
+
+  html body .finale-contact-panel {
+    width: min(228px, calc(100vw - 48px)) !important;
+    height: min(380px, calc(100dvh - 82px)) !important;
+    border-radius: 18px !important;
+  }
+
+  html body .finale-contact-content {
+    padding: 36px 31px 20px 18px !important;
+  }
+
+  html body .finale-contact-content .eyebrow {
+    font-size: 0.5rem !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  html body .finale-contact-content h3 {
+    max-width: 8.1rem !important;
+    font-size: clamp(1.25rem, 7.9vw, 1.62rem) !important;
+  }
+
+  html body .finale-contact-content > p {
+    max-width: 8.8rem !important;
+    font-size: 0.58rem !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    grid-template-columns: 34px minmax(0, 1fr) !important;
+    min-height: 31px !important;
+    padding: 0.28rem 0.38rem !important;
+    font-size: 0.52rem !important;
+  }
+
+  html body .finale-contact-panel .modal-close {
+    min-width: 52px !important;
+    min-height: 28px !important;
+    font-size: 0.62rem !important;
+  }
+
+  html body .finale-contact-panel::after {
+    right: 14px !important;
+    width: 24px !important;
+  }
+}
+
+/* Mobile finale hard stop: the video is the page bottom, with no exposed tail area. */
+@media (max-width: 980px) {
+  html body #finale.finale-section {
+    position: relative !important;
+    display: block !important;
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    margin: 0 calc(50% - 50vw) !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #02040a !important;
+  }
+
+  html body .finale-sticky {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+    background: #02040a !important;
+  }
+
+  html body .finale-video {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: none !important;
+    background: #02040a !important;
+  }
+
+  html body #contact.section {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body main {
+    padding-bottom: 0 !important;
+  }
+
+  html body .finale-contact-panel {
+    width: min(292px, calc(100vw - 36px)) !important;
+    height: min(492px, calc(100dvh - 42px)) !important;
+    border-radius: 22px !important;
+  }
+
+  html body .finale-contact-content {
+    padding: 46px 42px 28px 26px !important;
+  }
+
+  html body .finale-contact-content h3 {
+    max-width: 10.5rem !important;
+    font-size: clamp(1.64rem, 9.4vw, 2.18rem) !important;
+  }
+
+  html body .finale-contact-content > p {
+    max-width: 11.5rem !important;
+    font-size: 0.74rem !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    grid-template-columns: 52px minmax(0, 1fr) !important;
+    min-height: 40px !important;
+    padding: 0.42rem 0.56rem !important;
+    column-gap: 0.55rem !important;
+    font-size: 0.68rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body .finale-contact-panel {
+    width: min(256px, calc(100vw - 40px)) !important;
+    height: min(426px, calc(100dvh - 64px)) !important;
+    border-radius: 20px !important;
+  }
+
+  html body .finale-contact-content {
+    padding: 39px 33px 22px 22px !important;
+  }
+
+  html body .finale-contact-content h3 {
+    max-width: 8.9rem !important;
+    font-size: clamp(1.38rem, 8.6vw, 1.78rem) !important;
+  }
+
+  html body .finale-contact-content > p {
+    max-width: 9.7rem !important;
+    font-size: 0.62rem !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+    min-height: 35px !important;
+    padding: 0.34rem 0.46rem !important;
+    font-size: 0.58rem !important;
+  }
+
+  html body .finale-contact-panel::after {
+    right: 16px !important;
+    width: 26px !important;
+  }
+}
+
+/* Mobile finale scroll-scrub restore: keep scroll progress while hiding any bottom tail. */
+@media (max-width: 980px) {
+  html body #finale.finale-section {
+    position: relative !important;
+    display: block !important;
+    width: 100vw !important;
+    min-width: 100vw !important;
+    max-width: 100vw !important;
+    height: 220svh !important;
+    min-height: 220svh !important;
+    max-height: none !important;
+    margin: 0 calc(50% - 50vw) !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #02040a !important;
+  }
+
+  html body #finale .finale-sticky {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    display: block !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+    background: #02040a !important;
+  }
+
+  html body #finale .finale-video {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100vw !important;
+    height: 100svh !important;
+    min-width: 100vw !important;
+    min-height: 100svh !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: translateZ(0) !important;
+    background: #02040a !important;
+  }
+
+  html body #finale + #contact.section {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  html body .finale-contact-panel {
+    width: min(308px, calc(100vw - 34px)) !important;
+    height: min(520px, calc(100dvh - 36px)) !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    grid-template-columns: 56px minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html body .finale-contact-panel {
+    width: min(274px, calc(100vw - 36px)) !important;
+    height: min(456px, calc(100dvh - 56px)) !important;
+  }
+
+  html body .finale-contact-content {
+    padding: 42px 35px 24px 23px !important;
+  }
+
+  html body .finale-contact-content .contact-list a {
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+    font-size: 0.61rem !important;
+  }
+}
+
+/* Mobile finale active cover: keep the scroll track invisible while it drives the video. */
+@media (max-width: 980px) {
+  html body #finale.finale-section {
+    height: 220dvh !important;
+    min-height: 220dvh !important;
+    background: transparent !important;
+  }
+
+  html body #finale .finale-sticky {
+    height: 101dvh !important;
+    min-height: 101dvh !important;
+    max-height: 100dvh !important;
+    background: transparent !important;
+  }
+
+  html body #finale .finale-video {
+    height: 101dvh !important;
+    min-height: 101dvh !important;
+    background: #02040a !important;
+  }
+
+  html body.mobile-finale-active #finale .finale-sticky {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 8 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+    pointer-events: none !important;
+    transform: translateZ(0) !important;
+  }
+
+  html body.mobile-finale-active #finale .finale-video {
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  html body.mobile-finale-active #finale.finale-section::after {
+    content: "" !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 7 !important;
+    background: #02040a !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Mobile finale viewport layer: decouple visual coverage from the scroll track. */
+@media (max-width: 980px) {
+  html body #finale.finale-section {
+    isolation: isolate !important;
+    background: transparent !important;
+  }
+
+  html body #finale .finale-sticky {
+    background: transparent !important;
+  }
+
+  html body #finale .finale-video-frame {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    overflow: hidden !important;
+    background: #02040a !important;
+  }
+
+  html body #finale .finale-video-frame::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -2px !important;
+    z-index: 0 !important;
+    background: #02040a !important;
+  }
+
+  html body #finale .finale-video {
+    z-index: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  html body.mobile-finale-active #finale .finale-video-frame {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    pointer-events: none !important;
+    transform: translateZ(0) !important;
+  }
+
+  html body.mobile-finale-active #finale .finale-sticky {
+    z-index: auto !important;
+    background: transparent !important;
+  }
+
+  html body.mobile-finale-active #finale.finale-section::after {
+    display: none !important;
+  }
+}
+
+/* Decisive mobile finale cover: landscape video fills by height, then crops horizontally. */
+@media (max-width: 980px) {
+  html body #finale.finale-section {
+    height: 220vh !important;
+    min-height: 220vh !important;
+    height: 220svh !important;
+    min-height: 220svh !important;
+    height: 220dvh !important;
+    min-height: 220dvh !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  html body #finale .finale-sticky,
+  html body #finale .finale-video-frame {
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    height: 100svh !important;
+    min-height: 100svh !important;
+    max-height: 100svh !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+    background: #02040a !important;
+  }
+
+  html body #finale .finale-video-frame {
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+  }
+
+  html body.mobile-finale-active #finale .finale-video-frame {
+    position: fixed !important;
+    inset: 0 auto auto 0 !important;
+    z-index: 60 !important;
+    pointer-events: none !important;
+  }
+
+  html body #finale .finale-video {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    display: block !important;
+    width: 176vh !important;
+    width: 176svh !important;
+    width: max(100vw, 176dvh) !important;
+    height: 101vh !important;
+    height: 101svh !important;
+    height: 101dvh !important;
+    min-width: 100vw !important;
+    min-height: 101vh !important;
+    min-height: 101svh !important;
+    min-height: 101dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    aspect-ratio: auto !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: translate(-50%, -50%) scale(1.035) !important;
+    filter: saturate(1.08) contrast(1.06) brightness(0.92) !important;
+    background: #02040a !important;
+  }
+
+  html body #finale .finale-sticky {
+    position: sticky !important;
+    top: 0 !important;
+    display: block !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+
+  html body.mobile-finale-active #finale .finale-sticky {
+    background: transparent !important;
+  }
+}

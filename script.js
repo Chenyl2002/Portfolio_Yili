@@ -795,8 +795,15 @@ function closeFinaleContactModal() {
 }
 
 function updateFinaleScrollVideo() {
-  if (!finaleSection || !finaleScrollVideo || !finaleState.ready) return;
+  if (!finaleSection || !finaleScrollVideo) return;
+
   var rect = finaleSection.getBoundingClientRect();
+  var mobileFinaleActive =
+    isMobileFinaleScene() && rect.top < window.innerHeight && rect.bottom > 0;
+  document.body.classList.toggle("mobile-finale-active", mobileFinaleActive);
+
+  if (!finaleState.ready) return;
+
   var scrollRange = Math.max(finaleSection.offsetHeight - window.innerHeight, 1);
   var raw = Math.min(Math.max(-rect.top / scrollRange, 0), 1);
   var eased = raw < 0.5
@@ -812,7 +819,7 @@ function updateFinaleScrollVideo() {
   if (raw < 0.9) {
     finaleState.shown = false;
   }
-  if (raw > 0.985) {
+  if (raw > (isMobileFinaleScene() ? 0.972 : 0.985)) {
     openFinaleContactModal();
   }
 }
@@ -861,6 +868,14 @@ var finaleState = {
   ready: false,
   shown: false
 };
+
+function isDesktopScrollScene() {
+  return window.matchMedia("(min-width: 981px)").matches;
+}
+
+function isMobileFinaleScene() {
+  return window.matchMedia("(max-width: 980px)").matches;
+}
 
 function getScrollSceneProgress() {
   var projectsSection = document.getElementById("projects");
@@ -1115,19 +1130,23 @@ function initScrollSceneVideo(config) {
       scrollSceneState.currentTime = 0;
       scrollSceneVideo.pause();
       syncHeroVideoProgress();
-    } else {
+    } else if (isDesktopScrollScene()) {
       scrollSceneState.currentTime = scrollSceneVideo.duration;
       scrollSceneVideo.currentTime = scrollSceneVideo.duration;
       unlockHeroScroll();
+      updateScrollSceneTarget();
+    } else {
+      scrollSceneVideo.pause();
       updateScrollSceneTarget();
     }
   };
 
   var scrub = function() {
     if (scrollSceneState.ready) {
-      if (!scrollSceneState.unlockScroll) {
+      if (!scrollSceneState.unlockScroll && isDesktopScrollScene()) {
         if (window.scrollY > 8) window.scrollTo(0, 0);
-      } else {
+      }
+      if (scrollSceneState.unlockScroll || !isDesktopScrollScene()) {
         scrollSceneState.currentTime +=
           (scrollSceneState.targetTime - scrollSceneState.currentTime) * config.smoothing;
         if (Math.abs(scrollSceneVideo.currentTime - scrollSceneState.currentTime) > config.minSeekDelta) {
@@ -1654,6 +1673,11 @@ if (projectGrid) {
 }
 
 if (filmReelWindow) {
+  var mobileReelTouch = {
+    startX: 0,
+    startY: 0
+  };
+
   filmReelWindow.addEventListener(
     "wheel",
     function(event) {
@@ -1666,6 +1690,30 @@ if (filmReelWindow) {
       moveReel(event.deltaY + event.deltaX > 0 ? 1 : -1);
     },
     { passive: false }
+  );
+
+  filmReelWindow.addEventListener(
+    "touchstart",
+    function(event) {
+      if (!window.matchMedia("(max-width: 980px)").matches) return;
+      if (!event.touches || !event.touches.length) return;
+      mobileReelTouch.startX = event.touches[0].clientX;
+      mobileReelTouch.startY = event.touches[0].clientY;
+    },
+    { passive: true }
+  );
+
+  filmReelWindow.addEventListener(
+    "touchend",
+    function(event) {
+      if (!window.matchMedia("(max-width: 980px)").matches) return;
+      if (!event.changedTouches || !event.changedTouches.length) return;
+      var dx = event.changedTouches[0].clientX - mobileReelTouch.startX;
+      var dy = event.changedTouches[0].clientY - mobileReelTouch.startY;
+      if (Math.abs(dx) < 42 || Math.abs(dx) < Math.abs(dy) * 1.15) return;
+      moveReel(dx < 0 ? 1 : -1);
+    },
+    { passive: true }
   );
 }
 
