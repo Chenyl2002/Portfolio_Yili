@@ -4592,7 +4592,7 @@ html body > .system-status-bar {
     align-items: start !important;
     overflow: hidden !important;
     pointer-events: none !important;
-    z-index: 4 !important;
+    z-index: 22 !important;
     color: #fff !important;
   }
 
@@ -4662,11 +4662,17 @@ html body > .system-status-bar {
     width: min(100%, 10.5rem) !important;
     max-width: 42vw !important;
     margin: 0 0 0.15rem !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     gap: 0.22rem !important;
     pointer-events: auto !important;
   }
 
   html body > .hero-copy-solid.is-mobile-viewport-layer .hero-solid-actions a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
     min-height: 28px !important;
     padding: 0.16rem 0 !important;
     border: 1px solid rgba(210, 249, 255, 0.68) !important;

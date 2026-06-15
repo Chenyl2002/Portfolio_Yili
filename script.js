@@ -1043,7 +1043,7 @@ function setMobileHeroLayerStyles(active) {
       Object.assign(scrollSceneVideo.style, fillStyle, {
         objectFit: "cover",
         objectPosition: "58% center",
-        zIndex: "1",
+        zIndex: "20",
         display: "block",
         opacity: "1",
         background: "#02040a"
@@ -1063,7 +1063,7 @@ function setMobileHeroLayerStyles(active) {
     scrollSceneGrade.classList.toggle("is-mobile-viewport-layer", active);
     if (active) {
       Object.assign(scrollSceneGrade.style, fillStyle, {
-        zIndex: "2",
+        zIndex: "21",
         display: "block",
         opacity: "1"
       });
@@ -1083,7 +1083,7 @@ function setMobileHeroLayerStyles(active) {
       Object.assign(heroCopySolid.style, fillStyle, {
         margin: "0",
         overflow: "hidden",
-        zIndex: "4",
+        zIndex: "22",
         display: "grid",
         opacity: "1"
       });
