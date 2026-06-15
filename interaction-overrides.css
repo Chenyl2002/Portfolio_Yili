@@ -4438,3 +4438,89 @@ html body > .system-status-bar {
     background: transparent !important;
   }
 }
+
+/* Mobile QA pass: keep scroll tracks invisible while videos fill the handset viewport. */
+@media (max-width: 980px) {
+  html body #home.hero {
+    height: 188vh !important;
+    min-height: 188vh !important;
+    height: 188svh !important;
+    min-height: 188svh !important;
+    height: 188dvh !important;
+    min-height: 188dvh !important;
+    overflow: visible !important;
+    background: #02040a !important;
+  }
+
+  html body #home.hero > .scroll-scene-video {
+    position: sticky !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
+    object-fit: cover !important;
+    object-position: 58% center !important;
+  }
+
+  html body #home .hero-copy-solid {
+    margin-top: -100vh !important;
+    margin-top: -100svh !important;
+    margin-top: -100dvh !important;
+  }
+
+  html body #projects .film-reel-window {
+    position: relative !important;
+  }
+
+  html body #projects .film-reel-window .reel-arrow {
+    top: var(--reel-control-y, 50%) !important;
+  }
+
+  html body #finale.finale-section {
+    height: 220vh !important;
+    min-height: 220vh !important;
+    height: 220svh !important;
+    min-height: 220svh !important;
+    height: 220dvh !important;
+    min-height: 220dvh !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  html body #finale .finale-sticky,
+  html body #finale .finale-video-frame {
+    position: sticky !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+    background: transparent !important;
+  }
+
+  html body #finaleScrollVideo.is-mobile-viewport-layer {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    height: 100dvh !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: none !important;
+    z-index: 60 !important;
+    pointer-events: none !important;
+    background: #02040a !important;
+  }
+}

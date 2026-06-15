@@ -167,6 +167,8 @@ const reelPrev = document.getElementById("reelPrev");
 const reelNext = document.getElementById("reelNext");
 const finaleSection = document.getElementById("finale");
 const finaleScrollVideo = document.getElementById("finaleScrollVideo");
+const finaleVideoOriginalParent = finaleScrollVideo ? finaleScrollVideo.parentElement : null;
+const finaleVideoOriginalNextSibling = finaleScrollVideo ? finaleScrollVideo.nextSibling : null;
 const finaleContactModal = document.getElementById("finaleContactModal");
 const finaleContactBackdrop = document.getElementById("finaleContactBackdrop");
 const closeFinaleContact = document.getElementById("closeFinaleContact");
@@ -190,6 +192,7 @@ let activeReelIndex = 0;
 let activeReelDisplayIndex = 0;
 let lastModalTrigger = null;
 let isModalClosing = false;
+let finaleVideoLifted = false;
 
 const experiences = {
   "xingyue-camp": {
@@ -471,7 +474,20 @@ function syncCenteredReelCard() {
     var centerReelIndex = parseInt(closestCard.dataset.reelIndex || "0", 10);
     if (Number.isFinite(centerDisplayIndex)) activeReelDisplayIndex = centerDisplayIndex;
     if (Number.isFinite(centerReelIndex)) activeReelIndex = centerReelIndex;
+    syncReelControlCenter(closestCard);
   }
+}
+
+function syncReelControlCenter(activeCard) {
+  if (!filmReelWindow || !activeCard) return;
+  var controls = filmReelWindow.querySelector(".reel-controls");
+  var windowRect = filmReelWindow.getBoundingClientRect();
+  var baseRect = controls ? controls.getBoundingClientRect() : windowRect;
+  var cardRect = activeCard.getBoundingClientRect();
+  if (!baseRect.height || !cardRect.height) return;
+  var centerY = cardRect.top + cardRect.height / 2 - baseRect.top;
+  var clampedY = Math.max(centerY, 78);
+  filmReelWindow.style.setProperty("--reel-control-y", clampedY.toFixed(1) + "px");
 }
 
 function moveReel(direction) {
@@ -801,6 +817,7 @@ function updateFinaleScrollVideo() {
   var mobileFinaleActive =
     isMobileFinaleScene() && rect.top < window.innerHeight && rect.bottom > 0;
   document.body.classList.toggle("mobile-finale-active", mobileFinaleActive);
+  setMobileFinaleVideoLayer(mobileFinaleActive);
 
   if (!finaleState.ready) return;
 
@@ -829,6 +846,15 @@ function initFinaleScrollVideo() {
   var markReady = function() {
     finaleState.ready = Number.isFinite(finaleScrollVideo.duration) && finaleScrollVideo.duration > 0;
     finaleScrollVideo.pause();
+    if (
+      finaleState.ready &&
+      isMobileFinaleScene() &&
+      finaleScrollVideo.dataset.mobileSeekBlob !== "ready" &&
+      (!finaleScrollVideo.seekable.length || finaleScrollVideo.seekable.end(0) <= 0.01) &&
+      prepareMobileSeekableVideo(finaleScrollVideo, markReady)
+    ) {
+      return;
+    }
     updateFinaleScrollVideo();
   };
 
@@ -877,6 +903,80 @@ function isMobileFinaleScene() {
   return window.matchMedia("(max-width: 980px)").matches;
 }
 
+function setMobileFinaleVideoLayer(active) {
+  if (!finaleScrollVideo) return;
+  var shouldLift = active && isMobileFinaleScene();
+
+  if (shouldLift && !finaleVideoLifted) {
+    document.body.appendChild(finaleScrollVideo);
+    finaleVideoLifted = true;
+  } else if (!shouldLift && finaleVideoLifted && finaleVideoOriginalParent) {
+    finaleVideoOriginalParent.insertBefore(finaleScrollVideo, finaleVideoOriginalNextSibling);
+    finaleVideoLifted = false;
+  }
+
+  finaleScrollVideo.classList.toggle("is-mobile-viewport-layer", shouldLift);
+  if (shouldLift) {
+    var viewportHeight = Math.max(window.innerHeight || 0, document.documentElement.clientHeight || 0);
+    Object.assign(finaleScrollVideo.style, {
+      position: "fixed",
+      inset: "0",
+      width: "100vw",
+      height: viewportHeight ? viewportHeight + "px" : "100vh",
+      minWidth: "100vw",
+      minHeight: viewportHeight ? viewportHeight + "px" : "100vh",
+      maxWidth: "none",
+      maxHeight: "none",
+      objectFit: "cover",
+      objectPosition: "center center",
+      transform: "none",
+      zIndex: "60",
+      pointerEvents: "none",
+      display: "block",
+      opacity: "1",
+      background: "#02040a"
+    });
+  } else {
+    [
+      "position", "inset", "width", "height", "minWidth", "minHeight", "maxWidth",
+      "maxHeight", "objectFit", "objectPosition", "transform", "zIndex",
+      "pointerEvents", "display", "opacity", "background"
+    ].forEach(function(prop) {
+      finaleScrollVideo.style[prop] = "";
+    });
+  }
+}
+
+function prepareMobileSeekableVideo(video, onReady) {
+  if (!video || !isMobileFinaleScene() || video.dataset.mobileSeekBlob) return false;
+  var source = video.dataset.originalSrc || video.currentSrc || video.getAttribute("src");
+  if (!source || source.indexOf("blob:") === 0 || !window.fetch || !window.URL) return false;
+
+  var absoluteSource = new URL(source, window.location.href).href;
+  video.dataset.mobileSeekBlob = "loading";
+  video.dataset.originalSrc = absoluteSource;
+
+  fetch(absoluteSource)
+    .then(function(response) {
+      if (!response.ok) throw new Error("video fetch failed");
+      return response.blob();
+    })
+    .then(function(blob) {
+      var blobUrl = URL.createObjectURL(blob);
+      video.dataset.mobileSeekBlob = "ready";
+      video.addEventListener("loadedmetadata", onReady, { once: true });
+      video.addEventListener("canplay", onReady, { once: true });
+      video.src = blobUrl;
+      video.load();
+    })
+    .catch(function() {
+      video.dataset.mobileSeekBlob = "error";
+      onReady();
+    });
+
+  return true;
+}
+
 function getScrollSceneProgress() {
   var projectsSection = document.getElementById("projects");
   var endOffset = projectsSection
@@ -903,7 +1003,9 @@ function updateScrollSceneTarget() {
   var eased = progress < 0.5
     ? 2 * progress * progress
     : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-  var holdTime = Math.min(scrollSceneConfig.introHoldTime, scrollSceneVideo.duration * 0.82);
+  var holdTime = isDesktopScrollScene()
+    ? Math.min(scrollSceneConfig.introHoldTime, scrollSceneVideo.duration * 0.82)
+    : 0;
   if (scrollSceneState.introPlaying && window.scrollY < 8) {
     root.style.setProperty("--scene-progress", "0.0000");
     root.style.setProperty("--hero-copy-y", "0px");
@@ -1019,6 +1121,7 @@ function initProjectSnap() {
 
 function shouldLockHeroScroll(deltaY) {
   if (!scrollSceneVideo || !scrollSceneState.ready) return false;
+  if (!isDesktopScrollScene()) return false;
   if (window.scrollY > 8) return false;
   var atStart = scrollSceneVideo.currentTime <= 0.04;
   var atEnd = scrollSceneVideo.currentTime >= scrollSceneVideo.duration - 0.04;
@@ -1121,6 +1224,14 @@ function initScrollSceneVideo(config) {
     scrollSceneState.ready = Number.isFinite(scrollSceneVideo.duration) && scrollSceneVideo.duration > 0;
     // Bug 7: gracefully degrade if duration is invalid
     if (!scrollSceneState.ready) return;
+    if (
+      isMobileFinaleScene() &&
+      scrollSceneVideo.dataset.mobileSeekBlob !== "ready" &&
+      (!scrollSceneVideo.seekable.length || scrollSceneVideo.seekable.end(0) <= 0.01) &&
+      prepareMobileSeekableVideo(scrollSceneVideo, markReady)
+    ) {
+      return;
+    }
 
     scrollSceneState.targetTime = 0;
 
