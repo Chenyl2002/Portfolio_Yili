@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="./styles.css?v=hero-copy-clean-20260615" />
     <link rel="stylesheet" href="./reference-ui.css?v=hero-copy-clean-20260615" />
     <link rel="stylesheet" href="./interaction-overrides.css?v=mobile-hero-top-layer-20260615" />
+    <link rel="stylesheet" href="./game-ui-overhaul.css?v=motion-pass-20260621" />
   </head>
   <body>
     <div class="cinematic-loader" aria-hidden="true">
@@ -179,6 +180,10 @@
           </div>
         </div>
         <div class="hero-copy-solid" aria-label="作品集首页介绍">
+          <div class="hero-command-id" aria-hidden="true">
+            <span>MISSION PROFILE</span>
+            <span>CYL-2026 / ONLINE</span>
+          </div>
           <p class="hero-solid-kicker">PORTFOLIO · GAME LEVEL & NARRATIVE PLANNING</p>
           <h1>
             <span class="hero-solid-name">陈宜理</span>
@@ -187,19 +192,37 @@
           <p class="hero-solid-text">
             环境艺术设计本科 + 景观建筑硕士背景，聚焦关卡节奏、玩法循环与叙事演出落地。擅长将空间设计理解转化为可玩关卡体验。
           </p>
+          <div class="hero-role-focus" aria-label="核心能力">
+            <span><b>ROLE 01</b> LEVEL DESIGN</span>
+            <span><b>ROLE 02</b> NARRATIVE PLANNING</span>
+            <span><b>ROLE 03</b> PLAYER EXPERIENCE</span>
+          </div>
           <div class="hero-solid-actions">
-            <a href="#projects">VIEW PROJECTS</a>
-            <a href="#resume">VIEW RESUME</a>
-            <a href="#contact">CONTACT</a>
+            <a href="#projects">
+              <span class="mission-number">01</span>
+              <span><small class="mission-label">MISSION SELECT</small><b>VIEW PROJECTS</b><small>查看项目作品</small></span>
+              <img src="./assets/ui/nav/arrow-right.svg" alt="" />
+            </a>
+            <a href="#resume">
+              <span class="mission-number">02</span>
+              <span><small class="mission-label">LOADOUT / PROFILE</small><b>VIEW RESUME</b><small>查看个人简历</small></span>
+              <img src="./assets/ui/nav/arrow-right.svg" alt="" />
+            </a>
+            <a href="#contact">
+              <span class="mission-number">03</span>
+              <span><small class="mission-label">OPEN CHANNEL</small><b>CONTACT</b><small>发起通讯</small></span>
+              <img src="./assets/ui/nav/arrow-right.svg" alt="" />
+            </a>
           </div>
         </div>
-        <aside class="mission-panel hero-fade hero-fade-6" aria-label="当前任务面板">
-          <p class="eyebrow">CURRENT MISSION</p>
-          <h2>将空间叙事转译为可玩的关卡体验</h2>
+        <aside class="mission-panel hero-fade hero-fade-6" aria-label="职业任务进度">
+          <p class="eyebrow">CAMPAIGN PROGRESS</p>
+          <h2>LEVEL DESIGNER PATH</h2>
           <ul>
-            <li><span>01</span> 梳理玩家目标、路径与节奏峰值</li>
-            <li><span>02</span> 用 UE5 白盒验证玩法循环</li>
-            <li><span>03</span> 通过镜头、光照与交互落地叙事</li>
+            <li><span>01</span><b>空间叙事</b><small>MASTERED</small></li>
+            <li><span>02</span><b>UE5 白盒</b><small>MASTERED</small></li>
+            <li><span>03</span><b>玩法循环</b><small>MASTERED</small></li>
+            <li><span>04</span><b>叙事演出</b><small>ACTIVE</small></li>
           </ul>
         </aside>
         <div id="heroShowcase" class="hero-showcase" aria-hidden="true"></div>
@@ -654,6 +677,7 @@
       </article>
     </div>
 
-    <script src="./script.js?v=mobile-hero-top-layer-20260615"></script>
+    <script src="./script.js?v=smooth-scrub-20260621"></script>
+    <script src="./game-ui-overhaul.js?v=mission-command-20260621-r3"></script>
   </body>
 </html>

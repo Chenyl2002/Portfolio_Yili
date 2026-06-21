@@ -1,0 +1,556 @@
+:root {
+  --game-bg: #030611;
+  --game-panel: rgba(5, 10, 23, 0.84);
+  --game-panel-solid: #071022;
+  --game-line: rgba(117, 135, 255, 0.28);
+  --game-line-hot: rgba(137, 105, 255, 0.82);
+  --game-violet: #8c63ff;
+  --game-cyan: #70d9ff;
+  --game-text: #f4f6ff;
+  --game-muted: #99a5c7;
+  --game-success: #98ffdd;
+  --game-display: "Inter", "Noto Sans SC", sans-serif;
+}
+
+html {
+  background: var(--game-bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    linear-gradient(rgba(112, 217, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(112, 217, 255, 0.025) 1px, transparent 1px),
+    var(--game-bg) !important;
+  background-size: 72px 72px !important;
+  color: var(--game-text) !important;
+}
+
+html body .site-header,
+html body .site-header.scrolled {
+  height: 68px !important;
+  border-bottom: 1px solid rgba(133, 149, 255, 0.2) !important;
+  background: rgba(2, 5, 13, 0.78) !important;
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.22) !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+}
+
+html body .site-header::after {
+  content: "MISSION CONTROL  /  CYL-2026";
+  position: absolute;
+  right: 2rem;
+  bottom: -19px;
+  color: rgba(167, 178, 219, 0.54);
+  font: 600 0.58rem/1 var(--game-display);
+  letter-spacing: 0.18em;
+  pointer-events: none;
+}
+
+html body .nav {
+  height: 68px !important;
+}
+
+html body .brand-mark {
+  border-color: rgba(140, 99, 255, 0.72) !important;
+  box-shadow: 0 0 24px rgba(140, 99, 255, 0.24) !important;
+}
+
+html body .brand-name,
+html body .brand-version,
+html body .nav-links a {
+  color: var(--game-text) !important;
+  font-family: var(--game-display) !important;
+}
+
+html body .nav-links a {
+  position: relative;
+  padding: 0.65rem 0.2rem !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.16em !important;
+  opacity: 0.7;
+}
+
+html body .nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  height: 2px;
+  background: var(--game-violet);
+  box-shadow: 0 0 14px var(--game-violet);
+  transition: left 180ms ease, right 180ms ease;
+}
+
+html body .nav-links a:hover,
+html body .nav-links a.is-active {
+  opacity: 1;
+}
+
+html body .nav-links a:hover::after,
+html body .nav-links a.is-active::after {
+  left: 0;
+  right: 0;
+}
+
+html body .nav-talk {
+  border-color: rgba(140, 99, 255, 0.62) !important;
+  border-radius: 2px !important;
+  background: rgba(68, 39, 148, 0.24) !important;
+  box-shadow: inset 0 0 22px rgba(140, 99, 255, 0.08) !important;
+}
+
+@media (min-width: 981px) {
+  html body #home.hero {
+    min-height: 650px !important;
+    height: calc(100vh - 58px) !important;
+    max-height: 980px !important;
+    overflow: hidden !important;
+    isolation: isolate;
+  }
+
+  html body #home.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(2, 5, 14, 0.97) 0%, rgba(2, 5, 14, 0.82) 33%, rgba(2, 5, 14, 0.08) 58%, rgba(2, 5, 14, 0.52) 100%),
+      linear-gradient(180deg, rgba(2, 4, 12, 0.08) 54%, rgba(2, 5, 14, 0.95) 100%);
+  }
+
+  html body #home .scroll-scene-grade {
+    z-index: 2 !important;
+    background:
+      linear-gradient(90deg, rgba(2, 5, 16, 0.72) 0%, rgba(4, 8, 20, 0.46) 38%, rgba(3, 6, 18, 0.2) 64%, rgba(3, 6, 18, 0.44) 100%),
+      linear-gradient(180deg, rgba(2, 5, 14, 0.12) 48%, rgba(2, 5, 14, 0.72) 100%) !important;
+  }
+
+  html body #home .scroll-scene-video {
+    filter: saturate(0.7) brightness(0.58) contrast(1.16) hue-rotate(5deg) !important;
+  }
+
+  html body #home .hero-copy-solid {
+    position: absolute !important;
+    inset: 88px auto auto clamp(36px, 5.2vw, 78px) !important;
+    z-index: 8 !important;
+    display: grid !important;
+    width: min(40vw, 590px) !important;
+    max-width: 590px !important;
+    height: auto !important;
+    padding: 0 !important;
+    color: var(--game-text) !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+  }
+
+  html body #home .hero-copy-solid,
+  html body #home .hero-copy-solid * {
+    text-align: left !important;
+  }
+
+  .hero-command-id {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.95rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(122, 151, 255, 0.2);
+    border-left: 3px solid var(--game-violet);
+    color: rgba(178, 191, 232, 0.74);
+    background: rgba(4, 8, 19, 0.68);
+    font: 600 0.58rem/1 var(--game-display);
+    letter-spacing: 0.16em;
+  }
+
+  html body #home .hero-solid-kicker {
+    margin: 0 0 0.55rem !important;
+    color: #bcaeff !important;
+    font: 700 clamp(0.62rem, 0.72vw, 0.76rem)/1.3 var(--game-display) !important;
+    letter-spacing: 0.14em !important;
+    text-shadow: 0 0 22px rgba(140, 99, 255, 0.34) !important;
+  }
+
+  html body #home .hero-copy-solid h1 {
+    margin: 0 !important;
+  }
+
+  html body #home .hero-solid-name {
+    display: block !important;
+    margin-bottom: 0.25rem !important;
+    color: #fff !important;
+    font: 800 clamp(1.35rem, 1.8vw, 1.9rem)/1 var(--game-display) !important;
+    letter-spacing: 0.04em !important;
+    text-shadow: 3px 0 0 rgba(115, 86, 255, 0.62) !important;
+  }
+
+  html body #home .hero-solid-title {
+    display: block !important;
+    color: #f6f4ef !important;
+    font: 800 clamp(4.2rem, 6.8vw, 7.35rem)/0.76 var(--game-display) !important;
+    letter-spacing: -0.075em !important;
+    transform: skewX(-5deg) !important;
+    text-shadow:
+      3px 3px 0 #10162c,
+      6px 6px 0 rgba(118, 83, 255, 0.78),
+      0 18px 38px rgba(0, 0, 0, 0.55) !important;
+  }
+
+  html body #home .hero-solid-text {
+    max-width: 540px !important;
+    margin: 1rem 0 0 !important;
+    padding: 0.25rem 0 0.25rem 0.9rem !important;
+    border-left: 3px solid var(--game-violet) !important;
+    color: rgba(240, 243, 255, 0.88) !important;
+    font: 500 clamp(0.8rem, 0.9vw, 0.98rem)/1.72 "Noto Sans SC", sans-serif !important;
+    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.9) !important;
+  }
+
+  .hero-role-focus {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin-top: 1rem;
+    border: 1px solid rgba(112, 217, 255, 0.16);
+    background: rgba(112, 217, 255, 0.12);
+  }
+
+  .hero-role-focus span {
+    display: grid;
+    gap: 0.25rem;
+    min-width: 0;
+    padding: 0.7rem 0.65rem;
+    background: rgba(4, 9, 21, 0.86);
+    color: rgba(224, 230, 251, 0.76);
+    font: 600 0.56rem/1.25 var(--game-display);
+    letter-spacing: 0.08em;
+  }
+
+  .hero-role-focus b {
+    color: var(--game-cyan);
+    font-size: 0.5rem;
+    letter-spacing: 0.14em;
+  }
+
+  html body #home .hero-solid-actions {
+    position: fixed !important;
+    left: clamp(28px, 3vw, 48px) !important;
+    right: clamp(28px, 3vw, 48px) !important;
+    bottom: 24px !important;
+    z-index: 11 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(12px, 1.2vw, 20px) !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    pointer-events: auto !important;
+  }
+
+  html body #home .hero-solid-actions a {
+    display: grid !important;
+    grid-template-columns: auto 1fr 34px !important;
+    align-items: center !important;
+    min-height: 108px !important;
+    padding: 0.95rem 1rem !important;
+    border: 1px solid rgba(125, 111, 255, 0.46) !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    background:
+      linear-gradient(105deg, rgba(4, 9, 23, 0.94) 0%, rgba(8, 15, 34, 0.65) 55%, rgba(28, 20, 62, 0.38) 100%),
+      var(--mission-art) center/cover no-repeat !important;
+    color: var(--game-text) !important;
+    box-shadow: inset 0 0 38px rgba(104, 75, 255, 0.05) !important;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px)) !important;
+    transform: translate3d(0, 0, 0) !important;
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease, filter 220ms ease !important;
+    will-change: transform, opacity !important;
+    animation: mission-card-enter 760ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+  }
+
+  html body #home .hero-solid-actions a:nth-child(1) { --mission-art: url("./Image/WeChat711f392c1afddf18da8e1b8865a8de2c.jpg"); }
+  html body #home .hero-solid-actions a:nth-child(2) { --mission-art: url("./Image/WeChata387371355de2ef25039aafe61d4bdfd.jpg"); animation-delay: 90ms !important; }
+  html body #home .hero-solid-actions a:nth-child(3) { --mission-art: url("./Image/HighresScreenshot00000.png"); }
+
+  html body #home .hero-solid-actions a:nth-child(3) { animation-delay: 180ms !important; }
+
+  html body #home .hero-solid-actions a::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: -1;
+    width: 46%;
+    background: linear-gradient(90deg, rgba(115, 83, 255, 0.24), transparent);
+    transform: translate3d(-104%, 0, 0);
+    transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+  }
+
+  html body #home .hero-solid-actions a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 70%;
+    bottom: 0;
+    height: 2px;
+    background: var(--game-violet);
+    box-shadow: 0 0 14px rgba(140, 99, 255, 0.8);
+    transform-origin: left center;
+    transition: right 480ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html body #home .hero-solid-actions a:hover,
+  html body #home .hero-solid-actions a:focus-visible {
+    transform: translate3d(0, -7px, 0) !important;
+    border-color: var(--game-violet) !important;
+    background:
+      linear-gradient(105deg, rgba(9, 9, 27, 0.88), rgba(43, 25, 100, 0.55)),
+      var(--mission-art) center/cover no-repeat !important;
+    outline: 2px solid rgba(140, 99, 255, 0.35) !important;
+    outline-offset: 3px !important;
+  }
+
+  html body #home .hero-solid-actions a:hover::before,
+  html body #home .hero-solid-actions a:focus-visible::before {
+    transform: translate3d(0, 0, 0);
+  }
+
+  html body #home .hero-solid-actions a:hover::after,
+  html body #home .hero-solid-actions a:focus-visible::after {
+    right: 0;
+  }
+
+  .mission-number {
+    align-self: start;
+    min-width: 42px;
+    color: #9a7cff;
+    font: 700 1.05rem/1 var(--game-display);
+    letter-spacing: 0.12em;
+  }
+
+  html body #home .hero-solid-actions a > span:nth-child(2) {
+    display: grid;
+    gap: 0.24rem;
+    transform: translate3d(0, 0, 0);
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html body #home .hero-solid-actions a:hover > span:nth-child(2),
+  html body #home .hero-solid-actions a:focus-visible > span:nth-child(2) {
+    transform: translate3d(6px, 0, 0);
+  }
+
+  html body #home .hero-solid-actions b {
+    font: 800 italic clamp(1rem, 1.6vw, 1.55rem)/1 var(--game-display);
+    letter-spacing: -0.035em;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.72);
+  }
+
+  html body #home .hero-solid-actions small {
+    color: rgba(231, 235, 255, 0.7);
+    font: 500 0.72rem/1 "Noto Sans SC", sans-serif;
+  }
+
+  html body #home .hero-solid-actions .mission-label {
+    color: #a991ff !important;
+    font: 700 0.48rem/1 var(--game-display) !important;
+    letter-spacing: 0.18em !important;
+  }
+
+  html body #home .hero-solid-actions img {
+    width: 30px;
+    height: 30px;
+    padding: 7px;
+    border: 1px solid rgba(140, 99, 255, 0.58);
+    background: rgba(82, 48, 170, 0.32);
+    transform: translate3d(0, 0, 0);
+    transition: transform 420ms cubic-bezier(0.16, 1, 0.3, 1), background-color 220ms ease;
+  }
+
+  html body #home .hero-solid-actions a:hover img,
+  html body #home .hero-solid-actions a:focus-visible img {
+    transform: translate3d(5px, 0, 0);
+    background: rgba(102, 68, 213, 0.56);
+  }
+
+  .hero-command-id,
+  .hero-solid-kicker,
+  .hero-copy-solid h1,
+  .hero-solid-text,
+  .hero-role-focus,
+  .mission-panel {
+    animation: hud-copy-enter 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .hero-solid-kicker { animation-delay: 70ms; }
+  .hero-copy-solid h1 { animation-delay: 120ms; }
+  .hero-solid-text { animation-delay: 190ms; }
+  .hero-role-focus { animation-delay: 250ms; }
+  .mission-panel { animation-delay: 320ms; }
+
+  @keyframes hud-copy-enter {
+    from { opacity: 0; transform: translate3d(-18px, 0, 0); filter: blur(3px); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+  }
+
+  @keyframes mission-card-enter {
+    from { opacity: 0; transform: translate3d(0, 26px, 0) scale(0.985); }
+    to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  }
+
+  html body #home .mission-panel {
+    position: absolute !important;
+    top: 112px !important;
+    right: clamp(24px, 3.2vw, 52px) !important;
+    bottom: auto !important;
+    left: auto !important;
+    z-index: 9 !important;
+    display: block !important;
+    width: min(18vw, 245px) !important;
+    padding: 1rem !important;
+    border: 1px solid rgba(116, 137, 255, 0.28) !important;
+    border-radius: 0 !important;
+    background: rgba(3, 8, 20, 0.74) !important;
+    color: var(--game-text) !important;
+    opacity: 1 !important;
+    transform: none !important;
+    backdrop-filter: blur(12px) !important;
+  }
+
+  html body #home .mission-panel .eyebrow {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--game-cyan) !important;
+    font-size: 0.56rem !important;
+    letter-spacing: 0.15em !important;
+  }
+
+  html body #home .mission-panel h2 {
+    margin: 0.45rem 0 0.85rem !important;
+    color: #fff !important;
+    font: 700 0.78rem/1.2 var(--game-display) !important;
+    letter-spacing: 0.09em !important;
+  }
+
+  html body #home .mission-panel h2::after,
+  html body #home .mission-panel::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  html body #home .mission-panel ul {
+    display: grid !important;
+    gap: 0.42rem !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html body #home .mission-panel li {
+    display: grid !important;
+    grid-template-columns: 30px 1fr !important;
+    gap: 0.15rem 0.55rem !important;
+    align-items: center !important;
+    padding: 0.55rem !important;
+    border: 1px solid rgba(120, 134, 198, 0.18) !important;
+    background: rgba(8, 13, 29, 0.74) !important;
+    font-size: 0.66rem !important;
+  }
+
+  html body #home .mission-panel li span {
+    grid-row: 1 / 3;
+    color: #9d83ff !important;
+    font-weight: 800 !important;
+  }
+
+  html body #home .mission-panel li b { color: rgba(244, 246, 255, 0.82); }
+  html body #home .mission-panel li small { color: var(--game-success); font-size: 0.48rem; letter-spacing: 0.1em; }
+  html body #home .hero-showcase,
+  html body #home .scroll-indicator { display: none !important; }
+
+  html body:not(.hero-video-visible) #home .hero-solid-actions,
+  html body.projects-mode #home .hero-solid-actions {
+    display: none !important;
+  }
+}
+
+html body .section,
+html body .section-alt {
+  position: relative;
+  background-color: transparent !important;
+}
+
+html body .section-head .eyebrow,
+html body .phone-scene-label .eyebrow {
+  color: var(--game-cyan) !important;
+  letter-spacing: 0.18em !important;
+}
+
+html body .section-head h2,
+html body .phone-scene-label h2 {
+  color: var(--game-text) !important;
+  font-family: var(--game-display) !important;
+  letter-spacing: -0.035em !important;
+}
+
+html body .card,
+html body .doc-card,
+html body .resume-panel,
+html body .contact-card {
+  border-color: rgba(116, 137, 255, 0.24) !important;
+  border-radius: 2px !important;
+  background: linear-gradient(145deg, rgba(10, 16, 34, 0.92), rgba(5, 9, 20, 0.9)) !important;
+  color: var(--game-text) !important;
+  box-shadow: inset 0 0 40px rgba(98, 74, 255, 0.03) !important;
+}
+
+html body .chip,
+html body .btn {
+  border-radius: 2px !important;
+  font-family: var(--game-display) !important;
+  letter-spacing: 0.06em !important;
+}
+
+html body .chip.active,
+html body .btn-primary {
+  border-color: rgba(140, 99, 255, 0.8) !important;
+  background: rgba(78, 45, 169, 0.42) !important;
+  color: #fff !important;
+  box-shadow: 0 0 24px rgba(140, 99, 255, 0.16) !important;
+}
+
+@media (max-width: 980px) {
+  .hero-command-id,
+  .hero-role-focus,
+  html body #home .mission-panel { display: none !important; }
+
+  html body > .hero-copy-solid.is-mobile-viewport-layer .hero-solid-actions a {
+    border-radius: 2px !important;
+    background: rgba(5, 10, 23, 0.78) !important;
+  }
+
+  html body > .hero-copy-solid.is-mobile-viewport-layer .hero-solid-actions a > .mission-number,
+  html body > .hero-copy-solid.is-mobile-viewport-layer .hero-solid-actions a img,
+  html body > .hero-copy-solid.is-mobile-viewport-layer .hero-solid-actions a small { display: none !important; }
+
+  html body > .hero-copy-solid.is-mobile-viewport-layer .hero-solid-actions a > span:nth-child(2) {
+    display: block !important;
+  }
+
+  html body > .hero-copy-solid.is-mobile-viewport-layer .hero-solid-actions a b {
+    display: block !important;
+    font-size: 0.62rem !important;
+  }
+
+  html body .site-header::after { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
