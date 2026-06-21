@@ -191,8 +191,8 @@ const scrollSceneConfig = {
   introHoldTime: 4.6,
   scrollPixelsToComplete: 1800,
   snapThresholdRatio: 0.52,
-  smoothing: 0.22,
-  minSeekDelta: 0.012
+  smoothing: 0.14,
+  minSeekDelta: 0.018
 };
 
 let activeFilter = { group: "all", value: "all" };
@@ -1252,9 +1252,10 @@ function shouldLockHeroScroll(deltaY) {
   return false;
 }
 
-function syncHeroVideoProgress() {
+function syncHeroVideoProgress(displayTime) {
   if (!scrollSceneVideo || !scrollSceneState.ready) return;
-  var progress = Math.min(Math.max(scrollSceneVideo.currentTime / Math.max(scrollSceneVideo.duration, 1), 0), 1);
+  var visualTime = Number.isFinite(displayTime) ? displayTime : scrollSceneVideo.currentTime;
+  var progress = Math.min(Math.max(visualTime / Math.max(scrollSceneVideo.duration, 1), 0), 1);
   root.style.setProperty("--scene-progress", progress.toFixed(4));
   var exitProgress = Math.min(Math.max((progress - 0.72) / 0.22, 0), 1);
   root.style.setProperty("--hero-copy-y", String((-220 * exitProgress).toFixed(1)) + "px");
@@ -1266,22 +1267,15 @@ function driveHeroVideoByScroll(deltaY) {
   window.scrollTo(0, 0);
   scrollSceneVideo.pause();
   var scrollSpan = Math.max(scrollSceneConfig.scrollPixelsToComplete, 1);
-  var nextTime = scrollSceneVideo.currentTime + (deltaY / scrollSpan) * scrollSceneVideo.duration;
+  var nextTime = scrollSceneState.targetTime + (deltaY / scrollSpan) * scrollSceneVideo.duration;
   nextTime = Math.min(Math.max(nextTime, 0), scrollSceneVideo.duration);
-  scrollSceneVideo.currentTime = nextTime;
-  scrollSceneState.currentTime = nextTime;
   scrollSceneState.targetTime = nextTime;
   if (nextTime < scrollSceneVideo.duration - 0.04) {
     scrollSceneState.unlockScroll = false;
     scrollSceneState.introComplete = false;
     document.body.classList.remove("hero-video-complete");
   }
-  syncHeroVideoProgress();
-
-  if (nextTime >= scrollSceneVideo.duration - 0.04) {
-    scrollSceneVideo.currentTime = scrollSceneVideo.duration;
-    unlockHeroScroll();
-  }
+  syncHeroVideoProgress(nextTime);
 }
 
 function unlockHeroScroll() {
@@ -1379,12 +1373,18 @@ function initScrollSceneVideo(config) {
       if (!scrollSceneState.unlockScroll && isDesktopScrollScene()) {
         if (window.scrollY > 8) window.scrollTo(0, 0);
       }
-      if (scrollSceneState.unlockScroll || !isDesktopScrollScene()) {
-        scrollSceneState.currentTime +=
-          (scrollSceneState.targetTime - scrollSceneState.currentTime) * config.smoothing;
-        if (Math.abs(scrollSceneVideo.currentTime - scrollSceneState.currentTime) > config.minSeekDelta) {
-          scrollSceneVideo.currentTime = scrollSceneState.currentTime;
-        }
+      scrollSceneState.currentTime +=
+        (scrollSceneState.targetTime - scrollSceneState.currentTime) * config.smoothing;
+      var seekGap = Math.abs(scrollSceneVideo.currentTime - scrollSceneState.currentTime);
+      if (!scrollSceneVideo.seeking && seekGap > config.minSeekDelta) {
+        scrollSceneVideo.currentTime = scrollSceneState.currentTime;
+      }
+      if (
+        !scrollSceneState.unlockScroll &&
+        scrollSceneState.targetTime >= scrollSceneVideo.duration - 0.04 &&
+        scrollSceneState.currentTime >= scrollSceneVideo.duration - 0.09
+      ) {
+        unlockHeroScroll();
       }
     }
     window.requestAnimationFrame(scrub);
