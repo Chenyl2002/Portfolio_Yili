@@ -468,7 +468,10 @@
     v.loop = true;
     v.muted = true;
     v.playsInline = true;
+    v.webkitPlaysInline = true;
     v.defaultMuted = true;
+    v.setAttribute("webkit-playsinline", "");
+    v.setAttribute("playsinline", "");
     var tryPlay = function () {
       var pr = v.play();
       if (pr && typeof pr.catch === "function") pr.catch(function () {});
@@ -577,7 +580,7 @@
       card.setAttribute("data-platform", p.platform);
       var thumbHtml = '<img src="' + p.media + '" alt="' + p.title + '" loading="lazy" />';
       if (p.video) {
-        thumbHtml += '<video class="mc-card-video" src="' + p.video + '" muted loop playsinline preload="none" poster="' + p.media + '"></video>';
+        thumbHtml += '<video class="mc-card-video" src="' + p.video + '" muted loop playsinline webkit-playsinline preload="metadata" poster="' + p.media + '"></video>';
       }
       card.innerHTML =
         '<div class="mc-project-thumb">' + thumbHtml + '</div>' +
@@ -591,15 +594,30 @@
         '</div>';
       if (p.video) {
         var v = card.querySelector(".mc-card-video");
-        card.addEventListener("mouseenter", function () {
+        var isTouch = ("ontouchstart" in window) || navigator.maxTouchPoints > 0;
+        var playCardVideo = function () {
           v.play().catch(function(){});
           card.classList.add("is-playing");
-        });
-        card.addEventListener("mouseleave", function () {
+        };
+        var pauseCardVideo = function () {
           v.pause();
           v.currentTime = 0;
           card.classList.remove("is-playing");
-        });
+        };
+        if (isTouch) {
+          // 触摸设备：卡片进入视口自动播放，离开暂停
+          var cardObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) { playCardVideo(); }
+              else { pauseCardVideo(); }
+            });
+          }, { threshold: 0.3 });
+          cardObserver.observe(card);
+        } else {
+          // 桌面：hover 播放
+          card.addEventListener("mouseenter", playCardVideo);
+          card.addEventListener("mouseleave", pauseCardVideo);
+        }
       }
       card.addEventListener("click", function () { openProjectModal(p); });
       grid.appendChild(card);
