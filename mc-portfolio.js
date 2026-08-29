@@ -460,6 +460,57 @@
     [heroVideo, finaleVideo].forEach(startLoopVideo);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
+    initEyeTracking();
+  }
+
+  /* ================================================================
+     3D 头像眼睛 & 身体跟随鼠标
+     ================================================================ */
+  function initEyeTracking() {
+    var avatar = document.getElementById("mcAvatar3D");
+    var pupilL = document.getElementById("mcPupilL");
+    var pupilR = document.getElementById("mcPupilR");
+    if (!avatar) return;
+
+    var maxPupil = 2.5; // 瞳孔最大偏移 px
+    var maxTilt = 8;   // 头部最大倾斜 deg
+
+    function onMove(e) {
+      var rect = avatar.getBoundingClientRect();
+      var cx = rect.left + rect.width / 2;
+      var cy = rect.top + rect.height / 2;
+      var dx = (e.clientX - cx) / window.innerWidth;
+      var dy = (e.clientY - cy) / window.innerHeight;
+
+      // 瞳孔偏移
+      var px = Math.max(-maxPupil, Math.min(maxPupil, dx * maxPupil * 2.5));
+      var py = Math.max(-maxPupil, Math.min(maxPupil, dy * maxPupil * 2.5));
+      if (pupilL) { pupilL.style.setProperty("--px", px + "px"); pupilL.style.setProperty("--py", py + "px"); }
+      if (pupilR) { pupilR.style.setProperty("--px", px + "px"); pupilR.style.setProperty("--py", py + "px"); }
+
+      // 头部 3D 倾斜
+      var ry = Math.max(-maxTilt, Math.min(maxTilt, dx * maxTilt * 1.5));
+      var rx = Math.max(-maxTilt, Math.min(maxTilt, -dy * maxTilt * 1.5));
+      avatar.style.setProperty("--rx", rx + "deg");
+      avatar.style.setProperty("--ry", ry + "deg");
+    }
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+
+    // 触摸设备：用 deviceorientation 做近似
+    if ("ontouchstart" in window && window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", function (e) {
+        if (e.gamma == null || e.beta == null) return;
+        var dx = Math.max(-1, Math.min(1, e.gamma / 45));
+        var dy = Math.max(-1, Math.min(1, (e.beta - 30) / 45));
+        var px = dx * maxPupil * 2;
+        var py = dy * maxPupil * 2;
+        if (pupilL) { pupilL.style.setProperty("--px", px + "px"); pupilL.style.setProperty("--py", py + "px"); }
+        if (pupilR) { pupilR.style.setProperty("--px", px + "px"); pupilR.style.setProperty("--py", py + "px"); }
+        avatar.style.setProperty("--rx", (-dy * maxTilt) + "deg");
+        avatar.style.setProperty("--ry", (dx * maxTilt) + "deg");
+      }, { passive: true });
+    }
   }
 
   // 让视频真正循环播放（含首次自动播放被拦截时的兜底）

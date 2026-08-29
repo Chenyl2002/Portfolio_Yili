@@ -16,7 +16,7 @@
       gtag("js", new Date());
       gtag("config", "G-W7VM5CC6EZ");
     </script>
-    <link rel="stylesheet" href="./mc-portfolio.css?v=mc-menu-20260829m" />
+    <link rel="stylesheet" href="./mc-portfolio.css?v=mc-menu-20260829n" />
   </head>
   <body>
     <main>
@@ -61,10 +61,16 @@
           <span class="mc-corner-ver">v2026 · 游戏策划</span>
         </div>
 
-        <!-- 右侧 Steve 玩家展示 -->
-        <div class="mc-steve">
+        <!-- 右侧 3D 玩家展示（眼睛跟随鼠标） -->
+        <div class="mc-steve" id="mcSteve3D">
           <span class="mc-steve-name">陈宜理</span>
-          <img class="mc-steve-img" src="./assets/minecraft/icons/mc-book.png" alt="" />
+          <div class="mc-avatar-3d" id="mcAvatar3D">
+            <img class="mc-avatar-body" src="./assets/minecraft/icons/mc-avatar-3d.png" alt="陈宜理" />
+            <div class="mc-avatar-eyes">
+              <div class="mc-avatar-eye mc-eye-left"><div class="mc-pupil" id="mcPupilL"></div></div>
+              <div class="mc-avatar-eye mc-eye-right"><div class="mc-pupil" id="mcPupilR"></div></div>
+            </div>
+          </div>
         </div>
 
         <!-- 向下滚动提示 -->
@@ -407,6 +413,6 @@
       </article>
     </div>
 
-    <script src="./mc-portfolio.js?v=mc-menu-20260829m"></script>
+    <script src="./mc-portfolio.js?v=mc-menu-20260829n"></script>
   </body>
 </html>

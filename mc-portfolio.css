@@ -583,7 +583,7 @@ body.mc-ready .mc-hud { opacity: 1; }
 .mc-corner-left  { left: clamp(14px, 2.5vw, 34px); }
 .mc-corner-right { right: clamp(14px, 2.5vw, 34px); }
 
-/* ---- 右侧玩家展示 ---- */
+/* ---- 右侧 3D 玩家展示（眼睛跟随鼠标） ---- */
 .mc-steve {
   position: absolute; right: clamp(18px, 5vw, 90px);
   top: 50%; transform: translateY(-46%);
@@ -595,15 +595,61 @@ body.mc-ready .mc-hud { opacity: 1; }
   font: 400 0.72rem/1 var(--mc-font-hud);
   color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,0.9);
 }
-.mc-steve-img {
-  width: clamp(64px, 8vw, 104px); height: auto;
-  image-rendering: pixelated;
-  filter: drop-shadow(4px 5px 0 rgba(0,0,0,0.5));
-  animation: mc-steve-bob 3.4s ease-in-out infinite;
+
+/* 3D 头像容器 */
+.mc-avatar-3d {
+  position: relative;
+  width: clamp(96px, 12vw, 140px);
+  height: clamp(96px, 12vw, 140px);
+  filter: drop-shadow(4px 6px 0 rgba(0,0,0,0.5));
+  /* JS 通过 CSS 变量控制倾斜 */
+  --rx: 0deg;
+  --ry: 0deg;
+  transform: perspective(400px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 80ms linear;
+  animation: mc-avatar-bob 3.4s ease-in-out infinite;
 }
-@keyframes mc-steve-bob {
-  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
-  50%      { transform: translateY(-7px) rotate(1.5deg); }
+@keyframes mc-avatar-bob {
+  0%, 100% { transform: perspective(400px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(0); }
+  50%      { transform: perspective(400px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-7px); }
+}
+
+/* 身体图片 */
+.mc-avatar-body {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* 眼睛容器层（覆盖在头像上） */
+.mc-avatar-eyes {
+  position: absolute;
+  top: 28%; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 6px;
+  z-index: 2;
+}
+
+/* 单只眼睛（MC 风格白底黑瞳） */
+.mc-avatar-eye {
+  width: 8px; height: 8px;
+  background: #fff;
+  border: 1px solid #1a1a1a;
+  position: relative;
+  overflow: hidden;
+  image-rendering: pixelated;
+}
+.mc-eye-left { transform: scaleX(-1); }
+
+/* 瞳孔（跟随鼠标移动） */
+.mc-pupil {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: #1a1a1a;
+  top: 2px; left: 2px;
+  transition: transform 60ms linear;
+  /* JS 设置 --px/--py 控制偏移 */
+  transform: translate(var(--px, 0px), var(--py, 0px));
 }
 
 /* ---- 向下滚动提示 ---- */
