@@ -676,41 +676,70 @@ body.mc-ready .mc-hud { opacity: 1; }
 }
 
 /* ================================================================
-   10. 项目展示区 — MC 任务卡片（左视频 + 右描述）
+   10. 项目展示区 — MC Bedrock 原生面板风格
    ================================================================ */
+:root {
+  /* MC Bedrock UI 原生色板 */
+  --mcui-panel:      #c6c6c6;  /* 面板浅灰 */
+  --mcui-panel-hi:   #ffffff;  /* 高光边（左/上）*/
+  --mcui-panel-lo:   #545454;  /* 阴影边（右/下）*/
+  --mcui-groove:     #8b8b8b;  /* 内凹凹槽 */
+  --mcui-groove-dk:  #373737;  /* 凹槽深色 */
+  --mcui-label:      #6e6e6e;  /* 字段标题条 */
+  --mcui-ink:        #ffffff;  /* 面板上白字 */
+  --mcui-ink-dk:     #3f3f3f;  /* 深字 */
+}
+
 .mc-projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 18px;
 }
-@media (max-width: 540px) {
-  .mc-projects-grid { grid-template-columns: 1fr; }
-}
+
+/* ---- 卡片外壳：MC 凸起面板 ---- */
 .mc-project-card {
   display: flex;
-  border: 3px solid;
-  border-color: var(--mc-border-l) var(--mc-border-d) var(--mc-border-d) var(--mc-border-l);
-  background: #13161d;
-  overflow: hidden;
-  box-shadow: 0 5px 0 rgba(0,0,0,0.5);
+  gap: 0;
+  padding: 6px;
+  background-color: var(--mcui-panel);
+  background-image: url("./assets/ui/panel-tex.png");
+  background-size: 64px 64px;
+  background-blend-mode: multiply;
+  image-rendering: pixelated;
+  border: 0;
+  /* 双层 3D 边框：外深 + 内高光 */
+  box-shadow:
+    inset 0 0 0 3px var(--mcui-panel-hi),
+    inset -3px -3px 0 3px var(--mcui-panel-lo),
+    0 4px 0 rgba(0,0,0,0.55);
   cursor: pointer;
-  transition: transform 100ms steps(3), box-shadow 100ms steps(3);
-  min-height: 200px;
+  transition: transform 90ms steps(2), box-shadow 90ms steps(2);
+  align-items: stretch;
 }
 .mc-project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 9px 0 rgba(0,0,0,0.5), 0 0 0 2px #fff;
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 0 0 3px var(--mcui-panel-hi),
+    inset -3px -3px 0 3px var(--mcui-panel-lo),
+    0 8px 0 rgba(0,0,0,0.55),
+    0 0 0 3px var(--mc-gold);
 }
-/* 左侧缩略图/视频区 */
+
+/* ---- 左侧：内凹预览凹槽 ---- */
 .mc-project-thumb {
   position: relative;
-  flex: 0 0 48%;
+  flex: 0 0 46%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #0a0c12;
+  background: var(--mcui-groove-dk);
+  /* 内凹效果：上/左深，下/右亮 */
+  box-shadow:
+    inset 3px 3px 0 0 var(--mcui-panel-lo),
+    inset -2px -2px 0 0 var(--mcui-panel-hi);
 }
 .mc-project-thumb img {
   width: 100%; height: 100%; object-fit: cover;
-  image-rendering: pixelated;
+  image-rendering: auto;
   transition: opacity 0.25s steps(4);
 }
 .mc-project-thumb .mc-card-video {
@@ -721,13 +750,17 @@ body.mc-ready .mc-hud { opacity: 1; }
 }
 .mc-project-card.is-playing .mc-project-thumb img { opacity: 0; }
 .mc-project-card.is-playing .mc-project-thumb .mc-card-video { opacity: 1; }
-/* 播放图标提示 */
+
+/* 播放提示：MC 按钮质感 */
 .mc-play-hint {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%,-50%);
-  width: 36px; height: 36px;
-  background: rgba(0,0,0,0.65);
-  border: 2px solid #fff;
+  width: 42px; height: 42px;
+  background: var(--mcui-panel);
+  box-shadow:
+    inset 0 0 0 2px var(--mcui-panel-hi),
+    inset -2px -2px 0 2px var(--mcui-panel-lo),
+    0 3px 0 rgba(0,0,0,0.5);
   display: grid; place-items: center;
   z-index: 2;
   pointer-events: none;
@@ -736,46 +769,91 @@ body.mc-ready .mc-hud { opacity: 1; }
 .mc-play-hint::after {
   content: "";
   width: 0; height: 0;
-  border-left: 12px solid #fff;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  margin-left: 3px;
+  border-left: 13px solid var(--mcui-ink-dk);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  margin-left: 4px;
 }
 .mc-project-card.is-playing .mc-play-hint { opacity: 0; }
 
-/* 右侧文字区 */
+/* ---- 右侧：字段区（MC 设置面板结构）---- */
 .mc-project-body {
   flex: 1;
-  padding: 14px 16px;
+  padding: 0 0 0 6px;
   display: flex; flex-direction: column;
-  gap: 6px;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
 }
-.mc-project-number {
-  font: 700 1.1rem/1 var(--mc-font-display);
+
+/* 标题条：深灰横条 + 白字（对应 "World Name" 那种 label）*/
+.mc-proj-label {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--mcui-label);
+  padding: 5px 8px;
+  font: 700 0.5rem/1.4 var(--mc-font-hud);
+  color: var(--mcui-ink);
+  letter-spacing: 0.06em;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.6);
+}
+.mc-proj-label .mc-proj-idx {
   color: var(--mc-gold);
-  text-shadow: 2px 2px 0 #000;
+  font-family: var(--mc-font-display);
+  font-size: 0.62rem;
+}
+.mc-proj-label img {
+  width: 16px; height: 16px;
+  image-rendering: pixelated;
+}
+
+/* 值框：内凹凹槽 + 白字（对应 "My World" 输入框）*/
+.mc-proj-value {
+  background: var(--mcui-groove);
+  box-shadow:
+    inset 2px 2px 0 0 #6a6a6a,
+    inset -2px -2px 0 0 #d4d4d4;
+  padding: 9px 10px;
+  font: 700 0.62rem/1.5 var(--mc-font-hud);
+  color: var(--mcui-ink);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.55);
 }
 .mc-project-card h3 {
-  font: 700 0.82rem/1.3 var(--mc-font-hud);
-  color: #fff; text-shadow: 2px 2px 0 #000;
   margin: 0;
+  font: 700 0.72rem/1.4 var(--mc-font-hud);
+  color: var(--mcui-ink);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.6);
 }
 .mc-project-desc {
-  font-size: 0.7rem; color: var(--mc-muted);
-  line-height: 1.6;
-  flex: 1;
+  margin: 0;
+  font-family: var(--mc-font-body);
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
 }
+
+/* 标签：MC 小凸起按钮 */
 .mc-project-tags {
-  display: flex; flex-wrap: wrap; gap: 4px;
-  margin-top: auto;
+  display: flex; flex-wrap: wrap; gap: 5px;
+  margin-top: 2px;
+  padding-top: 2px;
 }
 .mc-project-tags span {
-  font: 700 0.45rem/1 var(--mc-font-hud);
-  letter-spacing: 0.06em;
-  border: 1px solid #111;
-  background: rgba(10,10,10,0.7);
+  font: 700 0.44rem/1 var(--mc-font-hud);
+  letter-spacing: 0.05em;
+  background: var(--mcui-label);
   color: var(--mc-gold);
-  padding: 3px 6px;
+  padding: 5px 7px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.45),
+    inset -1px -1px 0 1px rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.6);
+}
+
+@media (max-width: 760px) {
+  .mc-project-card { flex-direction: column; min-height: 0; }
+  .mc-project-thumb { flex: none; aspect-ratio: 16/9; width: 100%; }
+  .mc-project-body { padding: 6px 0 0; }
 }
 
 /* ================================================================

@@ -666,9 +666,14 @@
       card.innerHTML =
         '<div class="mc-project-thumb">' + thumbHtml + '</div>' +
         '<div class="mc-project-body">' +
-          '<span class="mc-project-number">' + p.id + '</span>' +
-          '<h3>' + p.title + '</h3>' +
-          '<p class="mc-project-desc">' + p.desc + '</p>' +
+          '<div class="mc-proj-label">' +
+            '<img src="./assets/ui/ico-pick.png" alt="" />' +
+            '<span class="mc-proj-idx">' + p.id + '</span>' +
+            '<span>MISSION</span>' +
+          '</div>' +
+          '<div class="mc-proj-value"><h3>' + p.title + '</h3></div>' +
+          '<div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>BRIEFING</span></div>' +
+          '<div class="mc-proj-value"><p class="mc-project-desc">' + p.desc + '</p></div>' +
           '<div class="mc-project-tags">' +
             p.tags2.map(function (t) { return '<span>' + t + '</span>'; }).join("") +
           '</div>' +
