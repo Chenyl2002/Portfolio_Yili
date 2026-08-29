@@ -1237,9 +1237,24 @@ body.mc-ready .mc-hud { opacity: 1; }
   pointer-events: none;
   filter: saturate(1.1) contrast(1.05);
 }
+/* 视频上加深色渐变遮罩，保证文字/按钮可读 */
+.mc-finale::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at center,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.35) 45%,
+    rgba(0,0,0,0.15) 100%);
+  pointer-events: none;
+}
 .mc-finale-overlay {
   position: relative; z-index: 2;
   text-align: center; padding: 2rem;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.mc-finale-overlay .mc-section-title {
+  margin: 0.3rem 0 0.7rem;
 }
 .mc-finale-note {
   font: 700 clamp(0.95rem, 1.9vw, 1.35rem)/1.6 var(--mc-font-body);
@@ -1247,6 +1262,11 @@ body.mc-ready .mc-hud { opacity: 1; }
   text-shadow: 2px 2px 0 #000, 0 2px 12px rgba(0,0,0,0.85);
   margin: 0;
   max-width: 640px;
+}
+/* 视频上的联系按钮：加强对比 */
+.mc-finale-overlay .mc-contact-list a {
+  background: rgba(14,16,22,0.9);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.6), 0 6px 18px rgba(0,0,0,0.5);
 }
 
 /* ================================================================
