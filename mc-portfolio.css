@@ -585,21 +585,23 @@ body.mc-ready .mc-hud { opacity: 1; }
 
 /* ---- 右侧 3D 玩家展示（眼睛跟随鼠标） ---- */
 .mc-steve {
-  position: absolute; right: clamp(18px, 5vw, 90px);
+  position: absolute;
+  right: clamp(56px, 8.5vw, 132px);
   top: 50%; transform: translateY(-46%);
   z-index: 5;
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
   pointer-events: none;
 }
 .mc-steve-name {
-  font: 400 0.72rem/1 var(--mc-font-hud);
+  font: 400 0.95rem/1 var(--mc-font-hud);
   color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,0.9);
+  letter-spacing: 0.04em;
 }
 
 /* 3D 头像容器（比例严格匹配头部素材 608x634） */
 .mc-avatar-3d {
   position: relative;
-  width: clamp(104px, 12vw, 158px);
+  width: clamp(78px, 8.6vw, 116px);
   aspect-ratio: 608 / 634;
   filter: drop-shadow(4px 6px 0 rgba(0,0,0,0.45));
   /* JS 通过 CSS 变量控制倾斜 */
