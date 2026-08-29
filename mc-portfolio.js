@@ -328,7 +328,17 @@
     var target = document.getElementById(id);
     if (!target) return;
     var y = target.getBoundingClientRect().top + window.pageYOffset - 56;
-    window.scrollTo({ top: Math.max(y, 0), behavior: "smooth" });
+    /* MC 方块碎片转场 */
+    var trans = document.querySelector(".mc-transition");
+    if (!trans) {
+      trans = el("div", "mc-transition");
+      document.body.appendChild(trans);
+    }
+    trans.classList.add("active");
+    setTimeout(function () {
+      window.scrollTo({ top: Math.max(y, 0), behavior: "smooth" });
+      setTimeout(function () { trans.classList.remove("active"); }, 320);
+    }, 200);
   }
 
   /* ================================================================

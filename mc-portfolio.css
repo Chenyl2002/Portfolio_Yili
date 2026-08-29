@@ -3,6 +3,22 @@
    从零构建，不继承任何原站赛博风格
    ================================================================ */
 
+/* ---- MC 区块切换转场遮罩 ---- */
+.mc-transition {
+  position: fixed; inset: 0; z-index: 2147483500;
+  pointer-events: none;
+  opacity: 0;
+  background-image: url("./assets/ui/transition.png");
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+  transition: opacity 380ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.mc-transition.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
 /* ---- 字体 ---- */
 :root {
   --mc-font-display: 'Press Start 2P', 'ZCOOL KuaiLe', monospace;
@@ -444,44 +460,47 @@ body.mc-ready .mc-hud { opacity: 1; }
   padding: 12px 24px; cursor: pointer;
   position: relative;
   overflow: hidden;
-  background: rgba(143,143,143,0.42);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 2px solid;
-  border-color: rgba(255,255,255,0.5) rgba(0,0,0,0.55) rgba(0,0,0,0.55) rgba(255,255,255,0.5);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  /* MC 原生按钮底纹 */
+  background-image: url("./assets/ui/btn-default.png");
+  background-size: 64px 64px;
+  background-repeat: repeat;
+  image-rendering: pixelated;
+  border: 0;
+  /* MC 3D 凸起边框 */
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255,255,255,0.4),
+    inset -2px -2px 0 0 rgba(0,0,0,0.45),
+    0 3px 0 rgba(0,0,0,0.55);
   text-decoration: none;
   transition:
-    transform 240ms cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 240ms cubic-bezier(0.16, 1, 0.3, 1),
-    background 240ms ease,
-    border-color 240ms ease;
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-image 0ms;
 }
-/* 高光扫过效果 */
-.mc-btn::after {
-  content: "";
-  position: absolute; top: 0; left: -60%;
-  width: 40%; height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.32), transparent);
-  transform: skewX(-18deg);
-  transition: left 620ms cubic-bezier(0.16, 1, 0.3, 1);
-  pointer-events: none;
-}
-.mc-btn:hover::after { left: 130%; }
 .mc-btn:hover {
-  transform: translateY(-3px);
-  background: rgba(168,168,168,0.55);
-  border-color: rgba(255,255,255,0.75) rgba(0,0,0,0.55) rgba(0,0,0,0.55) rgba(255,255,255,0.75);
-  box-shadow: 0 9px 22px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+  background-image: url("./assets/ui/btn-hover.png");
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255,255,255,0.6),
+    inset -2px -2px 0 0 rgba(0,0,0,0.45),
+    0 6px 14px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,215,0,0.4);
 }
-.mc-btn:active { transform: translateY(2px); box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+.mc-btn:active {
+  transform: translateY(2px);
+  background-image: url("./assets/ui/btn-pressed.png");
+  box-shadow:
+    inset 2px 2px 0 0 rgba(0,0,0,0.35),
+    inset -2px -2px 0 0 rgba(255,255,255,0.2),
+    0 1px 0 rgba(0,0,0,0.55);
+}
 .mc-btn.is-active {
-  background: rgba(120,168,72,0.5);
-  border-color: rgba(200,255,150,0.8) rgba(0,0,0,0.55) rgba(0,0,0,0.55) rgba(200,255,150,0.8);
-  box-shadow: 0 4px 16px rgba(128,255,32,0.28);
-}
-@media (prefers-reduced-motion: reduce) {
-  .mc-btn::after { display: none; }
+  background-image: url("./assets/ui/btn-hover.png");
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255,255,255,0.6),
+    inset -2px -2px 0 0 rgba(0,0,0,0.45),
+    0 3px 0 rgba(0,0,0,0.55),
+    0 0 0 2px var(--mc-gold);
 }
 .mc-btn-primary {
   background: var(--tex-gold);
@@ -753,51 +772,58 @@ body.mc-ready .mc-hud { opacity: 1; }
 
 .mc-projects-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
 }
+@media (max-width: 760px) {
+  .mc-projects-grid { grid-template-columns: 1fr; }
+}
 
-/* ---- 卡片外壳：MC 磨砂玻璃面板（半透明，弱化贴图感）---- */
+/* ---- 卡片外壳：MC 原生像素面板 ---- */
 .mc-project-card {
   display: flex;
   gap: 0;
-  padding: 6px;
-  /* 半透明面板 + 磨砂玻璃：参考 MC Java 版新 UI */
-  background: linear-gradient(180deg, rgba(198,198,198,0.20), rgba(140,140,140,0.26));
-  backdrop-filter: blur(10px) saturate(1.05);
-  -webkit-backdrop-filter: blur(10px) saturate(1.05);
+  padding: 5px;
+  /* MC 原生面板底纹 */
+  background-image: url("./assets/ui/panel-dark.png");
+  background-size: 64px 64px;
+  background-repeat: repeat;
+  background-color: #6b6b6b;
+  image-rendering: pixelated;
   border: 0;
-  /* 双层 3D 边框：保留 MC 立体感，但降低不透明度 */
+  /* MC 3D 凸起边框 */
   box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,0.55),
-    inset -2px -2px 0 2px rgba(0,0,0,0.42),
-    0 6px 22px rgba(0,0,0,0.45);
+    inset 2px 2px 0 0 rgba(255,255,255,0.35),
+    inset -2px -2px 0 0 rgba(0,0,0,0.5),
+    0 5px 0 rgba(0,0,0,0.55),
+    0 8px 20px rgba(0,0,0,0.4);
   cursor: pointer;
   transition:
-    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
   align-items: stretch;
 }
 .mc-project-card:hover {
-  transform: translateY(-6px);
-  background: linear-gradient(180deg, rgba(210,210,210,0.26), rgba(150,150,150,0.32));
+  transform: translateY(-5px);
   box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,0.75),
-    inset -2px -2px 0 2px rgba(0,0,0,0.42),
-    0 14px 34px rgba(0,0,0,0.55),
-    0 0 0 2px var(--mc-gold);
+    inset 2px 2px 0 0 rgba(255,255,255,0.55),
+    inset -2px -2px 0 0 rgba(0,0,0,0.5),
+    0 10px 0 rgba(0,0,0,0.55),
+    0 14px 30px rgba(0,0,0,0.5),
+    0 0 0 3px var(--mc-gold);
 }
 
 /* ---- 左侧：内凹预览凹槽 ---- */
 .mc-project-thumb {
   position: relative;
-  flex: 0 0 46%;
+  flex: 0 0 44%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: rgba(12,14,20,0.6);
+  background: #2a2a2a;
+  /* MC 内凹凹槽边框 */
   box-shadow:
-    inset 2px 2px 0 0 rgba(0,0,0,0.5),
-    inset -1px -1px 0 0 rgba(255,255,255,0.22);
+    inset 2px 2px 0 0 rgba(0,0,0,0.6),
+    inset -1px -1px 0 0 rgba(255,255,255,0.2);
 }
 .mc-project-thumb img {
   width: 100%; height: 100%; object-fit: cover;
@@ -816,25 +842,25 @@ body.mc-ready .mc-hud { opacity: 1; }
 .mc-project-card.is-playing .mc-project-thumb img { opacity: 0; }
 .mc-project-card.is-playing .mc-project-thumb .mc-card-video { opacity: 1; }
 
-/* 播放提示：磨砂玻璃质感 + 呼吸动效 */
+/* 播放提示：MC 按钮 + 呼吸动效 */
 .mc-play-hint {
   position: absolute; top: 50%; left: 50%;
   transform: translate(-50%,-50%);
   width: 46px; height: 46px;
-  background: rgba(230,230,230,0.28);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background-image: url("./assets/ui/btn-default.png");
+  background-size: 64px 64px;
+  image-rendering: pixelated;
   box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,0.7),
-    inset -2px -2px 0 2px rgba(0,0,0,0.3),
-    0 4px 14px rgba(0,0,0,0.45);
+    inset 2px 2px 0 0 rgba(255,255,255,0.4),
+    inset -2px -2px 0 0 rgba(0,0,0,0.45),
+    0 3px 8px rgba(0,0,0,0.5);
   display: grid; place-items: center;
   z-index: 2;
   pointer-events: none;
   transition:
     opacity 280ms ease,
     transform 380ms cubic-bezier(0.16, 1, 0.3, 1),
-    background 280ms ease;
+    background-image 0ms;
   animation: mcPlayPulse 2.6s ease-in-out infinite;
 }
 .mc-play-hint::after {
@@ -848,7 +874,7 @@ body.mc-ready .mc-hud { opacity: 1; }
 }
 .mc-project-card:hover .mc-play-hint {
   transform: translate(-50%,-50%) scale(1.14);
-  background: rgba(255,255,255,0.4);
+  background-image: url("./assets/ui/btn-hover.png");
   animation-play-state: paused;
 }
 .mc-project-card.is-playing .mc-play-hint {
@@ -879,16 +905,18 @@ body.mc-ready .mc-hud { opacity: 1; }
   min-width: 0;
 }
 
-/* 标题条：半透明深灰横条 + 白字 */
+/* 标题条：MC 深灰横条 */
 .mc-proj-label {
   display: flex; align-items: center; gap: 6px;
-  background: rgba(40,42,48,0.55);
+  background: #3a3a3a;
   padding: 5px 8px;
   font: 700 0.5rem/1.4 var(--mc-font-hud);
-  color: var(--mcui-ink);
+  color: #fff;
   letter-spacing: 0.06em;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.75);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+  box-shadow:
+    inset 1px 1px 0 0 rgba(255,255,255,0.15),
+    inset -1px -1px 0 0 rgba(0,0,0,0.3);
 }
 .mc-proj-label .mc-proj-idx {
   color: var(--mc-gold);
@@ -900,16 +928,16 @@ body.mc-ready .mc-hud { opacity: 1; }
   image-rendering: pixelated;
 }
 
-/* 值框：半透明内凹凹槽 + 白字 */
+/* 值框：MC 内凹凹槽 */
 .mc-proj-value {
-  background: rgba(20,22,28,0.42);
+  background: #525252;
   box-shadow:
-    inset 1px 1px 0 0 rgba(0,0,0,0.45),
-    inset -1px -1px 0 0 rgba(255,255,255,0.20);
+    inset 2px 2px 0 0 rgba(0,0,0,0.5),
+    inset -1px -1px 0 0 rgba(255,255,255,0.2);
   padding: 9px 10px;
   font: 700 0.62rem/1.5 var(--mc-font-hud);
-  color: var(--mcui-ink);
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.75);
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
 }
 .mc-project-card h3 {
   margin: 0;
@@ -935,17 +963,17 @@ body.mc-ready .mc-hud { opacity: 1; }
 .mc-project-tags span {
   font: 700 0.44rem/1 var(--mc-font-hud);
   letter-spacing: 0.05em;
-  background: rgba(40,42,48,0.6);
+  background: #3a3a3a;
   color: var(--mc-gold);
   padding: 5px 7px;
   box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,0.28),
-    inset -1px -1px 0 1px rgba(0,0,0,0.4);
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.75);
-  transition: transform 180ms cubic-bezier(0.22,1,0.36,1), background 180ms;
+    inset 1px 1px 0 0 rgba(255,255,255,0.3),
+    inset -1px -1px 0 0 rgba(0,0,0,0.4);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+  transition: transform 180ms cubic-bezier(0.16,1,0.3,1), background 180ms;
 }
 .mc-project-card:hover .mc-project-tags span {
-  background: rgba(52,54,62,0.7);
+  background: #4a4a4a;
   transform: translateY(-1px);
 }
 
@@ -959,20 +987,20 @@ body.mc-ready .mc-hud { opacity: 1; }
    11. 简历区 · MC 背包界面
    ================================================================ */
 .mc-inventory {
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto;
-  background: linear-gradient(180deg, rgba(198,198,198,0.86), rgba(176,176,176,0.90));
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 3px solid;
-  border-color: rgba(255,255,255,0.9) rgba(85,85,85,0.9) rgba(85,85,85,0.9) rgba(255,255,255,0.9);
-  box-shadow:
-    inset 2px 2px 0 rgba(255,255,255,0.85),
-    inset -2px -2px 0 rgba(85,85,85,0.85),
-    0 10px 30px rgba(0,0,0,0.5),
-    0 0 0 3px rgba(0,0,0,0.85);
-  padding: 0;
+  background-image: url("./assets/ui/panel-dark.png");
+  background-size: 64px 64px;
+  background-repeat: repeat;
+  background-color: #6b6b6b;
   image-rendering: pixelated;
+  border: 0;
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255,255,255,0.35),
+    inset -2px -2px 0 0 rgba(0,0,0,0.5),
+    0 6px 0 rgba(0,0,0,0.55),
+    0 10px 30px rgba(0,0,0,0.5);
+  padding: 0;
 }
 
 /* 标题栏 */
@@ -1075,7 +1103,7 @@ body.mc-ready .mc-hud { opacity: 1; }
   box-shadow: inset 2px 2px 0 #1a1a1a, inset -1px -1px 0 #4a4a4a;
   display: grid; place-items: center;
   cursor: default;
-  transition: none;
+  transition: transform 160ms cubic-bezier(0.16,1,0.3,1);
 }
 .mc-inv-slot-item { cursor: pointer; }
 .mc-inv-slot-item:hover,
@@ -1083,12 +1111,17 @@ body.mc-ready .mc-hud { opacity: 1; }
   outline: 2px solid #fff;
   outline-offset: -2px;
   z-index: 5;
+  transform: scale(1.06);
 }
 .mc-inv-slot-empty { background: #2a2a2a; }
 .mc-inv-item-icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1;
   filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.5));
+  transition: transform 200ms cubic-bezier(0.16,1,0.3,1);
+}
+.mc-inv-slot-item:hover .mc-inv-item-icon {
+  transform: scale(1.15) rotate(-3deg);
 }
 .mc-inv-item-count {
   position: absolute;
@@ -1336,53 +1369,92 @@ body.mc-ready .mc-hud { opacity: 1; }
   display: none; align-items: center; justify-content: center;
   padding: 2rem;
 }
-.mc-modal.open { display: flex; }
+.mc-modal.open { display: flex; animation: mcModalIn 320ms cubic-bezier(0.16,1,0.3,1); }
+@keyframes mcModalIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 .mc-modal-backdrop {
   position: absolute; inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 .mc-modal-panel {
   position: relative; z-index: 1;
-  max-width: 800px; width: 100%; max-height: 85vh;
+  max-width: 860px; width: 100%; max-height: 88vh;
   overflow-y: auto;
   padding: 1.5rem;
-  background: linear-gradient(180deg, rgba(22,26,36,0.98), rgba(13,16,23,0.98));
-  border: 3px solid #000;
-  box-shadow: 0 10px 0 rgba(0,0,0,0.6), 0 0 60px rgba(0,0,0,0.6);
+  /* MC 原生面板底纹 */
+  background-image: url("./assets/ui/panel-dark.png");
+  background-size: 64px 64px;
+  background-repeat: repeat;
+  background-color: #6b6b6b;
+  image-rendering: pixelated;
+  border: 0;
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255,255,255,0.35),
+    inset -2px -2px 0 0 rgba(0,0,0,0.5),
+    0 8px 0 rgba(0,0,0,0.6),
+    0 0 60px rgba(0,0,0,0.6);
+  animation: mcPanelIn 420ms cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes mcPanelIn {
+  from { transform: scale(0.9) translateY(24px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
 }
 .mc-modal-close {
   position: absolute; top: 10px; right: 10px;
-  width: 32px; height: 32px;
-  background: var(--tex-netherrack); background-size: cover;
-  border: 2px solid #111;
+  width: 36px; height: 36px;
+  background-image: url("./assets/ui/btn-default.png");
+  background-size: 64px 64px;
+  image-rendering: pixelated;
+  border: 0;
   color: #fff; font-size: 1rem; cursor: pointer;
-  box-shadow: 0 3px 0 #4a1318;
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255,255,255,0.4),
+    inset -2px -2px 0 0 rgba(0,0,0,0.45),
+    0 3px 0 rgba(0,0,0,0.55);
+  transition: transform 160ms cubic-bezier(0.16,1,0.3,1), background-image 0ms;
 }
-.mc-modal-close:active { transform: translateY(2px); box-shadow: 0 1px 0 #4a1318; }
+.mc-modal-close:hover {
+  background-image: url("./assets/ui/btn-hover.png");
+  transform: translateY(-2px);
+}
+.mc-modal-close:active {
+  background-image: url("./assets/ui/btn-pressed.png");
+  transform: translateY(2px);
+}
 .mc-modal-panel h3 {
   font: 700 1rem/1.3 var(--mc-font-display);
-  color: #fff; text-shadow: 3px 3px 0 #000;
+  color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,0.8);
 }
 .mc-modal-panel h4 {
   display: inline-block;
-  padding: 3px 8px; margin: 0.8rem 0 0.4rem;
-  border: 2px solid #111;
-  background: var(--tex-grass); background-size: cover;
+  padding: 5px 8px; margin: 0.8rem 0 0.4rem;
+  background: #3a3a3a;
   font: 700 0.55rem/1 var(--mc-font-hud);
-  color: #fff; text-shadow: 1px 1px 0 #000;
+  color: #fff; text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+  box-shadow:
+    inset 1px 1px 0 0 rgba(255,255,255,0.25),
+    inset -1px -1px 0 0 rgba(0,0,0,0.4);
 }
 .mc-modal-panel ul {
   font-size: 0.82rem; line-height: 1.8;
-  color: rgba(247,244,234,0.85);
+  color: #f0f0f0;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
 }
 .mc-modal-panel ul li::marker { content: "▸ "; color: var(--mc-gold); }
 .mc-modal-meta span {
   display: inline-block; margin: 2px;
-  border: 1px solid #111;
-  background: rgba(10,10,10,0.7);
+  background: #3a3a3a;
   color: var(--mc-gold);
   font: 700 0.5rem/1 var(--mc-font-hud);
-  padding: 3px 6px;
+  padding: 5px 7px;
+  box-shadow:
+    inset 1px 1px 0 0 rgba(255,255,255,0.25),
+    inset -1px -1px 0 0 rgba(0,0,0,0.4);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
 }
 .mc-modal-iframe, .mc-modal-video {
   width: 100%; aspect-ratio: 16/9;
