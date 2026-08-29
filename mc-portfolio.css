@@ -596,12 +596,12 @@ body.mc-ready .mc-hud { opacity: 1; }
   color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,0.9);
 }
 
-/* 3D 头像容器 */
+/* 3D 头像容器（比例严格匹配头部素材 651x428） */
 .mc-avatar-3d {
   position: relative;
-  width: clamp(120px, 14vw, 180px);
-  aspect-ratio: 1/2;
-  filter: drop-shadow(4px 8px 0 rgba(0,0,0,0.5));
+  width: clamp(112px, 13vw, 176px);
+  aspect-ratio: 651 / 428;
+  filter: drop-shadow(4px 6px 0 rgba(0,0,0,0.45));
   /* JS 通过 CSS 变量控制倾斜 */
   --rx: 0deg;
   --ry: 0deg;
@@ -610,44 +610,36 @@ body.mc-ready .mc-hud { opacity: 1; }
   animation: mc-avatar-bob 3.4s ease-in-out infinite;
 }
 @keyframes mc-avatar-bob {
-  0%, 100% { transform: perspective(400px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(0); }
-  50%      { transform: perspective(400px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-7px); }
+  0%, 100% { transform: perspective(600px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(0); }
+  50%      { transform: perspective(600px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-7px); }
 }
 
-/* 身体图片 */
+/* 身体图片（容器已按素材比例，用 fill 保证与眼睛坐标 1:1 对应） */
 .mc-avatar-body {
   position: absolute; inset: 0;
-  width: 100%; height: 100%; object-fit: contain;
+  width: 100%; height: 100%; object-fit: fill;
   image-rendering: pixelated;
 }
 
-/* 眼睛容器层（覆盖在头像脸部位置） */
-.mc-avatar-eyes {
-  position: absolute;
-  top: 14%; left: 50%;
-  transform: translateX(-50%);
-  display: flex; gap: 4px;
-  z-index: 2;
-  width: 22%;
-}
-
-/* 单只眼睛（MC 风格白底黑瞳） */
+/* 单只眼睛：按素材实测像素坐标绝对定位到脸部眼眶内 */
 .mc-avatar-eye {
-  width: 50%; aspect-ratio: 1;
+  position: absolute;
   background: #fff;
-  border: 1px solid #1a1a1a;
-  position: relative;
   overflow: hidden;
+  z-index: 2;
   image-rendering: pixelated;
 }
-.mc-eye-left { transform: scaleX(-1); }
+/* 素材 651x428（头部），左眼 x=[149,217] y=[246,327] */
+.mc-eye-left  { left: 22.89%; top: 57.48%; width: 10.60%; height: 19.16%; }
+/* 右眼 x=[292,362] y=[274,356] */
+.mc-eye-right { left: 44.85%; top: 64.02%; width: 10.91%; height: 19.39%; }
 
-/* 瞳孔（跟随鼠标移动） */
+/* 瞳孔（跟随鼠标移动，MC 经典深蓝紫） */
 .mc-pupil {
   position: absolute;
-  width: 50%; height: 50%;
-  background: #1a1a1a;
-  top: 25%; left: 25%;
+  width: 38%; height: 42%;
+  background: #3c2f6b;
+  top: 29%; left: 31%;
   transition: transform 60ms linear;
   /* JS 设置 --px/--py 控制偏移 */
   transform: translate(var(--px, 0px), var(--py, 0px));
