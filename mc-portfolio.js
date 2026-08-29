@@ -610,17 +610,26 @@
   /* ================================================================
      10. 滚动揭示
      ================================================================ */
+  var revealObserver = null;
   function initReveal() {
-    var items = document.querySelectorAll(".mc-reveal");
-    var observer = new IntersectionObserver(function (entries) {
+    revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+          revealObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.15 });
-    items.forEach(function (item) { observer.observe(item); });
+    observeReveal(document.querySelectorAll(".mc-reveal"));
+  }
+  /* 供动态生成的元素补充注册（避免 initReveal 早于内容创建导致永久 opacity:0） */
+  function observeReveal(nodes) {
+    if (!revealObserver || !nodes) return;
+    var list = nodes.length !== undefined ? nodes : [nodes];
+    Array.prototype.forEach.call(list, function (item) {
+      if (!item || item.classList.contains("is-visible")) return;
+      revealObserver.observe(item);
+    });
   }
 
   /* ================================================================
@@ -693,6 +702,7 @@
       }
       card.addEventListener("click", function () { openProjectModal(p); });
       grid.appendChild(card);
+      observeReveal(card);
     });
 
     // Modal
