@@ -63,6 +63,8 @@
       tags2: ["情绪镜身","线性解谜","微缩叙事"],
       media: "./Image/1.png",
       video: "./assets/animation/video-1-r2.mp4",
+      videoUrl: "https://www.bilibili.com/video/BV1k41cBXEfU/",
+      bvid: "BV1k41cBXEfU",
       design: ["以微缩家庭场景映射人物内心情绪变化","线性解谜推进，关卡节奏与叙事同步","空间尺度变化作为情绪线索"],
       contrib: ["独立完成白盒搭建与氛围调试","Sequencer 镜头演出设计与实现","蓝图基础交互逻辑编写"]
     },
@@ -73,6 +75,8 @@
       tags2: ["冰冻机制","工业机关","飞艇关卡"],
       media: "./Image/2.png",
       video: "./assets/animation/final_video_v2-2.mp4",
+      videoUrl: "https://www.bilibili.com/video/BV1oTXzBvEyA/",
+      bvid: "BV1oTXzBvEyA",
       design: ["冰冻/融化机制驱动关卡推进","工业港口机关与飞艇内部空间设计","机关解谜与移动平台结合"],
       contrib: ["独立完成关卡白盒与机关逻辑","Lumen 氛围调试与光照设计","Sequencer 飞艇演出序列"]
     },
@@ -83,6 +87,8 @@
       tags2: ["符箓解谜","阵法切换","塔楼限时挑战"],
       media: "./Image/3.png",
       video: "./assets/animation/video-1-r2.mp4",
+      videoUrl: "https://www.bilibili.com/video/BV1Bg5a6dEHL/",
+      bvid: "BV1Bg5a6dEHL",
       design: ["古刹箱庭地图布局与动线设计","符箓解谜系统与阵法切换机制","塔楼限时挑战关卡"],
       contrib: ["负责古刹区域白盒搭建","解谜机关逻辑设计与蓝图实现","与美术、程序协作推进关卡落地"]
     },
@@ -93,6 +99,8 @@
       tags2: ["MDA 框架","Game Simulation","包容性城市空间"],
       media: "./Image/4.png",
       video: "./assets/animation/final_video_v2-2.mp4",
+      videoUrl: "https://www.bilibili.com/video/BV1jRGb6GEwE/",
+      bvid: "BV1jRGb6GEwE",
       design: ["MDA 框架分析城市空间游戏化潜力","Gameplay 模拟验证空间设计","包容性城市空间策略"],
       contrib: ["独立完成调研、分析与模拟","多工具协作完成方案输出","景观建筑与游戏设计跨学科结合"]
     }
@@ -721,8 +729,19 @@
     var modal = document.getElementById("mcModal");
     modal.querySelector("#mcModalTitle").textContent = p.title;
     modal.querySelector("#mcModalSummary").textContent = p.desc;
-    modal.querySelector("#mcModalMedia").innerHTML =
-      p.media ? '<img src="' + p.media + '" alt="" style="width:100%;display:block;" />' : "";
+    // 如果有B站视频，嵌入 iframe 播放器；否则显示图片
+    if (p.bvid) {
+      modal.querySelector("#mcModalMedia").innerHTML =
+        '<div style="position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden;border:2px solid rgba(255,255,255,0.5);box-shadow:0 4px 14px rgba(0,0,0,0.5);">' +
+          '<iframe src="https://player.bilibili.com/player.html?bvid=' + p.bvid + '&autoplay=0&high_quality=1&danmaku=1" ' +
+            'style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" ' +
+            'scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">' +
+          '</iframe>' +
+        '</div>';
+    } else {
+      modal.querySelector("#mcModalMedia").innerHTML =
+        p.media ? '<img src="' + p.media + '" alt="" style="width:100%;display:block;" />' : "";
+    }
     modal.querySelector("#mcModalMeta").innerHTML =
       p.tags.map(function (t) { return "<span>" + t + "</span>"; }).join("");
     modal.querySelector("#mcModalDesign").innerHTML =
