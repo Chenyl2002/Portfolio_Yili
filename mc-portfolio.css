@@ -596,11 +596,11 @@ body.mc-ready .mc-hud { opacity: 1; }
   color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,0.9);
 }
 
-/* 3D 头像容器（比例严格匹配头部素材 651x428） */
+/* 3D 头像容器（比例严格匹配头部素材 608x634） */
 .mc-avatar-3d {
   position: relative;
-  width: clamp(112px, 13vw, 176px);
-  aspect-ratio: 651 / 428;
+  width: clamp(104px, 12vw, 158px);
+  aspect-ratio: 608 / 634;
   filter: drop-shadow(4px 6px 0 rgba(0,0,0,0.45));
   /* JS 通过 CSS 变量控制倾斜 */
   --rx: 0deg;
@@ -621,25 +621,26 @@ body.mc-ready .mc-hud { opacity: 1; }
   image-rendering: pixelated;
 }
 
-/* 单只眼睛：按素材实测像素坐标绝对定位到脸部眼眶内 */
+/* 单只眼睛：覆盖素材上完整眼区（白眼+瞳孔），瞳孔在其中滑动 */
 .mc-avatar-eye {
   position: absolute;
-  background: #fff;
+  background: #e5e5e5;
   overflow: hidden;
   z-index: 2;
   image-rendering: pixelated;
 }
-/* 素材 651x428（头部），左眼 x=[149,217] y=[246,327] */
-.mc-eye-left  { left: 22.89%; top: 57.48%; width: 10.60%; height: 19.16%; }
-/* 右眼 x=[292,362] y=[274,356] */
-.mc-eye-right { left: 44.85%; top: 64.02%; width: 10.91%; height: 19.39%; }
+/* 素材 608x634。左眼区 = 白(16.78%) 到瞳孔右缘(26.48+9.54=36.02%) */
+.mc-eye-left  { left: 16.78%; top: 45.27%; width: 19.24%; height: 11.20%; }
+/* 右眼区 = 瞳孔左缘(51.15%) 到白右缘(60.69+9.70=70.39%) */
+.mc-eye-right { left: 51.15%; top: 45.27%; width: 19.24%; height: 11.20%; }
 
-/* 瞳孔（跟随鼠标移动，MC 经典深蓝紫） */
+/* 瞳孔（跟随鼠标移动，MC 经典深蓝紫）
+   宽 50% + 高 62%，居中放置，四周留足移动余量，保证不越出眼白 */
 .mc-pupil {
   position: absolute;
-  width: 38%; height: 42%;
-  background: #3c2f6b;
-  top: 29%; left: 31%;
+  width: 50%; height: 62%;
+  background: #3f327a;
+  left: 25%; top: 19%;
   transition: transform 60ms linear;
   /* JS 设置 --px/--py 控制偏移 */
   transform: translate(var(--px, 0px), var(--py, 0px));

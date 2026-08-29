@@ -472,25 +472,44 @@
     var pupilR = document.getElementById("mcPupilR");
     if (!avatar) return;
 
-    var maxPupil = 4; // 瞳孔最大偏移 px
     var maxTilt = 10;  // 头部最大倾斜 deg
+
+    // 瞳孔可移动余量：眼区尺寸 - 瞳孔尺寸，各方向取一半
+    function pupilRange() {
+      var eye = avatar.querySelector(".mc-eye-left");
+      if (!eye) return { x: 2, y: 1.5 };
+      var r = eye.getBoundingClientRect();
+      return {
+        x: Math.max(1, r.width * 0.25),   // 瞳孔宽 50% 居中 → 左右各余 25%
+        y: Math.max(1, r.height * 0.19)   // 瞳孔高 62% 居中 → 上下各余 19%
+      };
+    }
 
     function onMove(e) {
       var rect = avatar.getBoundingClientRect();
       var cx = rect.left + rect.width / 2;
       var cy = rect.top + rect.height / 2;
-      var dx = (e.clientX - cx) / window.innerWidth;
-      var dy = (e.clientY - cy) / window.innerHeight;
+      // 按「头像到各侧边缘的距离」分别归一化：
+      // 无论头像偏左还是偏右，鼠标到达任一边缘都刚好是满量程，且全程平滑渐变
+      var leftSpan  = Math.max(1, cx);
+      var rightSpan = Math.max(1, window.innerWidth - cx);
+      var upSpan    = Math.max(1, cy);
+      var downSpan  = Math.max(1, window.innerHeight - cy);
+      var ddx = e.clientX - cx;
+      var ddy = e.clientY - cy;
+      var dx = Math.max(-1, Math.min(1, ddx / (ddx < 0 ? leftSpan : rightSpan)));
+      var dy = Math.max(-1, Math.min(1, ddy / (ddy < 0 ? upSpan : downSpan)));
 
-      // 瞳孔偏移
-      var px = Math.max(-maxPupil, Math.min(maxPupil, dx * maxPupil * 2.5));
-      var py = Math.max(-maxPupil, Math.min(maxPupil, dy * maxPupil * 2.5));
+      // 瞳孔偏移：两眼同向，严格限制在余量内
+      var rg = pupilRange();
+      var px = dx * rg.x;
+      var py = dy * rg.y;
       if (pupilL) { pupilL.style.setProperty("--px", px + "px"); pupilL.style.setProperty("--py", py + "px"); }
       if (pupilR) { pupilR.style.setProperty("--px", px + "px"); pupilR.style.setProperty("--py", py + "px"); }
 
       // 头部 3D 倾斜
-      var ry = Math.max(-maxTilt, Math.min(maxTilt, dx * maxTilt * 1.5));
-      var rx = Math.max(-maxTilt, Math.min(maxTilt, -dy * maxTilt * 1.5));
+      var ry = Math.max(-maxTilt, Math.min(maxTilt, dx * maxTilt));
+      var rx = Math.max(-maxTilt, Math.min(maxTilt, -dy * maxTilt));
       avatar.style.setProperty("--rx", rx + "deg");
       avatar.style.setProperty("--ry", ry + "deg");
     }
@@ -503,8 +522,9 @@
         if (e.gamma == null || e.beta == null) return;
         var dx = Math.max(-1, Math.min(1, e.gamma / 45));
         var dy = Math.max(-1, Math.min(1, (e.beta - 30) / 45));
-        var px = dx * maxPupil * 2;
-        var py = dy * maxPupil * 2;
+        var rg = pupilRange();
+        var px = dx * rg.x;
+        var py = dy * rg.y;
         if (pupilL) { pupilL.style.setProperty("--px", px + "px"); pupilL.style.setProperty("--py", py + "px"); }
         if (pupilR) { pupilR.style.setProperty("--px", px + "px"); pupilR.style.setProperty("--py", py + "px"); }
         avatar.style.setProperty("--rx", (-dy * maxTilt) + "deg");
