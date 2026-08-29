@@ -328,19 +328,7 @@
     var target = document.getElementById(id);
     if (!target) return;
     var y = target.getBoundingClientRect().top + window.pageYOffset - 56;
-    /* MC 像素转场：短促闪一下，不遮挡滚动过程 */
-    var trans = document.querySelector(".mc-transition");
-    if (!trans) {
-      trans = el("div", "mc-transition");
-      document.body.appendChild(trans);
-    }
-    if (trans._t1) clearTimeout(trans._t1);
-    if (trans._t2) clearTimeout(trans._t2);
-    trans.classList.add("active");
     window.scrollTo({ top: Math.max(y, 0), behavior: "smooth" });
-    trans._t1 = setTimeout(function () {
-      trans.classList.remove("active");
-    }, 180);
   }
 
   /* ================================================================
