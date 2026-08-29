@@ -505,14 +505,24 @@ body.mc-ready .mc-hud { opacity: 1; }
   background: var(--tex-cobble);
 }
 
-/* ---- MC 卡片 ---- */
+/* ---- MC 卡片（关于我区域）— 磨砂玻璃风格 ---- */
 .mc-card {
-  border: 3px solid;
-  border-color: var(--mc-border-l) var(--mc-border-d) var(--mc-border-d) var(--mc-border-l);
-  background: linear-gradient(180deg, rgba(26,29,38,0.95), rgba(16,19,26,0.95));
-  box-shadow: 0 5px 0 rgba(0,0,0,0.5);
+  border: 0;
+  background: rgba(30,32,38,0.45);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  box-shadow:
+    inset 2px 2px 0 0 rgba(255,255,255,0.12),
+    inset -2px -2px 0 0 rgba(0,0,0,0.4),
+    0 5px 0 rgba(0,0,0,0.3),
+    0 8px 24px rgba(0,0,0,0.3);
   padding: 1.2rem;
   position: relative;
+  transition: transform 260ms cubic-bezier(0.16,1,0.3,1), background 260ms ease;
+}
+.mc-card:hover {
+  transform: translateY(-4px);
+  background: rgba(40,42,50,0.55);
 }
 .mc-card h3 {
   font: 700 0.8rem/1.3 var(--mc-font-display);
@@ -773,18 +783,16 @@ body.mc-ready .mc-hud { opacity: 1; }
   .mc-projects-grid { grid-template-columns: 1fr; }
 }
 
-/* ---- 卡片外壳：MC 磨砂玻璃面板 ---- */
+/* ---- 卡片外壳：MC 纯色凸起面板 ---- */
 .mc-project-card {
   display: flex;
   gap: 0;
   padding: 5px;
-  background: rgba(58,58,58,0.55);
-  backdrop-filter: blur(10px) saturate(1.1);
-  -webkit-backdrop-filter: blur(10px) saturate(1.1);
+  background: #6e6e6e;
   border: 0;
   box-shadow:
-    inset 2px 2px 0 0 rgba(255,255,255,0.25),
-    inset -2px -2px 0 0 rgba(0,0,0,0.4),
+    inset 2px 2px 0 0 #8e8e8e,
+    inset -2px -2px 0 0 #555,
     0 5px 0 rgba(0,0,0,0.45),
     0 8px 20px rgba(0,0,0,0.35);
   cursor: pointer;
@@ -795,10 +803,10 @@ body.mc-ready .mc-hud { opacity: 1; }
 }
 .mc-project-card:hover {
   transform: translateY(-5px);
-  background: rgba(68,68,68,0.6);
+  background: #7a7a7a;
   box-shadow:
-    inset 2px 2px 0 0 rgba(255,255,255,0.4),
-    inset -2px -2px 0 0 rgba(0,0,0,0.4),
+    inset 2px 2px 0 0 #9a9a9a,
+    inset -2px -2px 0 0 #606060,
     0 10px 0 rgba(0,0,0,0.45),
     0 14px 30px rgba(0,0,0,0.5),
     0 0 0 3px var(--mc-gold);
@@ -811,7 +819,6 @@ body.mc-ready .mc-hud { opacity: 1; }
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #2a2a2a;
-  /* MC 内凹凹槽边框 */
   box-shadow:
     inset 2px 2px 0 0 rgba(0,0,0,0.6),
     inset -1px -1px 0 0 rgba(255,255,255,0.2);
@@ -978,14 +985,12 @@ body.mc-ready .mc-hud { opacity: 1; }
 .mc-inventory {
   max-width: 1280px;
   margin: 0 auto;
-  background: rgba(110,110,110,0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #6b6b6b;
   border: 0;
   box-shadow:
-    inset 2px 2px 0 0 rgba(255,255,255,0.3),
-    inset -2px -2px 0 0 rgba(0,0,0,0.45),
-    0 6px 0 rgba(0,0,0,0.5),
+    inset 2px 2px 0 0 rgba(255,255,255,0.35),
+    inset -2px -2px 0 0 rgba(0,0,0,0.5),
+    0 6px 0 rgba(0,0,0,0.55),
     0 10px 30px rgba(0,0,0,0.5);
   padding: 0;
 }
@@ -1372,13 +1377,11 @@ body.mc-ready .mc-hud { opacity: 1; }
   max-width: 860px; width: 100%; max-height: 88vh;
   overflow-y: auto;
   padding: 1.5rem;
-  background: rgba(110,110,110,0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #6b6b6b;
   border: 0;
   box-shadow:
-    inset 2px 2px 0 0 rgba(255,255,255,0.3),
-    inset -2px -2px 0 0 rgba(0,0,0,0.45),
+    inset 2px 2px 0 0 rgba(255,255,255,0.35),
+    inset -2px -2px 0 0 rgba(0,0,0,0.5),
     0 8px 0 rgba(0,0,0,0.6),
     0 0 60px rgba(0,0,0,0.6);
   animation: mcPanelIn 420ms cubic-bezier(0.16,1,0.3,1);
