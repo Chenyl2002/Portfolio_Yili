@@ -1269,10 +1269,25 @@ body.mc-ready .mc-hud { opacity: 1; }
   margin: 0;
   max-width: 640px;
 }
-/* 视频上的联系按钮：加强对比 */
+/* 视频上的联系按钮：和 .mc-btn 统一的 MC 纯色凸起风格 */
 .mc-finale-overlay .mc-contact-list a {
-  background: rgba(14,16,22,0.9);
-  box-shadow: 0 4px 0 rgba(0,0,0,0.6), 0 6px 18px rgba(0,0,0,0.5);
+  background: #6e6e6e;
+  border: 0;
+  box-shadow:
+    inset 2px 2px 0 0 #8e8e8e,
+    inset -2px -2px 0 0 #555,
+    0 4px 0 rgba(0,0,0,0.6);
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+}
+.mc-finale-overlay .mc-contact-list a:hover {
+  background: #7a7a7a;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 2px 2px 0 0 #9a9a9a,
+    inset -2px -2px 0 0 #606060,
+    0 6px 0 rgba(0,0,0,0.6),
+    0 0 0 3px var(--mc-gold);
 }
 
 /* ================================================================
@@ -1284,18 +1299,28 @@ body.mc-ready .mc-hud { opacity: 1; }
   align-items: center; margin: 1.5rem 0;
 }
 .mc-contact-list a {
-  display: inline-flex; align-items: center; gap: 8px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 10px 20px;
-  background: rgba(20,23,31,0.85);
-  border: 2px solid;
-  border-color: rgba(0,0,0,0.7) var(--mc-border-l) var(--mc-border-l) rgba(0,0,0,0.7);
+  min-width: 260px;
+  background: #6e6e6e;
+  border: 0;
+  box-shadow:
+    inset 2px 2px 0 0 #8e8e8e,
+    inset -2px -2px 0 0 #555,
+    0 4px 0 rgba(0,0,0,0.5);
   color: #fff; text-decoration: none;
   font: 600 0.85rem/1 var(--mc-font-body);
-  transition: transform 80ms steps(2), outline 80ms steps(2);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+  transition: transform 80ms steps(2), background 80ms steps(2), box-shadow 80ms steps(2);
 }
 .mc-contact-list a:hover {
+  background: #7a7a7a;
   transform: translateY(-2px);
-  outline: 2px solid var(--mc-gold); outline-offset: 1px;
+  box-shadow:
+    inset 2px 2px 0 0 #9a9a9a,
+    inset -2px -2px 0 0 #606060,
+    0 6px 0 rgba(0,0,0,0.5),
+    0 0 0 3px var(--mc-gold);
 }
 
 .mc-mine-zone {
