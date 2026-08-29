@@ -599,13 +599,13 @@ body.mc-ready .mc-hud { opacity: 1; }
 /* 3D 头像容器 */
 .mc-avatar-3d {
   position: relative;
-  width: clamp(96px, 12vw, 140px);
-  height: clamp(96px, 12vw, 140px);
-  filter: drop-shadow(4px 6px 0 rgba(0,0,0,0.5));
+  width: clamp(120px, 14vw, 180px);
+  aspect-ratio: 1/2;
+  filter: drop-shadow(4px 8px 0 rgba(0,0,0,0.5));
   /* JS 通过 CSS 变量控制倾斜 */
   --rx: 0deg;
   --ry: 0deg;
-  transform: perspective(400px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform: perspective(600px) rotateX(var(--rx)) rotateY(var(--ry));
   transition: transform 80ms linear;
   animation: mc-avatar-bob 3.4s ease-in-out infinite;
 }
@@ -621,18 +621,19 @@ body.mc-ready .mc-hud { opacity: 1; }
   image-rendering: pixelated;
 }
 
-/* 眼睛容器层（覆盖在头像上） */
+/* 眼睛容器层（覆盖在头像脸部位置） */
 .mc-avatar-eyes {
   position: absolute;
-  top: 28%; left: 50%;
+  top: 14%; left: 50%;
   transform: translateX(-50%);
-  display: flex; gap: 6px;
+  display: flex; gap: 4px;
   z-index: 2;
+  width: 22%;
 }
 
 /* 单只眼睛（MC 风格白底黑瞳） */
 .mc-avatar-eye {
-  width: 8px; height: 8px;
+  width: 50%; aspect-ratio: 1;
   background: #fff;
   border: 1px solid #1a1a1a;
   position: relative;
@@ -644,9 +645,9 @@ body.mc-ready .mc-hud { opacity: 1; }
 /* 瞳孔（跟随鼠标移动） */
 .mc-pupil {
   position: absolute;
-  width: 4px; height: 4px;
+  width: 50%; height: 50%;
   background: #1a1a1a;
-  top: 2px; left: 2px;
+  top: 25%; left: 25%;
   transition: transform 60ms linear;
   /* JS 设置 --px/--py 控制偏移 */
   transform: translate(var(--px, 0px), var(--py, 0px));

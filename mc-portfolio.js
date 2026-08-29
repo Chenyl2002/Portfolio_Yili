@@ -472,8 +472,8 @@
     var pupilR = document.getElementById("mcPupilR");
     if (!avatar) return;
 
-    var maxPupil = 2.5; // 瞳孔最大偏移 px
-    var maxTilt = 8;   // 头部最大倾斜 deg
+    var maxPupil = 4; // 瞳孔最大偏移 px
+    var maxTilt = 10;  // 头部最大倾斜 deg
 
     function onMove(e) {
       var rect = avatar.getBoundingClientRect();
