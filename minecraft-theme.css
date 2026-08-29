@@ -1,0 +1,1602 @@
+/* ============================================================
+   MINECRAFT THEME  ·  体素方块 · 游戏风覆盖层
+   加载顺序：最后加载，负责把既有 cyber 风格整体替换为
+   Minecraft 方块世界的视觉语言。
+   ============================================================ */
+
+/* ---------- 设计 Token ---------- */
+:root {
+  --mc-sky-top: #6fa8ff;
+  --mc-sky-bottom: #cfe4ff;
+  --mc-night-top: #070a1c;
+  --mc-night-bottom: #152142;
+
+  --mc-grass: #6da53c;
+  --mc-grass-dark: #568a2f;
+  --mc-dirt: #8a5a36;
+  --mc-dirt-dark: #6f4628;
+  --mc-stone: #8f8f8f;
+  --mc-stone-dark: #6f6f6f;
+  --mc-plank: #b8945f;
+  --mc-plank-dark: #9a7a48;
+  --mc-void: #0c0f15;
+  --mc-void-2: #141821;
+
+  --mc-panel: rgba(14, 17, 24, 0.9);
+  --mc-panel-solid: #12151d;
+  --mc-bevel-light: #e8e6da;
+  --mc-bevel-mid: #6a6a6a;
+  --mc-bevel-dark: #0b0b0b;
+
+  --mc-text: #f7f4ea;
+  --mc-muted: #a9a69c;
+  --mc-gold: #ffd75f;
+  --mc-xp: #80ff66;
+  --mc-heart: #ff4f4f;
+  --mc-hunger: #f5b53a;
+  --mc-select: #ffffff;
+  --mc-portal: #a44ce0;
+  --mc-portal-bright: #d38cff;
+  --mc-portal-deep: #4a1a6e;
+
+  --mc-font-display: "Press Start 2P", "Silkscreen", "Noto Sans SC", sans-serif;
+  --mc-font-hud: "Silkscreen", "Noto Sans SC", monospace;
+  --mc-font-body: "Noto Sans SC", "Inter", sans-serif;
+
+  --tex-grass: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%274%27%20fill%3D%27%23568a2f%27%2F%3E%3Crect%20y%3D%274%27%20width%3D%2716%27%20height%3D%2712%27%20fill%3D%27%238a5a36%27%2F%3E%3Crect%20y%3D%273%27%20width%3D%2716%27%20height%3D%273%27%20fill%3D%27%236da53c%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%277%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%236f4628%27%2F%3E%3Crect%20x%3D%279%27%20y%3D%275%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%23744a2b%27%2F%3E%3Crect%20x%3D%274%27%20y%3D%2710%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%23744a2b%27%2F%3E%3Crect%20x%3D%2711%27%20y%3D%2712%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%236f4628%27%2F%3E%3Crect%20x%3D%275%27%20y%3D%2714%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%23744a2b%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%2715%27%20width%3D%273%27%20height%3D%271%27%20fill%3D%27%236f4628%27%2F%3E%3C%2Fsvg%3E");
+  --tex-dirt: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%238a5a36%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%272%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%236f4628%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%271%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23744a2b%27%2F%3E%3Crect%20x%3D%273%27%20y%3D%276%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%236f4628%27%2F%3E%3Crect%20x%3D%2711%27%20y%3D%275%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%23744a2b%27%2F%3E%3Crect%20x%3D%276%27%20y%3D%279%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23744a2b%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%2711%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%236f4628%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2712%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23744a2b%27%2F%3E%3Crect%20x%3D%274%27%20y%3D%2714%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%236f4628%27%2F%3E%3C%2Fsvg%3E");
+  --tex-stone: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%238f8f8f%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%272%27%20width%3D%274%27%20height%3D%273%27%20fill%3D%27%237a7a7a%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%273%27%20width%3D%273%27%20height%3D%273%27%20fill%3D%27%237a7a7a%27%2F%3E%3Crect%20x%3D%273%27%20y%3D%278%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%237a7a7a%27%2F%3E%3Crect%20x%3D%279%27%20y%3D%278%27%20width%3D%274%27%20height%3D%273%27%20fill%3D%27%237a7a7a%27%2F%3E%3Crect%20x%3D%275%27%20y%3D%2712%27%20width%3D%274%27%20height%3D%272%27%20fill%3D%27%237a7a7a%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%2714%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%237a7a7a%27%2F%3E%3Crect%20x%3D%2712%27%20y%3D%2713%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%237a7a7a%27%2F%3E%3C%2Fsvg%3E");
+  --tex-cobble: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%23848484%27%2F%3E%3Crect%20x%3D%270%27%20y%3D%270%27%20width%3D%277%27%20height%3D%277%27%20fill%3D%27%23777777%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%270%27%20width%3D%278%27%20height%3D%275%27%20fill%3D%27%238e8e8e%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%276%27%20width%3D%278%27%20height%3D%276%27%20fill%3D%27%237c7c7c%27%2F%3E%3Crect%20x%3D%270%27%20y%3D%278%27%20width%3D%277%27%20height%3D%278%27%20fill%3D%27%238a8a8a%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%2713%27%20width%3D%278%27%20height%3D%273%27%20fill%3D%27%23777777%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%272%27%20width%3D%273%27%20height%3D%273%27%20fill%3D%27%236b6b6b%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%272%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%236b6b6b%27%2F%3E%3Crect%20x%3D%2711%27%20y%3D%278%27%20width%3D%273%27%20height%3D%273%27%20fill%3D%27%236b6b6b%27%2F%3E%3Crect%20x%3D%273%27%20y%3D%2710%27%20width%3D%273%27%20height%3D%273%27%20fill%3D%27%236b6b6b%27%2F%3E%3C%2Fsvg%3E");
+  --tex-plank: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%23b08d57%27%2F%3E%3Crect%20y%3D%274%27%20width%3D%2716%27%20height%3D%272%27%20fill%3D%27%239a7a48%27%2F%3E%3Crect%20y%3D%278%27%20width%3D%2716%27%20height%3D%272%27%20fill%3D%27%239a7a48%27%2F%3E%3Crect%20y%3D%2712%27%20width%3D%2716%27%20height%3D%272%27%20fill%3D%27%239a7a48%27%2F%3E%3Crect%20x%3D%270%27%20y%3D%270%27%20width%3D%274%27%20height%3D%271%27%20fill%3D%27%23c8a267%27%2F%3E%3Crect%20x%3D%275%27%20y%3D%272%27%20width%3D%273%27%20height%3D%271%27%20fill%3D%27%239a7a48%27%2F%3E%3Crect%20x%3D%279%27%20y%3D%276%27%20width%3D%273%27%20height%3D%271%27%20fill%3D%27%23c8a267%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%2710%27%20width%3D%273%27%20height%3D%271%27%20fill%3D%27%23c8a267%27%2F%3E%3C%2Fsvg%3E");
+  --tex-craft: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%23b08d57%27%2F%3E%3Crect%20x%3D%270%27%20y%3D%270%27%20width%3D%278%27%20height%3D%278%27%20fill%3D%27%23c8a267%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%278%27%20width%3D%278%27%20height%3D%278%27%20fill%3D%27%23c8a267%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%270%27%20width%3D%278%27%20height%3D%278%27%20fill%3D%27%23b08d57%27%2F%3E%3Crect%20x%3D%270%27%20y%3D%278%27%20width%3D%278%27%20height%3D%278%27%20fill%3D%27%23b08d57%27%2F%3E%3Crect%20x%3D%274%27%20y%3D%274%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%238a5a36%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2710%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%238a5a36%27%2F%3E%3Crect%20x%3D%274%27%20y%3D%2710%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%238a5a36%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%274%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%238a5a36%27%2F%3E%3C%2Fsvg%3E");
+  --tex-diamond: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%2360d4e8%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%2388e3f2%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%271%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%2338a7bd%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%2710%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%2338a7bd%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2710%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%2388e3f2%27%2F%3E%3C%2Fsvg%3E");
+  --tex-gold: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%23f6b50f%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%23ffd75f%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%271%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%23c8930a%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%2710%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%23c8930a%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2710%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%23ffd75f%27%2F%3E%3C%2Fsvg%3E");
+  --tex-emerald: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%232ecc71%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%235ce898%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%271%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%231d9e55%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%2710%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%231d9e55%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2710%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%235ce898%27%2F%3E%3C%2Fsvg%3E");
+  --tex-redstone: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%23d14b3a%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%23f06a52%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%271%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%23a83224%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%2710%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%23a83224%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%2710%27%20width%3D%275%27%20height%3D%275%27%20fill%3D%27%23f06a52%27%2F%3E%3C%2Fsvg%3E");
+  --tex-obsidian: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%232a2630%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%271%27%20width%3D%274%27%20height%3D%274%27%20fill%3D%27%233a3545%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%272%27%20width%3D%274%27%20height%3D%274%27%20fill%3D%27%231d1a22%27%2F%3E%3Crect%20x%3D%273%27%20y%3D%278%27%20width%3D%274%27%20height%3D%273%27%20fill%3D%27%233a3545%27%2F%3E%3Crect%20x%3D%279%27%20y%3D%2710%27%20width%3D%274%27%20height%3D%274%27%20fill%3D%27%231d1a22%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%2713%27%20width%3D%273%27%20height%3D%273%27%20fill%3D%27%232a2630%27%2F%3E%3Crect%20x%3D%2711%27%20y%3D%2714%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%233a3545%27%2F%3E%3C%2Fsvg%3E");
+  --tex-sand: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%23e0d5a3%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%272%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23d3c78f%27%2F%3E%3Crect%20x%3D%279%27%20y%3D%271%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23cfc28a%27%2F%3E%3Crect%20x%3D%274%27%20y%3D%276%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%23d3c78f%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%277%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23cfc28a%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%2711%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23d3c78f%27%2F%3E%3Crect%20x%3D%278%27%20y%3D%2712%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23cfc28a%27%2F%3E%3C%2Fsvg%3E");
+  --tex-netherrack: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%23a04c40%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%272%27%20width%3D%274%27%20height%3D%273%27%20fill%3D%27%238a3a30%27%2F%3E%3Crect%20x%3D%279%27%20y%3D%273%27%20width%3D%274%27%20height%3D%273%27%20fill%3D%27%23b85a4c%27%2F%3E%3Crect%20x%3D%273%27%20y%3D%278%27%20width%3D%273%27%20height%3D%273%27%20fill%3D%27%238a3a30%27%2F%3E%3Crect%20x%3D%2710%27%20y%3D%278%27%20width%3D%274%27%20height%3D%273%27%20fill%3D%27%23b85a4c%27%2F%3E%3Crect%20x%3D%274%27%20y%3D%2713%27%20width%3D%274%27%20height%3D%272%27%20fill%3D%27%238a3a30%27%2F%3E%3Crect%20x%3D%2711%27%20y%3D%2713%27%20width%3D%273%27%20height%3D%272%27%20fill%3D%27%23b85a4c%27%2F%3E%3C%2Fsvg%3E");
+  --tex-chest: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2716%27%20height%3D%2716%27%20shape-rendering%3D%27crispEdges%27%3E%3Crect%20width%3D%2716%27%20height%3D%2716%27%20fill%3D%27%239a6a2e%27%2F%3E%3Crect%20y%3D%277%27%20width%3D%2716%27%20height%3D%279%27%20fill%3D%27%238a5a22%27%2F%3E%3Crect%20x%3D%270%27%20y%3D%276%27%20width%3D%2716%27%20height%3D%272%27%20fill%3D%27%23c8964a%27%2F%3E%3Crect%20x%3D%276%27%20y%3D%278%27%20width%3D%274%27%20height%3D%274%27%20fill%3D%27%23f0c878%27%2F%3E%3Crect%20x%3D%277%27%20y%3D%279%27%20width%3D%272%27%20height%3D%272%27%20fill%3D%27%236f4a16%27%2F%3E%3Crect%20x%3D%271%27%20y%3D%272%27%20width%3D%272%27%20height%3D%273%27%20fill%3D%27%236f4a16%27%2F%3E%3Crect%20x%3D%2713%27%20y%3D%272%27%20width%3D%272%27%20height%3D%273%27%20fill%3D%27%236f4a16%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%271%27%20width%3D%2712%27%20height%3D%272%27%20fill%3D%27%23b87e36%27%2F%3E%3Crect%20x%3D%272%27%20y%3D%274%27%20width%3D%2712%27%20height%3D%273%27%20fill%3D%27%23b87e36%27%2F%3E%3C%2Fsvg%3E");
+}
+
+/* ---------- 全局基底 ---------- */
+html body {
+  background: linear-gradient(180deg, var(--mc-void) 0%, #0a0d13 55%, #07080d 100%) !important;
+  color: var(--mc-text) !important;
+  font-family: var(--mc-font-body) !important;
+  overflow-x: hidden;
+}
+
+/* 隐藏默认光标（仅当 JS 已注入游戏光标时才启用） */
+body.mc-cursor-on,
+body.mc-cursor-on a,
+body.mc-cursor-on button,
+body.mc-cursor-on .chip,
+body.mc-cursor-on .doc-card,
+body.mc-cursor-on input,
+body.mc-cursor-on textarea,
+body.mc-cursor-on select,
+body.mc-cursor-on .reel-arrow {
+  cursor: none !important;
+}
+
+/* 可交互元素在 JS 挂载后获得全局白色方块选中框 */
+.mc-selectable {
+  transition: box-shadow 120ms steps(2, end), transform 120ms steps(2, end);
+}
+
+/* ============================================================
+   游戏光标（方块） + 选中框
+   ============================================================ */
+.mc-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483000;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  pointer-events: none;
+  display: none;
+  image-rendering: pixelated;
+  will-change: transform;
+}
+.mc-cursor .mc-cursor-block {
+  position: absolute;
+  inset: 0;
+  border: 2px solid #fff;
+  background:
+    linear-gradient(180deg, #6da53c 0 34%, #8a5a36 34% 100%);
+  box-shadow:
+    inset -3px 0 0 rgba(0, 0, 0, 0.3),
+    0 0 0 1px #111,
+    0 0 14px rgba(255, 255, 255, 0.35);
+  animation: mc-cursor-bob 1.1s steps(3, end) infinite;
+}
+.mc-cursor .mc-cursor-ring {
+  position: absolute;
+  inset: -3px;
+  border: 2px solid rgba(255, 255, 255, 0);
+  transition: border-color 90ms steps(2, end);
+}
+.mc-cursor.is-hover .mc-cursor-block {
+  background:
+    linear-gradient(180deg, #7ec34a 0 34%, #9a6a3e 34% 100%);
+  transform: scale(1.12);
+}
+.mc-cursor.is-active .mc-cursor-block {
+  transform: scale(0.86);
+}
+@keyframes mc-cursor-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(1px); }
+}
+
+/* 白色方块选中框（跟随鼠标的选中高亮） */
+.mc-select-frame {
+  position: fixed;
+  z-index: 2147482990;
+  pointer-events: none;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.55),
+    0 0 16px rgba(255, 255, 255, 0.3);
+  border-radius: 0;
+  display: none;
+  will-change: transform, width, height;
+}
+
+/* ============================================================
+   粒子画布
+   ============================================================ */
+.mc-particles {
+  z-index: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 2147482995;
+  pointer-events: none;
+}
+
+/* ============================================================
+   浮动体素方块背景
+   ============================================================ */
+.mc-floats {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.mc-float {
+  position: absolute;
+  bottom: -80px;
+  width: 26px;
+  height: 26px;
+  background-size: cover;
+  image-rendering: pixelated;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: mc-float-rise linear infinite;
+}
+@keyframes mc-float-rise {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  8%   { opacity: var(--mc-fo, 0.5); }
+  85%  { opacity: var(--mc-fo, 0.5); }
+  100% { transform: translate3d(var(--mc-drift, 40px), -110vh, 0) rotate(220deg); opacity: 0; }
+}
+
+/* ============================================================
+   加载界面：生成世界中
+   ============================================================ */
+html body .cinematic-loader {
+  background:
+    linear-gradient(180deg, rgba(7, 9, 16, 0.96), rgba(10, 12, 18, 0.96)),
+    var(--tex-cobble) !important;
+  background-size: auto, 96px 96px !important;
+}
+html body .cinematic-loader::before {
+  content: "生成世界中…";
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--mc-text);
+  font: 400 1.05rem/1 var(--mc-font-hud);
+  letter-spacing: 0.2em;
+}
+html body .cinematic-loader::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(58% + 44px);
+  width: min(300px, 60vw);
+  height: 10px;
+  transform: translateX(-50%);
+  border: 2px solid #111;
+  background: #3a3a3a;
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(90deg, var(--mc-xp) 0 30%, transparent 30%);
+  background-size: 300px 100%;
+  background-repeat: no-repeat;
+  animation: mc-loadbar 1.6s steps(30, end) forwards;
+}
+@keyframes mc-loadbar {
+  from { background-position: -300px 0; }
+  to   { background-position: 0 0; }
+}
+html body .cinematic-loader span {
+  position: relative;
+  top: -6%;
+  font-family: var(--mc-font-display) !important;
+  color: var(--mc-text) !important;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.9) !important;
+}
+
+/* ============================================================
+   顶部 Header / 导航（木板质感）
+   ============================================================ */
+html body .site-header,
+html body .site-header.scrolled {
+  height: 64px !important;
+  border-bottom: 3px solid #000 !important;
+  background: linear-gradient(180deg, rgba(20, 16, 12, 0.96), rgba(16, 13, 10, 0.94)),
+    var(--tex-plank) !important;
+  background-size: auto, 48px 48px !important;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: none !important;
+}
+html body .site-header::after {
+  content: "WORLD / 2026";
+  color: rgba(247, 244, 234, 0.4);
+  font: 700 0.56rem/1 var(--mc-font-hud);
+  letter-spacing: 0.22em;
+}
+html body .nav { height: 64px !important; }
+html body .brand-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #111 !important;
+  background: var(--tex-grass) !important;
+  background-size: cover !important;
+  color: #fff !important;
+  font: 700 0.72rem/1 var(--mc-font-display) !important;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25),
+    0 3px 0 #2f4a1c !important;
+  transform: skewY(0deg) !important;
+}
+html body .brand-name,
+html body .brand-version,
+html body .nav-links a {
+  font-family: var(--mc-font-hud) !important;
+  color: var(--mc-text) !important;
+}
+html body .brand-name { font-size: 0.82rem !important; letter-spacing: 0.08em !important; }
+html body .brand-version {
+  color: var(--mc-gold) !important;
+  font-size: 0.55rem !important;
+}
+html body .nav-links a {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.14em !important;
+  opacity: 0.82;
+}
+html body .nav-links a::after {
+  height: 3px;
+  bottom: 0;
+  background: #fff;
+  box-shadow: none;
+  transition: left 120ms steps(3, end), right 120ms steps(3, end);
+}
+html body .nav-links a:hover,
+html body .nav-links a.is-active { opacity: 1; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+html body .nav-talk {
+  border: 2px solid #111 !important;
+  border-radius: 0 !important;
+  background: var(--tex-stone) !important;
+  background-size: 28px 28px !important;
+  color: #fff !important;
+  font-family: var(--mc-font-hud) !important;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.7) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28), 0 3px 0 #000 !important;
+}
+html body .nav-talk:active { transform: translateY(2px); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28), 0 1px 0 #000 !important; }
+html body .nav-system {
+  color: var(--mc-muted);
+  font: 700 0.5rem/1 var(--mc-font-hud);
+  letter-spacing: 0.16em;
+}
+html body .sound-dot {
+  background: var(--mc-xp) !important;
+  box-shadow: 0 0 8px var(--mc-xp) !important;
+}
+html body .nav-toggle {
+  border: 2px solid #111;
+  background: var(--tex-stone);
+  color: #fff;
+  font-family: var(--mc-font-hud);
+}
+
+/* ============================================================
+   侧栏 / 状态栏 等装饰
+   ============================================================ */
+html body .side-rail {
+  color: rgba(247, 244, 234, 0.34);
+  font: 700 0.52rem/1 var(--mc-font-hud);
+  letter-spacing: 0.3em;
+}
+html body .system-status-bar {
+  color: rgba(247, 244, 234, 0.5);
+  font: 700 0.5rem/1 var(--mc-font-hud);
+  letter-spacing: 0.18em;
+}
+html body .ai-console small {
+  color: var(--mc-xp);
+  font-family: var(--mc-font-hud);
+  letter-spacing: 0.12em;
+}
+html body .ai-orb {
+  border: 2px solid #111 !important;
+  border-radius: 0 !important;
+  background: var(--tex-grass) !important;
+  background-size: cover !important;
+  color: #fff !important;
+  font-family: var(--mc-font-display) !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8) !important;
+  box-shadow: 0 3px 0 #2f4a1c !important;
+}
+
+/* ============================================================
+   HUD 状态栏（左上：生命 / 饥饿 / 经验）
+   ============================================================ */
+.mc-hud {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: auto;
+  right: auto;
+  z-index: 2147482800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 268px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease 400ms;
+}
+body.mc-ready .mc-hud { opacity: 1; }
+
+/* 护甲排：左对齐，铺在最上一行 */
+.mc-hud-armor {
+  align-self: flex-start;
+  display: flex;
+  gap: 1px;
+}
+
+/* 生命 / 等级 / 饥饿：同一行，红心左、鸡腿右、等级居中 */
+.mc-hud-vitals {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  width: 100%;
+  gap: 4px;
+}
+.mc-hud-row {
+  display: flex;
+  gap: 1px;
+  align-items: center;
+}
+.mc-hud-hunger { justify-content: flex-end; }
+
+.mc-hud-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(1.5px 1.5px 0 rgba(0,0,0,0.85));
+}
+.mc-hud-item {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  filter: drop-shadow(1.5px 1.5px 0 rgba(0,0,0,0.9));
+  transition: filter 200ms steps(3, end), opacity 200ms steps(3, end);
+}
+.mc-hud-item.off { filter: brightness(0.22) drop-shadow(1.5px 1.5px 0 rgba(0,0,0,0.9)); opacity: 1; }
+
+/* 等级数字：绿色，压在生命行中间 */
+.mc-hud-level {
+  color: #7cfc20;
+  font: 700 1rem/1 var(--mc-font-display);
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+  text-align: center;
+  justify-self: center;
+}
+
+/* 经验条：贯通整个 HUD 宽度 */
+.mc-hud-xp {
+  width: 100%;
+  height: 10px;
+  position: relative;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(90deg, #1b3a10 0 1px, #24501a 1px 17px, #1b3a10 17px 18px),
+    #16300d;
+  border: 1px solid rgba(0,0,0,0.85);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.mc-hud-xp-fill {
+  height: 100%;
+  width: 0%;
+  background:
+    repeating-linear-gradient(90deg, #63c81e 0 1px, #8cf53c 1px 17px, #63c81e 17px 18px),
+    #7cfc20;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: width 0.35s ease;
+}
+.mc-hud-label { display: none; }
+
+/* ============================================================
+   底部快捷栏 Hotbar（游戏式导航）
+   ============================================================ */
+.mc-hotbar {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147482801;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+.mc-hotbar-slots {
+  display: flex;
+  gap: 0;
+  padding: 2px;
+  background: rgba(20, 20, 20, 0.72);
+  border: 2px solid;
+  border-color: rgba(255,255,255,0.32) rgba(0,0,0,0.8) rgba(0,0,0,0.8) rgba(255,255,255,0.32);
+  box-shadow: 0 3px 0 rgba(0,0,0,0.55);
+}
+.mc-slot {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(110, 110, 110, 0.55);
+  border: 2px solid;
+  border-color: rgba(60,60,60,0.9) rgba(200,200,200,0.4) rgba(200,200,200,0.4) rgba(60,60,60,0.9);
+  cursor: pointer;
+  transition: background-color 90ms steps(2,end), transform 90ms steps(2,end);
+}
+.mc-slot:hover { background: rgba(150, 150, 150, 0.7); }
+.mc-slot:active { transform: translateY(1px); }
+.mc-slot.is-selected {
+  outline: 3px solid #f0f0f0;
+  outline-offset: -1px;
+  background: rgba(160, 160, 160, 0.72);
+  z-index: 2;
+  box-shadow: 0 0 0 1px #000;
+}
+.mc-slot svg { width: 26px; height: 26px; image-rendering: pixelated; filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.6)); }
+.mc-slot .mc-slot-key {
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  font: 700 7px/1 var(--mc-font-display);
+  color: rgba(255,255,255,0.8);
+  text-shadow: 1px 1px 0 #000;
+}
+.mc-slot .mc-slot-count {
+  position: absolute;
+  right: 3px;
+  bottom: 1px;
+  font: 700 8px/1 var(--mc-font-display);
+  color: #fff;
+  text-shadow: 1px 1px 0 #000;
+}
+/* 物品耐久条（参考图中工具下方的绿条） */
+.mc-slot .mc-slot-dura {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 3px;
+  height: 3px;
+  background: #000;
+  overflow: hidden;
+}
+.mc-slot .mc-slot-dura i {
+  display: block;
+  height: 100%;
+  background: #4fe020;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.35);
+}
+.mc-hotbar-label {
+  color: var(--mc-text);
+  font: 700 0.5rem/1 var(--mc-font-hud);
+  letter-spacing: 0.12em;
+  text-shadow: 1px 1px 0 #000;
+  text-align: center;
+  background: rgba(0,0,0,0.68);
+  padding: 3px 10px;
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+/* ============================================================
+   物品提示框（Minecraft 风格 Tooltip）
+   ============================================================ */
+.mc-tip {
+  position: fixed;
+  z-index: 2147483010;
+  max-width: 280px;
+  padding: 7px 10px;
+  background: rgba(16, 16, 16, 0.95);
+  border: 2px solid;
+  border-color: rgba(255,255,255,0.5) rgba(0,0,0,0.8) rgba(0,0,0,0.8) rgba(255,255,255,0.5);
+  color: var(--mc-text);
+  font: 400 12px/1.5 "Noto Sans SC", sans-serif;
+  pointer-events: none;
+  display: none;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+}
+.mc-tip .mc-tip-name {
+  color: #fff;
+  font: 700 12px/1.4 var(--mc-font-hud);
+  letter-spacing: 0.05em;
+}
+.mc-tip .mc-tip-lore {
+  margin-top: 3px;
+  color: #a8a8a8;
+  font-style: italic;
+  font-size: 11px;
+}
+.mc-tip .mc-tip-gold { color: var(--mc-gold); }
+
+/* ============================================================
+   成就弹窗
+   ============================================================ */
+.mc-achieves {
+  position: fixed;
+  top: 84px;
+  right: 14px;
+  z-index: 2147483050;
+  display: grid;
+  gap: 8px;
+  pointer-events: none;
+}
+.mc-achieve {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 8px;
+  align-items: center;
+  min-width: 250px;
+  padding: 8px 10px;
+  background: rgba(16, 16, 16, 0.94);
+  border: 2px solid;
+  border-color: rgba(255,255,255,0.5) rgba(0,0,0,0.8) rgba(0,0,0,0.8) rgba(255,255,255,0.5);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.45);
+  animation: mc-achieve-in 4.2s steps(24, end) forwards;
+}
+.mc-achieve .mc-achieve-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #111;
+  background: var(--tex-grass);
+  background-size: cover;
+  color: #fff;
+  font-size: 15px;
+  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.5));
+}
+.mc-achieve b { display: block; color: #fff; font: 700 10px/1.3 var(--mc-font-display); text-shadow: 1px 1px 0 #000; }
+.mc-achieve .mc-achieve-title { color: var(--mc-gold); font-size: 12px; }
+.mc-achieve small { color: #bbb; font-size: 10px; display: block; }
+@keyframes mc-achieve-in {
+  0%   { opacity: 0; transform: translateX(60px); }
+  8%   { opacity: 1; transform: none; }
+  80%  { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: translateX(60px); }
+}
+
+/* ============================================================
+   HERO（白天草原背景 + 方块化标题）
+   ============================================================ */
+html body #home.hero {
+  min-height: 620px !important;
+  height: 100vh !important;
+  max-height: 1000px !important;
+  background:
+    linear-gradient(180deg, rgba(10, 16, 34, 0.05) 0%, rgba(8, 10, 18, 0.28) 55%, rgba(9, 11, 17, 0.94) 100%),
+    url("./assets/minecraft/hero-day.jpg") center 30% / cover no-repeat !important;
+  isolation: isolate;
+}
+html body #home.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(8, 10, 16, 0.82) 0%, rgba(8, 10, 16, 0.42) 42%, rgba(8, 10, 16, 0) 66%, rgba(8, 10, 16, 0.22) 100%),
+    linear-gradient(180deg, rgba(8, 10, 16, 0) 52%, rgba(9, 11, 17, 0.9) 100%);
+}
+html body #home .scroll-scene-grade,
+html body #home .hero-cyber-panels,
+html body #home .hero-content,
+html body #home .character-stage,
+html body #home .hero-showcase,
+html body #home .scroll-indicator { display: none !important; }
+
+/* 首页 MC 视频：作为 hero 实景背景层，随滚动逐帧推进 */
+html body #home .scroll-scene-video {
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  opacity: 1 !important;
+  filter: saturate(1.06) contrast(1.04) !important;
+  pointer-events: none !important;
+}
+
+html body #home .hero-copy-solid {
+  position: absolute !important;
+  top: 88px !important;
+  max-height: calc(100vh - 250px) !important;
+  overflow: visible !important;
+  left: clamp(28px, 4vw, 60px) !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 8 !important;
+  width: min(46vw, 520px) !important;
+  max-width: 520px !important;
+  opacity: 1 !important;
+  transform: none !important;
+  text-align: left !important;
+  color: var(--mc-text) !important;
+  padding: clamp(1rem, 1.8vw, 1.5rem) !important;
+  background: rgba(8, 10, 16, 0.62) !important;
+  backdrop-filter: blur(3px) !important;
+  border: 2px solid !important;
+  border-color: rgba(255,255,255,0.22) rgba(0,0,0,0.6) rgba(0,0,0,0.6) rgba(255,255,255,0.22) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.45rem !important;
+}
+html body #home .hero-copy-solid * { text-align: left !important; }
+
+html body #home .hero-command-id {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+  padding: 0.5rem 0.7rem;
+  border: 2px solid;
+  border-color: rgba(255,255,255,0.4) rgba(0,0,0,0.7) rgba(0,0,0,0.7) rgba(255,255,255,0.4);
+  border-left: 4px solid #fff;
+  background: rgba(12, 14, 20, 0.8);
+  color: rgba(247,244,234,0.78);
+  font: 700 0.56rem/1 var(--mc-font-hud);
+  letter-spacing: 0.18em;
+}
+html body #home .hero-solid-kicker {
+  margin: 0 0 0.5rem !important;
+  color: var(--mc-gold) !important;
+  font: 700 0.62rem/1.3 var(--mc-font-hud) !important;
+  letter-spacing: 0.16em !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.85) !important;
+}
+html body #home .hero-solid-name {
+  display: block !important;
+  margin-bottom: 0.35rem !important;
+  color: #fff !important;
+  font: 800 clamp(1.1rem, 1.6vw, 1.7rem)/1 var(--mc-font-hud) !important;
+  letter-spacing: 0.06em !important;
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.85) !important;
+}
+html body #home .hero-solid-title {
+  display: block !important;
+  color: #fff !important;
+  font: 900 clamp(2.4rem, 4.4vw, 4.2rem)/0.84 var(--mc-font-display) !important;
+  letter-spacing: 0 !important;
+  transform: skewX(0) !important;
+  text-shadow:
+    3px 3px 0 #1a2a12,
+    6px 6px 0 #2f4a1c,
+    9px 9px 0 rgba(0,0,0,0.85),
+    0 16px 40px rgba(0,0,0,0.4) !important;
+}
+html body #home .hero-solid-text {
+  max-width: 100% !important;
+  font-size: 0.8rem !important;
+  background: rgba(8, 10, 16, 0.55) !important;
+  backdrop-filter: blur(2px) !important;
+  margin: 1rem 0 0 !important;
+  padding: 0.3rem 0 0.3rem 0.9rem !important;
+  border-left: 4px solid #fff !important;
+  color: rgba(255, 255, 255, 0.94) !important;
+  font: 500 clamp(0.78rem, 0.9vw, 0.98rem)/1.72 var(--mc-font-body) !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9) !important;
+}
+html body #home .hero-role-focus {
+  display: none !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-top: 1.1rem;
+}
+html body #home .hero-role-focus span {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.65rem 0.6rem;
+  border: 2px solid;
+  border-color: rgba(255,255,255,0.34) rgba(0,0,0,0.6) rgba(0,0,0,0.6) rgba(255,255,255,0.34);
+  background: rgba(10, 12, 18, 0.78);
+  color: rgba(247,244,234,0.85);
+  font: 700 0.54rem/1.3 var(--mc-font-hud);
+  letter-spacing: 0.08em;
+}
+html body #home .hero-role-focus b {
+  color: var(--mc-gold);
+  font-size: 0.46rem;
+  letter-spacing: 0.16em;
+}
+
+/* HERO 底部动作卡（Minecraft 库存格样式） */
+html body #home .hero-solid-actions {
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  top: auto !important;
+  z-index: 9 !important;
+  margin-top: 0.4rem !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 5px !important;
+  width: 100% !important;
+}
+html body #home .hero-solid-actions a {
+  display: grid !important;
+  grid-template-columns: 32px 1fr 22px !important;
+  align-items: center !important;
+  gap: 9px !important;
+  min-height: 44px !important;
+  padding: 0.4rem 0.55rem !important;
+  min-height: 86px !important;
+  padding: 0.85rem 0.9rem !important;
+  border: 2px solid !important;
+  border-color: rgba(255,255,255,0.42) rgba(0,0,0,0.65) rgba(0,0,0,0.65) rgba(255,255,255,0.42) !important;
+  border-radius: 0 !important;
+  background: rgba(14, 17, 24, 0.82) !important;
+  color: var(--mc-text) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 4px 0 rgba(0,0,0,0.55) !important;
+  clip-path: none !important;
+  transform: translate3d(0,0,0) !important;
+  transition: transform 140ms steps(3,end), background-color 120ms steps(2,end), box-shadow 140ms steps(3,end) !important;
+  animation: none !important;
+}
+html body #home .hero-solid-actions a::before { display: none !important; }
+html body #home .hero-solid-actions a::after { display: none !important; }
+html body #home .hero-solid-actions a:hover,
+html body #home .hero-solid-actions a:focus-visible {
+  transform: translate3d(0, -3px, 0) !important;
+  background: rgba(34, 40, 52, 0.9) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1), 0 6px 0 rgba(0,0,0,0.55) !important;
+  outline: 2px solid #fff !important;
+  outline-offset: 3px !important;
+}
+html body #home .hero-solid-actions a:active { transform: translate3d(0, 2px, 0) !important; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05), 0 2px 0 rgba(0,0,0,0.55) !important; }
+html body #home .hero-solid-actions .mission-number {
+  width: 32px;
+  height: 32px;
+  font-size: 0.72rem;
+  display: grid;
+  place-items: center;
+  border: 2px solid #111;
+  background: var(--tex-craft);
+  background-size: cover;
+  color: #2f1d05 !important;
+  font: 700 0.8rem/1 var(--mc-font-display);
+  text-shadow: none;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+}
+html body #home .hero-solid-actions a > span:nth-child(2) { display: grid !important; gap: 0.22rem !important; }
+html body #home .hero-solid-actions b {
+  font: 800 0.74rem/1.1 var(--mc-font-hud);
+  letter-spacing: 0.04em;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8);
+}
+html body #home .hero-solid-actions small { color: rgba(247,244,234,0.68); font: 500 0.66rem/1 var(--mc-font-body); }
+html body #home .hero-solid-actions .mission-label {
+  color: var(--mc-gold) !important;
+  font: 700 0.44rem/1 var(--mc-font-hud) !important;
+  letter-spacing: 0.16em !important;
+}
+html body #home .hero-solid-actions img {
+  width: 26px;
+  height: 26px;
+  padding: 5px;
+  border: 2px solid #111;
+  background: var(--tex-stone);
+  background-size: cover;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.5);
+}
+
+/* 任务面板（职业进度） */
+html body #home .mission-panel {
+  position: absolute !important;
+  top: 120px !important;
+  right: clamp(22px, 3vw, 50px) !important;
+  z-index: 9 !important;
+  width: min(19vw, 250px) !important;
+  padding: 0.9rem !important;
+  border: 2px solid;
+  border-color: rgba(255,255,255,0.4) rgba(0,0,0,0.7) rgba(0,0,0,0.7) rgba(255,255,255,0.4);
+  border-radius: 0 !important;
+  background: rgba(12, 14, 20, 0.82) !important;
+  color: var(--mc-text) !important;
+  opacity: 1 !important;
+  transform: none !important;
+  backdrop-filter: none !important;
+}
+html body #home .mission-panel .eyebrow {
+  color: var(--mc-gold) !important;
+  font-family: var(--mc-font-hud) !important;
+  letter-spacing: 0.14em !important;
+}
+html body #home .mission-panel h2 {
+  color: #fff !important;
+  font: 700 0.72rem/1.3 var(--mc-font-hud) !important;
+}
+html body #home .mission-panel ul { display: grid !important; gap: 0.4rem !important; }
+html body #home .mission-panel li {
+  display: grid !important;
+  grid-template-columns: 26px 1fr !important;
+  gap: 0.1rem 0.5rem !important;
+  align-items: center !important;
+  padding: 0.5rem !important;
+  border: 2px solid;
+  border-color: rgba(0,0,0,0.7) rgba(255,255,255,0.3) rgba(255,255,255,0.3) rgba(0,0,0,0.7);
+  background: rgba(20, 22, 30, 0.85) !important;
+}
+html body #home .mission-panel li span {
+  grid-row: 1 / 3;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #111;
+  background: var(--tex-grass);
+  background-size: cover;
+  color: #fff !important;
+  font-size: 0.6rem !important;
+  font-family: var(--mc-font-display);
+  text-shadow: 1px 1px 0 #000;
+}
+html body #home .mission-panel li b { color: #fff; font-family: var(--mc-font-body); font-size: 0.72rem; }
+html body #home .mission-panel li small { color: var(--mc-xp); font-size: 0.44rem; letter-spacing: 0.1em; font-family: var(--mc-font-hud); }
+
+/* ============================================================
+   Section 通用：标题 / 眉标（物品标签风格）
+   ============================================================ */
+html body .section-head .eyebrow,
+html body .phone-scene-label .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--mc-gold) !important;
+  font-family: var(--mc-font-hud) !important;
+  letter-spacing: 0.18em !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8) !important;
+}
+html body .section-head .eyebrow::before,
+html body .phone-scene-label .eyebrow::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: var(--tex-grass);
+  background-size: cover;
+  border: 2px solid #111;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.5);
+  display: inline-block;
+}
+html body .section-head h2,
+html body .phone-scene-label h2 {
+  color: var(--mc-text) !important;
+  font-family: var(--mc-font-display) !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.8), 5px 5px 0 rgba(0,0,0,0.3) !important;
+}
+html body .section-head p:not(.eyebrow),
+html body .phone-scene-label p {
+  color: var(--mc-muted) !important;
+  font-family: var(--mc-font-body) !important;
+}
+
+/* ============================================================
+   卡片 / 面板（库存格 / 石砖质感）
+   ============================================================ */
+html body .card,
+html body .doc-card,
+html body .resume-panel,
+html body .contact-card {
+  border: 2px solid !important;
+  border-color: rgba(255,255,255,0.36) rgba(0,0,0,0.65) rgba(0,0,0,0.65) rgba(255,255,255,0.36) !important;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(180deg, rgba(24, 28, 38, 0.96), rgba(15, 18, 26, 0.96)),
+    var(--tex-cobble) !important;
+  background-size: auto, 64px 64px !important;
+  color: var(--mc-text) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04), 0 5px 0 rgba(0,0,0,0.5) !important;
+}
+html body .card h3,
+html body .resume-panel h3,
+html body .doc-card h3 {
+  color: #fff !important;
+  font-family: var(--mc-font-hud) !important;
+  letter-spacing: 0.04em;
+}
+html body .card p,
+html body .resume-panel p,
+html body .doc-card p {
+  color: rgba(247, 244, 234, 0.82) !important;
+  font-family: var(--mc-font-body) !important;
+}
+
+/* 按钮：Minecraft 石头按钮 */
+html body .btn,
+html body .chip {
+  border: 2px solid !important;
+  border-color: #e8e6da rgba(10,10,10,0.9) rgba(10,10,10,0.9) #e8e6da !important;
+  border-radius: 0 !important;
+  background: var(--tex-stone) !important;
+  background-size: 28px 28px !important;
+  color: #fff !important;
+  font-family: var(--mc-font-hud) !important;
+  letter-spacing: 0.08em !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.75) !important;
+  box-shadow: 0 4px 0 #3a3a3a, inset 0 0 0 1px rgba(255,255,255,0.16) !important;
+  transition: transform 90ms steps(2,end), box-shadow 90ms steps(2,end), background-color 90ms steps(2,end) !important;
+}
+html body .btn:hover,
+html body .chip:hover {
+  background-color: #a2a2a2 !important;
+  background-image: var(--tex-stone) !important;
+  background-size: 28px 28px !important;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 #3a3a3a, inset 0 0 0 1px rgba(255,255,255,0.24) !important;
+}
+html body .btn:active,
+html body .chip:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #3a3a3a !important;
+}
+html body .chip.active,
+html body .btn-primary {
+  border-color: #fff #5a3a10 #5a3a10 #fff !important;
+  background: var(--tex-gold) !important;
+  background-size: 28px 28px !important;
+  color: #2f1d05 !important;
+  text-shadow: none !important;
+  box-shadow: 0 4px 0 #7a4e0a, inset 0 0 0 1px rgba(255,255,255,0.3) !important;
+}
+html body .btn-secondary {
+  background: var(--tex-cobble) !important;
+  background-size: 28px 28px !important;
+}
+
+/* ============================================================
+   项目 / 胶片卷轴（方块世界维度入口）
+   ============================================================ */
+html body .phone-device,
+html body .phone-hardware,
+html body .phone-screen {
+  border-radius: 0 !important;
+}
+html body .phone-device {
+  border: 3px solid #000 !important;
+  background: var(--tex-plank) !important;
+  background-size: 48px 48px !important;
+  box-shadow: 0 8px 0 rgba(0,0,0,0.55) !important;
+}
+html body .phone-screen {
+  background: #0d1016 !important;
+}
+html body .project-card {
+  border: 2px solid !important;
+  border-color: rgba(255,255,255,0.3) rgba(0,0,0,0.6) rgba(0,0,0,0.6) rgba(255,255,255,0.3) !important;
+  border-radius: 0 !important;
+  background: #13161d !important;
+  overflow: hidden;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.5) !important;
+}
+html body .project-card .project-number {
+  font-family: var(--mc-font-display) !important;
+  color: var(--mc-gold) !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.9);
+}
+html body .project-card h3 {
+  font-family: var(--mc-font-hud) !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.9);
+}
+html body .project-card .project-specs span,
+html body .project-card .tags span {
+  border: 1px solid #111 !important;
+  border-radius: 0 !important;
+  background: rgba(10,10,10,0.7) !important;
+  color: var(--mc-gold) !important;
+  font-family: var(--mc-font-hud) !important;
+  font-size: 0.56rem !important;
+  letter-spacing: 0.06em;
+}
+/* 强制覆盖 script.js 注入的选中样式为 Minecraft 白色选中框 */
+html body .project-card.is-reel-active {
+  opacity: 1 !important;
+  filter: none !important;
+  border-color: #fff !important;
+  outline: 2px solid #fff !important;
+  outline-offset: 5px !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.35), 0 0 26px rgba(255,255,255,0.35), 0 6px 0 rgba(0,0,0,0.55) !important;
+  z-index: 40 !important;
+}
+html body .project-card:not(.is-reel-active) {
+  opacity: 0.42 !important;
+  filter: blur(2px) brightness(0.5) saturate(0.5) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.5) !important;
+}
+html body .reel-arrow {
+  border: 2px solid #111 !important;
+  border-radius: 0 !important;
+  background: var(--tex-stone) !important;
+  background-size: 28px 28px !important;
+  color: #fff !important;
+  box-shadow: 0 3px 0 #3a3a3a !important;
+  font-family: var(--mc-font-hud) !important;
+}
+html body .reel-arrow:active { transform: translateY(2px); box-shadow: 0 1px 0 #3a3a3a !important; }
+html body .reel-hint {
+  color: rgba(247,244,234,0.5) !important;
+  font: 700 0.5rem/1 var(--mc-font-hud) !important;
+  letter-spacing: 0.22em;
+}
+
+/* 文档卡片 */
+html body .doc-card {
+  border: 2px solid !important;
+  border-color: rgba(255,255,255,0.32) rgba(0,0,0,0.62) rgba(0,0,0,0.62) rgba(255,255,255,0.32) !important;
+  background: #141821 !important;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.5) !important;
+  transition: transform 110ms steps(3,end), box-shadow 110ms steps(3,end) !important;
+}
+html body .doc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 rgba(0,0,0,0.5) !important;
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+html body .doc-card .doc-title {
+  font-family: var(--mc-font-hud) !important;
+  color: #fff !important;
+}
+html body .doc-card .doc-meta {
+  color: var(--mc-muted) !important;
+  font-family: var(--mc-font-hud) !important;
+  font-size: 0.56rem !important;
+}
+
+/* ============================================================
+   简历（玩家档案 / 成就面板）
+   ============================================================ */
+html body .resume-profile {
+  background: linear-gradient(180deg, rgba(22,26,36,0.98), rgba(14,17,24,0.98)), var(--tex-plank) !important;
+  background-size: auto, 48px 48px !important;
+}
+html body .resume-profile h3 {
+  font-family: var(--mc-font-display) !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.9);
+}
+html body .resume-role {
+  color: var(--mc-gold) !important;
+  font-family: var(--mc-font-hud) !important;
+  letter-spacing: 0.08em;
+}
+html body .resume-avatar {
+  border: 3px solid #000 !important;
+  border-radius: 0 !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), 0 4px 0 rgba(0,0,0,0.5);
+  image-rendering: auto;
+}
+html body .skill-tags span {
+  border: 1px solid #111 !important;
+  border-radius: 0 !important;
+  background: var(--tex-stone) !important;
+  background-size: 24px 24px !important;
+  color: #fff !important;
+  font-family: var(--mc-font-hud) !important;
+  font-size: 0.6rem !important;
+  box-shadow: 0 2px 0 #3a3a3a;
+}
+html body .experience-trigger {
+  border: 2px solid !important;
+  border-color: rgba(0,0,0,0.7) rgba(255,255,255,0.3) rgba(255,255,255,0.3) rgba(0,0,0,0.7) !important;
+  border-radius: 0 !important;
+  background: rgba(20,23,31,0.85) !important;
+  transition: background-color 100ms steps(2,end), transform 100ms steps(2,end) !important;
+}
+html body .experience-trigger:hover {
+  background: rgba(42, 48, 62, 0.92) !important;
+  transform: translateX(3px);
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+html body .item-title {
+  color: #fff !important;
+  font-family: var(--mc-font-body) !important;
+}
+html body .item-meta {
+  color: var(--mc-muted) !important;
+  font-family: var(--mc-font-body) !important;
+}
+html body .experience-open-mark {
+  border: 2px solid #111 !important;
+  background: var(--tex-gold) !important;
+  background-size: cover !important;
+  color: #2f1d05 !important;
+  font-family: var(--mc-font-hud) !important;
+  box-shadow: 0 2px 0 #7a4e0a;
+}
+html body .experience-hint { color: var(--mc-gold) !important; }
+html body .plain-list li::marker {
+  content: "▮ ";
+  color: var(--mc-gold);
+}
+html body .game-exp-group h4 {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #111;
+  background: var(--tex-grass);
+  background-size: 24px 24px;
+  color: #fff;
+  font-family: var(--mc-font-hud);
+  font-size: 0.66rem;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+  box-shadow: 0 2px 0 #2f4a1c;
+}
+
+/* ============================================================
+   关于我
+   ============================================================ */
+html body .about-grid .card h3::before {
+  content: "◆ ";
+  color: var(--mc-gold);
+}
+
+/* ============================================================
+   Finale（夜晚传送门背景）
+   ============================================================ */
+html body #finale .finale-section,
+html body .finale-section {
+  background:
+    linear-gradient(180deg, rgba(7,9,18,0.35) 0%, rgba(7,9,18,0.62) 100%),
+    url("./assets/minecraft/night-portal.jpg") center 40% / cover no-repeat !important;
+}
+/* 结尾 MC 传送门视频保持可见，滚动逐帧推进 */
+html body #finale .finale-video {
+  filter: saturate(1.1) contrast(1.05) !important;
+}
+html body .finale-overlay {
+  text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+}
+html body .finale-overlay h2 {
+  color: var(--mc-portal-bright) !important;
+  font-family: var(--mc-font-display) !important;
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.85) !important;
+}
+html body .finale-overlay .eyebrow {
+  color: var(--mc-gold) !important;
+  font-family: var(--mc-font-hud) !important;
+  letter-spacing: 0.2em;
+}
+html body .finale-overlay p { color: rgba(247,244,234,0.8) !important; }
+
+/* ============================================================
+   恢复 #contact 区块（原设计用弹窗替代而整段隐藏）
+   挖掘小游戏挂在这里，必须可见可交互。
+   ============================================================ */
+html body #contact.section,
+html body #finale + #contact.section {
+  display: block !important;
+  height: auto !important;
+  min-height: auto !important;
+  margin: 0 auto !important;
+  padding: clamp(3rem, 6vw, 5.5rem) 0 clamp(4rem, 7vw, 6rem) !important;
+  overflow: visible !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 5 !important;
+  background:
+    linear-gradient(180deg, rgba(7,9,18,0.9) 0%, rgba(9,11,17,0.96) 100%),
+    url("./assets/minecraft/night-portal.jpg") center 55% / cover no-repeat !important;
+}
+html body #contact.section .container { display: block !important; }
+html body #contact .contact-grid {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+html body #contact .contact-grid > div { display: block !important; }
+
+/* ============================================================
+   联系：挖掘方块解锁宝箱
+   ============================================================ */
+.mc-mine-zone {
+  margin-top: 2rem;
+  text-align: center;
+}
+.mc-mine-title {
+  color: var(--mc-gold);
+  font: 700 0.7rem/1 var(--mc-font-hud);
+  letter-spacing: 0.2em;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8);
+  margin-bottom: 0.4rem;
+}
+.mc-mine-hint {
+  color: var(--mc-muted);
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+.mc-mine-wall {
+  display: inline-grid;
+  grid-template-columns: repeat(5, 56px);
+  gap: 6px;
+  padding: 12px;
+  border: 3px solid #000;
+  background: linear-gradient(180deg, rgba(10,12,18,0.9), rgba(8,10,15,0.95));
+  box-shadow: 0 6px 0 rgba(0,0,0,0.55);
+}
+.mc-mine-block {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border: 2px solid;
+  border-color: rgba(255,255,255,0.4) rgba(0,0,0,0.65) rgba(0,0,0,0.65) rgba(255,255,255,0.4);
+  background: var(--mc-btex, var(--tex-stone));
+  background-size: cover;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06), 0 3px 0 rgba(0,0,0,0.5);
+  transition: transform 80ms steps(2,end), filter 120ms steps(3,end);
+}
+.mc-mine-block:hover {
+  filter: brightness(1.18);
+  transform: translateY(-2px);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.mc-mine-block:active { transform: scale(0.94); }
+.mc-mine-block .mc-crack {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  pointer-events: none;
+  background-image:
+    linear-gradient(35deg, rgba(0,0,0,0.55) 0 2px, transparent 2px 8px, rgba(0,0,0,0.55) 8px 9px, transparent 9px),
+    linear-gradient(-45deg, rgba(0,0,0,0.45) 0 1px, transparent 1px 10px, rgba(0,0,0,0.45) 10px 11px);
+  background-size: 12px 12px;
+  opacity: 0;
+  transition: opacity 60ms steps(2,end);
+}
+.mc-mine-block.crack-1 .mc-crack { opacity: 0.35; }
+.mc-mine-block.crack-2 .mc-crack { opacity: 0.7; }
+.mc-mine-block.is-broken {
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 220ms cubic-bezier(0.3, 0, 0.8, 0.4), opacity 220ms ease;
+}
+.mc-mine-chest {
+  display: none;
+  margin: 0 auto;
+  width: 90px;
+  height: 78px;
+  border: 3px solid #000;
+  background: var(--tex-chest);
+  background-size: cover;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.6), 0 0 30px rgba(255, 215, 95, 0.35);
+  animation: mc-chest-open 600ms steps(12, end) forwards;
+  cursor: pointer;
+}
+.mc-mine-chest.is-open {
+  animation: mc-chest-bounce 500ms steps(8, end);
+}
+.mc-mine-zone.is-unlocked .mc-mine-wall { display: none; }
+.mc-mine-zone.is-unlocked .mc-mine-chest { display: block; }
+.mc-mine-zone.is-unlocked .mc-mine-hint { display: none; }
+@keyframes mc-chest-open {
+  0% { transform: scale(0) rotate(-8deg); opacity: 0; }
+  70% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+@keyframes mc-chest-bounce {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.18) rotate(-3deg); }
+  100% { transform: scale(1); }
+}
+.mc-contact-reveal {
+  display: none;
+  margin-top: 1.2rem;
+  animation: mc-reveal-up 600ms steps(10, end) forwards;
+}
+.mc-mine-zone.is-unlocked .mc-contact-reveal { display: block; }
+@keyframes mc-reveal-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   Modal（库存 / 工作台风格）
+   ============================================================ */
+html body .project-modal-panel {
+  border: 3px solid #000 !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg, rgba(22,26,36,0.98), rgba(13,16,23,0.98)) !important;
+  box-shadow: 0 10px 0 rgba(0,0,0,0.6), 0 0 60px rgba(0,0,0,0.6) !important;
+}
+html body .project-modal-panel h3 {
+  font-family: var(--mc-font-display) !important;
+  color: #fff !important;
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.85);
+}
+html body .project-modal-panel .eyebrow {
+  color: var(--mc-gold) !important;
+  font-family: var(--mc-font-hud) !important;
+  letter-spacing: 0.16em;
+}
+html body .project-modal-panel h4 {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #111;
+  background: var(--tex-grass);
+  background-size: 24px 24px;
+  color: #fff;
+  font-family: var(--mc-font-hud);
+  font-size: 0.66rem;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+  box-shadow: 0 2px 0 #2f4a1c;
+}
+html body .project-modal-panel .detail-meta span {
+  border: 1px solid #111 !important;
+  border-radius: 0 !important;
+  background: rgba(10,10,10,0.7) !important;
+  color: var(--mc-gold) !important;
+  font-family: var(--mc-font-hud) !important;
+}
+html body .project-modal-panel ul li {
+  color: rgba(247,244,234,0.85) !important;
+  font-family: var(--mc-font-body) !important;
+}
+html body .project-modal-panel ul li::marker { content: "▸ "; color: var(--mc-gold); }
+html body .modal-close {
+  border: 2px solid #111 !important;
+  border-radius: 0 !important;
+  background: var(--tex-netherrack) !important;
+  background-size: cover !important;
+  color: #fff !important;
+  font-family: var(--mc-font-hud) !important;
+  box-shadow: 0 3px 0 #5f1f14 !important;
+}
+html body .modal-close:active { transform: translateY(2px); box-shadow: 0 1px 0 #5f1f14 !important; }
+
+/* ============================================================
+   返回顶部（经验球样式）
+   ============================================================ */
+html body .back-to-top {
+  border: 2px solid #111 !important;
+  border-radius: 50% !important;
+  background: var(--mc-xp) !important;
+  color: #0c1a08 !important;
+  font-family: var(--mc-font-display) !important;
+  box-shadow: 0 4px 0 #2f6b22, 0 0 18px rgba(128,255,102,0.5) !important;
+}
+html body .back-to-top:active { transform: translateY(3px); box-shadow: 0 1px 0 #2f6b22 !important; }
+
+/* ============================================================
+   滚动揭示：方块“放置”弹出
+   ============================================================ */
+html body .reveal-up {
+  opacity: 0 !important;
+  transform: translateY(26px) scale(0.92) !important;
+  transition: opacity 500ms cubic-bezier(0.2, 0.9, 0.3, 1.2), transform 500ms cubic-bezier(0.2, 0.9, 0.3, 1.2) !important;
+}
+html body .reveal-up.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+}
+html body .mc-stack-in {
+  opacity: 0;
+  transform: translateY(18px) scale(0.94);
+  transition: opacity 560ms cubic-bezier(0.2,0.9,0.3,1.15), transform 560ms cubic-bezier(0.2,0.9,0.3,1.15);
+}
+html body .mc-stack-in.is-visible { opacity: 1; transform: none; }
+
+/* ============================================================
+   scroll-progress（经验条替换）
+   ============================================================ */
+html body .scroll-progress {
+  height: 5px !important;
+  background: #1b1b1b !important;
+}
+html body .scroll-progress span {
+  background: linear-gradient(90deg, #4fdb39, #9bff7a) !important;
+  box-shadow: 0 0 10px rgba(128,255,102,0.7) !important;
+}
+
+/* ============================================================
+   响应式
+   ============================================================ */
+@media (max-width: 980px) {
+  html body #home .hero-copy-solid {
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 18px !important;
+    margin-top: 0 !important;
+  }
+  html body #home .hero-solid-text {
+    max-width: 100% !important;
+    margin-right: 0 !important;
+  }
+  html body #home .hero-solid-title { font-size: clamp(2.2rem, 10vw, 3.6rem) !important; }
+  html body #home .hero-solid-actions { position: static !important; grid-template-columns: 1fr !important; margin-top: 1.4rem; }
+  html body #home .hero-solid-actions a { min-height: 62px !important; }
+  html body #home .hero-command-id,
+  html body #home .hero-role-focus,
+  html body #home .mission-panel { display: none !important; }
+
+  /* HUD 停靠左下（快捷栏上方），窄屏下不与 hero 标题争位 */
+  .mc-hud {
+    top: auto !important;
+    bottom: 74px !important;
+    left: 10px !important;
+    right: auto !important;
+    justify-items: start !important;
+    transform: scale(0.8) !important;
+    transform-origin: bottom left !important;
+  }
+  body.mc-ready .mc-hud { transform: scale(0.8) !important; }
+  .mc-hud-label { display: none; }
+  .mc-achieves { top: 62px !important; }
+  .mc-hotbar { bottom: 10px; }
+  .mc-slot { width: 44px; height: 44px; }
+  .mc-slot svg { width: 22px; height: 22px; }
+  .mc-mine-wall { grid-template-columns: repeat(4, 48px); gap: 5px; }
+  .mc-mine-block { width: 48px; height: 48px; }
+  .mc-achieve { min-width: 220px; }
+}
+
+/* 移动端隐藏 hero 中的原 hero-content 以避免双份标题混乱 */
+@media (max-width: 980px) {
+  html body #home .hero-content { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html body .reveal-up,
+  html body .reveal-up.is-visible { transition-duration: 0.01ms !important; }
+  .mc-float { animation: none !important; opacity: 0 !important; }
+  .mc-cursor { display: none !important; }
+  .mc-select-frame { display: none !important; }
+  html body .cinematic-loader::after { animation-duration: 0.01ms !important; }
+}
+
+/* ============================================================
+   残留赛博紫元素归一化为 Minecraft 风格
+   ============================================================ */
+
+/* 顶部导航当前项：紫底改为 MC 草绿 */
+html body .nav-links a.is-active,
+html body .nav-links a[aria-current="page"] {
+  background: var(--tex-grass) !important;
+  background-size: 26px 26px !important;
+  border: 2px solid #111 !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  padding: 0.3rem 0.6rem !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.26), 0 3px 0 #2f4a1c !important;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.85) !important;
+}
+
+/* 项目区标题条：去霓虹边框，改木牌 */
+html body .phone-scene-label,
+html body .scroll-headline {
+  border: 3px solid #000 !important;
+  border-radius: 0 !important;
+  background: linear-gradient(180deg, rgba(22,18,13,0.95), rgba(16,13,10,0.92)),
+    var(--tex-plank) !important;
+  background-size: auto, 48px 48px !important;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.55) !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.9) !important;
+}
+
+/* 胶片轮播容器：去紫色霓虹 */
+html body .project-reel,
+html body .reel-track,
+html body .reel-viewport {
+  border-radius: 0 !important;
+}
+
+/* 轮播箭头：石头按钮 */
+html body .reel-arrow {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.85) !important;
+}
+
+/* 选中项目卡：白色选中框（替换青色霓虹） */
+html body .project-card.is-reel-active {
+  outline: 3px solid #fff !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.9), 0 7px 0 rgba(0,0,0,0.5) !important;
+  border-color: #fff !important;
+}
+
+/* 手机外壳：去青色发光，改石质边框 */
+html body .phone-device,
+html body .phone-hardware {
+  box-shadow: 0 8px 0 rgba(0,0,0,0.6), inset 0 0 0 2px rgba(255,255,255,0.08) !important;
+}
+html body .phone-notch {
+  border-radius: 0 !important;
+  border: 2px solid #000 !important;
+  background: #14171f !important;
+  box-shadow: none !important;
+}
+
+/* 结尾页退出按钮：MC 石头按钮 */
+html body .finale-exit,
+html body .phone-exit {
+  border: 2px solid #111 !important;
+  border-radius: 0 !important;
+  background: var(--tex-stone) !important;
+  background-size: 26px 26px !important;
+  color: #fff !important;
+  font-family: var(--mc-font-hud) !important;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.85) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.26), 0 3px 0 #3a3a3a !important;
+}
+
+/* 联系方式行：物品栏条目风格 */
+html body .contact-list a,
+html body .contact-row {
+  border-radius: 0 !important;
+  font-family: var(--mc-font-body) !important;
+}
+
+/* 品牌标记：草方块 */
+html body .brand-mark {
+  border-radius: 0 !important;
+  border: 2px solid #111 !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22), 0 3px 0 rgba(0,0,0,0.5) !important;
+}
+
+/* 去掉所有残留的紫色/青色霓虹外发光 */
+html body .phone-scene-label,
+html body .scroll-headline,
+html body .reel-viewport,
+html body .project-reel {
+  filter: none !important;
+}

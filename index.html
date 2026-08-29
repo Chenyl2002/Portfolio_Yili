@@ -4,680 +4,409 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>陈宜理 | 个人作品集</title>
-    <meta
-      name="description"
-      content="陈宜理游戏策划个人作品集，展示关卡策划项目、简历经历与联系方式。"
-    />
+    <meta name="description" content="陈宜理游戏策划个人作品集，展示关卡策划项目、简历经历与联系方式。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Patrick+Hand&family=ZCOOL+KuaiLe&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet" />
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7VM5CC6EZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
       gtag("config", "G-W7VM5CC6EZ");
     </script>
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "15011817478");
-    </script>
-    <link rel="stylesheet" href="./styles.css?v=hero-copy-clean-20260615" />
-    <link rel="stylesheet" href="./reference-ui.css?v=hero-copy-clean-20260615" />
-    <link rel="stylesheet" href="./interaction-overrides.css?v=mobile-hero-top-layer-20260615" />
-    <link rel="stylesheet" href="./game-ui-overhaul.css?v=motion-pass-20260621" />
+    <link rel="stylesheet" href="./mc-portfolio.css?v=mc-menu-20260829h" />
   </head>
   <body>
-    <div class="cinematic-loader" aria-hidden="true">
-      <span>CHEN YILI</span>
-    </div>
-    <div id="warpField" class="warp-field" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div id="scrollProgress" class="scroll-progress" aria-hidden="true">
-      <span></span>
-    </div>
-    <div class="side-rail" aria-hidden="true">BUILDING WITH AI · THINKING WITH STORIES</div>
-    <aside class="ai-console" aria-label="AI 助手状态">
-      <button class="ai-orb" type="button" aria-label="滚动进入项目系统">
-        <span>AI</span>
-      </button>
-      <small>CHEN AI · ONLINE</small>
-    </aside>
-    <div class="system-status-bar" aria-hidden="true">
-      <span>SYSTEM ONLINE</span>
-      <span>OPEN TO WORK</span>
-      <span>AI DEPUTY ACTIVE</span>
-      <span>UPDATED 2026</span>
-    </div>
-    <div class="fantasy-stage" aria-hidden="true">
-      <span class="fantasy-orb orb-1"></span>
-      <span class="fantasy-orb orb-2"></span>
-      <span class="fantasy-orb orb-3"></span>
-    </div>
-    <div id="sketchLayer" class="sketch-layer" aria-hidden="true"></div>
-
-    <header class="site-header">
-      <nav class="nav container">
-        <a href="#home" class="brand" aria-label="回到首页">
-          <span class="brand-mark">CY</span>
-          <span class="brand-name">陈宜理</span>
-          <span class="brand-version">v2026</span>
-        </a>
-        <button class="nav-toggle" aria-label="切换导航菜单">菜单</button>
-        <div class="nav-links">
-          <a href="#home">HOME</a>
-          <a href="#projects">PROJECTS</a>
-          <a href="#resume">RESUME</a>
-          <a href="#about">ABOUT</a>
-          <a href="#contact">CONTACT</a>
-        </div>
-        <div class="nav-system">
-          <span class="sound-dot"></span>
-          <span>SOUND ON</span>
-          <span class="language-switch">CN · EN</span>
-          <a class="nav-talk" href="#contact">TALK TO CHEN</a>
-        </div>
-      </nav>
-    </header>
-
     <main>
-      <section id="home" class="hero container">
-        <video
-          id="scrollSceneVideo"
-          class="scroll-scene-video"
-          src="./assets/animation/video-1-r2.mp4"
-          poster="./assets/animation/video-1-r2-poster.jpg"
-          muted
-          playsinline
-          preload="auto"
-          aria-hidden="true"
-        ></video>
-        <div class="scroll-scene-grade" aria-hidden="true"></div>
-        <div class="hero-cyber-panels" aria-hidden="true">
-          <span class="cyber-panel panel-main"></span>
-          <span class="cyber-panel panel-top"></span>
-          <span class="cyber-panel panel-right"></span>
-          <span class="cyber-panel panel-bottom"></span>
-          <span class="cyber-beam beam-primary"></span>
-          <span class="cyber-beam beam-secondary"></span>
+      <!-- ===================== HERO ===================== -->
+      <section id="home" class="mc-hero">
+        <video id="mcHeroVideo" class="mc-hero-video"
+          src="./assets/animation/mc-hero-final.mp4"
+          poster="./assets/animation/mc-hero-poster.jpg"
+          muted loop autoplay playsinline preload="auto"></video>
+        <div class="mc-hero-vignette"></div>
+
+        <!-- 顶部调试信息条（仿 MC F3 风格） -->
+        <div class="mc-debug-line">
+          <span>Portfolio 2026 · Level Design Build</span>
+          <span id="mcFps">FPS:60</span>
+          <span>Seed: CYL-1997</span>
         </div>
-        <div class="character-stage" aria-hidden="true">
-          <div class="character-glow"></div>
-          <img
-            class="character-portrait"
-            src="./assets/character/chen-yili-character.png"
-            alt=""
-            loading="eager"
-          />
-          <div class="character-phone-proxy"></div>
-          <div class="character-badge-proxy"></div>
+
+        <!-- 石质大标题 -->
+        <div class="mc-title-block">
+          <img class="mc-title-img" src="./assets/minecraft/icons/mc-title-leveldesign.png" alt="LEVEL DESIGN" />
+          <span class="mc-splash" id="mcSplash">陈宜理的作品集!</span>
         </div>
-        <div class="hero-content">
-          <div class="hud-status hero-fade hero-fade-1" aria-label="作品集状态">
-            <span>ARCHIVE ID: CYL-2026</span>
-            <span>STATUS: SEEKING GAME DESIGN ROLE</span>
-            <span>SYNC: 100%</span>
+
+        <!-- MC 主菜单窄条按钮 -->
+        <nav class="mc-menu" aria-label="主菜单">
+          <button class="mc-menu-btn" type="button" data-goto="projects">项目作品</button>
+          <button class="mc-menu-btn" type="button" data-goto="resume">个人简历</button>
+          <button class="mc-menu-btn" type="button" data-goto="about">关于我</button>
+          <div class="mc-menu-row">
+            <button class="mc-menu-btn mc-menu-btn-half" type="button" data-goto="contact">联系方式</button>
+            <button class="mc-menu-btn mc-menu-btn-half" type="button" data-goto="finale">世界末地</button>
           </div>
-          <p class="eyebrow hero-fade hero-fade-1">PORTFOLIO · GAME LEVEL & NARRATIVE PLANNING</p>
-          <h1 class="hero-fade hero-fade-2">
-            <span class="hero-cn-name">陈宜理</span>
-            <span class="hero-os-title">LEVEL<br />DESIGN</span>
-          </h1>
-          <p class="hero-text hero-fade hero-fade-3">
-            环境艺术设计本科 + 景观建筑硕士背景，聚焦关卡节奏、玩法循环与叙事演出落地。擅长将空间设计理解转化为可玩关卡体验。
-          </p>
-          <div class="hero-metrics hero-fade hero-fade-4" aria-label="核心能力标签">
-            <span>UE5 WHITEBOX</span>
-            <span>NARRATIVE BEAT</span>
-            <span>LEVEL FLOW</span>
-            <span>PLAYER INSIGHT</span>
-          </div>
-          <div class="hero-advantages hero-fade hero-fade-4">
-            <article>
-              <h3>跨学科设计基础</h3>
-              <p>环境艺术本科、景观建筑硕士（QS35），具备扎实空间叙事与美术表达能力。</p>
-            </article>
-            <article>
-              <h3>UE5 落地能力</h3>
-              <p>熟悉白盒关卡、Lumen 氛围调试、Sequencer 镜头演出、蓝图基础交互逻辑。</p>
-            </article>
-            <article>
-              <h3>项目统筹与协作</h3>
-              <p>多次担任第一负责人，具备跨工种协作与推进能力，获得多项国家级/省级奖项。</p>
-            </article>
-            <article>
-              <h3>资深玩家洞察</h3>
-              <p>15 年+ 游戏经历，10000+ 小时跨类型体验，能从玩家视角拆解机制与节奏问题。</p>
-            </article>
-          </div>
-          <div class="hero-actions hero-fade hero-fade-5">
-            <a class="btn btn-primary" href="#projects">VIEW PROJECTS</a>
-            <a class="btn btn-secondary" href="#resume">VIEW RESUME</a>
-            <a class="btn btn-tertiary" href="#contact">CONTACT</a>
-          </div>
+        </nav>
+
+        <!-- 左下角小按钮 -->
+        <div class="mc-corner mc-corner-left">
+          <span class="mc-corner-name">陈宜理 · Level Designer</span>
         </div>
-        <div class="hero-copy-solid" aria-label="作品集首页介绍">
-          <div class="hero-command-id" aria-hidden="true">
-            <span>MISSION PROFILE</span>
-            <span>CYL-2026 / ONLINE</span>
-          </div>
-          <p class="hero-solid-kicker">PORTFOLIO · GAME LEVEL & NARRATIVE PLANNING</p>
-          <h1>
-            <span class="hero-solid-name">陈宜理</span>
-            <span class="hero-solid-title">LEVEL<br />DESIGN</span>
-          </h1>
-          <p class="hero-solid-text">
-            环境艺术设计本科 + 景观建筑硕士背景，聚焦关卡节奏、玩法循环与叙事演出落地。擅长将空间设计理解转化为可玩关卡体验。
-          </p>
-          <div class="hero-role-focus" aria-label="核心能力">
-            <span><b>ROLE 01</b> LEVEL DESIGN</span>
-            <span><b>ROLE 02</b> NARRATIVE PLANNING</span>
-            <span><b>ROLE 03</b> PLAYER EXPERIENCE</span>
-          </div>
-          <div class="hero-solid-actions">
-            <a href="#projects">
-              <span class="mission-number">01</span>
-              <span><small class="mission-label">MISSION SELECT</small><b>VIEW PROJECTS</b><small>查看项目作品</small></span>
-              <img src="./assets/ui/nav/arrow-right.svg" alt="" />
-            </a>
-            <a href="#resume">
-              <span class="mission-number">02</span>
-              <span><small class="mission-label">LOADOUT / PROFILE</small><b>VIEW RESUME</b><small>查看个人简历</small></span>
-              <img src="./assets/ui/nav/arrow-right.svg" alt="" />
-            </a>
-            <a href="#contact">
-              <span class="mission-number">03</span>
-              <span><small class="mission-label">OPEN CHANNEL</small><b>CONTACT</b><small>发起通讯</small></span>
-              <img src="./assets/ui/nav/arrow-right.svg" alt="" />
-            </a>
-          </div>
+        <!-- 右下角版本号 -->
+        <div class="mc-corner mc-corner-right">
+          <span class="mc-corner-ver">v2026 · 游戏策划</span>
         </div>
-        <aside class="mission-panel hero-fade hero-fade-6" aria-label="职业任务进度">
-          <p class="eyebrow">CAMPAIGN PROGRESS</p>
-          <h2>LEVEL DESIGNER PATH</h2>
-          <ul>
-            <li><span>01</span><b>空间叙事</b><small>MASTERED</small></li>
-            <li><span>02</span><b>UE5 白盒</b><small>MASTERED</small></li>
-            <li><span>03</span><b>玩法循环</b><small>MASTERED</small></li>
-            <li><span>04</span><b>叙事演出</b><small>ACTIVE</small></li>
-          </ul>
-        </aside>
-        <div id="heroShowcase" class="hero-showcase" aria-hidden="true"></div>
-        <a href="#projects" class="scroll-indicator" aria-label="滚动到项目区域">
-          <span></span>
-        </a>
+
+        <!-- 右侧 Steve 玩家展示 -->
+        <div class="mc-steve">
+          <span class="mc-steve-name">陈宜理</span>
+          <img class="mc-steve-img" src="./assets/minecraft/icons/mc-book.png" alt="" />
+        </div>
+
+        <!-- 向下滚动提示 -->
+        <div class="mc-scroll-cue"><span>▼ 向下滚动开始探索 ▼</span></div>
       </section>
 
-      <section id="projects" class="section container">
-        <div class="phone-scene-label">
-          <p class="eyebrow">Mission Database</p>
-          <h2>滚动穿梭 · 进入项目任务界面</h2>
+      <!-- ===================== PROJECTS ===================== -->
+      <section id="projects" class="mc-section">
+        <div class="mc-section-head">
+          <p class="mc-eyebrow">Mission Database</p>
+          <h2 class="mc-section-title">项目任务列表</h2>
         </div>
-        <div class="phone-device">
-          <div class="phone-hardware">
-            <span class="phone-camera"></span>
-            <span class="phone-speaker"></span>
-            <div class="phone-screen">
-              <div class="section-head">
-                <p class="eyebrow">Portfolio Highlights</p>
-                <h2>游戏项目展示</h2>
-              </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;">
+          <button class="mc-btn is-active" data-filter="all" style="padding:8px 14px;font-size:0.5rem;">全部</button>
+          <button class="mc-btn" data-filter="团队项目" style="padding:8px 14px;font-size:0.5rem;">团队项目</button>
+          <button class="mc-btn" data-filter="个人项目" style="padding:8px 14px;font-size:0.5rem;">个人项目</button>
+          <button class="mc-btn" data-filter="UE5" style="padding:8px 14px;font-size:0.5rem;">UE5</button>
+          <button class="mc-btn" data-filter="多工具" style="padding:8px 14px;font-size:0.5rem;">多工具</button>
+          <button class="mc-btn" data-filter="PC" style="padding:8px 14px;font-size:0.5rem;">PC</button>
+          <button class="mc-btn" data-filter="跨场景" style="padding:8px 14px;font-size:0.5rem;">跨场景</button>
+        </div>
+        <div id="mcProjectGrid" class="mc-projects-grid"></div>
 
-              <div class="filter-row">
-                <button class="chip active" data-filter-group="all" data-filter="all">全部</button>
-                <button class="chip" data-filter-group="type" data-filter="团队项目">团队项目</button>
-                <button class="chip" data-filter-group="type" data-filter="个人项目">个人项目</button>
-                <button class="chip" data-filter-group="engine" data-filter="UE5">UE5</button>
-                <button class="chip" data-filter-group="engine" data-filter="多工具">多工具</button>
-                <button class="chip" data-filter-group="platform" data-filter="PC">PC</button>
-                <button class="chip" data-filter-group="platform" data-filter="跨场景">跨场景</button>
-              </div>
-
-              <div class="film-reel-window" aria-label="项目胶片卷轴">
-                <div class="reel-controls" aria-label="项目卷轴控制">
-                  <button id="reelPrev" class="reel-arrow" type="button" aria-label="上一个项目">←</button>
-                  <button id="reelNext" class="reel-arrow" type="button" aria-label="下一个项目">→</button>
-                </div>
-                <div id="projectGrid" class="project-grid"></div>
-              </div>
-              <p class="reel-hint">SCROLL TO TURN THE REEL · 滚动翻片</p>
-
-              <section class="docs-section">
-                <div class="section-head docs-head">
-                  <p class="eyebrow">Documentation</p>
-                  <h3>设计文档</h3>
-                </div>
-
-                <div class="docs-group">
-                  <h4>游戏部分</h4>
-                  <div class="docs-grid">
-              <button
-                class="doc-card doc-trigger"
-                type="button"
-                data-doc-title="《破碎之家》游戏关卡说明"
-                data-doc-url="./Portfolio/《破碎之家》游戏关卡说明.pdf"
-              >
-                <div class="doc-thumb">
-                  <img
-                    class="doc-thumb-frame"
-                    src="./Image/1.png"
-                    alt="《破碎之家》文档预览图"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="doc-info">
-                  <p class="doc-title">《破碎之家》游戏关卡说明</p>
-                  <p class="doc-meta">PDF · 关卡设计文档</p>
-                </div>
-              </button>
-              <button
-                class="doc-card doc-trigger"
-                type="button"
-                data-doc-title="破冰启航游戏关卡说明"
-                data-doc-url="./Portfolio/破冰启航游戏关卡说明.pdf"
-              >
-                <div class="doc-thumb">
-                  <img
-                    class="doc-thumb-frame"
-                    src="./Image/2.png"
-                    alt="破冰启航文档预览图"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="doc-info">
-                  <p class="doc-title">破冰启航游戏关卡说明</p>
-                  <p class="doc-meta">PDF · 关卡设计文档</p>
-                </div>
-              </button>
+        <!-- 文档 -->
+        <div class="mc-section-head" style="margin-top:3rem;">
+          <p class="mc-eyebrow">Documentation</p>
+          <h2 class="mc-section-title" style="font-size:1.4rem;">设计文档</h2>
+        </div>
+        <div class="mc-projects-grid">
+          <button class="mc-project-card mc-reveal" type="button"
+            data-doc-title="《破碎之家》游戏关卡说明"
+            data-doc-url="./Portfolio/《破碎之家》游戏关卡说明.pdf">
+            <div class="mc-project-thumb"><img src="./Image/1.png" alt="《破碎之家》文档预览图" loading="lazy" /></div>
+            <div class="mc-project-body">
+              <h3>《破碎之家》游戏关卡说明</h3>
+              <p class="mc-project-desc">PDF · 关卡设计文档</p>
             </div>
-          </div>
-
-          <div class="docs-group">
-            <h4>建筑部分</h4>
-            <div class="docs-grid">
-              <button
-                class="doc-card doc-trigger"
-                type="button"
-                data-doc-title="作品集 建筑"
-                data-doc-url="./Portfolio/作品集 建筑.pdf"
-              >
-                <div class="doc-thumb">
-                  <img
-                    class="doc-thumb-frame"
-                    src="./Image/3.png"
-                    alt="作品集建筑文档预览图"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="doc-info">
-                  <p class="doc-title">作品集 建筑</p>
-                  <p class="doc-meta">PDF · 建筑作品集</p>
-                </div>
-              </button>
-              <button
-                class="doc-card doc-trigger"
-                type="button"
-                data-doc-title="景观建筑作品集"
-                data-doc-url="./Portfolio/ChenYili_LA1B.pdf"
-              >
-                <div class="doc-thumb">
-                  <img
-                    class="doc-thumb-frame"
-                    src="./Image/4.png"
-                    alt="景观建筑作品集文档预览图"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="doc-info">
-                  <p class="doc-title">景观建筑作品集</p>
-                  <p class="doc-meta">PDF · Landscape Architecture</p>
-                </div>
-              </button>
+          </button>
+          <button class="mc-project-card mc-reveal" type="button"
+            data-doc-title="破冰启航游戏关卡说明"
+            data-doc-url="./Portfolio/破冰启航游戏关卡说明.pdf">
+            <div class="mc-project-thumb"><img src="./Image/2.png" alt="破冰启航文档预览图" loading="lazy" /></div>
+            <div class="mc-project-body">
+              <h3>破冰启航游戏关卡说明</h3>
+              <p class="mc-project-desc">PDF · 关卡设计文档</p>
             </div>
-          </div>
-        </section>
-
+          </button>
+          <button class="mc-project-card mc-reveal" type="button"
+            data-doc-title="作品集 建筑"
+            data-doc-url="./Portfolio/作品集 建筑.pdf">
+            <div class="mc-project-thumb"><img src="./Image/3.png" alt="作品集建筑文档预览图" loading="lazy" /></div>
+            <div class="mc-project-body">
+              <h3>作品集 建筑</h3>
+              <p class="mc-project-desc">PDF · 建筑作品集</p>
+            </div>
+          </button>
+          <button class="mc-project-card mc-reveal" type="button"
+            data-doc-title="景观建筑作品集"
+            data-doc-url="./Portfolio/ChenYili_LA1B.pdf">
+            <div class="mc-project-thumb"><img src="./Image/4.png" alt="景观建筑作品集文档预览图" loading="lazy" /></div>
+            <div class="mc-project-body">
+              <h3>景观建筑作品集</h3>
+              <p class="mc-project-desc">PDF · Landscape Architecture</p>
+            </div>
+          </button>
+        </div>
       </section>
 
-      <section id="resume" class="section section-alt">
-        <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Resume</p>
-            <h2>简历展示</h2>
-            <p>
-              环境艺术与景观建筑背景，转向游戏关卡与策划方向；强调空间叙事理解、可玩性落地与团队协作。
-            </p>
+      <!-- ===================== RESUME ===================== -->
+      <section id="resume" class="mc-section" style="background:linear-gradient(180deg, #0a0c12, #0d1018);">
+        <div class="mc-section-head">
+          <p class="mc-eyebrow">Player Inventory</p>
+          <h2 class="mc-section-title">玩家背包</h2>
+        </div>
+
+        <!-- MC 背包主面板 -->
+        <div class="mc-inventory mc-reveal">
+          <!-- 背包标题栏 -->
+          <div class="mc-inv-titlebar">
+            <span class="mc-inv-title">玩家背包</span>
+            <span class="mc-inv-sub">INVENTORY · 陈宜理</span>
           </div>
 
-          <div class="resume-shell">
-            <aside class="resume-profile card reveal-up">
-              <p class="eyebrow">Profile</p>
-              <img class="resume-avatar" src="./Image/WechatIMG1072.jpg" alt="陈宜理头像" />
-              <h3>陈宜理</h3>
-              <p class="resume-role">游戏策划 / 关卡策划</p>
-              <div class="resume-contact-list">
-                <p>电话：13358521997</p>
-                <p>邮箱：1102910102@qq.com</p>
-                <p>曼彻斯特大学&曼彻斯特城市大学 景观建筑硕士（在读）</p>
+          <div class="mc-inv-body">
+            <!-- 左侧：玩家预览区（头像 + 盔甲槽） -->
+            <div class="mc-inv-player">
+              <div class="mc-inv-avatar-slot">
+                <img src="./Image/WechatIMG1072.jpg" alt="陈宜理" />
               </div>
-              <p class="resume-intro">
-                环境艺术设计本科，景观建筑硕士（QS 第35，建筑 QS 第5）。熟悉 UE5 白盒搭建、Lumen
-                氛围调试、Sequencer 演出与蓝图基础交互，具备从策划案到可玩 Demo 的完整落地能力。
-              </p>
-              <div class="skill-tags">
-                <span>UE5</span><span>Lumen</span><span>Sequencer</span><span>蓝图</span>
-                <span>Rhino</span><span>SketchUp</span><span>Photoshop</span>
+              <div class="mc-inv-armor">
+                <div class="mc-inv-slot mc-inv-armor-slot" title="学历 · 硕士在读">
+                  <span class="mc-inv-item-icon">🎓</span>
+                  <span class="mc-inv-item-count">MSc</span>
+                </div>
+                <div class="mc-inv-slot mc-inv-armor-slot" title="职位 · 游戏关卡策划">
+                  <span class="mc-inv-item-icon">⚔️</span>
+                  <span class="mc-inv-item-count">Lv.1</span>
+                </div>
+                <div class="mc-inv-slot mc-inv-armor-slot" title="游戏时长 · 10000h+">
+                  <span class="mc-inv-item-icon">⏳</span>
+                  <span class="mc-inv-item-count">10k</span>
+                </div>
+                <div class="mc-inv-slot mc-inv-armor-slot" title="氪金 · 2w+">
+                  <span class="mc-inv-item-icon">💎</span>
+                  <span class="mc-inv-item-count">2w</span>
+                </div>
               </div>
-              <div class="resume-actions">
-                <a class="btn btn-secondary" href="#contact">联系我</a>
+              <div class="mc-inv-player-info">
+                <p class="mc-inv-name">陈宜理</p>
+                <p class="mc-inv-role">游戏策划 / 关卡策划</p>
+                <div class="mc-inv-contact">
+                  <p>📞 13358521997</p>
+                  <p>✉️ 1102910102@qq.com</p>
+                  <p>🏛 曼彻斯特大学 景观建筑硕士（在读）</p>
+                </div>
               </div>
-            </aside>
-
-            <div class="resume-panel-grid">
-              <article class="card resume-panel reveal-up">
-                <h3>项目经历</h3>
-                <div class="timeline-item project-exp-item">
-                  <button class="experience-trigger" type="button" data-exp-id="xingyue-camp">
-                    <span>
-                      <p class="item-title">腾讯游戏星跃实战营 - 游戏关卡策划</p>
-                      <p class="item-meta">2026.03 - 2026.05</p>
-                      <p class="item-meta experience-hint">点击查看项目详情</p>
-                    </span>
-                    <span class="experience-open-mark">查看</span>
-                  </button>
-                </div>
-                <div class="timeline-item project-exp-item">
-                  <button class="experience-trigger" type="button" data-exp-id="starter-camp">
-                    <span>
-                      <p class="item-title">腾讯游戏开局一课训练营——策划方向 - 游戏策划</p>
-                      <p class="item-meta">2025.11 - 2026.01</p>
-                      <p class="item-meta experience-hint">点击查看项目详情</p>
-                    </span>
-                    <span class="experience-open-mark">查看</span>
-                  </button>
-                </div>
-                <div class="timeline-item project-exp-item">
-                  <button class="experience-trigger" type="button" data-exp-id="innovation-park">
-                    <span>
-                      <p class="item-title">大学生创新创业大赛项目——杨柳青国家文化公园景观营建设计</p>
-                      <p class="item-meta">2023.05 - 2024.05 · 第一负责人</p>
-                      <p class="item-meta experience-hint">点击查看项目详情</p>
-                    </span>
-                    <span class="experience-open-mark">查看</span>
-                  </button>
-                </div>
-              </article>
-
-              <article class="card resume-panel reveal-up">
-                <h3>技能特长</h3>
-                <ul class="plain-list">
-                  <li>语言能力：雅思英语 6.0，大学英语 4 级证书，具备英语沟通能力</li>
-                  <li>计算机：全国三维数字化应用能力认证 6 级证书，熟练操作 Windows 平台上的各类应用软件，如 Word、Excel 等 Microsoft 系列软件</li>
-                  <li>专业软件能力：UE5（游戏引擎）；Rhino、SketchUp、3ds Max（3D 建模）；Twinmotion、Lumion、D5 Render、Enscape、V-Ray（渲染与可视化）；Photoshop、Illustrator、Procreate、AutoCAD（2D 美术与制图）；InDesign（排版）；Banana、Seedance、Cursor（AI 辅助）；Word、Excel、PowerPoint（办公）</li>
-                </ul>
-              </article>
-
-              <article class="card resume-panel resume-panel-wide game-exp-panel reveal-up">
-                <h3>游戏经历</h3>
-                <p class="item-meta">
-                  总游戏时长 10000+ 小时,跨越十余年游戏经历,熟悉端游、手游与主机平台,涵盖 MOBA、开放世界、动作 RPG、潜入沉浸模拟、FPS、沙盒、自走棋、RTS 等多种类型,总氪金 2w+。
-                </p>
-                <div class="game-exp-groups">
-                  <article class="game-exp-group">
-                    <h4>开放世界 / RPG</h4>
-                    <p class="item-meta">原神（700h+,58级,47角色26金,须弥前探索度90%）、崩坏:星穹铁道200h+（均衡 66 级，20金，剧情到翁法罗斯结束）、鸣潮200h+、赛博朋克 2077（全主线通关）、战神 4（全主线通关）、鬼谷八荒（全主线通关）</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>MMO</h4>
-                    <p class="item-meta">地下城与勇士200h+、燕云十六声100h+、洛克王国世界200h+、魔法哈奇400h+</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>潜入 / 沉浸模拟</h4>
-                    <p class="item-meta">耻辱 2（全主线通关）</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>卡牌 / 养成</h4>
-                    <p class="item-meta">三国杀100h+、赛尔号、摩尔庄园、奥奇传说、奥拉星、洛克王国、西普大陆加起来约600h+</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>FPS / 射击</h4>
-                    <p class="item-meta">求生之路2、穿越火线100h+、CSonline 200h+，和平精英100h+，泰坦陨落2</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>沙盒</h4>
-                    <p class="item-meta">我的世界1000h+、泰拉瑞亚100h+、森林</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>自走棋</h4>
-                    <p class="item-meta">金铲铲之战500h+（最高段位钻石）</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>RTS / 策略</h4>
-                    <p class="item-meta">魔兽争霸3冰封王座200h、率土之滨100h+</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>音乐游戏</h4>
-                    <p class="item-meta">节奏大师、QQ炫舞</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>肉鸽 Roguelike</h4>
-                    <p class="item-meta">吸血鬼幸存者、以撒的结合</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>MOBA</h4>
-                    <p class="item-meta">王者荣耀（1500h+,十年老玩家，总场次超过7000，最高段位国际服荣耀王者130星）、英雄联盟、自由之战、全民超神</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>竞速 / 休闲</h4>
-                    <p class="item-meta">QQ 飞车（700h+，10年开始接触）、球球大作战、贪吃蛇大作战、愤怒的小鸟、小鳄鱼爱洗澡</p>
-                  </article>
-                  <article class="game-exp-group">
-                    <h4>略玩</h4>
-                    <p class="item-meta">艾尔登法环，生化危机2，怪物猎人起源、双人成行、孢子、qq华夏、楚留香、侠盗猎车手GTA系列、元气骑士、胡闹厨房</p>
-                  </article>
-                </div>
-              </article>
             </div>
+
+            <!-- 右侧：物品栏 -->
+            <div class="mc-inv-right">
+              <!-- 合成区：项目经历 -->
+              <div class="mc-inv-section">
+                <p class="mc-inv-section-label">⚒ 项目经历 · CRAFTING</p>
+                <div class="mc-inv-craft-grid">
+                  <div class="mc-inv-slot mc-inv-slot-item mc-exp-slot" data-exp-id="xingyue-camp" tabindex="0">
+                    <span class="mc-inv-item-icon">🏆</span>
+                    <span class="mc-inv-item-count">1</span>
+                    <div class="mc-inv-tooltip">
+                      <p class="mc-tt-title">腾讯游戏星跃实战营</p>
+                      <p class="mc-tt-desc">游戏关卡策划 · 2026.03-05</p>
+                      <p class="mc-tt-hint">点击查看详情</p>
+                    </div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-exp-slot" data-exp-id="starter-camp" tabindex="0">
+                    <span class="mc-inv-item-icon">📜</span>
+                    <span class="mc-inv-item-count">2</span>
+                    <div class="mc-inv-tooltip">
+                      <p class="mc-tt-title">腾讯开局一课训练营</p>
+                      <p class="mc-tt-desc">策划方向 · 2025.11-2026.01</p>
+                      <p class="mc-tt-hint">点击查看详情</p>
+                    </div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-exp-slot" data-exp-id="innovation-park" tabindex="0">
+                    <span class="mc-inv-item-icon">🌳</span>
+                    <span class="mc-inv-item-count">3</span>
+                    <div class="mc-inv-tooltip">
+                      <p class="mc-tt-title">杨柳青国家文化公园</p>
+                      <p class="mc-tt-desc">景观营建设计 · 第一负责人</p>
+                      <p class="mc-tt-hint">点击查看详情</p>
+                    </div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-empty"></div>
+                </div>
+              </div>
+
+              <!-- 物品栏：技能特长 -->
+              <div class="mc-inv-section">
+                <p class="mc-inv-section-label">🎒 技能特长 · INVENTORY</p>
+                <div class="mc-inv-grid">
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🎮</span>
+                    <span class="mc-inv-item-count">UE5</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">UE5 引擎</p><p class="mc-tt-desc">白盒搭建 · Lumen · Sequencer · 蓝图</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🦏</span>
+                    <span class="mc-inv-item-count">3D</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">3D 建模</p><p class="mc-tt-desc">Rhino · SketchUp · 3ds Max · Twinmotion</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🎨</span>
+                    <span class="mc-inv-item-count">2D</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">视觉设计</p><p class="mc-tt-desc">Photoshop · Illustrator · Procreate · InDesign</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">💡</span>
+                    <span class="mc-inv-item-count">渲染</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">渲染引擎</p><p class="mc-tt-desc">Lumion · D5 · Enscape · V-Ray · Lumen</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🗣️</span>
+                    <span class="mc-inv-item-count">EN</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">英语能力</p><p class="mc-tt-desc">雅思 6.0 · CET-4 · 具备英语沟通能力</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🖥️</span>
+                    <span class="mc-inv-item-count">IT</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">计算机能力</p><p class="mc-tt-desc">三维数字化认证 6 级 · 熟练 Windows 平台</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🤖</span>
+                    <span class="mc-inv-item-count">AI</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">AI 工具</p><p class="mc-tt-desc">Banana · Seedance · Cursor · 自动化工作流</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">📐</span>
+                    <span class="mc-inv-item-count">CAD</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">工程制图</p><p class="mc-tt-desc">AutoCAD · 空间尺度 · 施工图</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-empty"></div>
+                </div>
+              </div>
+
+              <!-- 快捷栏：游戏经历分类 -->
+              <div class="mc-inv-section">
+                <p class="mc-inv-section-label">⚔ 游戏经历 · HOTBAR（10000h+）</p>
+                <div class="mc-inv-hotbar">
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🌍</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">开放世界 / RPG</p><p class="mc-tt-desc">原神700h+ · 崩铁200h+ · 鸣潮200h+ · 赛博朋克2077 · 战神4</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🏰</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">MMO</p><p class="mc-tt-desc">DNF200h+ · 燕云十六声100h+ · 洛克王国世界200h+ · 魔法哈奇400h+</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🥷</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">潜入 / 沉浸模拟</p><p class="mc-tt-desc">耻辱2（全主线通关）</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🎴</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">卡牌 / 养成</p><p class="mc-tt-desc">三国杀 · 赛尔号 · 摩尔庄园 · 奥拉星 · 约600h+</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🔫</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">FPS / 射击</p><p class="mc-tt-desc">求生之路2 · CF100h+ · CSO200h+ · 和平精英100h+ · 泰坦陨落2</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">⛏️</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">沙盒</p><p class="mc-tt-desc">我的世界1000h+ · 泰拉瑞亚100h+ · 森林</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">♟️</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">自走棋 / 策略</p><p class="mc-tt-desc">金铲铲之战500h+（钻石）· 魔兽争霸3 200h · 率土之滨100h+</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🏆</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">MOBA</p><p class="mc-tt-desc">王者荣耀1500h+（荣耀王者130星）· 英雄联盟</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🎵</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">音乐 / 竞速 / 休闲</p><p class="mc-tt-desc">节奏大师 · QQ炫舞 · QQ飞车700h+ · 球球大作战 · 贪吃蛇</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 背包底部：玩家简介 -->
+          <div class="mc-inv-footer">
+            <p>环境艺术设计本科，景观建筑硕士（QS 第35，建筑 QS 第5）。熟悉 UE5 白盒搭建、Lumen 氛围调试、Sequencer 演出与蓝图基础交互，具备从策划案到可玩 Demo 的完整落地能力。</p>
           </div>
         </div>
       </section>
 
-      <section id="about" class="section container">
-        <div class="section-head">
-          <p class="eyebrow">About</p>
-          <h2>关于我</h2>
+      <!-- ===================== ABOUT ===================== -->
+      <section id="about" class="mc-section">
+        <div class="mc-section-head">
+          <p class="mc-eyebrow">About</p>
+          <h2 class="mc-section-title">关于我</h2>
         </div>
-        <div class="about-grid">
-          <article class="card">
+        <div class="mc-about-grid">
+          <article class="mc-card mc-reveal">
             <h3>个人优势 · 跨学科基础</h3>
-            <p>
-              环境艺术设计本科，景观建筑硕士（ QS 第35、建筑 QS 第 5），具备扎实的空间设计与美术功底。研究生阶段聚焦工业遗产与游戏景观课题；熟练使用 Rhino、SketchUp、AutoCAD、Photoshop、Illustrator、InDesign、Lumion 完成方案、建模、渲染与排版全流程。
-            </p>
+            <p>环境艺术设计本科，景观建筑硕士（QS 第35、建筑 QS 第5），具备扎实的空间设计与美术功底。研究生阶段聚焦工业遗产与游戏景观课题；熟练使用 Rhino、SketchUp、AutoCAD、Photoshop、Illustrator、InDesign、Lumion 完成方案、建模、渲染与排版全流程。</p>
           </article>
-          <article class="card">
+          <article class="mc-card mc-reveal">
             <h3>个人优势 · 关卡落地能力</h3>
-            <p>
-              熟练使用 UE5 引擎进行白盒关卡搭建与关卡演出。熟悉地形系统建模与笔刷雕刻、材质系统基础参数调用、Lumen 实时光照与场景氛围调试；能够使用 Sequencer 完成过场动画与镜头演出，使用蓝图实现玩家交互等基础 Gameplay 逻辑，独立完成从地形塑造、白盒搭建到镜头演出的完整关卡白盒流程。参与腾讯游戏星跃实战营与开局一课训练营（游戏策划方向），系统学习游戏关卡设计及跨工种协作流程。
-            </p>
+            <p>熟练使用 UE5 引擎进行白盒关卡搭建与关卡演出。熟悉地形系统建模与笔刷雕刻、材质系统基础参数调用、Lumen 实时光照与场景氛围调试；能够使用 Sequencer 完成过场动画与镜头演出，使用蓝图实现玩家交互等基础 Gameplay 逻辑，独立完成从地形塑造、白盒搭建到镜头演出的完整关卡白盒流程。参与腾讯游戏星跃实战营与开局一课训练营（游戏策划方向），系统学习游戏关卡设计及跨工种协作流程。</p>
           </article>
-          <article class="card">
+          <article class="mc-card mc-reveal">
             <h3>个人优势 · 统筹与玩家洞察</h3>
-            <p>
-              具备良好的项目统筹与团队协作能力。多次担任学生项目第一负责人，设计成果获全国三维数字化创新设计大赛国家三等奖、人居环境设计学年奖（两届）、园冶杯大学生国际竞赛最佳人气奖、华灿奖省级二等奖等多项国家级与省级奖项。资深游戏玩家，15年以上游戏经验，深度涉猎 MOBA、开放世界、RPG、沙盒、自走棋等类型，累计时长上万小时，总氪金超 2w 元。
-            </p>
+            <p>具备良好的项目统筹与团队协作能力。多次担任学生项目第一负责人，设计成果获全国三维数字化创新设计大赛国家三等奖、人居环境设计学年奖（两届）、园冶杯大学生国际竞赛最佳人气奖、华灿奖省级二等奖等多项国家级与省级奖项。资深游戏玩家，15年以上游戏经验，深度涉猎 MOBA、开放世界、RPG、沙盒、自走棋等类型，累计时长上万小时，总氪金超 2w 元。</p>
           </article>
         </div>
       </section>
 
-      <section id="finale" class="finale-section" aria-label="结尾互动视频">
-        <div class="finale-sticky">
-          <div class="finale-video-frame">
-          <video
-            id="finaleScrollVideo"
-            class="finale-video"
-            src="./assets/animation/final_video_v2-2.mp4"
-            muted
-            playsinline
-            preload="auto"
-            aria-label="滚动控制的结尾视频"
-          ></video>
-          </div>
-          <div class="finale-overlay" aria-hidden="true">
-            <p class="eyebrow">Final Signal</p>
-            <h2>滚动完成最后一段影像</h2>
-            <p>视频播放到结尾后，会显示我的联系方式。</p>
-          </div>
+      <!-- ===================== FINALE ===================== -->
+      <section id="finale" class="mc-finale">
+        <video id="mcFinaleVideo" class="mc-finale-video"
+          src="./assets/animation/mc-finale-final.mp4"
+          poster="./assets/animation/mc-finale-poster.jpg"
+          muted loop autoplay playsinline preload="auto"></video>
+        <div class="mc-finale-overlay">
+          <p class="mc-eyebrow">Final Signal</p>
+          <h2>滚动完成最后一段影像</h2>
         </div>
       </section>
 
-      <section id="contact" class="section section-alt">
-        <div class="container contact-grid contact-grid-single">
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2>联系方式</h2>
-            <p>
-              欢迎联系我交流关卡策划、实习/校招机会、项目合作。
-              可通过邮箱、Bilibili 或作品链接进一步了解我的实践内容。
-            </p>
-            <div class="contact-list">
+      <!-- ===================== CONTACT + MINE GAME ===================== -->
+      <section id="contact" class="mc-section mc-contact" style="padding-bottom:210px;">
+        <div class="mc-section-head">
+          <p class="mc-eyebrow">Contact</p>
+          <h2 class="mc-section-title">联系方式</h2>
+          <p style="color:var(--mc-muted);font-size:0.85rem;max-width:500px;margin:0.6rem auto 0;">
+            欢迎联系我交流关卡策划、实习/校招机会、项目合作。
+          </p>
+        </div>
+        <div class="mc-contact-list">
+          <a href="mailto:1102910102@qq.com">1102910102@qq.com</a>
+          <a href="tel:13358521997">13358521997</a>
+          <a href="https://space.bilibili.com/129912981" target="_blank" rel="noreferrer">Bilibili 主页</a>
+        </div>
+        <div id="mcMineZone" class="mc-mine-zone">
+          <p class="mc-mine-title">▼ 附加关卡 · 挖掘宝藏 ▼</p>
+          <p class="mc-mine-hint">点击挖掘方块（钻石最硬），全部挖完会掉落宝箱与彩蛋！</p>
+          <div class="mc-mine-wall"></div>
+          <button type="button" class="mc-mine-chest" aria-label="打开宝箱"></button>
+          <div class="mc-contact-reveal">
+            <p style="color:var(--mc-text);font-size:0.85rem;">感谢你探索到最后一格！继续交流入口：</p>
+            <div class="mc-contact-list">
               <a href="mailto:1102910102@qq.com">1102910102@qq.com</a>
-              <a href="https://space.bilibili.com/129912981?spm_id_from=333.40164.0.0" target="_blank" rel="noreferrer">Bilibili 主页</a>
+              <a href="https://space.bilibili.com/129912981" target="_blank" rel="noreferrer">Bilibili 主页</a>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <button id="backToTop" class="back-to-top" aria-label="返回顶部">↑</button>
-
-    <div id="projectModal" class="project-modal hidden" aria-hidden="true">
-      <div id="projectModalBackdrop" class="project-modal-backdrop"></div>
-      <article class="project-modal-panel" aria-live="polite">
-        <button id="closeProjectModal" class="modal-close" aria-label="关闭项目详情">×</button>
-        <div class="project-modal-content">
-          <section class="project-modal-media">
-            <iframe
-              id="modalIframe"
-              class="modal-iframe hidden"
-              src=""
-              title="项目演示视频"
-              allowfullscreen
-            ></iframe>
-            <video
-              id="modalVideo"
-              controls
-              muted
-              loop
-              playsinline
-              preload="none"
-              poster=""
-            >
-              <source id="modalVideoSource" src="" type="video/mp4" />
-            </video>
+    <!-- ===================== MODAL ===================== -->
+    <div id="mcModal" class="mc-modal">
+      <div class="mc-modal-backdrop"></div>
+      <article class="mc-modal-panel">
+        <button class="mc-modal-close" aria-label="关闭">×</button>
+        <p class="mc-eyebrow">DETAIL</p>
+        <h3 id="mcModalTitle"></h3>
+        <p id="mcModalSummary" class="mc-project-desc" style="margin:0.5rem 0;"></p>
+        <div id="mcModalMedia" style="margin:0.8rem 0;"></div>
+        <div id="mcModalMeta" class="mc-modal-meta" style="margin:0.5rem 0;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <section>
+            <h4>核心设计与玩法</h4>
+            <ul id="mcModalDesign"></ul>
           </section>
-          <section class="project-modal-info">
-            <p class="eyebrow">PROJECT DETAIL</p>
-            <h3 id="modalTitle"></h3>
-            <p id="modalSummary" class="detail-summary"></p>
-            <div id="modalMeta" class="detail-meta"></div>
-            <div class="detail-columns">
-              <section>
-                <h4>核心设计与玩法</h4>
-                <ul id="modalDesign"></ul>
-              </section>
-              <section>
-                <h4>实现方法与个人贡献</h4>
-                <ul id="modalContrib"></ul>
-              </section>
-            </div>
+          <section>
+            <h4>实现方法与个人贡献</h4>
+            <ul id="mcModalContrib"></ul>
           </section>
         </div>
       </article>
     </div>
 
-    <div id="experienceModal" class="project-modal hidden" aria-hidden="true">
-      <div id="experienceModalBackdrop" class="project-modal-backdrop"></div>
-      <article class="project-modal-panel experience-modal-panel" aria-live="polite">
-        <button id="closeExperienceModal" class="modal-close" aria-label="关闭项目经历详情">×</button>
-        <div class="project-modal-content experience-modal-content">
-          <section class="project-modal-info">
-            <p class="eyebrow">PROJECT EXPERIENCE</p>
-            <h3 id="experienceModalTitle"></h3>
-            <p id="experienceModalPeriod" class="item-meta"></p>
-            <p id="experienceModalSummary" class="detail-summary"></p>
-            <div id="experienceModalTags" class="detail-meta"></div>
-            <div class="detail-columns">
-              <section>
-                <h4>职责与工作内容</h4>
-                <ul id="experienceModalWork"></ul>
-              </section>
-              <section>
-                <h4>成果与收获</h4>
-                <ul id="experienceModalOutcome"></ul>
-              </section>
-            </div>
-          </section>
-        </div>
-      </article>
-    </div>
-
-    <div id="docModal" class="project-modal doc-modal hidden" aria-hidden="true">
-      <div id="docModalBackdrop" class="project-modal-backdrop"></div>
-      <article class="project-modal-panel experience-modal-panel doc-modal-panel" aria-live="polite">
-        <button id="closeDocModal" class="modal-close" aria-label="关闭文档预览">×</button>
-        <div class="project-modal-content experience-modal-content">
-          <section class="project-modal-info">
-            <p class="eyebrow">DESIGN DOCUMENT</p>
-            <h3 id="docModalTitle"></h3>
-          </section>
-          <section class="doc-preview-wrap">
-            <iframe id="docModalFrame" class="doc-preview-frame" src="" title="设计文档预览"></iframe>
-          </section>
-        </div>
-      </article>
-    </div>
-
-    <div id="finaleContactModal" class="project-modal finale-contact-modal hidden" aria-hidden="true">
-      <div id="finaleContactBackdrop" class="project-modal-backdrop"></div>
-      <article class="project-modal-panel finale-contact-panel" aria-live="polite">
-        <button id="closeFinaleContact" class="modal-close" aria-label="关闭联系方式">退出 ×</button>
-        <div class="finale-contact-content">
-          <p class="eyebrow">CONTACT UNLOCKED</p>
-          <h3>感谢看到最后</h3>
-          <p>欢迎联系我交流关卡策划、实习/校招机会、项目合作。</p>
-          <div class="contact-list">
-            <a href="mailto:1102910102@qq.com">1102910102@qq.com</a>
-            <a href="tel:13358521997">13358521997</a>
-            <a href="https://space.bilibili.com/129912981?spm_id_from=333.40164.0.0" target="_blank" rel="noreferrer">Bilibili 主页</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <script src="./script.js?v=smooth-scrub-20260621"></script>
-    <script src="./game-ui-overhaul.js?v=mission-command-20260621-r3"></script>
+    <script src="./mc-portfolio.js?v=mc-menu-20260829h"></script>
   </body>
 </html>

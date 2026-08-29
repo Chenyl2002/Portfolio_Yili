@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# 临时截图（仅本地参考用）
+screenshots/
+
+# 部署压缩包和解压目录
+deploy-site-*.zip
+deploy-site-*/
+
+# 参考图
+参考图/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
