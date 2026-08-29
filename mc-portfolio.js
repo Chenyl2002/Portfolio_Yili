@@ -652,6 +652,7 @@
       var thumbHtml = '<img src="' + p.media + '" alt="' + p.title + '" loading="lazy" />';
       if (p.video) {
         thumbHtml += '<video class="mc-card-video" src="' + p.video + '" muted loop playsinline webkit-playsinline preload="metadata" poster="' + p.media + '"></video>';
+        thumbHtml += '<div class="mc-play-hint"></div>';
       }
       card.innerHTML =
         '<div class="mc-project-thumb">' + thumbHtml + '</div>' +
