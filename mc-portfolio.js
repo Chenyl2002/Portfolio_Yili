@@ -186,20 +186,112 @@
     document.body.appendChild(loaderEl);
 
     var fill = loaderEl.querySelector(".mc-loader-fill");
-    var pct = 0;
-    var timer = setInterval(function () {
-      pct += Math.random() * 18 + 6;
-      if (pct >= 100) {
-        pct = 100;
-        clearInterval(timer);
-        setTimeout(function () {
-          loaderEl.classList.add("hide");
-          document.body.classList.add("mc-ready");
-          setTimeout(function () { if (loaderEl.parentNode) loaderEl.parentNode.removeChild(loaderEl); }, 700);
-        }, 300);
+    var sub = loaderEl.querySelector(".mc-loader-sub");
+
+    // ---- 真实加载任务清单（视频权重最高，因为体积最大） ----
+    // 首页视频必须能播放才放行；尾页视频与关键图片作为次要任务
+    var tasks = [
+      { el: document.getElementById("mcHeroVideo"), type: "video", weight: 5, done: false, label: "加载主世界地形…" },
+      { el: document.getElementById("mcFinaleVideo"), type: "video", weight: 3, done: false, label: "加载末地传送门…" },
+      { src: "./assets/ui/bg-panorama.jpg", type: "image", weight: 1, done: false, label: "生成天空盒…" },
+      { src: "./assets/bili/cover-01.jpg", type: "image", weight: 1, done: false, label: "载入任务数据…" },
+      { src: "./assets/bili/cover-02.jpg", type: "image", weight: 1, done: false, label: "载入任务数据…" }
+    ].filter(function (t) { return t.el || t.src; });
+
+    var totalWeight = tasks.reduce(function (s, t) { return s + t.weight; }, 0) || 1;
+    var released = false;
+    var shown = 0;          // 当前显示的百分比（只增不减，避免回退）
+    var startTime = Date.now();
+    var MIN_MS = 900;       // 最短展示时长，避免闪一下就过
+    var MAX_MS = 12000;     // 最长等待，超时兜底放行（弱网不能无限卡住）
+
+    function realProgress() {
+      var got = 0;
+      tasks.forEach(function (t) { if (t.done) got += t.weight; });
+      return got / totalWeight;
+    }
+
+    function currentLabel() {
+      for (var i = 0; i < tasks.length; i++) {
+        if (!tasks[i].done) return tasks[i].label;
       }
-      fill.style.width = pct + "%";
-    }, 120);
+      return "进入世界…";
+    }
+
+    function markDone(task) {
+      if (task.done) return;
+      task.done = true;
+      tick();
+    }
+
+    // ---- 视频：等到 readyState>=3（HAVE_FUTURE_DATA，可流畅起播）----
+    tasks.forEach(function (t) {
+      if (t.type === "video" && t.el) {
+        var v = t.el;
+        // 加载期间提升 preload，确保真的会去缓冲
+        v.preload = "auto";
+        v.setAttribute("preload", "auto");
+        if (v.readyState >= 3) {
+          markDone(t);
+        } else {
+          var onReady = function () { markDone(t); };
+          v.addEventListener("canplay", onReady, { once: true });
+          v.addEventListener("canplaythrough", onReady, { once: true });
+          v.addEventListener("loadeddata", function () {
+            if (v.readyState >= 3) markDone(t);
+          });
+          // 视频出错不能卡死加载
+          v.addEventListener("error", onReady, { once: true });
+          v.load();
+        }
+      } else if (t.type === "image" && t.src) {
+        var im = new Image();
+        im.onload = function () { markDone(t); };
+        im.onerror = function () { markDone(t); };
+        im.src = t.src;
+      }
+    });
+
+    function release() {
+      if (released) return;
+      released = true;
+      fill.style.width = "100%";
+      if (sub) sub.textContent = "进入世界！";
+      setTimeout(function () {
+        loaderEl.classList.add("hide");
+        document.body.classList.add("mc-ready");
+        // 放行后把首页视频真正播起来
+        var hv = document.getElementById("mcHeroVideo");
+        if (hv) { var p = hv.play(); if (p && p.catch) p.catch(function () {}); }
+        setTimeout(function () {
+          if (loaderEl && loaderEl.parentNode) loaderEl.parentNode.removeChild(loaderEl);
+        }, 700);
+      }, 260);
+    }
+
+    function tick() {
+      if (released) return;
+      var elapsed = Date.now() - startTime;
+      var real = realProgress();
+
+      // 显示值 = 真实进度为主，辅以一点时间兜底，保证条一直在动
+      var timeHint = Math.min(elapsed / MAX_MS, 1) * 0.35;
+      var target = Math.max(real, timeHint) * 100;
+      if (target > shown) shown = target;
+      // 未全部完成时最多显示到 96%，留出"最后一格"给真正完成
+      var display = real >= 1 ? 100 : Math.min(shown, 96);
+      fill.style.width = display.toFixed(1) + "%";
+      if (sub) sub.textContent = currentLabel();
+
+      if (real >= 1 && elapsed >= MIN_MS) { release(); return; }
+      if (elapsed >= MAX_MS) { release(); return; }  // 弱网超时兜底
+    }
+
+    var pollTimer = setInterval(function () {
+      tick();
+      if (released) clearInterval(pollTimer);
+    }, 100);
+    tick();
   }
 
   /* ================================================================
