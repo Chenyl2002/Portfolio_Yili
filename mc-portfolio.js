@@ -197,7 +197,7 @@
       { src: "./assets/bili/cover-02.jpg", type: "image", weight: 1, label: "载入任务数据 2/4…" },
       { src: "./assets/bili/cover-03.jpg", type: "image", weight: 1, label: "载入任务数据 3/4…" },
       { src: "./assets/bili/cover-04.jpg", type: "image", weight: 1, label: "载入任务数据 4/4…" },
-      { src: "./Image/resume-avatar.png", type: "image", weight: 2, label: "载入玩家模型…" },
+      { src: "./Image/resume-avatar.webp", type: "image", weight: 2, label: "载入玩家模型…" },
       { src: "./assets/ui/bg-panorama.jpg", type: "image", weight: 1, label: "生成天空盒…" },
       { src: "./assets/minecraft/icons/mc-title-leveldesign.png", type: "image", weight: 1, label: "生成世界标题…" },
       { src: "./assets/ui/ico-book.png",    type: "image", weight: 1, label: "合成物品…" },
