@@ -1107,7 +1107,9 @@ body.mc-ready .mc-hud { opacity: 1; }
 }
 .mc-inv-slot-item { cursor: pointer; }
 .mc-inv-slot-item:hover,
-.mc-inv-slot-item:focus {
+.mc-inv-slot-item:focus,
+.mc-inv-armor-slot:hover,
+.mc-inv-armor-slot:focus {
   outline: 2px solid #fff;
   outline-offset: -2px;
   z-index: 5;
@@ -1181,7 +1183,9 @@ body.mc-ready .mc-hud { opacity: 1; }
   transition: opacity 80ms steps(2), transform 80ms steps(2);
 }
 .mc-inv-slot-item:hover .mc-inv-tooltip,
-.mc-inv-slot-item:focus .mc-inv-tooltip {
+.mc-inv-slot-item:focus .mc-inv-tooltip,
+.mc-inv-armor-slot:hover .mc-inv-tooltip,
+.mc-inv-armor-slot:focus .mc-inv-tooltip {
   opacity: 1;
   transform: translateX(-50%) scale(1);
 }
