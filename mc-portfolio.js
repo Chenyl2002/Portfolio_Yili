@@ -151,7 +151,7 @@
   var hotbarEl, hotbarLabel, hotbarSlots = [];
   var tipEl, achievesEl, loaderEl, backTopEl, particleCanvas;
   var activeSlotId = "home";
-  var heartsFilled = 0;
+  var heartsFilled = 8;
   var visitedSections = { home: true };
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var isCoarse = window.matchMedia("(pointer: coarse)").matches;
@@ -633,7 +633,6 @@
       if (rect.top < window.innerHeight * 0.6 && !visitedSections[id]) {
         visitedSections[id] = true;
         var idx = SECTION_ORDER.indexOf(id);
-        fillHearts((idx + 1) * 2);
         pushAchievement(SECTION_LABEL[id], "探索进度 " + Math.round(((idx + 1) / SECTION_ORDER.length) * 100) + "%", ICONS.grass);
       }
     });
