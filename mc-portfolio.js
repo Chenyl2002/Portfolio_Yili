@@ -174,9 +174,59 @@
   }
 
   /* ================================================================
+     0.5 视频强制播放（手机端 autoplay 常被系统拦截）
+     ================================================================ */
+  function forcePlayAllVideos() {
+    var vids = [
+      document.getElementById("mcHeroVideo"),
+      document.getElementById("mcFinaleVideo")
+    ].filter(Boolean);
+
+    vids.forEach(function (v) {
+      // 必备属性：手机端只有 muted + playsinline 才允许自动播放
+      v.muted = true;
+      v.defaultMuted = true;
+      v.setAttribute("muted", "");
+      v.setAttribute("playsinline", "");
+      v.setAttribute("webkit-playsinline", "");
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+  }
+
+  // 用户任意一次交互都重试播放（解决 iOS/Android 拦截 autoplay）
+  function bindVideoUnlock() {
+    var unlocked = false;
+    function unlock() {
+      if (unlocked) return;
+      unlocked = true;
+      forcePlayAllVideos();
+    }
+    ["touchstart", "touchend", "click", "scroll", "keydown"].forEach(function (evt) {
+      document.addEventListener(evt, unlock, { once: true, passive: true });
+    });
+    // 页面从后台切回前台时也重试
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) forcePlayAllVideos();
+    });
+    // 视频被系统暂停后自动恢复
+    [document.getElementById("mcHeroVideo"), document.getElementById("mcFinaleVideo")]
+      .filter(Boolean).forEach(function (v) {
+        v.addEventListener("pause", function () {
+          if (document.body.classList.contains("mc-ready") && !document.hidden) {
+            setTimeout(function () {
+              var p = v.play(); if (p && p.catch) p.catch(function () {});
+            }, 120);
+          }
+        });
+      });
+  }
+
+  /* ================================================================
      1. 加载界面
      ================================================================ */
   function initLoader() {
+    bindVideoUnlock();
     loaderEl = el("div", "mc-loader");
     loaderEl.innerHTML =
       '<div class="mc-loader-bg"></div>' +
@@ -197,7 +247,7 @@
       { src: "./assets/bili/cover-02.jpg", type: "image", weight: 1, label: "载入任务数据 2/4…" },
       { src: "./assets/bili/cover-03.jpg", type: "image", weight: 1, label: "载入任务数据 3/4…" },
       { src: "./assets/bili/cover-04.jpg", type: "image", weight: 1, label: "载入任务数据 4/4…" },
-      { src: "./Image/resume-avatar.webp", type: "image", weight: 2, label: "载入玩家模型…" },
+      { src: "./Image/resume-avatar.png", type: "image", weight: 2, label: "载入玩家模型…" },
       { src: "./assets/ui/bg-panorama.jpg", type: "image", weight: 1, label: "生成天空盒…" },
       { src: "./assets/minecraft/icons/mc-title-leveldesign.png", type: "image", weight: 1, label: "生成世界标题…" },
       { src: "./assets/ui/ico-book.png",    type: "image", weight: 1, label: "合成物品…" },
@@ -282,9 +332,8 @@
       setTimeout(function () {
         loaderEl.classList.add("hide");
         document.body.classList.add("mc-ready");
-        // 放行后把首页视频真正播起来
-        var hv = document.getElementById("mcHeroVideo");
-        if (hv) { var p = hv.play(); if (p && p.catch) p.catch(function () {}); }
+        // 放行后把两个视频都真正播起来
+        forcePlayAllVideos();
         setTimeout(function () {
           if (loaderEl && loaderEl.parentNode) loaderEl.parentNode.removeChild(loaderEl);
         }, 700);

@@ -16,7 +16,7 @@
       gtag("js", new Date());
       gtag("config", "G-W7VM5CC6EZ");
     </script>
-    <link rel="stylesheet" href="./mc-portfolio.css?v=mc-menu-20260831a" />
+    <link rel="stylesheet" href="./mc-portfolio.css?v=mc-menu-20260831b" />
   </head>
   <body>
     <main>
@@ -28,8 +28,8 @@
           preload="metadata"
           disablepictureinpicture
           controlslist="nodownload noplaybackrate">
-          <source src="./assets/animation/mobile/mc-hero-mobile.mp4" type="video/mp4; codecs=&quot;avc1.42E01E&quot;" />
-          <source src="./assets/animation/mc-hero-final.mp4" type="video/mp4" />
+          <source src="./assets/animation/mc-hero-h264.mp4" type="video/mp4" />
+          <source src="./assets/animation/mc-hero-h264-sd.mp4" type="video/mp4" />
         </video>
         <div class="mc-hero-vignette"></div>
 
@@ -165,7 +165,10 @@
             <!-- 左侧：玩家预览区（头像 + 盔甲槽） -->
             <div class="mc-inv-player">
               <div class="mc-inv-avatar-slot">
-                <img src="./Image/resume-avatar.webp" alt="陈宜理" />
+                <picture>
+                  <source srcset="./Image/resume-avatar.webp" type="image/webp" />
+                  <img src="./Image/resume-avatar.png" alt="陈宜理" />
+                </picture>
               </div>
               <div class="mc-inv-armor">
                 <div class="mc-inv-slot mc-inv-armor-slot" tabindex="0">
@@ -390,8 +393,8 @@
           preload="metadata"
           disablepictureinpicture
           controlslist="nodownload noplaybackrate">
-          <source src="./assets/animation/mobile/mc-finale-mobile.mp4" type="video/mp4; codecs=&quot;avc1.42E01E&quot;" />
-          <source src="./assets/animation/mc-finale-final.mp4" type="video/mp4" />
+          <source src="./assets/animation/mc-finale-h264.mp4" type="video/mp4" />
+          <source src="./assets/animation/mc-finale-h264-sd.mp4" type="video/mp4" />
         </video>
         <div class="mc-finale-overlay">
           <p class="mc-eyebrow">Contact</p>
@@ -429,6 +432,6 @@
       </article>
     </div>
 
-    <script src="./mc-portfolio.js?v=mc-menu-20260831a"></script>
+    <script src="./mc-portfolio.js?v=mc-menu-20260831b"></script>
   </body>
 </html>
