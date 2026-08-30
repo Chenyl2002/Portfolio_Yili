@@ -560,35 +560,50 @@
     v.loop = true;
     v.muted = true;
     v.playsInline = true;
-    v.webkitPlaysInline = true;
-    v.defaultMuted = true;
-    v.setAttribute("webkit-playsinline", "");
     v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
+    v.defaultMuted = true;
+    // 手机端降低 preload 以加快首屏
+    var isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile) {
+      v.preload = "metadata";
+      v.setAttribute("preload", "metadata");
+    }
     var tryPlay = function () {
       var pr = v.play();
       if (pr && typeof pr.catch === "function") pr.catch(function () {});
     };
-    tryPlay();
+    // 延迟一帧再尝试播放，避免与页面初始化竞争
+    requestAnimationFrame(function () { tryPlay(); });
     v.addEventListener("loadeddata", tryPlay, { once: true });
     v.addEventListener("canplay", tryPlay, { once: true });
+    v.addEventListener("canplaythrough", tryPlay, { once: true });
     // 部分浏览器 loop 属性失效时的兜底
     v.addEventListener("ended", function () {
       v.currentTime = 0;
       tryPlay();
     });
     // 首次用户交互后再兜底一次（应对自动播放策略）
-    ["pointerdown", "keydown", "wheel", "touchstart"].forEach(function (evt) {
-      window.addEventListener(evt, tryPlay, { once: true, passive: true });
+    ["pointerdown", "keydown", "wheel", "touchstart", "scroll"].forEach(function (evt) {
+      window.addEventListener(evt, function () { tryPlay(); }, { once: true, passive: true });
+    });
+    // 可见性变化时重新播放
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) tryPlay();
     });
   }
 
   function toggleVideoByVisibility(v) {
     if (!v || !v.parentElement) return;
     var r = v.parentElement.getBoundingClientRect();
-    var visible = r.bottom > 0 && r.top < window.innerHeight;
-    if (visible && v.paused) {
-      var pr = v.play();
-      if (pr && typeof pr.catch === "function") pr.catch(function () {});
+    var visible = r.bottom > 0 && r.top < window.innerHeight * 1.2;
+    if (visible) {
+      // 进入视口附近：确保 preload 提升到 auto
+      if (v.preload !== "auto") { v.preload = "auto"; v.setAttribute("preload", "auto"); }
+      if (v.paused) {
+        var pr = v.play();
+        if (pr && typeof pr.catch === "function") pr.catch(function () {});
+      }
     } else if (!visible && !v.paused) {
       v.pause();
     }
