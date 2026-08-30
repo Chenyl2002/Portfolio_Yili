@@ -188,22 +188,36 @@
     var fill = loaderEl.querySelector(".mc-loader-fill");
     var sub = loaderEl.querySelector(".mc-loader-sub");
 
-    // ---- 真实加载任务清单（视频权重最高，因为体积最大） ----
-    // 首页视频必须能播放才放行；尾页视频与关键图片作为次要任务
-    var tasks = [
-      { el: document.getElementById("mcHeroVideo"), type: "video", weight: 5, done: false, label: "加载主世界地形…" },
-      { el: document.getElementById("mcFinaleVideo"), type: "video", weight: 3, done: false, label: "加载末地传送门…" },
-      { src: "./assets/ui/bg-panorama.jpg", type: "image", weight: 1, done: false, label: "生成天空盒…" },
-      { src: "./assets/bili/cover-01.jpg", type: "image", weight: 1, done: false, label: "载入任务数据…" },
-      { src: "./assets/bili/cover-02.jpg", type: "image", weight: 1, done: false, label: "载入任务数据…" }
-    ].filter(function (t) { return t.el || t.src; });
+    // ---- 真实加载任务清单 ----
+    // 页面上所有关键图片 + 两个视频都纳入等待列表
+    var taskDefs = [
+      { el: document.getElementById("mcHeroVideo"),   type: "video", weight: 5, label: "加载主世界地形…" },
+      { el: document.getElementById("mcFinaleVideo"), type: "video", weight: 4, label: "加载末地传送门…" },
+      { src: "./assets/bili/cover-01.jpg", type: "image", weight: 1, label: "载入任务数据 1/4…" },
+      { src: "./assets/bili/cover-02.jpg", type: "image", weight: 1, label: "载入任务数据 2/4…" },
+      { src: "./assets/bili/cover-03.jpg", type: "image", weight: 1, label: "载入任务数据 3/4…" },
+      { src: "./assets/bili/cover-04.jpg", type: "image", weight: 1, label: "载入任务数据 4/4…" },
+      { src: "./Image/resume-avatar.png", type: "image", weight: 2, label: "载入玩家模型…" },
+      { src: "./assets/ui/bg-panorama.jpg", type: "image", weight: 1, label: "生成天空盒…" },
+      { src: "./assets/minecraft/icons/mc-title-leveldesign.png", type: "image", weight: 1, label: "生成世界标题…" },
+      { src: "./assets/ui/ico-book.png",    type: "image", weight: 1, label: "合成物品…" },
+      { src: "./assets/ui/ico-compass.png", type: "image", weight: 1, label: "合成物品…" },
+      { src: "./assets/ui/ico-pick.png",    type: "image", weight: 1, label: "合成物品…" },
+    ];
+    var tasks = taskDefs.filter(function (t) { return t.el || t.src; }).map(function (t) {
+      return { el: t.el, src: t.src, type: t.type, weight: t.weight, label: t.label, done: false };
+    });
 
     var totalWeight = tasks.reduce(function (s, t) { return s + t.weight; }, 0) || 1;
     var released = false;
-    var shown = 0;          // 当前显示的百分比（只增不减，避免回退）
+    var shown = 0;
     var startTime = Date.now();
-    var MIN_MS = 900;       // 最短展示时长，避免闪一下就过
-    var MAX_MS = 12000;     // 最长等待，超时兜底放行（弱网不能无限卡住）
+    var MIN_MS = 800;
+    var MAX_MS = 15000;   // 弱网超时从 12s → 15s，给更多加载时间
+
+    // 手机端视频等待条件放宽：readyState>=2 即可（HAVE_CURRENT_DATA）
+    var isMobile = window.matchMedia("(max-width: 768px)").matches || ("ontouchstart" in window && navigator.maxTouchPoints > 0);
+    var videoReadyThreshold = isMobile ? 2 : 3;
 
     function realProgress() {
       var got = 0;
@@ -228,19 +242,27 @@
     tasks.forEach(function (t) {
       if (t.type === "video" && t.el) {
         var v = t.el;
-        // 加载期间提升 preload，确保真的会去缓冲
         v.preload = "auto";
         v.setAttribute("preload", "auto");
-        if (v.readyState >= 3) {
+        if (v.readyState >= videoReadyThreshold) {
           markDone(t);
         } else {
           var onReady = function () { markDone(t); };
           v.addEventListener("canplay", onReady, { once: true });
           v.addEventListener("canplaythrough", onReady, { once: true });
           v.addEventListener("loadeddata", function () {
-            if (v.readyState >= 3) markDone(t);
+            if (v.readyState >= videoReadyThreshold) markDone(t);
           });
-          // 视频出错不能卡死加载
+          // 手机端兜底：视频暂停加载（suspend）或缓冲停滞（stalled）超过 3 秒也放行
+          var suspendTimer = null;
+          var onSuspend = function () {
+            if (suspendTimer) return;
+            suspendTimer = setTimeout(function () {
+              if (!t.done && v.readyState >= 1) markDone(t);
+            }, 3000);
+          };
+          v.addEventListener("suspend", onSuspend);
+          v.addEventListener("stalled", onSuspend);
           v.addEventListener("error", onReady, { once: true });
           v.load();
         }
