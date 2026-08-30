@@ -6,6 +6,8 @@
 
   /* ---- 常量 ---- */
   var ICON_DIR = "./assets/minecraft/icons/";
+  // 图标资源版本号：更换图标文件后递增，强制浏览器重新拉取
+  var ICON_V = "?v=3";
   // 注意：图标文件名按精灵图 3x3 顺序切割，实际内容映射如下
   //  row0: grass, pickaxe, head
   //  row1: book,  compass, scroll
@@ -17,9 +19,10 @@
     book:     ICON_DIR + "mc-head.png",
     compass:  ICON_DIR + "mc-scroll.png",
     scroll:   ICON_DIR + "mc-compass.png",
-    heart:    ICON_DIR + "mc-heart.png",
-    chicken:  ICON_DIR + "mc-chicken.png",
-    armor:    ICON_DIR + "mc-armor.png"
+    heart:    ICON_DIR + "mc-heart.png" + ICON_V,
+    chicken:  ICON_DIR + "mc-chicken.png" + ICON_V,
+    armor:    ICON_DIR + "mc-armor.png" + ICON_V,
+    arrowUp:  ICON_DIR + "mc-arrow-up.png" + ICON_V
   };
 
   var MINE_TYPES = [
@@ -936,7 +939,7 @@
      ================================================================ */
   function initBackTop() {
     backTopEl = el("button", "mc-back-top");
-    backTopEl.innerHTML = "↑";
+    backTopEl.innerHTML = '<img src="' + ICONS.arrowUp + '" alt="" class="mc-back-top-ico" />';
     backTopEl.setAttribute("aria-label", "返回顶部");
     backTopEl.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: "smooth" });
