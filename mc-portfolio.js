@@ -729,11 +729,19 @@
     v.setAttribute("playsinline", "");
     v.setAttribute("webkit-playsinline", "");
     v.defaultMuted = true;
-    // 手机端降低 preload 以加快首屏
-    var isMobile = window.matchMedia("(max-width: 768px)").matches;
-    if (isMobile) {
-      v.preload = "metadata";
-      v.setAttribute("preload", "metadata");
+    // 首屏视频必须用 auto，否则手机端只加载元数据（readyState=1），
+    // 永远到不了可播放状态，首页视频就一直是黑的 / 只显示 poster。
+    // 非首屏视频才降级 metadata 省流量，进视口时由 toggleVideoByVisibility 提升。
+    var isHero = v.id === "mcHeroVideo";
+    if (isHero) {
+      v.preload = "auto";
+      v.setAttribute("preload", "auto");
+    } else {
+      var isMobile = window.matchMedia("(max-width: 768px)").matches;
+      if (isMobile) {
+        v.preload = "metadata";
+        v.setAttribute("preload", "metadata");
+      }
     }
     var tryPlay = function () {
       var pr = v.play();
@@ -813,15 +821,50 @@
      ================================================================ */
   var revealObserver = null;
   function initReveal() {
+    // threshold 用 0 + 负 rootMargin：只要元素边缘进入视口就触发。
+    // 旧的 threshold:0.15 在手机窄屏上会失效——当元素比视口更高时
+    // 永远无法有 15% 面积同时可见，导致元素永久卡在 opacity:0。
     revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting || entry.intersectionRatio > 0) {
           entry.target.classList.add("is-visible");
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
     observeReveal(document.querySelectorAll(".mc-reveal"));
+
+    // 安全兜底：任何元素若在 3.5 秒后仍未显示且已滚动到其附近，直接放出来，
+    // 避免 observer 因浏览器差异 / 布局抖动漏掉回调导致内容永久不可见。
+    setTimeout(sweepStuckReveals, 3500);
+    window.addEventListener("scroll", throttleSweep, { passive: true });
+    window.addEventListener("resize", throttleSweep, { passive: true });
+    window.addEventListener("orientationchange", function () {
+      setTimeout(sweepStuckReveals, 260);
+    });
+  }
+
+  var sweepTimer = null;
+  function throttleSweep() {
+    if (sweepTimer) return;
+    sweepTimer = setTimeout(function () {
+      sweepTimer = null;
+      sweepStuckReveals();
+    }, 220);
+  }
+
+  /* 把已经进入（或接近）视口却仍未 is-visible 的元素强制显示 */
+  function sweepStuckReveals() {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var nodes = document.querySelectorAll(".mc-reveal:not(.is-visible)");
+    Array.prototype.forEach.call(nodes, function (n) {
+      var r = n.getBoundingClientRect();
+      // 元素任意部分进入视口（上下各放宽 15% 视口高度）就显示
+      if (r.top < vh * 1.15 && r.bottom > vh * -0.15) {
+        n.classList.add("is-visible");
+        if (revealObserver) revealObserver.unobserve(n);
+      }
+    });
   }
   /* 供动态生成的元素补充注册（避免 initReveal 早于内容创建导致永久 opacity:0） */
   function observeReveal(nodes) {
@@ -859,7 +902,7 @@
       card.setAttribute("data-type", p.type);
       card.setAttribute("data-engine", p.engine);
       card.setAttribute("data-platform", p.platform);
-      var thumbHtml = '<img src="' + p.media + '" alt="' + p.title + '" loading="lazy" />';
+      var thumbHtml = '<img src="' + p.media + '" alt="' + p.title + '" loading="eager" decoding="async" />';
       if (p.bvid) {
         thumbHtml += '<div class="mc-play-hint"></div>';
       }

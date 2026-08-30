@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
+    <script>
+      /* 尽早标记 JS 可用 + IntersectionObserver 可用。
+         只有两者都满足才启用 reveal 隐藏初始态，
+         否则内容保持默认可见，杜绝"手机端图片永远不出现"。 */
+      (function () {
+        if (typeof IntersectionObserver !== "undefined") {
+          document.documentElement.className += " mc-js";
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>陈宜理 | 个人作品集</title>
@@ -16,7 +26,7 @@
       gtag("js", new Date());
       gtag("config", "G-W7VM5CC6EZ");
     </script>
-    <link rel="stylesheet" href="./mc-portfolio.css?v=mc-menu-20260831b" />
+    <link rel="stylesheet" href="./mc-portfolio.css?v=mc-menu-20260831c" />
   </head>
   <body>
     <main>
@@ -25,7 +35,7 @@
         <video id="mcHeroVideo" class="mc-hero-video"
           poster="./assets/animation/mc-hero-poster.jpg"
           muted loop autoplay playsinline webkit-playsinline
-          preload="metadata"
+          preload="auto"
           disablepictureinpicture
           controlslist="nodownload noplaybackrate">
           <source src="./assets/animation/mc-hero-h264.mp4" type="video/mp4" />
@@ -106,7 +116,7 @@
           <button class="mc-project-card mc-reveal" type="button"
             data-doc-title="《破碎之家》游戏关卡说明"
             data-doc-url="./Portfolio/《破碎之家》游戏关卡说明.pdf">
-            <div class="mc-project-thumb"><img src="./Image/1.png" alt="《破碎之家》文档预览图" loading="lazy" /></div>
+            <div class="mc-project-thumb"><picture><source srcset="./Image/1.webp" type="image/webp" /><img src="./Image/1.png" alt="《破碎之家》文档预览图" loading="eager" decoding="async" /></picture></div>
             <div class="mc-project-body">
               <div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>DOCUMENT</span></div>
               <div class="mc-proj-value"><h3>《破碎之家》游戏关卡说明</h3></div>
@@ -116,7 +126,7 @@
           <button class="mc-project-card mc-reveal" type="button"
             data-doc-title="破冰启航游戏关卡说明"
             data-doc-url="./Portfolio/破冰启航游戏关卡说明.pdf">
-            <div class="mc-project-thumb"><img src="./Image/2.png" alt="破冰启航文档预览图" loading="lazy" /></div>
+            <div class="mc-project-thumb"><picture><source srcset="./Image/2.webp" type="image/webp" /><img src="./Image/2.png" alt="破冰启航文档预览图" loading="eager" decoding="async" /></picture></div>
             <div class="mc-project-body">
               <div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>DOCUMENT</span></div>
               <div class="mc-proj-value"><h3>破冰启航游戏关卡说明</h3></div>
@@ -126,7 +136,7 @@
           <button class="mc-project-card mc-reveal" type="button"
             data-doc-title="作品集 建筑"
             data-doc-url="./Portfolio/作品集 建筑.pdf">
-            <div class="mc-project-thumb"><img src="./Image/3.png" alt="作品集建筑文档预览图" loading="lazy" /></div>
+            <div class="mc-project-thumb"><picture><source srcset="./Image/3.webp" type="image/webp" /><img src="./Image/3.png" alt="作品集建筑文档预览图" loading="eager" decoding="async" /></picture></div>
             <div class="mc-project-body">
               <div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>DOCUMENT</span></div>
               <div class="mc-proj-value"><h3>作品集 建筑</h3></div>
@@ -136,7 +146,7 @@
           <button class="mc-project-card mc-reveal" type="button"
             data-doc-title="景观建筑作品集"
             data-doc-url="./Portfolio/ChenYili_LA1B.pdf">
-            <div class="mc-project-thumb"><img src="./Image/4.png" alt="景观建筑作品集文档预览图" loading="lazy" /></div>
+            <div class="mc-project-thumb"><picture><source srcset="./Image/4.webp" type="image/webp" /><img src="./Image/4.png" alt="景观建筑作品集文档预览图" loading="eager" decoding="async" /></picture></div>
             <div class="mc-project-body">
               <div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>DOCUMENT</span></div>
               <div class="mc-proj-value"><h3>景观建筑作品集</h3></div>
@@ -432,6 +442,6 @@
       </article>
     </div>
 
-    <script src="./mc-portfolio.js?v=mc-menu-20260831b"></script>
+    <script src="./mc-portfolio.js?v=mc-menu-20260831c"></script>
   </body>
 </html>
