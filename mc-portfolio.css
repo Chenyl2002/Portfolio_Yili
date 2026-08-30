@@ -1023,7 +1023,7 @@ body.mc-ready .mc-hud { opacity: 1; }
 /* 主体 */
 .mc-inv-body {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 260px 1fr;
   gap: 14px;
   padding: 14px;
   background: #8b8b8b;
@@ -1034,11 +1034,13 @@ body.mc-ready .mc-hud { opacity: 1; }
 
 /* 左侧玩家预览 */
 .mc-inv-player {
-  display: flex; flex-direction: column; align-items: center;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
   gap: 10px;
+  height: 100%;
 }
 .mc-inv-avatar-slot {
-  width: 96px; height: 96px;
+  width: 140px; height: 140px;
   background: #373737;
   border: 2px solid;
   border-color: #555 #fff #fff #555;
