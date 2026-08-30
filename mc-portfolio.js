@@ -61,8 +61,7 @@
       desc: "微缩世界家庭场景 · 第三人称线性冒险解谜",
       tags: ["个人项目","UE5","PC"], type: "个人项目", engine: "UE5", platform: "PC",
       tags2: ["情绪镜身","线性解谜","微缩叙事"],
-      media: "./Image/1.png",
-      video: "./assets/animation/video-1-r2.mp4",
+      media: "./assets/bili/cover-01.jpg",
       videoUrl: "https://www.bilibili.com/video/BV1k41cBXEfU/",
       bvid: "BV1k41cBXEfU",
       design: ["以微缩家庭场景映射人物内心情绪变化","线性解谜推进，关卡节奏与叙事同步","空间尺度变化作为情绪线索"],
@@ -73,8 +72,7 @@
       desc: "工业港口 & 飞艇 · 第三人称线性冒险解谜",
       tags: ["个人项目","UE5","PC"], type: "个人项目", engine: "UE5", platform: "PC",
       tags2: ["冰冻机制","工业机关","飞艇关卡"],
-      media: "./Image/2.png",
-      video: "./assets/animation/final_video_v2-2.mp4",
+      media: "./assets/bili/cover-02.jpg",
       videoUrl: "https://www.bilibili.com/video/BV1oTXzBvEyA/",
       bvid: "BV1oTXzBvEyA",
       design: ["冰冻/融化机制驱动关卡推进","工业港口机关与飞艇内部空间设计","机关解谜与移动平台结合"],
@@ -85,8 +83,7 @@
       desc: "祠堂古刹箱庭 · 御剑解谜与战斗校验",
       tags: ["团队项目","UE5","PC"], type: "团队项目", engine: "UE5", platform: "PC",
       tags2: ["符箓解谜","阵法切换","塔楼限时挑战"],
-      media: "./Image/3.png",
-      video: "./assets/animation/video-1-r2.mp4",
+      media: "./assets/bili/cover-03.jpg",
       videoUrl: "https://www.bilibili.com/video/BV1Bg5a6dEHL/",
       bvid: "BV1Bg5a6dEHL",
       design: ["古刹箱庭地图布局与动线设计","符箓解谜系统与阵法切换机制","塔楼限时挑战关卡"],
@@ -97,8 +94,7 @@
       desc: "Moston 城市游戏化景观 · MDA 框架与 Gameplay 模拟",
       tags: ["个人项目","多工具","跨场景"], type: "个人项目", engine: "多工具", platform: "跨场景",
       tags2: ["MDA 框架","Game Simulation","包容性城市空间"],
-      media: "./Image/4.png",
-      video: "./assets/animation/final_video_v2-2.mp4",
+      media: "./assets/bili/cover-04.jpg",
       videoUrl: "https://www.bilibili.com/video/BV1jRGb6GEwE/",
       bvid: "BV1jRGb6GEwE",
       design: ["MDA 框架分析城市空间游戏化潜力","Gameplay 模拟验证空间设计","包容性城市空间策略"],
@@ -684,8 +680,7 @@
       card.setAttribute("data-engine", p.engine);
       card.setAttribute("data-platform", p.platform);
       var thumbHtml = '<img src="' + p.media + '" alt="' + p.title + '" loading="lazy" />';
-      if (p.video) {
-        thumbHtml += '<video class="mc-card-video" src="' + p.video + '" muted loop playsinline webkit-playsinline preload="metadata" poster="' + p.media + '"></video>';
+      if (p.bvid) {
         thumbHtml += '<div class="mc-play-hint"></div>';
       }
       card.innerHTML =
@@ -703,33 +698,6 @@
             p.tags2.map(function (t) { return '<span>' + t + '</span>'; }).join("") +
           '</div>' +
         '</div>';
-      if (p.video) {
-        var v = card.querySelector(".mc-card-video");
-        var isTouch = ("ontouchstart" in window) || navigator.maxTouchPoints > 0;
-        var playCardVideo = function () {
-          v.play().catch(function(){});
-          card.classList.add("is-playing");
-        };
-        var pauseCardVideo = function () {
-          v.pause();
-          v.currentTime = 0;
-          card.classList.remove("is-playing");
-        };
-        if (isTouch) {
-          // 触摸设备：卡片进入视口自动播放，离开暂停
-          var cardObserver = new IntersectionObserver(function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) { playCardVideo(); }
-              else { pauseCardVideo(); }
-            });
-          }, { threshold: 0.3 });
-          cardObserver.observe(card);
-        } else {
-          // 桌面：hover 播放
-          card.addEventListener("mouseenter", playCardVideo);
-          card.addEventListener("mouseleave", pauseCardVideo);
-        }
-      }
       card.addEventListener("click", function () { openProjectModal(p); });
       grid.appendChild(card);
       observeReveal(card);
