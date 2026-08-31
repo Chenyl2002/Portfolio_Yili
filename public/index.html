@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <script>
+      /* 尽早标记 JS 可用 + IntersectionObserver 可用。
+         只有两者都满足才启用 reveal 隐藏初始态，
+         否则内容保持默认可见，杜绝"手机端图片永远不出现"。 */
+      (function () {
+        if (typeof IntersectionObserver !== "undefined") {
+          document.documentElement.className += " mc-js";
+        }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>陈宜理 | 个人作品集</title>
+    <meta name="description" content="陈宜理游戏策划个人作品集，展示关卡策划项目、简历经历与联系方式。" />
+    <link rel="preconnect" href="https://fonts.loli.net" />
+    <link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+    <link href="https://fonts.loli.net/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet" />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W7VM5CC6EZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag("js", new Date());
+      gtag("config", "G-W7VM5CC6EZ");
+    </script>
+    <link rel="stylesheet" href="./mc-portfolio.css?v=mc-menu-20260831d" />
+  </head>
+  <body>
+    <main>
+      <!-- ===================== HERO ===================== -->
+      <section id="home" class="mc-hero">
+        <video id="mcHeroVideo" class="mc-hero-video"
+          poster="./assets/animation/mc-hero-poster.jpg"
+          muted loop autoplay playsinline webkit-playsinline
+          preload="auto"
+          disablepictureinpicture
+          controlslist="nodownload noplaybackrate">
+          <source src="./assets/animation/mc-hero-h264.mp4" type="video/mp4" />
+          <source src="./assets/animation/mc-hero-h264-sd.mp4" type="video/mp4" />
+        </video>
+        <div class="mc-hero-vignette"></div>
+
+        <!-- 顶部调试信息条（仿 MC F3 风格） -->
+        <div class="mc-debug-line">
+          <span>Portfolio 2026 · Level Design Build</span>
+          <span id="mcFps">FPS:60</span>
+          <span>Seed: CYL-1997</span>
+        </div>
+
+        <!-- 石质大标题 -->
+        <div class="mc-title-block">
+          <img class="mc-title-img" src="./assets/minecraft/icons/mc-title-leveldesign.png" alt="LEVEL DESIGN" />
+          <span class="mc-splash" id="mcSplash">陈宜理的作品集!</span>
+        </div>
+
+        <!-- MC 主菜单窄条按钮 -->
+        <nav class="mc-menu" aria-label="主菜单">
+          <button class="mc-menu-btn" type="button" data-goto="projects">项目作品</button>
+          <button class="mc-menu-btn" type="button" data-goto="resume">个人简历</button>
+          <button class="mc-menu-btn" type="button" data-goto="about">关于我</button>
+          <div class="mc-menu-row">
+            <button class="mc-menu-btn mc-menu-btn-half" type="button" data-goto="contact">联系方式</button>
+            <button class="mc-menu-btn mc-menu-btn-half" type="button" data-goto="contact">世界末地</button>
+          </div>
+        </nav>
+
+        <!-- 左下角小按钮 -->
+        <div class="mc-corner mc-corner-left">
+          <span class="mc-corner-name">陈宜理 · Level Designer</span>
+        </div>
+        <!-- 右下角版本号 -->
+        <div class="mc-corner mc-corner-right">
+          <span class="mc-corner-ver">v2026 · 游戏策划</span>
+        </div>
+
+        <!-- 右侧 3D 玩家展示（眼睛跟随鼠标） -->
+        <div class="mc-steve" id="mcSteve3D">
+          <span class="mc-steve-name">陈宜理</span>
+          <div class="mc-avatar-3d" id="mcAvatar3D">
+            <img class="mc-avatar-body" src="./assets/minecraft/icons/mc-avatar-3d.png" alt="陈宜理" />
+            <div class="mc-avatar-eye mc-eye-left"><div class="mc-pupil" id="mcPupilL"></div></div>
+            <div class="mc-avatar-eye mc-eye-right"><div class="mc-pupil" id="mcPupilR"></div></div>
+          </div>
+        </div>
+
+        <!-- 向下滚动提示 -->
+        <div class="mc-scroll-cue"><span>▼ 向下滚动开始探索 ▼</span></div>
+      </section>
+
+      <!-- ===================== PROJECTS ===================== -->
+      <section id="projects" class="mc-section">
+        <div class="mc-section-head">
+          <p class="mc-eyebrow">Mission Database</p>
+          <h2 class="mc-section-title">项目任务列表</h2>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;">
+          <button class="mc-btn is-active" data-filter="all"><img src="./assets/ui/ico-compass.png" alt="" style="width:14px;height:14px;image-rendering:pixelated;" />全部</button>
+          <button class="mc-btn" data-filter="团队项目"><img src="./assets/ui/ico-book.png" alt="" style="width:14px;height:14px;image-rendering:pixelated;" />团队项目</button>
+          <button class="mc-btn" data-filter="个人项目"><img src="./assets/ui/ico-pick.png" alt="" style="width:14px;height:14px;image-rendering:pixelated;" />个人项目</button>
+          <button class="mc-btn" data-filter="UE5"><img src="./assets/ui/ico-pick.png" alt="" style="width:14px;height:14px;image-rendering:pixelated;" />UE5</button>
+          <button class="mc-btn" data-filter="多工具"><img src="./assets/ui/ico-pick.png" alt="" style="width:14px;height:14px;image-rendering:pixelated;" />多工具</button>
+          <button class="mc-btn" data-filter="PC"><img src="./assets/ui/ico-compass.png" alt="" style="width:14px;height:14px;image-rendering:pixelated;" />PC</button>
+          <button class="mc-btn" data-filter="跨场景"><img src="./assets/ui/ico-compass.png" alt="" style="width:14px;height:14px;image-rendering:pixelated;" />跨场景</button>
+        </div>
+        <div id="mcProjectGrid" class="mc-projects-grid"></div>
+
+        <!-- 文档 -->
+        <div class="mc-section-head" style="margin-top:3rem;">
+          <p class="mc-eyebrow">Documentation</p>
+          <h2 class="mc-section-title" style="font-size:1.4rem;">设计文档</h2>
+        </div>
+        <div class="mc-projects-grid">
+          <button class="mc-project-card mc-reveal" type="button"
+            data-doc-title="《破碎之家》游戏关卡说明"
+            data-doc-url="./Portfolio/doc-broken-home.pdf">
+            <div class="mc-project-thumb"><picture><source srcset="./Image/1.webp" type="image/webp" /><img src="./Image/1.png" alt="《破碎之家》文档预览图" loading="eager" decoding="async" /></picture></div>
+            <div class="mc-project-body">
+              <div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>DOCUMENT</span></div>
+              <div class="mc-proj-value"><h3>《破碎之家》游戏关卡说明</h3></div>
+              <div class="mc-proj-value"><p class="mc-project-desc">PDF · 关卡设计文档</p></div>
+            </div>
+          </button>
+          <button class="mc-project-card mc-reveal" type="button"
+            data-doc-title="破冰启航游戏关卡说明"
+            data-doc-url="./Portfolio/doc-icebreaking.pdf">
+            <div class="mc-project-thumb"><picture><source srcset="./Image/2.webp" type="image/webp" /><img src="./Image/2.png" alt="破冰启航文档预览图" loading="eager" decoding="async" /></picture></div>
+            <div class="mc-project-body">
+              <div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>DOCUMENT</span></div>
+              <div class="mc-proj-value"><h3>破冰启航游戏关卡说明</h3></div>
+              <div class="mc-proj-value"><p class="mc-project-desc">PDF · 关卡设计文档</p></div>
+            </div>
+          </button>
+          <button class="mc-project-card mc-reveal" type="button"
+            data-doc-title="作品集 建筑"
+            data-doc-url="./Portfolio/doc-architecture.pdf">
+            <div class="mc-project-thumb"><picture><source srcset="./Image/3.webp" type="image/webp" /><img src="./Image/3.png" alt="作品集建筑文档预览图" loading="eager" decoding="async" /></picture></div>
+            <div class="mc-project-body">
+              <div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>DOCUMENT</span></div>
+              <div class="mc-proj-value"><h3>作品集 建筑</h3></div>
+              <div class="mc-proj-value"><p class="mc-project-desc">PDF · 建筑作品集</p></div>
+            </div>
+          </button>
+          <button class="mc-project-card mc-reveal" type="button"
+            data-doc-title="景观建筑作品集"
+            data-doc-url="./Portfolio/doc-landscape-portfolio.pdf">
+            <div class="mc-project-thumb"><picture><source srcset="./Image/4.webp" type="image/webp" /><img src="./Image/4.png" alt="景观建筑作品集文档预览图" loading="eager" decoding="async" /></picture></div>
+            <div class="mc-project-body">
+              <div class="mc-proj-label"><img src="./assets/ui/ico-book.png" alt="" /><span>DOCUMENT</span></div>
+              <div class="mc-proj-value"><h3>景观建筑作品集</h3></div>
+              <div class="mc-proj-value"><p class="mc-project-desc">PDF · Landscape Architecture</p></div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================== RESUME ===================== -->
+      <section id="resume" class="mc-section" style="background:linear-gradient(180deg, rgba(10,12,18,0.55), rgba(13,16,24,0.62));">
+        <div class="mc-section-head">
+          <p class="mc-eyebrow">Player Profile</p>
+          <h2 class="mc-section-title">玩家档案</h2>
+        </div>
+
+        <!-- MC 档案主面板 -->
+        <div class="mc-inventory mc-reveal">
+          <!-- 档案标题栏 -->
+          <div class="mc-inv-titlebar">
+            <span class="mc-inv-title">玩家档案</span>
+            <span class="mc-inv-sub">PROFILE · 陈宜理</span>
+          </div>
+
+          <div class="mc-inv-body">
+            <!-- 左侧：玩家预览区（头像 + 盔甲槽） -->
+            <div class="mc-inv-player">
+              <div class="mc-inv-avatar-slot">
+                <picture>
+                  <source srcset="./Image/resume-avatar.webp" type="image/webp" />
+                  <img src="./Image/resume-avatar.png" alt="陈宜理" />
+                </picture>
+              </div>
+              <div class="mc-inv-armor">
+                <div class="mc-inv-slot mc-inv-armor-slot" tabindex="0">
+                  <span class="mc-inv-item-icon">🎓</span>
+                  <span class="mc-inv-item-count">MSc</span>
+                  <div class="mc-inv-tooltip"><p class="mc-tt-title">学历 · 硕士</p><p class="mc-tt-desc">曼彻斯特大学 & 曼彻斯特城市大学 · 景观建筑</p></div>
+                </div>
+                <div class="mc-inv-slot mc-inv-armor-slot" tabindex="0">
+                  <span class="mc-inv-item-icon">⚔️</span>
+                  <span class="mc-inv-item-count">Lv.1</span>
+                  <div class="mc-inv-tooltip"><p class="mc-tt-title">职位 · 关卡策划</p><p class="mc-tt-desc">字节跳动 江南工作室 · 三体IP PVE射击</p></div>
+                </div>
+                <div class="mc-inv-slot mc-inv-armor-slot" tabindex="0">
+                  <span class="mc-inv-item-icon">⏳</span>
+                  <span class="mc-inv-item-count">10k</span>
+                  <div class="mc-inv-tooltip"><p class="mc-tt-title">游戏时长</p><p class="mc-tt-desc">10000h+ · 15年以上游戏经验</p></div>
+                </div>
+                <div class="mc-inv-slot mc-inv-armor-slot" tabindex="0">
+                  <span class="mc-inv-item-icon">💎</span>
+                  <span class="mc-inv-item-count">2w</span>
+                  <div class="mc-inv-tooltip"><p class="mc-tt-title">氪金</p><p class="mc-tt-desc">2w+ · MOBA · 开放世界 · 沙盒 · 自走棋</p></div>
+                </div>
+              </div>
+              <div class="mc-inv-player-info">
+                <p class="mc-inv-name">陈宜理</p>
+                <p class="mc-inv-role">游戏策划 / 关卡策划</p>
+                <div class="mc-inv-contact">
+                  <p>📞 13358521997</p>
+                  <p>✉️ 1102910102@qq.com</p>
+                  <p>🏛 曼彻斯特大学 景观建筑硕士</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧：物品栏 -->
+            <div class="mc-inv-right">
+              <!-- 合成区：实习经历 -->
+              <div class="mc-inv-section">
+                <p class="mc-inv-section-label">🎯 实习经历 · INTERNSHIP</p>
+                <div class="mc-inv-craft-grid">
+                  <div class="mc-inv-slot mc-inv-slot-item mc-exp-slot" data-exp-id="bytedance-intern" tabindex="0">
+                    <span class="mc-inv-item-icon">🎯</span>
+                    <span class="mc-inv-item-count">1</span>
+                    <div class="mc-inv-tooltip">
+                      <p class="mc-tt-title">字节跳动 · 江南工作室</p>
+                      <p class="mc-tt-desc">关卡策划 · 2026.07-至今</p>
+                      <p class="mc-tt-hint">三体IP 3A级PVE射击游戏</p>
+                    </div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-empty"></div>
+                  <div class="mc-inv-slot mc-inv-slot-empty"></div>
+                  <div class="mc-inv-slot mc-inv-slot-empty"></div>
+                </div>
+              </div>
+
+              <!-- 合成区：项目经历 -->
+              <div class="mc-inv-section">
+                <p class="mc-inv-section-label">📜 项目经历 · CRAFTING</p>
+                <div class="mc-inv-craft-grid">
+                  <div class="mc-inv-slot mc-inv-slot-item mc-exp-slot" data-exp-id="xingyue-camp" tabindex="0">
+                    <span class="mc-inv-item-icon">🏆</span>
+                    <span class="mc-inv-item-count">1</span>
+                    <div class="mc-inv-tooltip">
+                      <p class="mc-tt-title">腾讯游戏星跃实战营</p>
+                      <p class="mc-tt-desc">游戏关卡策划 · 2026.03-05</p>
+                      <p class="mc-tt-hint">点击查看详情</p>
+                    </div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-exp-slot" data-exp-id="starter-camp" tabindex="0">
+                    <span class="mc-inv-item-icon">📜</span>
+                    <span class="mc-inv-item-count">2</span>
+                    <div class="mc-inv-tooltip">
+                      <p class="mc-tt-title">腾讯开局一课训练营</p>
+                      <p class="mc-tt-desc">策划方向 · 2025.11-2026.01</p>
+                      <p class="mc-tt-hint">点击查看详情</p>
+                    </div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-exp-slot" data-exp-id="innovation-park" tabindex="0">
+                    <span class="mc-inv-item-icon">🌳</span>
+                    <span class="mc-inv-item-count">3</span>
+                    <div class="mc-inv-tooltip">
+                      <p class="mc-tt-title">杨柳青国家文化公园</p>
+                      <p class="mc-tt-desc">景观营建设计 · 第一负责人</p>
+                      <p class="mc-tt-hint">点击查看详情</p>
+                    </div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-empty"></div>
+                </div>
+              </div>
+
+              <!-- 物品栏：技能特长 -->
+              <div class="mc-inv-section">
+                <p class="mc-inv-section-label">🎒 技能特长 · SKILLS</p>
+                <div class="mc-inv-grid">
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🎮</span>
+                    <span class="mc-inv-item-count">UE5</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">UE5 引擎</p><p class="mc-tt-desc">白盒搭建 · Lumen · Sequencer · 蓝图 · 地形雕刻</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🧩</span>
+                    <span class="mc-inv-item-count">U3D</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">Unity 引擎</p><p class="mc-tt-desc">Tai 关卡编辑器 · 关卡白盒 · 玩法配置 · 副本搭建</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🦏</span>
+                    <span class="mc-inv-item-count">3D</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">3D 建模</p><p class="mc-tt-desc">Rhino · SketchUp · 3ds Max · Twinmotion</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🎨</span>
+                    <span class="mc-inv-item-count">2D</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">视觉设计</p><p class="mc-tt-desc">Photoshop · Illustrator · Procreate · InDesign</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">💡</span>
+                    <span class="mc-inv-item-count">渲染</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">渲染引擎</p><p class="mc-tt-desc">Lumion · D5 · Enscape · V-Ray · Lumen</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🗣️</span>
+                    <span class="mc-inv-item-count">EN</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">语言能力</p><p class="mc-tt-desc">雅思 6.0 · CET-4 · 英语沟通能力</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🖥️</span>
+                    <span class="mc-inv-item-count">IT</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">计算机能力</p><p class="mc-tt-desc">三维数字化认证 6 级 · 熟练 Windows / Office</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">🤖</span>
+                    <span class="mc-inv-item-count">AI</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">AI 辅助工具</p><p class="mc-tt-desc">Banana · Seedance · Cursor · 自动化工作流</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item" tabindex="0">
+                    <span class="mc-inv-item-icon">📐</span>
+                    <span class="mc-inv-item-count">CAD</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">工程制图</p><p class="mc-tt-desc">AutoCAD · 空间尺度 · 施工图</p></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 快捷栏：游戏经历分类 -->
+              <div class="mc-inv-section">
+                <p class="mc-inv-section-label">⚔ 游戏经历 · HOTBAR（10000h+ · 2w+氪金）</p>
+                <div class="mc-inv-hotbar">
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🌍</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">开放世界 / RPG</p><p class="mc-tt-desc">原神700h+(58级) · 崩铁200h+(均衡66) · 鸣潮200h+ · 赛博朋克2077 · 战神4 · 鬼谷八荒</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🏰</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">MMO</p><p class="mc-tt-desc">DNF200h+ · 燕云十六声100h+ · 洛克王国世界200h+ · 魔法哈奇400h+ · 流放之路2</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🥷</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">潜入 / 沉浸模拟</p><p class="mc-tt-desc">耻辱2（全主线通关）</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🎴</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">卡牌 / 养成</p><p class="mc-tt-desc">三国杀100h+ · 赛尔号 · 摩尔庄园 · 奥拉星 · 约600h+</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🔫</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">FPS / 射击</p><p class="mc-tt-desc">求生之路2 · CF100h+ · CSO200h+ · 和平精英100h+ · 泰坦陨落2 · 绝地潜兵2</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">⛏️</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">沙盒</p><p class="mc-tt-desc">我的世界1000h+ · 泰拉瑞亚100h+ · 森林</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">♟️</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">自走棋 / 策略</p><p class="mc-tt-desc">金铲铲之战500h+（大师）· 魔兽争霸3 200h · 率土之滨100h+</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🏆</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">MOBA</p><p class="mc-tt-desc">王者荣耀1500h+（荣耀王者130星 · 7000场）· 英雄联盟</p></div>
+                  </div>
+                  <div class="mc-inv-slot mc-inv-slot-item mc-inv-hot-slot" tabindex="0">
+                    <span class="mc-inv-item-icon">🎵</span>
+                    <div class="mc-inv-tooltip"><p class="mc-tt-title">音乐 / 竞速 / 休闲</p><p class="mc-tt-desc">节奏大师 · QQ炫舞 · QQ飞车700h+ · 球球大作战 · 贪吃蛇大作战</p></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 档案底部：玩家简介 -->
+          <div class="mc-inv-footer">
+            <p>环境艺术设计本科，景观建筑硕士（QS 第35，建筑 QS 第5）。熟悉 UE5、Unity 引擎进行白盒关卡搭建与关卡演出，使用 Tai 关卡编辑器完成副本搭建与玩法配置。具备从策划案到可玩 Demo 的完整落地能力。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ABOUT ===================== -->
+      <section id="about" class="mc-section">
+        <div class="mc-section-head">
+          <p class="mc-eyebrow">About</p>
+          <h2 class="mc-section-title">关于我</h2>
+        </div>
+        <div class="mc-about-grid">
+          <article class="mc-card mc-reveal">
+            <h3>个人优势 · 跨学科基础</h3>
+            <p>环境艺术设计本科，景观建筑硕士（QS 第35、建筑 QS 第5），具备扎实的空间设计与美术功底。研究生阶段聚焦工业遗产与游戏景观课题；熟练使用 Rhino、SketchUp、AutoCAD、Photoshop、Illustrator、InDesign、Lumion 完成方案、建模、渲染与排版全流程。</p>
+          </article>
+          <article class="mc-card mc-reveal">
+            <h3>个人优势 · 关卡落地能力</h3>
+            <p>熟练使用 UE5、Unity 引擎进行白盒关卡搭建与关卡演出。熟悉地形系统建模与笔刷雕刻、材质系统基础参数调用、Lumen 实时光照与场景氛围调试；能够使用 Sequencer 完成过场动画与镜头演出，使用 Unity 的 Tai 关卡编辑器搭建和配置二级关卡副本。实习期间完成 5 个关卡板块的搭建与特效配置，设计并推进 2 套附加玩法进入开发阶段。参与腾讯游戏星跃实战营使用 UE5 搭建仙侠关卡白盒与玩法，系统掌握跨工种协作流程。</p>
+          </article>
+          <article class="mc-card mc-reveal">
+            <h3>个人优势 · 统筹与玩家洞察</h3>
+            <p>具备良好的项目统筹与团队协作能力。实习期间负责程序/美术/策划三方沟通与评审，推动 2 个附加玩法与 5 个二级副本关卡落地。在校期间多次担任学生项目第一负责人，设计成果获全国三维数字化创新设计大赛国家三等奖、人居环境设计学年奖（两届）、园冶杯大学生国际竞赛最佳人气奖、华灿奖省级二等奖等多项国家级与省级奖项。资深游戏玩家，15 年以上游戏经验，深度涉猎 MOBA、开放世界、RPG、沙盒、自走棋等类型，累计时长上万小时，总氪金超 2w 元。</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== FINALE + CONTACT ===================== -->
+      <section id="contact" class="mc-finale">
+        <video id="mcFinaleVideo" class="mc-finale-video"
+          poster="./assets/animation/mc-finale-poster.jpg"
+          muted loop autoplay playsinline webkit-playsinline
+          preload="metadata"
+          disablepictureinpicture
+          controlslist="nodownload noplaybackrate">
+          <source src="./assets/animation/mc-finale-h264.mp4" type="video/mp4" />
+          <source src="./assets/animation/mc-finale-h264-sd.mp4" type="video/mp4" />
+        </video>
+        <div class="mc-finale-overlay">
+          <p class="mc-eyebrow">Contact</p>
+          <h2 class="mc-section-title">联系方式</h2>
+          <p class="mc-finale-note">欢迎联系我交流关卡策划校招机会、项目合作</p>
+          <div class="mc-contact-list">
+            <a href="mailto:1102910102@qq.com">1102910102@qq.com</a>
+            <a href="tel:13358521997">13358521997</a>
+            <a href="https://space.bilibili.com/129912981" target="_blank" rel="noreferrer">Bilibili 主页</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== MODAL ===================== -->
+    <div id="mcModal" class="mc-modal">
+      <div class="mc-modal-backdrop"></div>
+      <article class="mc-modal-panel">
+        <button class="mc-modal-close" aria-label="关闭">×</button>
+        <p class="mc-eyebrow">DETAIL</p>
+        <h3 id="mcModalTitle"></h3>
+        <p id="mcModalSummary" class="mc-project-desc" style="margin:0.5rem 0;"></p>
+        <div id="mcModalMedia" style="margin:0.8rem 0;"></div>
+        <div id="mcModalMeta" class="mc-modal-meta" style="margin:0.5rem 0;"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <section>
+            <h4>核心设计与玩法</h4>
+            <ul id="mcModalDesign"></ul>
+          </section>
+          <section>
+            <h4>实现方法与个人贡献</h4>
+            <ul id="mcModalContrib"></ul>
+          </section>
+        </div>
+      </article>
+    </div>
+
+    <script src="./mc-portfolio.js?v=mc-menu-20260831d"></script>
+  </body>
+</html>

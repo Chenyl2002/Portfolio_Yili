@@ -16,3 +16,6 @@ deploy-site-*/
 .vscode/
 .idea/
 *.swp
+
+# EdgeOne CLI local
+.edgeone/
