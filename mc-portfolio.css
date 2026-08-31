@@ -1251,8 +1251,21 @@ body.mc-ready .mc-hud { opacity: 1; }
    12. 关于我
    ================================================================ */
 .mc-about-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* auto-fit（而非 auto-fill）会折叠没有内容的空轨道，
+     否则 3 张卡片被塞进 4 条轨道，右侧空轨道会让卡片组整体偏左。 */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  /* 与页面其他区块统一的内容宽度，并在超宽屏下水平居中 */
+  max-width: 1280px;
+  margin-inline: auto;
+  align-items: stretch;
+}
+@media (max-width: 1024px) {
+  .mc-about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .mc-about-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ================================================================
