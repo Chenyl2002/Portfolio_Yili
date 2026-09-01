@@ -575,11 +575,11 @@ body.mc-ready .mc-hud { opacity: 1; }
 
 /* 顶部调试信息条 */
 .mc-debug-line {
-  position: absolute; top: calc(56px + clamp(10px, 2vh, 18px)); left: 0; z-index: 5;
+  position: absolute; top: calc(56px + clamp(8px, 1.5vh, 14px)); left: 0; z-index: 5;
   width: 100%;
   display: flex; justify-content: center; gap: 22px;
   flex-wrap: wrap;
-  font: 400 0.7rem/1.5 var(--mc-font-hud);
+  font: 400 0.75rem/1.5 var(--mc-font-hud);
   color: #fff;
   text-shadow: 2px 2px 0 rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.6);
   padding: 0 12px;
