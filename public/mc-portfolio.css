@@ -575,7 +575,7 @@ body.mc-ready .mc-hud { opacity: 1; }
 
 /* 顶部调试信息条 */
 .mc-debug-line {
-  position: absolute; top: clamp(24px, 4vh, 50px); left: 0; z-index: 5;
+  position: absolute; top: calc(56px + clamp(10px, 2vh, 18px)); left: 0; z-index: 5;
   width: 100%;
   display: flex; justify-content: center; gap: 22px;
   flex-wrap: wrap;
