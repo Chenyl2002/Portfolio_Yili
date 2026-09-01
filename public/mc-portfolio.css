@@ -579,9 +579,9 @@ body.mc-ready .mc-hud { opacity: 1; }
   width: 100%;
   display: flex; justify-content: center; gap: 22px;
   flex-wrap: wrap;
-  font: 400 0.5rem/1.5 var(--mc-font-hud);
-  color: rgba(255,255,255,0.9);
-  text-shadow: 1.5px 1.5px 0 rgba(0,0,0,0.9);
+  font: 400 0.7rem/1.5 var(--mc-font-hud);
+  color: #fff;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.6);
   padding: 0 12px;
 }
 
