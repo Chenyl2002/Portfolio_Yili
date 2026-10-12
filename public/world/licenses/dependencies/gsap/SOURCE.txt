@@ -1,0 +1,3 @@
+Retrieved 2026-10-07 from https://gsap.com/community/standard-license/ (redirect target of https://gsap.com/standard-license/ named in installed GSAP 3.12.5 headers). Full license, including the official FAQ and effective dates, extracted as plain text in standard-license.txt, including terms, effective date and links. Library proprietary notices remain unchanged.
+
+Linked Webflow Terms of Service incorporated by the official GSAP page: https://webflow.com/legal/terms

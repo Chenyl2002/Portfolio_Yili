@@ -1,0 +1,81 @@
+# Original sound-effect sources
+
+Restored unmodified from the public Bruno Simon folio-2025 repository.
+Repository license: https://github.com/brunosimon/folio-2025/blob/main/license.md
+Copyright (c) 2025 Bruno Simon. The root license.md retains the MIT notice.
+These source URLs and Git blob SHA-1 values identify the exact fetched bytes.
+
+- sounds/swoosh/Swoosh 02.mp3 | 2a38afca277fdb842b06329d6b48acbee849e4c4 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/swoosh/Swoosh%2002.mp3
+- sounds/swoosh/Swoosh 05.mp3 | 7cf9583021cfe803821b0cb208947e909a140b27 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/swoosh/Swoosh%2005.mp3
+- sounds/paper/PaperMovement_fNAyV_01-3.mp3 | 5127c0860b1f5f697b1dcd484823da7d6aa89cb5 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/paper/PaperMovement_fNAyV_01-3.mp3
+- sounds/paper/PaperMovement_fNAyV_01-2.mp3 | d456809b55849767ab791208b094cd5c3f0d2a08 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/paper/PaperMovement_fNAyV_01-2.mp3
+- sounds/birdTweets/24074 small bird tweet calling-full-1.mp3 | 41900752b6b482e1c080144f9b581d4d46457757 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/birdTweets/24074%20small%20bird%20tweet%20calling-full-1.mp3
+- sounds/birdTweets/24074 small bird tweet calling-full-2.mp3 | ad8d6f9432d58f091115646a2095526b105b3247 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/birdTweets/24074%20small%20bird%20tweet%20calling-full-2.mp3
+- sounds/birdTweets/20711 finch bird isolated tweet-full.mp3 | cb2c420cebb9b1a7218293489d7b1f8c79f4343b | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/birdTweets/20711%20finch%20bird%20isolated%20tweet-full.mp3
+- sounds/birdTweets/30673 Yellowhammer bird tweet 3-full.mp3 | aa931cd6c4de111c8661c4929a5d3fa467ab5692 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/birdTweets/30673%20Yellowhammer%20bird%20tweet%203-full.mp3
+- sounds/birdTweets/31062 Ortolan bird tweet-full.mp3 | 516d4501617ffd84dc6afb95c6c235d43b7baf1a | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/birdTweets/31062%20Ortolan%20bird%20tweet-full.mp3
+- sounds/birdTweets/31451 Ortolan bunting bird isolated tweet-full.mp3 | da3d5ba6b72d411064b6edf59d03fc28f4424d52 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/birdTweets/31451%20Ortolan%20bunting%20bird%20isolated%20tweet-full.mp3
+- sounds/owl/OwlHootingReverberantSeveral_Rik8a_03.mp3 | 2d73149608d4dc8edde4da80c25ca8def9804f13 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/owl/OwlHootingReverberantSeveral_Rik8a_03.mp3
+- sounds/rooster/rooster-crowing.mp3 | c45bd058aab0f5f3299ab1b113aa2f0981c9c19e | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/rooster/rooster-crowing.mp3
+- sounds/wolf/TimberWolvesGroupHowlingSomeWhimpering_S2h0E_04.mp3 | ac8436b69384cec6ec3cdaaa9a4aaec0f204974b | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/wolf/TimberWolvesGroupHowlingSomeWhimpering_S2h0E_04.mp3
+- sounds/crickets/Crickets.mp3 | 188e4854ee9eed14d15000bc5c0a5c3ca6b5c5ec | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/crickets/Crickets.mp3
+- sounds/jingleBells/Mountain Audio - Christmas Bells.mp3 | ac16393c04ac6dad254cf1a1f8cf807e6fcb02e9 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/jingleBells/Mountain%20Audio%20-%20Christmas%20Bells.mp3
+- sounds/rain/soundjay_rain-on-leaves_main-01.mp3 | 00b7fb5874c096376098c03481af7f4ccbe88f88 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/rain/soundjay_rain-on-leaves_main-01.mp3
+- sounds/wind/13582-wind-in-forest-loop.mp3 | 27abf09c42afadc8f97f6072fcc1292c8ad925b7 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/wind/13582-wind-in-forest-loop.mp3
+- sounds/waves/lake-waves.mp3 | 285a85fddcec6632670ebce2246aa8bf1dfd4841 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/waves/lake-waves.mp3
+- sounds/fire/Mountain Audio - Fire Burning in a Wood Stove 1.mp3 | 15805ff01385ab06c98f5eff393d283adc20a853 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/fire/Mountain%20Audio%20-%20Fire%20Burning%20in%20a%20Wood%20Stove%201.mp3
+- sounds/fire/Fire Burning.mp3 | be3b1475403e228c71c1a4ed8a94aaeea06b6a07 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/fire/Fire%20Burning.mp3
+- sounds/jukebox/DVDPlayerChangeDisc_BW.49824.mp3 | 3da34ed48528e227894b5ace53d5c70b9f5732a2 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/jukebox/DVDPlayerChangeDisc_BW.49824.mp3
+- sounds/mecanism/slide.mp3 | e0b748a7888220078bb047b5465b07217b7cca16 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/mecanism/slide.mp3
+- sounds/mecanism/click.mp3 | d2248728b6236d243692790e788c899f1264dc2a | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/mecanism/click.mp3
+- sounds/mecanism/assemble.mp3 | 5dfb583cc904d1733c941c53da0c244f254c1893 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/mecanism/assemble.mp3
+- sounds/hits/defaults/Stone_Hit_Crash_106-2.mp3 | 9d325a062df9f41f4585ee2b2bb07fa3c2e6c2da | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/defaults/Stone_Hit_Crash_106-2.mp3
+- sounds/hits/defaults/Stone_Hit_Crash_071-1.mp3 | ac88c1ecb93f17952499451a9fcae910b1d5b6a7 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/defaults/Stone_Hit_Crash_071-1.mp3
+- sounds/hits/defaults/Stone_Hit_Crash_106-1.mp3 | e22457ea97886ef0ba34d4c13eab724bbede89d6 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/defaults/Stone_Hit_Crash_106-1.mp3
+- sounds/hits/defaults/Impact Soft 01.mp3 | 48290670dbf0e93464c89052f24116cde7c92655 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/defaults/Impact%20Soft%2001.mp3
+- sounds/hits/defaults/Impact Soft 02.mp3 | 8d9f36b6bf55ff641c7d029471149b7d774f76ff | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/defaults/Impact%20Soft%2002.mp3
+- sounds/hits/defaults/Impact Soft 03.mp3 | 51ca6639a767bd1edadf6f83db89e62b9d4e0987 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/defaults/Impact%20Soft%2003.mp3
+- sounds/hits/defaults/Impact Soft 04.mp3 | 40ffe5fb2ca5efc7bc98bc66724ed39c925e0a5b | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/defaults/Impact%20Soft%2004.mp3
+- sounds/hits/bricks/24445 brick light hitting-full-2.mp3 | 3b522ec11cd220e71a8a940ebc3d0d3071524de0 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/bricks/24445%20brick%20light%20hitting-full-2.mp3
+- sounds/hits/bricks/41559 Stone brick fall hit 01-full-1.mp3 | 4813daa8533702a67122dc563ce896b2a6ac09ae | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/bricks/41559%20Stone%20brick%20fall%20hit%2001-full-1.mp3
+- sounds/hits/bricks/41563 Stone brick fall hit 05-full-1.mp3 | 420c90cfb852ac8e708dc173a7ce8be692adf7a3 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/bricks/41563%20Stone%20brick%20fall%20hit%2005-full-1.mp3
+- sounds/hits/bricks/BrickSetDown_BW.5803-1.mp3 | 58d8886becb111370733497140c2ce5af5505b03 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/bricks/BrickSetDown_BW.5803-1.mp3
+- sounds/hits/metal/EQUIPTact_Fire Gear_SDFIRE0411.mp3 | 83c4f7ccafa8a5fd68bb2c7996bfa109a67e1405 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/metal/EQUIPTact_Fire%20Gear_SDFIRE0411.mp3
+- sounds/hits/metal/Metal Clip Hit.mp3 | b7258a1c70a6ebf39001d64d06cfb8556e302d4d | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/metal/Metal%20Clip%20Hit.mp3
+- sounds/hits/metal/Metalic 3.mp3 | 32ac1dda762eecc24fc7164d74bc11866e560229 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/hits/metal/Metalic%203.mp3
+- sounds/vehicle/suspensions/Robotic_Lifeforms_2_-_Air_Source_-_Piston_Studio_Chair_07.mp3 | 29858f8860554aa0735d08016e60d9850a462d16 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/suspensions/Robotic_Lifeforms_2_-_Air_Source_-_Piston_Studio_Chair_07.mp3
+- sounds/vehicle/honk/Car Horn Long 4.mp3 | 1e163c6fe75b31a15fce562b11b769c5874d8c40 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/honk/Car%20Horn%20Long%204.mp3
+- sounds/vehicle/springs/HandleSqueak_BW.60329.mp3 | f76f78cc41acda16b30b6d03e0dc0c86b4001435 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/springs/HandleSqueak_BW.60329.mp3
+- sounds/vehicle/springs/SpringMetalMovements_1u54Y_01.mp3 | a9a5a084e8d3954eca46380547bc344d52ebaa1c | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/springs/SpringMetalMovements_1u54Y_01.mp3
+- sounds/vehicle/floor/wheels-on-pebbles-road.mp3 | beb0e5b4ac55427a4a169836a32a3fee76bea56e | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/floor/wheels-on-pebbles-road.mp3
+- sounds/vehicle/floor/Source Stone Loop Small Rubbing Pebbles On Concrete 02.mp3 | f1fa8078c0a7e53d0bfc0edb2cf7eae9762aba10 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/floor/Source%20Stone%20Loop%20Small%20Rubbing%20Pebbles%20On%20Concrete%2002.mp3
+- sounds/vehicle/engine/muscle car engine loop idle.mp3 | 3cf358f23218f6408175a988d75f17a6b6fad725 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/engine/muscle%20car%20engine%20loop%20idle.mp3
+- sounds/vehicle/spin/41051 Glass stone turning loop 09-full.mp3 | 7e9ace818394054661879ec7f96e1b4ac0bb9845 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/spin/41051%20Glass%20stone%20turning%20loop%2009-full.mp3
+- sounds/vehicle/energy/Energy_-_force_field_8_loop.mp3 | 468191cf55b09d921809b3d7814c01ef8ec53205 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/energy/Energy_-_force_field_8_loop.mp3
+- sounds/achievements/Money Reward 2.mp3 | 6f8e96c428803082594f0b08c31abd5aaa6c376b | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/achievements/Money%20Reward%202.mp3
+- sounds/vehicle/paint/Spray Paint 14.mp3 | 4d6e02da74781bd6a7498b4b08ee87e17ddbcab8 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/vehicle/paint/Spray%20Paint%2014.mp3
+- sounds/reveal/reveal-1.mp3 | 0989d8f5fe285d005559f4a4e49693dfaf1e0783 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/reveal/reveal-1.mp3
+- sounds/clicks/Source Metal Clicks Delicate Light Sharp Clip Mid 07.mp3 | a4560c02f829846548103d2a8da1c34b7be2142a | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/clicks/Source%20Metal%20Clicks%20Delicate%20Light%20Sharp%20Clip%20Mid%2007.mp3
+- sounds/explosions/SmallImpactMediumE PE281202.mp3 | e3aa4db059f081dcfa06437697c147552e96a032 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/explosions/SmallImpactMediumE%20PE281202.mp3
+- sounds/explosions/SmallImpactMediumE PE281203.mp3 | 1b981c8b71df62a9f2207ceb67e21bcdd6c480ec | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/explosions/SmallImpactMediumE%20PE281203.mp3
+- sounds/thunder/near/THUNDER_GEN-HDF-23300.mp3 | b24371f21c9fe05140d28e1210c3e7846253b3c1 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/thunder/near/THUNDER_GEN-HDF-23300.mp3
+- sounds/thunder/near/Lightning-Streak-with-Thunder-Crash_TTX028903.mp3 | 7c571f707a04e1a6fbb93162e0fd3717b2d77634 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/thunder/near/Lightning-Streak-with-Thunder-Crash_TTX028903.mp3
+- sounds/thunder/near/ThunderSharpStrikingRumblingCrackling_JMDKp_04.mp3 | 8eb871cbc0edaf09cab4ba63633eb0cb0faa4456 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/thunder/near/ThunderSharpStrikingRumblingCrackling_JMDKp_04.mp3
+- sounds/thunder/distant/Thunder32GentleCr SIG014001.mp3 | 8242a51739c74824018982281037fc67a1ac279a | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/thunder/distant/Thunder32GentleCr%20SIG014001.mp3
+- sounds/thunder/distant/Thunder44LowRippl SIG015201.mp3 | 1929aca9ff6284bfbcb5b032c49859b419a93ee3 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/thunder/distant/Thunder44LowRippl%20SIG015201.mp3
+- sounds/fire/ignite-1.mp3 | f31c56cf31d103006c0922b2198d816b9cddb385 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/fire/ignite-1.mp3
+- sounds/fire/Cloth_Movement_Hung_Clothes_Blowing_in_Wind_ODY-1520-031.mp3 | fafd0125a0782f60dc674f7619aca0e21657686a | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/fire/Cloth_Movement_Hung_Clothes_Blowing_in_Wind_ODY-1520-031.mp3
+- sounds/circuit/countdown/Game Start Countdown 31-1.mp3 | 57b330fb1b1012bc3ce2d09032c060cbdc72f483 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/circuit/countdown/Game%20Start%20Countdown%2031-1.mp3
+- sounds/circuit/countdown/Game Start Countdown 31-2.mp3 | 2150c294eebde77043782c28e218ac3e5b059a94 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/circuit/countdown/Game%20Start%20Countdown%2031-2.mp3
+- sounds/circuit/checkpoint/Win Score 1.mp3 | bc23e5201883578fd191d10dbc51388d35283808 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/circuit/checkpoint/Win%20Score%201.mp3
+- sounds/circuit/finish/Big Win Fanfare 2.mp3 | 51d5abbe78b76a476110687a0ce5f4e6d392edb6 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/circuit/finish/Big%20Win%20Fanfare%202.mp3
+- sounds/circuit/applause/huge win.mp3 | d93419b9323a67bae48297ff209e18ba9c83cb7e | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/circuit/applause/huge%20win.mp3
+- sounds/anvil/METLImpt_Anvil Single Hammer Strike Hammers_GENHD1-01372.mp3 | d5c61224a57c591f72bcf7eb15b84e57415b6157 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/anvil/METLImpt_Anvil%20Single%20Hammer%20Strike%20Hammers_GENHD1-01372.mp3
+- sounds/magic/Mountain Audio - Small Chimes - Loop.mp3 | c53a2299f57ed3cdb87efd7acc690c7a0c742803 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/magic/Mountain%20Audio%20-%20Small%20Chimes%20-%20Loop.mp3
+- sounds/stoneSlides/stoneSlideOut.mp3 | 7541a1bad624ddbcf2a13b9a38c50a69a61413d2 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/stoneSlides/stoneSlideOut.mp3
+- sounds/stoneSlides/stoneSlideIn.mp3 | 9adbb3003b8e836a42d46a6bad64c73af9727c21 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/stoneSlides/stoneSlideIn.mp3
+- sounds/mecanism/05947 light wooden cart riding on cobblestone - looping.mp3 | bd55c1354e628a0baae44eefa9b7b8761a600159 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/mecanism/05947%20light%20wooden%20cart%20riding%20on%20cobblestone%20-%20looping.mp3
+- sounds/magic/Ghostly Whisper Background Loop 9.mp3 | aa641010e134ddb8016fb5bfd2db3656d471ed11 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/magic/Ghostly%20Whisper%20Background%20Loop%209.mp3
+- sounds/bell/Death Hit.mp3 | 178740d00ceb722139fa25f9e8e92fce416ec13a | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/bell/Death%20Hit.mp3
+- sounds/bell/Epic Bell Impact Hit.mp3 | c6c0771850c01c7ec51aa57fdc0bafc8d14ddb6a | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/bell/Epic%20Bell%20Impact%20Hit.mp3
+- sounds/tv/alert.mp3 | c4961351d339b055bc3fd358435a3792c95d8640 | https://github.com/brunosimon/folio-2025/blob/main/static/sounds/tv/alert.mp3

@@ -1,0 +1,1 @@
+Exact upstream version source: https://raw.githubusercontent.com/cocopon/tweakpane/4.0.5/LICENSE.txt ; retrieved 2026-10-07

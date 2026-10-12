@@ -1,0 +1,37 @@
+/* Site navigation stays separate from the frozen game runtime. */
+.world-home-link {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  left: max(12px, env(safe-area-inset-left));
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  border: 1px solid #d3b27d;
+  border-radius: 4px;
+  background: #352919;
+  color: #fff5df;
+  font: 600 14px/1.4 system-ui, sans-serif;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #0004;
+  touch-action: manipulation;
+}
+.world-home-link:hover { background: #51402a; }
+.world-home-link:focus-visible { outline: 3px solid #fff5df; outline-offset: 3px; }
+/* Keep game panels and narrow-screen notification text unobstructed. */
+html.input-filter-menu .world-home-link,
+html.input-filter-modal .world-home-link { visibility: hidden; }
+@media (max-width: 600px) {
+  html:has(.notifications .notification.is-visible) .world-home-link { visibility: hidden; }
+}
+/* The readable fallback is a scrolling document, not a game overlay. */
+html.is-graphics-fallback .world-home-link {
+  position: relative;
+  top: auto;
+  left: auto;
+  margin: 12px;
+  visibility: visible;
+}
+/* Dialogs use the browser top layer, so their existing close controls stay clear. */

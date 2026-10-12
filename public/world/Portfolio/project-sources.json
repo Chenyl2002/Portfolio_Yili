@@ -1,0 +1,1419 @@
+{
+  "version": 1,
+  "description": "作品区资料来源与图像出处。重新编排不代表新增原游戏场景；DOCX页码以本次只读渲染为准。",
+  "sources": [
+    {
+      "file": "Portfolio/doc-broken-home.pdf",
+      "original_name": "《破碎之家》游戏关卡说明.pdf",
+      "type": "关卡说明",
+      "pages": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        13,
+        15
+      ],
+      "sha256": "a8409ac8b5911f8ea12b58db21e8ee723f593e9345d5400070090c16ae7df985",
+      "bytes": 4173386
+    },
+    {
+      "file": "Portfolio/doc-icebreaking.pdf",
+      "original_name": "破冰启航游戏关卡说明.pdf",
+      "type": "关卡说明",
+      "pages": [
+        1,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10,
+        11,
+        13,
+        15,
+        16,
+        17,
+        18
+      ],
+      "sha256": "a743915c3bf41fead56935e27da9fdfc4cc35a89e3440b3bb2573a5291c82861",
+      "bytes": 4686536
+    },
+    {
+      "file": "Portfolio/doc-ancient-temple.docx",
+      "original_name": "从御剑飞行开始 关卡策划案 第三版草稿.docx",
+      "type": "团队项目策划草稿",
+      "pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "sha256": "3439758af24418ed38746666b5d38abbdec5cca792dd29727ebf58ba78aed010",
+      "bytes": 214624
+    },
+    {
+      "file": "Portfolio/doc-moston.pdf",
+      "original_name": "Chen_YIli_LA2B.pdf",
+      "type": "Moston游戏化空间研究",
+      "pages": [
+        40,
+        41,
+        42,
+        43
+      ],
+      "sha256": "bc4284cba383644b3fab7f8dde165c4f8b6c767075c9daaa6b045c5496664217",
+      "bytes": 17160159
+    }
+  ],
+  "original_site": {
+    "file": "public/mc-portfolio.js",
+    "sha256": "bb8f200a87d308cb28d0456a3305f5804dc2f635e594fec8d01e3ae056d15885",
+    "lines": {
+      "破碎之家": [
+        63,
+        71
+      ],
+      "破冰启航": [
+        74,
+        82
+      ],
+      "山中古刹": [
+        85,
+        93
+      ],
+      "Gamified Moston": [
+        96,
+        104
+      ]
+    },
+    "note": "个人职责结合原站说明及原文档核对。破冰旧站演出措辞与PDF未完成声明冲突时，以PDF明确状态为准。"
+  },
+  "images": {
+    "preserved_covers": [
+      {
+        "project": "破碎之家",
+        "file": "projects/images/yili-01.webp",
+        "sha256": "231a41551c9eb54a2e419e4255ff3395f25cf4443b029798bcf5b95464f3aa75",
+        "original_file": "public/assets/bili/cover-01.jpg",
+        "original_sha256": "26dc0e9bcd647753579ccfbfced0b1da18a3c392d5b82a1c233ac1fd580fbb23",
+        "transformation": "沿用已有优化裁切版本；原画面已视觉核对，原文件未改；新增概述卡复用该画面"
+      },
+      {
+        "project": "破冰启航",
+        "file": "projects/images/yili-02.webp",
+        "sha256": "65bd84d87bc6527efaceec06b497cdbc6fb38586f8aa9c09a7901d7a89efe505",
+        "original_file": "public/assets/bili/cover-02.jpg",
+        "original_sha256": "28a2a1c0651d4f282f4d081044683a218eef820cf25745b2595bf91ab7cd4bc8",
+        "transformation": "沿用已有优化裁切版本；原画面已视觉核对，原文件未改；新增概述卡复用该画面"
+      },
+      {
+        "project": "山中古刹",
+        "file": "projects/images/yili-03.jpg",
+        "sha256": "d20f3f2ed9b4913b9006cc4bf48eb5977ed64832fa5df9269339a9e93f17be12",
+        "original_file": "public/assets/bili/cover-03.jpg",
+        "original_sha256": "d20f3f2ed9b4913b9006cc4bf48eb5977ed64832fa5df9269339a9e93f17be12",
+        "transformation": "与原站封面逐字节相同"
+      },
+      {
+        "project": "Gamified Moston",
+        "file": "projects/images/yili-04.jpg",
+        "sha256": "9f038243680d883f3f1125c4a3221bc6d153ec9382c1593a28e0f57908d58dbe",
+        "original_file": "public/assets/bili/cover-04.jpg",
+        "original_sha256": "9f038243680d883f3f1125c4a3221bc6d153ec9382c1593a28e0f57908d58dbe",
+        "transformation": "与原站封面逐字节相同"
+      }
+    ],
+    "layout": "每作五页简明说明板；原图文件保留。除明确标注的古刹机制转写示意外，所有画面取自原资料，未使用生成图片；裁切不改语义。",
+    "boards": [
+      {
+        "project": "破碎之家",
+        "key": "overview",
+        "file": "projects/images/broken-home-overview.webp",
+        "kind": "原项目演示画面",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "yili-01.webp",
+        "source_asset_sha256": "231a41551c9eb54a2e419e4255ff3395f25cf4443b029798bcf5b95464f3aa75",
+        "asset_crop_pixels": null,
+        "source": "《破碎之家》关卡说明 · 第2、4页；画面沿用原项目封面",
+        "source_pages": [
+          2,
+          4
+        ],
+        "link": {
+          "url": "./Portfolio/doc-broken-home.pdf#page=2",
+          "label": "查看设计原稿 · 第2页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 89502,
+        "sha256": "a118c8847e63f076a2885cae3dae6e5c969b31cc985a70acdd6d81b98213e840"
+      },
+      {
+        "project": "破碎之家",
+        "key": "route",
+        "file": "projects/images/broken-home-route.webp",
+        "kind": "原关卡动线图",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "broken-p07-route.png",
+        "source_asset_sha256": "51eeadd39003cbd2c363e43b662b7f5509e5998a1e508d7b8cd960e952d26f46",
+        "asset_crop_pixels": null,
+        "source": "《破碎之家》关卡说明 · 第5、7页",
+        "source_pages": [
+          5,
+          7
+        ],
+        "link": {
+          "url": "./Portfolio/doc-broken-home.pdf#page=7",
+          "label": "查看设计原稿 · 第7页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 143072,
+        "sha256": "3b5eef8066c4d2a2e0ffb8eb7a2da9c83a6f855f1fde26cb2cb03735b6bffd32"
+      },
+      {
+        "project": "破碎之家",
+        "key": "mirror",
+        "file": "projects/images/broken-home-mirror.webp",
+        "kind": "原白盒截图",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "broken-p09-mirror-fan-only.png",
+        "source_asset_sha256": "4d4f063535d07269241dc038090d4111ff835cc34a2cb983e5080c3f98f66404",
+        "asset_crop_pixels": null,
+        "source": "《破碎之家》关卡说明 · 第2、9页",
+        "source_pages": [
+          2,
+          9
+        ],
+        "link": {
+          "url": "./Portfolio/doc-broken-home.pdf#page=9",
+          "label": "查看设计原稿 · 第9页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 74614,
+        "sha256": "6baa8aad5001ff2f8510b53cf93e70df5a7c1543b2d5f252ed33b1b28f79a841"
+      },
+      {
+        "project": "破碎之家",
+        "key": "cooperate",
+        "file": "projects/images/broken-home-cooperate.webp",
+        "kind": "原白盒截图",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "broken-p13-car-cooperation.png",
+        "source_asset_sha256": "cd196ce698a1791635012f1b223f1a376de92ce773094e73481d6abcf48321eb",
+        "asset_crop_pixels": [
+          0,
+          0,
+          810,
+          434
+        ],
+        "source": "《破碎之家》关卡说明 · 第13页",
+        "source_pages": [
+          13
+        ],
+        "link": {
+          "url": "./Portfolio/doc-broken-home.pdf#page=13",
+          "label": "查看设计原稿 · 第13页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 78332,
+        "sha256": "ac14eb31cfc1561166692dd413cf332f4100fa23ce5b3cf324e96b76b622b583"
+      },
+      {
+        "project": "破碎之家",
+        "key": "role",
+        "file": "projects/images/broken-home-role.webp",
+        "kind": "原文档首页",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "broken-p01-role.png",
+        "source_asset_sha256": "ae2dabe463c7505ce8797ef30911ff55ea130e9c81329f9aed99164ad8b59803",
+        "asset_crop_pixels": null,
+        "source": "职责：原文档第1页、原站项目说明；资源：第15页",
+        "source_pages": [
+          1,
+          15
+        ],
+        "link": {
+          "url": "./Portfolio/doc-broken-home.pdf#page=1",
+          "label": "查看设计原稿 · 第1页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 143524,
+        "sha256": "e1638d8591629d8e8c067f39cbe8b609cf562694e5a007a6dee8f9c3b9c314d9"
+      },
+      {
+        "project": "破冰启航",
+        "key": "overview",
+        "file": "projects/images/icebreaking-overview.webp",
+        "kind": "原项目演示画面",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "yili-02.webp",
+        "source_asset_sha256": "65bd84d87bc6527efaceec06b497cdbc6fb38586f8aa9c09a7901d7a89efe505",
+        "asset_crop_pixels": null,
+        "source": "《破冰启航》关卡说明 · 第2、4、18页；画面沿用原项目封面",
+        "source_pages": [
+          2,
+          4,
+          18
+        ],
+        "link": {
+          "url": "./Portfolio/doc-icebreaking.pdf#page=2",
+          "label": "查看设计原稿 · 第2页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 92570,
+        "sha256": "ddce37dc84d0bf3883838a4435c36bcfdd4246d72d194e0efcc192f38f09f083"
+      },
+      {
+        "project": "破冰启航",
+        "key": "route",
+        "file": "projects/images/icebreaking-route.webp",
+        "kind": "原关卡动线图",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "ice-p07-port-route.png",
+        "source_asset_sha256": "8bdebd6787188d57356543a640a71fba5d48fe9e0144aab1c1bde21ce5a05789",
+        "asset_crop_pixels": null,
+        "source": "《破冰启航》关卡说明 · 第5、7页；前期限时见第9、10页，持续冻结见第11页",
+        "source_pages": [
+          5,
+          7,
+          9,
+          10,
+          11
+        ],
+        "link": {
+          "url": "./Portfolio/doc-icebreaking.pdf#page=7",
+          "label": "查看设计原稿 · 第7页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 97370,
+        "sha256": "b44fca1f93360d041d90191164b7b9d572ec570b1dd7ac5fa1924643f79992bf"
+      },
+      {
+        "project": "破冰启航",
+        "key": "minecart",
+        "file": "projects/images/icebreaking-minecart.webp",
+        "kind": "原白盒截图",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "ice-p11-minecart.png",
+        "source_asset_sha256": "c383b4a1f15683c65ab28493235b690406bcb261d9fdf58a0084ae538e769583",
+        "asset_crop_pixels": [
+          830,
+          0,
+          806,
+          436
+        ],
+        "source": "《破冰启航》关卡说明 · 第11页",
+        "source_pages": [
+          11
+        ],
+        "link": {
+          "url": "./Portfolio/doc-icebreaking.pdf#page=11",
+          "label": "查看设计原稿 · 第11页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 83894,
+        "sha256": "8764f63eed808dd4a1893ef34533c3f157590bb2a9ffb0696932f6e66e28c041"
+      },
+      {
+        "project": "破冰启航",
+        "key": "airship",
+        "file": "projects/images/icebreaking-airship.webp",
+        "kind": "原飞艇路线图",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "ice-p07-airship-floors.png",
+        "source_asset_sha256": "3598c42ce0c2801b16f4fc86520b263f63264dd8da9e6ed9bca9d250c05dea56",
+        "asset_crop_pixels": null,
+        "source": "路线：原文档第7页；后期组合规则：第13、15–17页。前期第9页吊机已为3秒、第10页吊桥已为6秒；第11页矿车为持续冻结。",
+        "source_pages": [
+          7,
+          13,
+          15,
+          16,
+          17
+        ],
+        "link": {
+          "url": "./Portfolio/doc-icebreaking.pdf#page=13",
+          "label": "查看设计原稿 · 第13页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 102384,
+        "sha256": "fbd66db11a99a61955e6178aa3955256d6fbce84693b1e9bdf43cf54b89d6900"
+      },
+      {
+        "project": "破冰启航",
+        "key": "scope",
+        "file": "projects/images/icebreaking-scope.webp",
+        "kind": "原文档资源与未完成说明",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "ice-p18-scope.png",
+        "source_asset_sha256": "7a48ffc047332382c5c4fb97f5d181215c3b4827b6d8a5ef5e23594e37e6d1fc",
+        "asset_crop_pixels": null,
+        "source": "职责：原文档第1页、原站项目说明；未完成：第18页",
+        "source_pages": [
+          1,
+          18
+        ],
+        "link": {
+          "url": "./Portfolio/doc-icebreaking.pdf#page=18",
+          "label": "查看设计原稿 · 第18页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 68072,
+        "sha256": "0969ba1e296c5f30c7501e741297c0faa1e6f6dbd65f082006ca293420a69896"
+      },
+      {
+        "project": "山中古刹",
+        "key": "overview",
+        "file": "projects/images/ancient-temple-overview.webp",
+        "kind": "原团队项目演示画面",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "yili-03.jpg",
+        "source_asset_sha256": "d20f3f2ed9b4913b9006cc4bf48eb5977ed64832fa5df9269339a9e93f17be12",
+        "asset_crop_pixels": null,
+        "source": "《从御剑飞行开始》第三版草稿 · 约束、玩法与流程；职责据原站说明",
+        "source_pages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "link": {
+          "url": "./Portfolio/doc-ancient-temple.docx",
+          "label": "下载原策划草稿"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 88496,
+        "sha256": "0c47d4f79cc9f3f9fde17a0c2f280c30d53ac1240bc3f08df87c15d477d03278"
+      },
+      {
+        "project": "山中古刹",
+        "key": "route",
+        "file": "projects/images/ancient-temple-route.webp",
+        "kind": "原草稿逻辑图局部",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "ancient-flow-tutorial.png",
+        "source_asset_sha256": "841e5a6720b45c9d2c7144be60f2d487e6e26164e26c8780e690833ee1adcc85",
+        "asset_crop_pixels": null,
+        "source": "《从御剑飞行开始》第三版草稿 · 正文与流程图",
+        "source_pages": [
+          1,
+          2,
+          4
+        ],
+        "link": {
+          "url": "./Portfolio/doc-ancient-temple.docx",
+          "label": "下载原策划草稿"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 68954,
+        "sha256": "67fd6e607a81fb7e8494db491f2bd16041d1e1204716757dfaa12427d0b9f092"
+      },
+      {
+        "project": "山中古刹",
+        "key": "switch",
+        "file": "projects/images/ancient-temple-switch.webp",
+        "kind": "据原策划草稿转写的机制示意",
+        "render_mode": "原草稿机制转写示意，非实机画面",
+        "source_asset": "ancient-p02-mechanism-text.png",
+        "source_asset_sha256": "8c7e4cbd481dc9535ea132b3bc31e82b3dce361978a4452212e29e6b4f9f26fe",
+        "asset_crop_pixels": null,
+        "source": "《从御剑飞行开始》第三版草稿 · 大殿御剑教学段；流程文字按原稿转写，非实机截图",
+        "source_pages": [
+          2
+        ],
+        "link": {
+          "url": "./Portfolio/doc-ancient-temple.docx",
+          "label": "下载原策划草稿"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 77828,
+        "sha256": "2f2ed5aed9def2072972d0db9d9bfccea030f69ab65bea05ddd2f7e7d3ff776e"
+      },
+      {
+        "project": "山中古刹",
+        "key": "towers",
+        "file": "projects/images/ancient-temple-towers.webp",
+        "kind": "原草稿逻辑图局部",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "ancient-flow-lower.png",
+        "source_asset_sha256": "98c0ec1b795acdb9d177847a56c03d9a3cc70e80a4e496afe58bec7ec1efe3c4",
+        "asset_crop_pixels": null,
+        "source": "《从御剑飞行开始》第三版草稿 · 塔楼段与流程图",
+        "source_pages": [
+          2,
+          3,
+          4
+        ],
+        "link": {
+          "url": "./Portfolio/doc-ancient-temple.docx",
+          "label": "下载原策划草稿"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 71900,
+        "sha256": "2e16bcc10aa95e2b77dbe31382dd3fa976185f4e5b7795f8d681173fb9c3aa42"
+      },
+      {
+        "project": "山中古刹",
+        "key": "role",
+        "file": "projects/images/ancient-temple-role.webp",
+        "kind": "原团队项目演示画面",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "yili-03.jpg",
+        "source_asset_sha256": "d20f3f2ed9b4913b9006cc4bf48eb5977ed64832fa5df9269339a9e93f17be12",
+        "asset_crop_pixels": null,
+        "source": "职责据原站项目说明；策划草稿含“三钥匙/四阵盘”差异",
+        "source_pages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "link": {
+          "url": "./Portfolio/doc-ancient-temple.docx",
+          "label": "下载原策划草稿"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 84318,
+        "sha256": "d59b1bb75686385ec422f248c74c497210d6f5cd89c092cd086011e9f4a3bcff"
+      },
+      {
+        "project": "Gamified Moston",
+        "key": "overview",
+        "file": "projects/images/moston-overview.webp",
+        "kind": "原项目演示画面",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "yili-04.jpg",
+        "source_asset_sha256": "9f038243680d883f3f1125c4a3221bc6d153ec9382c1593a28e0f57908d58dbe",
+        "asset_crop_pixels": null,
+        "source": "Chen_YIli_LA2B · 第40–43页；画面沿用原项目封面",
+        "source_pages": [
+          40,
+          41,
+          42,
+          43
+        ],
+        "link": {
+          "url": "./Portfolio/doc-moston.pdf#page=40",
+          "label": "查看设计原稿 · 第40页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 185574,
+        "sha256": "da4a2fe7c94e42a87ed4fd52e2853f62ee8f0fdb4479d473064c9828e1d9a327"
+      },
+      {
+        "project": "Gamified Moston",
+        "key": "gameplay",
+        "file": "projects/images/moston-gameplay.webp",
+        "kind": "原设计模拟画面",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "moston-p40.png",
+        "source_asset_sha256": "365dd82f170805eb49676d90715073ad8045cf7d4614bf6a3e2e283fcbd1fb75",
+        "asset_crop_pixels": null,
+        "source": "Chen_YIli_LA2B · 第40页 · 玩法规则",
+        "source_pages": [
+          40
+        ],
+        "link": {
+          "url": "./Portfolio/doc-moston.pdf#page=40",
+          "label": "查看设计原稿 · 第40页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 168860,
+        "sha256": "f38b19ffd2390d263e0916aa4603fb74a41f5e125bd747fcb596a9bbe90b6c5b"
+      },
+      {
+        "project": "Gamified Moston",
+        "key": "path",
+        "file": "projects/images/moston-path.webp",
+        "kind": "原模拟路径叠图",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "moston-p41.png",
+        "source_asset_sha256": "642022ad736fac1255542c6c0c9a69ce75d0ecea446f859a446bc2d799d8c7ab",
+        "asset_crop_pixels": null,
+        "source": "Chen_YIli_LA2B · 第41页 · 玩家路径；角色扮演不代表参与者本人的身份",
+        "source_pages": [
+          41
+        ],
+        "link": {
+          "url": "./Portfolio/doc-moston.pdf#page=41",
+          "label": "查看设计原稿 · 第41页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 203052,
+        "sha256": "4bca7f22635cd2cc73bfe2d32c7ef1351c2d01c81903945f214256c420c9a330"
+      },
+      {
+        "project": "Gamified Moston",
+        "key": "feedback",
+        "file": "projects/images/moston-feedback.webp",
+        "kind": "原模拟反馈图",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "moston-p42.png",
+        "source_asset_sha256": "d1768260c91037dd92714b67f10af67f7919951d33c5ece3eed4543580015cd7",
+        "asset_crop_pixels": null,
+        "source": "Chen_YIli_LA2B · 第42页 · 玩家反馈",
+        "source_pages": [
+          42
+        ],
+        "link": {
+          "url": "./Portfolio/doc-moston.pdf#page=42",
+          "label": "查看设计原稿 · 第42页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 204160,
+        "sha256": "3d58cd1a135de1db0952e0852857b4c49961899a26d115819f3eb9f3164caf81"
+      },
+      {
+        "project": "Gamified Moston",
+        "key": "reflection",
+        "file": "projects/images/moston-reflection.webp",
+        "kind": "原设计模拟反思页",
+        "render_mode": "原资料图像与简明说明排版",
+        "source_asset": "moston-p43.png",
+        "source_asset_sha256": "fbe0b598db8417b588788630056a958fb0b7e8b2ec21af04cea88e4f9644c750",
+        "asset_crop_pixels": null,
+        "source": "Chen_YIli_LA2B · 第43页；职责据原站项目说明",
+        "source_pages": [
+          43
+        ],
+        "link": {
+          "url": "./Portfolio/doc-moston.pdf#page=43",
+          "label": "查看设计原稿 · 第43页"
+        },
+        "width": 1920,
+        "height": 1080,
+        "bytes": 182946,
+        "sha256": "79d837a80c2664c216b2897f6e3a81d4d0f1bcbdb5a1f5d1bf3dca66a4f6f941"
+      }
+    ],
+    "crops": [
+      {
+        "file": "broken-p07-route.png",
+        "source": "doc-broken-home.pdf",
+        "page": 7,
+        "pdf_crop_points": [
+          22,
+          73,
+          838,
+          657
+        ],
+        "caption": "三段家具空间与主线动线：床铺/床头柜 → 衣柜/地面 → 椅子/桌面。"
+      },
+      {
+        "file": "broken-p09-mirror-fan.png",
+        "source": "doc-broken-home.pdf",
+        "page": 9,
+        "pdf_crop_points": [
+          20,
+          647,
+          838,
+          854
+        ],
+        "caption": "左图为弹簧跳跃装置，右图为玩家与镜身配合开启风扇；同属第一关的新手教学链。"
+      },
+      {
+        "file": "broken-p13-car-cooperation.png",
+        "source": "doc-broken-home.pdf",
+        "page": 13,
+        "pdf_crop_points": [
+          20,
+          359,
+          838,
+          576
+        ],
+        "caption": "左图为需要双人重量启动的四驱车，右图为开启抽屉后的通路；对应第三关协作造路。"
+      },
+      {
+        "file": "ice-p07-port-route.png",
+        "source": "doc-icebreaking.pdf",
+        "page": 7,
+        "pdf_crop_points": [
+          22,
+          73,
+          838,
+          748
+        ],
+        "caption": "港口入口/装货区 → 飞艇港口 → 飞艇区域，黄色、蓝色、红色标示三阶段动线。"
+      },
+      {
+        "file": "ice-p07-airship-floors.png",
+        "source": "doc-icebreaking.pdf",
+        "page": 7,
+        "pdf_crop_points": [
+          22,
+          780,
+          838,
+          1190
+        ],
+        "caption": "飞艇四层动线：传输带与熔炉、风扇攀爬、炸药传输带、驾驶室终战。"
+      },
+      {
+        "file": "ice-p11-minecart.png",
+        "source": "doc-icebreaking.pdf",
+        "page": 11,
+        "pdf_crop_points": [
+          20,
+          345,
+          838,
+          563
+        ],
+        "caption": "拉杆启动矿车，在合适位置依次冻结，让移动机关拼成上层通路。"
+      },
+      {
+        "file": "ice-p15-fuel-conveyor.png",
+        "source": "doc-icebreaking.pdf",
+        "page": 15,
+        "pdf_crop_points": [
+          20,
+          350,
+          838,
+          567
+        ],
+        "caption": "燃料桶抵达熔炉位置时冻结传输带，再操作投放按钮；投放三次后启动熔炉。"
+      },
+      {
+        "file": "moston-p40.png",
+        "source": "Chen_YIli_LA2B.pdf",
+        "page": 40,
+        "pdf_crop_points": [
+          0,
+          0,
+          1207.56005859375,
+          858.8980102539062
+        ],
+        "caption": "感官负荷游戏化规则：倒计时、生命条、强光、临路噪声与人群。"
+      },
+      {
+        "file": "moston-p41.png",
+        "source": "Chen_YIli_LA2B.pdf",
+        "page": 41,
+        "pdf_crop_points": [
+          0,
+          0,
+          1207.56005859375,
+          858.8980102539062
+        ],
+        "caption": "三类扮演角色的路径叠图，标出起点与学校目的地。"
+      },
+      {
+        "file": "moston-p42.png",
+        "source": "Chen_YIli_LA2B.pdf",
+        "page": 42,
+        "pdf_crop_points": [
+          0,
+          0,
+          1207.56005859375,
+          858.8980102539062
+        ],
+        "caption": "玩家路线及逐点反馈，包含入口识别、避晒、避噪、桥与公共空间吸引。"
+      },
+      {
+        "file": "moston-p43.png",
+        "source": "Chen_YIli_LA2B.pdf",
+        "page": 43,
+        "pdf_crop_points": [
+          0,
+          0,
+          1207.56005859375,
+          858.8980102539062
+        ],
+        "caption": "从模拟反馈提取设计改进：入口导向、遮荫、休憩点与安静路径。"
+      },
+      {
+        "file": "ancient-flow-upper.png",
+        "source": "从御剑飞行开始 关卡策划案 第三版草稿.docx",
+        "render_page": 4,
+        "embedded_image": "word/media/image1.png",
+        "pixel_crop": [
+          0,
+          40,
+          1242,
+          825
+        ],
+        "caption": "草稿原流程图上半部：前殿、偏殿一、地下宫殿、通道与偏殿二的探索/战斗/符箓解谜。"
+      },
+      {
+        "file": "ancient-flow-lower.png",
+        "source": "从御剑飞行开始 关卡策划案 第三版草稿.docx",
+        "render_page": 4,
+        "embedded_image": "word/media/image1.png",
+        "pixel_crop": [
+          0,
+          818,
+          1242,
+          1740
+        ],
+        "caption": "草稿原流程图下半部：大殿御剑教学、四塔楼限时阵盘、取宝物、庭院小头目、返回前殿。"
+      },
+      {
+        "file": "ice-p17-fan-timing.png",
+        "source": "doc-icebreaking.pdf",
+        "page": 17,
+        "pdf_crop_points": [
+          22,
+          603,
+          838,
+          819
+        ],
+        "caption": "连续冻结三处旋转风扇，在6秒窗口内借未停止风扇的推力上升。"
+      },
+      {
+        "file": "ancient-p02-mechanism-text.png",
+        "source": "从御剑飞行开始 关卡策划案 第三版草稿.docx",
+        "page": 2,
+        "pdf_crop_points": [
+          86,
+          570,
+          518,
+          759
+        ],
+        "caption": "原草稿正文第6—7节：御剑同时击破三符箓、四塔楼限时挑战及玩家体验目标。",
+        "render_note": "原DOCX只读渲染后的第2页正文裁切"
+      },
+      {
+        "file": "broken-p09-mirror-fan-only.png",
+        "source": "doc-broken-home.pdf",
+        "page": 9,
+        "pdf_crop_points": [
+          434,
+          648,
+          837,
+          855
+        ],
+        "caption": "风扇教学白盒：本体与镜身共同出现在橙色压力按钮旁，镜身维持机关，玩家借气流向上。"
+      },
+      {
+        "file": "ancient-flow-tutorial.png",
+        "source": "从御剑飞行开始 关卡策划案 第三版草稿.docx",
+        "render_page": 4,
+        "embedded_image": "word/media/image1.png",
+        "pixel_crop": [
+          0,
+          135,
+          1242,
+          825
+        ],
+        "caption": "原流程图局部：基础符箓教学、地下宫殿切换与战斗、偏殿探索，未包含草稿中不一致的顶端三钥匙目标。"
+      },
+      {
+        "file": "ice-p18-scope.png",
+        "source": "doc-icebreaking.pdf",
+        "page": 18,
+        "pdf_crop_points": [
+          22,
+          0,
+          838,
+          315
+        ],
+        "caption": "原文档资源说明与有设计但未完成项。"
+      },
+      {
+        "file": "broken-p01-role.png",
+        "source": "doc-broken-home.pdf",
+        "page": 1,
+        "pdf_crop_points": [
+          22,
+          345,
+          838,
+          920
+        ],
+        "caption": "原文档封面白盒截图与独立完成声明。"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "broken-home",
+      "title": "破碎之家",
+      "theme": "微缩家庭 · 情绪镜身",
+      "role": "个人项目 · 关卡与蓝图独立完成",
+      "pages": [
+        {
+          "key": "overview",
+          "section": "关卡目标",
+          "title": "和三秒前的自己一起解谜",
+          "kind": "原项目演示画面",
+          "points": [
+            [
+              "玩家目标",
+              "穿越微缩家庭\n与过去的自己协作"
+            ],
+            [
+              "核心规则",
+              "镜身重放过去3秒\n让旧动作成为解题资源"
+            ]
+          ],
+          "source": "《破碎之家》关卡说明 · 第2、4页；画面沿用原项目封面",
+          "sourceShort": "目标与机制 · 原稿第2、4页",
+          "sourcePages": [
+            2,
+            4
+          ],
+          "link": {
+            "url": "./Portfolio/doc-broken-home.pdf#page=2",
+            "label": "查看设计原稿 · 第2页"
+          }
+        },
+        {
+          "key": "route",
+          "section": "空间与节奏",
+          "title": "三段空间，逐步增加协作要求",
+          "kind": "原关卡动线图",
+          "points": [
+            [
+              "空间递进",
+              "床铺与床头柜\n衣柜与地面\n椅子与桌面"
+            ],
+            [
+              "教学节奏",
+              "先学镜身维持机关\n再加入限时与叠力"
+            ]
+          ],
+          "source": "《破碎之家》关卡说明 · 第5、7页",
+          "sourceShort": "原动线图 · 原稿第5、7页",
+          "sourcePages": [
+            5,
+            7
+          ],
+          "link": {
+            "url": "./Portfolio/doc-broken-home.pdf#page=7",
+            "label": "查看设计原稿 · 第7页"
+          }
+        },
+        {
+          "key": "mirror",
+          "section": "机制拆解",
+          "title": "用镜身维持机关，本体继续前进",
+          "kind": "原白盒截图",
+          "points": [
+            [
+              "玩家操作",
+              "先踩机关，再生成镜身\n让旧动作继续踩住按钮"
+            ],
+            [
+              "空间结果",
+              "镜身维持风扇气流\n本体借气流上升"
+            ]
+          ],
+          "source": "《破碎之家》关卡说明 · 第2、9页",
+          "sourceShort": "原白盒 · 原稿第2、9页",
+          "sourcePages": [
+            2,
+            9
+          ],
+          "link": {
+            "url": "./Portfolio/doc-broken-home.pdf#page=9",
+            "label": "查看设计原稿 · 第9页"
+          }
+        },
+        {
+          "key": "cooperate",
+          "section": "组合挑战",
+          "title": "把双人门槛变成造路谜题",
+          "kind": "原白盒截图",
+          "points": [
+            [
+              "协作规则",
+              "本体与镜身共同压重\n启动四驱车拉开抽屉"
+            ],
+            [
+              "挑战递进",
+              "开路后再消除阻挡\n把协作转成空间变化"
+            ]
+          ],
+          "source": "《破碎之家》关卡说明 · 第13页",
+          "sourceShort": "原白盒 · 原稿第13页",
+          "sourcePages": [
+            13
+          ],
+          "link": {
+            "url": "./Portfolio/doc-broken-home.pdf#page=13",
+            "label": "查看设计原稿 · 第13页"
+          }
+        },
+        {
+          "key": "role",
+          "section": "职责与边界",
+          "title": "独立完成关卡与机关蓝图",
+          "kind": "原文档首页",
+          "points": [
+            [
+              "本人负责",
+              "关卡设计与白盒\n机关蓝图逻辑"
+            ],
+            [
+              "素材边界",
+              "音效、部分模型\n角色动作使用外部资源"
+            ]
+          ],
+          "source": "职责：原文档第1页、原站项目说明；资源：第15页",
+          "sourceShort": "职责与资源 · 原稿第1、15页",
+          "sourcePages": [
+            1,
+            15
+          ],
+          "link": {
+            "url": "./Portfolio/doc-broken-home.pdf#page=1",
+            "label": "查看设计原稿 · 第1页"
+          }
+        }
+      ]
+    },
+    {
+      "id": "icebreaking",
+      "title": "破冰启航",
+      "theme": "工业港口 · 冻结运动",
+      "role": "个人项目 · 关卡与蓝图独立完成",
+      "pages": [
+        {
+          "key": "overview",
+          "section": "关卡目标",
+          "title": "用冻结能力重新打通港口",
+          "kind": "原项目演示画面",
+          "points": [
+            [
+              "玩家目标",
+              "重返工业港口\n启动飞艇前往主城"
+            ],
+            [
+              "核心规则",
+              "停止机关运动\n把运动装置变成通路"
+            ]
+          ],
+          "boundary": "启航过场、剧情语音未完成",
+          "source": "《破冰启航》关卡说明 · 第2、4、18页；画面沿用原项目封面",
+          "sourceShort": "目标与机制 · 原稿第2、4页",
+          "sourcePages": [
+            2,
+            4,
+            18
+          ],
+          "link": {
+            "url": "./Portfolio/doc-icebreaking.pdf#page=2",
+            "label": "查看设计原稿 · 第2页"
+          }
+        },
+        {
+          "key": "route",
+          "section": "空间与节奏",
+          "title": "从港口教学到飞艇综合挑战",
+          "kind": "原关卡动线图",
+          "points": [
+            [
+              "三段路线",
+              "入口与装货区\n飞艇港口\n飞艇内部"
+            ],
+            [
+              "能力递进",
+              "前期已有限时冻结\n后期组合机关与时序"
+            ]
+          ],
+          "source": "《破冰启航》关卡说明 · 第5、7页；前期限时见第9、10页，持续冻结见第11页",
+          "sourceShort": "路线第5、7页 · 规则第9–11页",
+          "sourcePages": [
+            5,
+            7,
+            9,
+            10,
+            11
+          ],
+          "link": {
+            "url": "./Portfolio/doc-icebreaking.pdf#page=7",
+            "label": "查看设计原稿 · 第7页"
+          }
+        },
+        {
+          "key": "minecart",
+          "section": "机制拆解",
+          "title": "冻结矿车，拼出二层通路",
+          "kind": "原白盒截图",
+          "points": [
+            [
+              "玩家操作",
+              "拉杆启动矿车\n按合适位置依次冻结"
+            ],
+            [
+              "造路规则",
+              "原规则为持续冻结\n多辆矿车拼成二层通路"
+            ]
+          ],
+          "source": "《破冰启航》关卡说明 · 第11页",
+          "sourceShort": "原白盒 · 原稿第11页",
+          "sourcePages": [
+            11
+          ],
+          "link": {
+            "url": "./Portfolio/doc-icebreaking.pdf#page=11",
+            "label": "查看设计原稿 · 第11页"
+          }
+        },
+        {
+          "key": "airship",
+          "section": "组合挑战",
+          "title": "组合冻结机关，收紧时序窗口",
+          "kind": "原飞艇路线图",
+          "points": [
+            [
+              "组合挑战",
+              "传输带与风扇冻结6秒\n进阶传输带缩短至3秒"
+            ],
+            [
+              "综合运用",
+              "结合机关顺序与攀爬\n逐步抵达驾驶室"
+            ]
+          ],
+          "source": "路线：原文档第7页；后期组合规则：第13、15–17页。前期第9页吊机已为3秒、第10页吊桥已为6秒；第11页矿车为持续冻结。",
+          "sourceShort": "原路线图 · 规则见第13、15–17页",
+          "sourcePages": [
+            7,
+            13,
+            15,
+            16,
+            17
+          ],
+          "link": {
+            "url": "./Portfolio/doc-icebreaking.pdf#page=13",
+            "label": "查看设计原稿 · 第13页"
+          }
+        },
+        {
+          "key": "scope",
+          "section": "职责与边界",
+          "title": "完成范围与未完成项",
+          "kind": "原文档资源与未完成说明",
+          "points": [
+            [
+              "本人负责",
+              "关卡白盒\n机关逻辑与蓝图"
+            ],
+            [
+              "未完成项",
+              "飞艇启航过场动画\n游戏剧情语音"
+            ]
+          ],
+          "source": "职责：原文档第1页、原站项目说明；未完成：第18页",
+          "sourceShort": "职责与状态 · 原稿第1、18页",
+          "sourcePages": [
+            1,
+            18
+          ],
+          "link": {
+            "url": "./Portfolio/doc-icebreaking.pdf#page=18",
+            "label": "查看设计原稿 · 第18页"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ancient-temple",
+      "title": "山中古刹",
+      "theme": "古刹箱庭 · 御剑与符箓",
+      "role": "团队项目 · 本人负责古刹白盒与机关蓝图",
+      "pages": [
+        {
+          "key": "overview",
+          "section": "关卡目标",
+          "title": "让御剑学习融入古刹箱庭",
+          "kind": "原团队项目演示画面",
+          "points": [
+            [
+              "能力目标",
+              "围绕剑与符箓解谜\n逐步恢复御剑能力"
+            ],
+            [
+              "空间组织",
+              "沿古刹闭环探索\n穿插战斗与能力校验"
+            ]
+          ],
+          "boundary": "团队项目 · 草稿存在版本差异",
+          "source": "《从御剑飞行开始》第三版草稿 · 约束、玩法与流程；职责据原站说明",
+          "sourceShort": "关卡目标 · 原第三版草稿",
+          "sourcePages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "link": {
+            "url": "./Portfolio/doc-ancient-temple.docx",
+            "label": "下载原策划草稿"
+          }
+        },
+        {
+          "key": "route",
+          "section": "空间与节奏",
+          "title": "前殿入门，再进入箱庭循环",
+          "kind": "原草稿逻辑图局部",
+          "points": [
+            [
+              "探索路线",
+              "前殿与偏殿\n地下宫殿与通道\n经偏殿二进入大殿"
+            ],
+            [
+              "能力教学",
+              "从破符开门\n到阵法切换"
+            ]
+          ],
+          "source": "《从御剑飞行开始》第三版草稿 · 正文与流程图",
+          "sourceShort": "原逻辑图局部 · 第三版草稿",
+          "sourcePages": [
+            1,
+            2,
+            4
+          ],
+          "link": {
+            "url": "./Portfolio/doc-ancient-temple.docx",
+            "label": "下载原策划草稿"
+          }
+        },
+        {
+          "key": "switch",
+          "section": "机制拆解",
+          "title": "用同时命中验证御剑能力",
+          "kind": "据原策划草稿转写的机制示意",
+          "points": [
+            [
+              "挑战规则",
+              "单独击破一处符箓\n符箓会立即重新生成"
+            ],
+            [
+              "能力运用",
+              "找对角度同时击破三处\n打开通往屋顶的窗户"
+            ]
+          ],
+          "boundary": "第三版草稿 · 规则未定稿",
+          "source": "《从御剑飞行开始》第三版草稿 · 大殿御剑教学段；流程文字按原稿转写，非实机截图",
+          "sourceShort": "原草稿第2页 · 机制转写示意",
+          "sourcePages": [
+            2
+          ],
+          "link": {
+            "url": "./Portfolio/doc-ancient-temple.docx",
+            "label": "下载原策划草稿"
+          },
+          "diagram": "temple-three-seals"
+        },
+        {
+          "key": "towers",
+          "section": "组合挑战",
+          "title": "用四座塔楼串起限时校验",
+          "kind": "原草稿逻辑图局部",
+          "points": [
+            [
+              "组合挑战",
+              "四座塔楼限时放置阵盘\n御剑飞行与战斗穿插"
+            ],
+            [
+              "回到主线",
+              "解除封印、取得宝物\n庭院头目战后返回前殿"
+            ]
+          ],
+          "source": "《从御剑飞行开始》第三版草稿 · 塔楼段与流程图",
+          "sourceShort": "原逻辑图局部 · 第三版草稿",
+          "sourcePages": [
+            2,
+            3,
+            4
+          ],
+          "link": {
+            "url": "./Portfolio/doc-ancient-temple.docx",
+            "label": "下载原策划草稿"
+          }
+        },
+        {
+          "key": "role",
+          "section": "职责与边界",
+          "title": "团队协作中的关卡职责",
+          "kind": "原团队项目演示画面",
+          "points": [
+            [
+              "本人负责",
+              "古刹区域白盒\n解谜机关逻辑与蓝图"
+            ],
+            [
+              "协作范围",
+              "与美术、程序协作\n推进关卡实现"
+            ]
+          ],
+          "boundary": "草稿保留“三钥匙 / 四阵盘”差异",
+          "source": "职责据原站项目说明；策划草稿含“三钥匙/四阵盘”差异",
+          "sourceShort": "职责据原站 · 原稿保留版本差异",
+          "sourcePages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "link": {
+            "url": "./Portfolio/doc-ancient-temple.docx",
+            "label": "下载原策划草稿"
+          }
+        }
+      ]
+    },
+    {
+      "id": "moston",
+      "title": "Gamified Moston",
+      "theme": "城市景观 · 空间与玩法模拟",
+      "role": "个人项目 · 空间分析与游戏模拟",
+      "pages": [
+        {
+          "key": "overview",
+          "section": "研究目标",
+          "title": "用游戏模拟观察空间选择",
+          "kind": "原项目演示画面",
+          "points": [
+            [
+              "研究问题",
+              "同一场地与到校任务\n不同角色如何选择路线"
+            ],
+            [
+              "研究链条",
+              "环境规则进入模拟\n记录路径，再整理反馈"
+            ]
+          ],
+          "boundary": "设计模拟 · 未证明现实改善效果",
+          "source": "Chen_YIli_LA2B · 第40–43页；画面沿用原项目封面",
+          "sourceShort": "研究范围 · LA2B第40–43页",
+          "sourcePages": [
+            40,
+            41,
+            42,
+            43
+          ],
+          "link": {
+            "url": "./Portfolio/doc-moston.pdf#page=40",
+            "label": "查看设计原稿 · 第40页"
+          }
+        },
+        {
+          "key": "gameplay",
+          "section": "模拟规则",
+          "title": "把环境感受转成任务约束",
+          "kind": "原设计模拟画面",
+          "points": [
+            [
+              "任务规则",
+              "生命条与倒计时\n限定时间抵达学校"
+            ],
+            [
+              "模拟变量",
+              "强光、道路噪声与人群\n影响游戏中的生命值"
+            ]
+          ],
+          "source": "Chen_YIli_LA2B · 第40页 · 玩法规则",
+          "sourceShort": "原模拟画面 · LA2B第40页",
+          "sourcePages": [
+            40
+          ],
+          "link": {
+            "url": "./Portfolio/doc-moston.pdf#page=40",
+            "label": "查看设计原稿 · 第40页"
+          }
+        },
+        {
+          "key": "path",
+          "section": "路径比较",
+          "title": "比较三种扮演角色的路线",
+          "kind": "原模拟路径叠图",
+          "points": [
+            [
+              "扮演角色",
+              "特殊教育需求学生\n其他行人与游客"
+            ],
+            [
+              "观察对象",
+              "从起点前往学校\n比较路径选择差异"
+            ]
+          ],
+          "source": "Chen_YIli_LA2B · 第41页 · 玩家路径；角色扮演不代表参与者本人的身份",
+          "sourceShort": "原路径叠图 · LA2B第41页",
+          "sourcePages": [
+            41
+          ],
+          "link": {
+            "url": "./Portfolio/doc-moston.pdf#page=41",
+            "label": "查看设计原稿 · 第41页"
+          }
+        },
+        {
+          "key": "feedback",
+          "section": "路径与反馈",
+          "title": "让选路记录对应具体反馈",
+          "kind": "原模拟反馈图",
+          "points": [
+            [
+              "路线反馈",
+              "入口引导不清\n选择避晒、避噪的路径"
+            ],
+            [
+              "空间吸引",
+              "桥、咖啡店与广场\n吸引不同角色探索"
+            ]
+          ],
+          "source": "Chen_YIli_LA2B · 第42页 · 玩家反馈",
+          "sourceShort": "原反馈图 · LA2B第42页",
+          "sourcePages": [
+            42
+          ],
+          "link": {
+            "url": "./Portfolio/doc-moston.pdf#page=42",
+            "label": "查看设计原稿 · 第42页"
+          }
+        },
+        {
+          "key": "reflection",
+          "section": "设计回应与边界",
+          "title": "从模拟反馈形成空间建议",
+          "kind": "原设计模拟反思页",
+          "points": [
+            [
+              "本人负责",
+              "场地调研、空间分析\n游戏模拟与方案输出"
+            ],
+            [
+              "设计回应",
+              "加强导向、遮荫与休憩\n建议来自本次模拟反馈"
+            ]
+          ],
+          "boundary": "设计模拟 · 未证明现实改善效果",
+          "source": "Chen_YIli_LA2B · 第43页；职责据原站项目说明",
+          "sourceShort": "原反思页 · LA2B第43页",
+          "sourcePages": [
+            43
+          ],
+          "link": {
+            "url": "./Portfolio/doc-moston.pdf#page=43",
+            "label": "查看设计原稿 · 第43页"
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "破冰启航过场动画与剧情语音在原稿中未完成。",
+    "山中古刹为团队项目；流程图是策划逻辑，并非实机截图或空间平面图。第三版草稿存在三钥匙/四阵盘及贴/破坏符箓等版本差异。",
+    "Moston为游戏化设计模拟，不是临床研究，也不能据此证明现实改善效果或认定参与者为真实SEN学生。"
+  ]
+}

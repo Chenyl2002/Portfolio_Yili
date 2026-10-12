@@ -1,0 +1,1 @@
+GSAP 3.12.5. Copyright 2008-2024, GreenSock. All rights reserved. Original code headers preserved. Full current official standard-license page and provenance are retained under dependencies/gsap/. GSAP is not MIT; its own license applies.
